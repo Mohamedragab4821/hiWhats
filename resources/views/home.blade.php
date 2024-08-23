@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
 <!-- Mirrored from cartzilla.createx.studio/home-nft.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Aug 2022 18:10:41 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
@@ -54,7 +54,8 @@
             <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body tab-content py-4">
-            <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab">
+            <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab" action="{{ route('signin') }}" method="POST">
+                @csrf
               <div class="mb-3">
                 <label class="form-label" for="si-email">Email address</label>
                 <input class="form-control" type="email" id="si-email" placeholder="johndoe@example.com" required>
@@ -77,31 +78,32 @@
               </div>
               <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign in</button>
             </form>
-            <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab">
+            <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab" action="{{ route('Registeration') }}" method="POST">
+                @csrf
               <div class="mb-3">
                 <label class="form-label" for="su-name">Full name</label>
-                <input class="form-control" type="text" id="su-name" placeholder="John Doe" required>
+                <input class="form-control" type="text" id="userName" name="userName" placeholder="John Doe" required>
                 <div class="invalid-feedback">Please fill in your name.</div>
               </div>
               <div class="mb-3">
                 <label for="su-email">Email address</label>
-                <input class="form-control" type="email" id="su-email" placeholder="johndoe@example.com" required>
+                <input class="form-control" type="email" id="email" name="email" placeholder="johndoe@example.com" required>
                 <div class="invalid-feedback">Please provide a valid email address.</div>
               </div>
               <div class="mb-3">
                 <label class="form-label" for="su-password">Password</label>
                 <div class="password-toggle">
-                  <input class="form-control" type="password" id="su-password" required>
+                  <input class="form-control" type="password" id="password" name="password" required>
                   <label class="password-toggle-btn" aria-label="Show/hide password">
                     <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
                   </label>
                 </div>
               </div>
               <div class="mb-3">
-                <label class="form-label" for="su-password-confirm">Confirm password</label>
+                <label class="form-label" for="su-password-confirm">Phone Number</label>
                 <div class="password-toggle">
-                  <input class="form-control" type="password" id="su-password-confirm" required>
-                  <label class="password-toggle-btn" aria-label="Show/hide password">
+                  <input class="form-control" type="text" id="phone" name="phone" required>
+                  <label class="password-toggle-btn">
                     <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
                   </label>
                 </div>
