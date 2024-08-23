@@ -10,24 +10,28 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
-
-    public function login(Request $request)
-    {
-        $user = Auth::user();
-        $validatedData = $request->validate([
-            'email' => 'required|string|email|max:255',
-            'password' => 'required|string|min:8',
-        ]);
-
-        if (Auth::attempt([
-            'email' => $validatedData['email'],
-            'password' => $validatedData['password']
-        ])) {
-            return redirect()->route('/' ,['user' => $user])->with('success', 'Login successful');
-        } else {
-            return redirect()->back()->withErrors(['email' => 'Invalid credentials'])->withInput();
-        }
+    public function home(){
+        return view('home');
     }
+    public function login(Request $request)
+{
+    $validatedData = $request->validate([
+        'email' => 'required|string|email|max:255',
+        'password' => 'required|string|min:8',
+    ]);
+
+    if (Auth::attempt([
+        'email' => $validatedData['email'],
+        'password' => $validatedData['password']
+    ])) {
+        $user = Auth::user();
+        // احصل على المستخدم بعد تسجيل الدخول بنجاح
+        return redirect()->route('home', ['user' => $user])->with('success', 'Login successful');
+    } else {
+        return redirect()->back()->withErrors(['email' => 'Invalid credentials'])->withInput();
+    }
+}
+
 
     public function Registeration(Request $request)
     {
@@ -51,12 +55,12 @@ class AuthController extends Controller
             'role' => 'user', // Set the role to 'user'
         ]);
 
-        return redirect()->route('/' ,['user' => $user])->with('success', 'Login successful');
+        return redirect()->route('home' ,['user' => $user])->with('success', 'Login successful');
     }
 
-    public function index()
+    public function indexProfileSetting()
     {
-        //
+        return view('')
     }
 
     /**
