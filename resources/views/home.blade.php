@@ -591,62 +591,7 @@
     </main>
     <!-- Bg shape-->
     <div class="pt-4 bg-secondary">
-      <!-- Blog recent posts-->
-      <section class="container py-lg-5 py-4">
-        <div class="d-flex align-items-center justify-content-between mb-sm-4 mb-2 pb-2">
-          <h2 class="h3 mb-0">Resources for getting started</h2><a class="btn btn-outline-accent ms-3" href="blog-grid.html">All articles<i class="ci-arrow-right ms-2"></i></a>
-        </div>
-        <!-- Blog (carousel)-->
-        <div class="tns-carousel pb-lg-5 pb-4">
-          <div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;nav&quot;: true, &quot;gutter&quot;: 30, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;576&quot;:{&quot;items&quot;:2},&quot;992&quot;:{&quot;items&quot;:3}}}">
-            <!-- Carousel item-->
-            <article><a class="d-block mb-3" href="blog-single.html"><img class="rounded-3" src="img/nft/blog/01.jpg" alt="Blog image"></a>
-              <div class="d-flex align-items-center fs-sm pb-2"><a class="blog-entry-meta-link" href="#">by Wade Warren</a><span class="blog-entry-meta-divider"></span><a class="blog-entry-meta-link" href="#">Aug 15</a></div>
-              <h2 class="h6 blog-entry-title mb-0"><a href="blog-single.html">The complete guide to NFTs art for creators and investors</a></h2>
-            </article>
-            <!-- Carousel item-->
-            <article><a class="d-block mb-3" href="blog-single.html"><img class="rounded-3" src="img/nft/blog/02.jpg" alt="Blog image"></a>
-              <div class="d-flex align-items-center fs-sm pb-2"><a class="blog-entry-meta-link" href="#">by Kathryn Murphy</a><span class="blog-entry-meta-divider"></span><a class="blog-entry-meta-link" href="#">Sep 18</a></div>
-              <h2 class="h6 blog-entry-title mb-0"><a href="blog-single.html">A chance to win a variety of common, rare and unique NFTs</a></h2>
-            </article>
-            <!-- Carousel item-->
-            <article><a class="d-block mb-3" href="blog-single.html"><img class="rounded-3" src="img/nft/blog/03.jpg" alt="Blog image"></a>
-              <div class="d-flex align-items-center fs-sm pb-2"><a class="blog-entry-meta-link" href="#">by Devon Lane</a><span class="blog-entry-meta-divider"></span><a class="blog-entry-meta-link" href="#">Nov 26</a></div>
-              <h2 class="h6 blog-entry-title mb-0"><a href="blog-single.html">Exclusive premium events, from exhibitions to unique collectibles</a></h2>
-            </article>
-            <!-- Carousel item-->
-            <article><a class="d-block mb-3" href="blog-single.html"><img class="rounded-3" src="img/nft/blog/01.jpg" alt="Blog image"></a>
-              <div class="d-flex align-items-center fs-sm pb-2"><a class="blog-entry-meta-link" href="#">by Wade Warren</a><span class="blog-entry-meta-divider"></span><a class="blog-entry-meta-link" href="#">Aug 15</a></div>
-              <h2 class="h6 blog-entry-title mb-0"><a href="blog-single.html">The complete guide to NFTs art for creators and investors</a></h2>
-            </article>
-            <!-- Carousel item-->
-            <article><a class="d-block mb-3" href="blog-single.html"><img class="rounded-3" src="img/nft/blog/02.jpg" alt="Blog image"></a>
-              <div class="d-flex align-items-center fs-sm pb-2"><a class="blog-entry-meta-link" href="#">by Kathryn Murphy</a><span class="blog-entry-meta-divider"></span><a class="blog-entry-meta-link" href="#">Sep 18</a></div>
-              <h2 class="h6 blog-entry-title mb-0"><a href="blog-single.html">A chance to win a variety of common, rare and unique NFTs</a></h2>
-            </article>
-            <!-- Carousel item-->
-            <article><a class="d-block mb-3" href="blog-single.html"><img class="rounded-3" src="img/nft/blog/03.jpg" alt="Blog image"></a>
-              <div class="d-flex align-items-center fs-sm pb-2"><a class="blog-entry-meta-link" href="#">by Devon Lane</a><span class="blog-entry-meta-divider"></span><a class="blog-entry-meta-link" href="#">Nov 26</a></div>
-              <h2 class="h6 blog-entry-title mb-0"><a href="blog-single.html">Exclusive premium events, from exhibitions to unique collectibles</a></h2>
-            </article>
-            <!-- Carousel item-->
-            <article><a class="d-block mb-3" href="blog-single.html"><img class="rounded-3" src="img/nft/blog/01.jpg" alt="Blog image"></a>
-              <div class="d-flex align-items-center fs-sm pb-2"><a class="blog-entry-meta-link" href="#">by Wade Warren</a><span class="blog-entry-meta-divider"></span><a class="blog-entry-meta-link" href="#">Aug 15</a></div>
-              <h2 class="h6 blog-entry-title mb-0"><a href="blog-single.html">The complete guide to NFTs art for creators and investors</a></h2>
-            </article>
-            <!-- Carousel item-->
-            <article><a class="d-block mb-3" href="blog-single.html"><img class="rounded-3" src="img/nft/blog/02.jpg" alt="Blog image"></a>
-              <div class="d-flex align-items-center fs-sm pb-2"><a class="blog-entry-meta-link" href="#">by Kathryn Murphy</a><span class="blog-entry-meta-divider"></span><a class="blog-entry-meta-link" href="#">Sep 18</a></div>
-              <h2 class="h6 blog-entry-title mb-0"><a href="blog-single.html">A chance to win a variety of common, rare and unique NFTs</a></h2>
-            </article>
-            <!-- Carousel item-->
-            <article><a class="d-block mb-3" href="blog-single.html"><img class="rounded-3" src="img/nft/blog/03.jpg" alt="Blog image"></a>
-              <div class="d-flex align-items-center fs-sm pb-2"><a class="blog-entry-meta-link" href="#">by Devon Lane</a><span class="blog-entry-meta-divider"></span><a class="blog-entry-meta-link" href="#">Nov 26</a></div>
-              <h2 class="h6 blog-entry-title mb-0"><a href="blog-single.html">Exclusive premium events, from exhibitions to unique collectibles</a></h2>
-            </article>
-          </div>
-        </div>
-      </section>
+
       <!-- Mail subscription-->
       <section class="container">
         <div class="card py-5 border-0 shadow">
