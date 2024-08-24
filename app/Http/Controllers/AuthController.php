@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Models\Users;
+use App\Models\Settings;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
@@ -14,6 +15,9 @@ class AuthController extends Controller
     public function home(){
         // $products = Product::all(); // Fetch all products or use any specific query
         return view('home');
+        $settings = Settings::first();
+
+        return view('home', ['settings' => $settings]);
     }
     public function login(Request $request)
 {

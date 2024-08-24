@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\MessagesController;
 
 
 
@@ -18,3 +20,6 @@ Route::post('/profile/update', [DashboardController::class, 'updateProfile'])->n
 Route::delete('/users/{user}', [DashboardController::class, 'destroy'])->name('users.destroy');
 
 
+Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
+Route::put('/settings/update', [SettingController::class, 'update'])->name('settings.update');
+Route::get('/messages', [MessagesController::class, 'index'])->name('messages.index');
