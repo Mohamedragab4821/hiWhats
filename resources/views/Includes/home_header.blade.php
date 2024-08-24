@@ -45,9 +45,11 @@
               <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">حسابي</a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="{{route('profileSetting')}}">Profile Settings</a></li>
-                  <li><a class="dropdown-item" href="{{route('settings.index')}}">Website Settings</a></li>
+                  <li><a class="dropdown-item" href="{{route('favorites.index')}}">Favorites</a></li>
                   <li><a class="dropdown-item" href="{{route('messages.index')}}">Messages</a></li>
-                  <li><a class="dropdown-item" href="{{route('settings.index')}}">Favorites</a></li>
+                  <li><a class="dropdown-item" href="{{route('settings.index')}}">Website Settings</a></li>
+                  <li><a class="dropdown-item" href="{{route('productMangement')}}">Product Mangement</a></li>
+                  <li><a class="dropdown-item" href="{{route('categoryMangement')}}">Category Mangement</a></li>
                   <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
                 </ul>
               </li>
