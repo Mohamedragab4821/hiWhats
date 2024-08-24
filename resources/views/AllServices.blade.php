@@ -54,8 +54,8 @@
       <!-- Navbar for NFT Marketplace demo-->
       <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
       @include('Includes.home_header')
-<div style="margin-top: 100px"></div>
-      @include('Includes.navBar')
+<div style="margin-top: 100px; margin:bottom"></div>
+      {{-- @include('Includes.navBar') --}}
 <section>
       <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 gy-sm-4 gy-3 pt-sm-3">
         @foreach($products as $product)
