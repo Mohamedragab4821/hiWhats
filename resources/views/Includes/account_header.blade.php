@@ -5,7 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        #whatsapp-icon {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        #whatsapp-icon img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            #whatsapp-icon img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
 </head>
+<body>
+    <div id="whatsapp-icon">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#whatsappModal">
+            <img src="{{ asset('social.png') }}" alt="Chat with us on WhatsApp" />
+        </a>
+    </div>
+
+    <div class="modal fade" id="whatsappModal" tabindex="-1" aria-labelledby="whatsappModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="whatsappModalLabel">مراسلة عبر الواتساب</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="whatsappForm">
+                        <div class="mb-3">
+                            <label for="message" class="form-label">الرسالة</label>
+                            <textarea class="form-control" id="message" rows="3" placeholder="اكتب رسالتك هنا"></textarea>
+                        </div>
+                        <button type="button" class="btn btn-success" onclick="sendWhatsAppMessage()">إرسال</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function sendWhatsAppMessage() {
+            var message = document.getElementById('message').value;
+            var phoneNumber = '201283370658'; // رقم الواتساب الخاص بك بصيغة دولية بدون علامة الجمع
+
+            var url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+    </script>
 <body>
     <header class="navbar d-block navbar-sticky navbar-expand-lg navbar-light bg-light">
         <div class="container"><a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="index.html"><img src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="142" alt="Cartzilla"></a><a class="navbar-brand d-sm-none me-2 order-lg-1" href="index.html"><img src="img/logo-icon.png" width="74" alt="Cartzilla"></a>

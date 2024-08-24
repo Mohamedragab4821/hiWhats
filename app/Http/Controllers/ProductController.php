@@ -206,6 +206,7 @@ class ProductController extends Controller
 
     public function storeCategory(Request $request)
 {
+
     // Validate the request
     $request->validate([
         'category_name' => 'required|string|max:255',

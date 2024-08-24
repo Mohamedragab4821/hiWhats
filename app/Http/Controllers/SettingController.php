@@ -34,6 +34,8 @@ class SettingController extends Controller
                 'website_description' => 'nullable|string|max:1000',
                 'home_meta_k' => 'nullable|string|max:1000',
                 'home_meta_d' => 'nullable|string|max:1000',
+                'home_description1' => 'nullable|string|max:1000',
+                'home_description2' => 'nullable|string|max:1000',
                 'product_meta_k' => 'nullable|string|max:1000',
                 'product_meta_d' => 'nullable|string|max:1000',
                 'category_meta_k' => 'nullable|string|max:1000',
@@ -55,6 +57,8 @@ class SettingController extends Controller
             $settings->home_meta_k = $validatedData['home_meta_k'];
             $settings->home_meta_d = $validatedData['home_meta_d'];
             $settings->product_meta_k = $validatedData['product_meta_k'];
+            $settings->home_description1 = $validatedData['home_description1'];
+            $settings->home_description2 = $validatedData['home_description2'];
             $settings->product_meta_d = $validatedData['product_meta_d'];
             $settings->category_meta_k = $validatedData['category_meta_k'];
             $settings->category_meta_c = $validatedData['category_meta_c'];

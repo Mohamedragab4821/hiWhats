@@ -111,10 +111,12 @@
                                 <label class="form-label" for="category_name">Category Name</label>
                                 <select class="form-control" id="category_name" name="category_name" required>
                                     <option value="" disabled selected>Select a category</option>
-                                    @foreach($category as $category)
+                                    @foreach($category1 as $category)
                                         <option value="{{ $category->category_name }}">{{ $category->category_name }}</option>
                                     @endforeach
                                 </select>
+                                
+                                                                
                                 <div class="invalid-feedback">Please select a valid category name.</div>
                             </div>
                               <!-- Product Salary -->
@@ -182,37 +184,68 @@
                       </form>
                       <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
                           <!-- Edit Button -->
-                          <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#product-modal" data-product-id="{{ $product->product_id }}" data-product-name="{{ $product->product_name }}" data-category-id="{{ $product->category_id }}" data-category-name="{{ $product->category_name }}" data-product-salary="{{ $product->product_salary }}" data-description="{{ $product->description }}" data-duration="{{ $product->Duration_of_righteousness }}" data-product-img="{{ $product->Product_img }}">
-                              <i class="ci-edit me-2"></i>Edit
-                          </button>
+                          <button 
+    class="btn btn-outline-primary btn-sm" 
+    type="button" 
+    data-bs-toggle="modal" 
+    data-bs-target="#product-modal" 
+    data-product-id="{{ $product->product_id }}" 
+    data-product-name="{{ $product->product_name }}" 
+    data-category-name="{{ $product->category_name }}" 
+    data-product-salary="{{ $product->product_salary }}" 
+    data-description="{{ $product->description }}" 
+    data-duration="{{ $product->Duration_of_righteousness }}" 
+    data-product-img="{{ $product->Product_img }}">
+    <i class="ci-edit me-2"></i>Edit
+</button>
+
                       </div>
                       <script>
-                        // When the modal is shown, populate the form fields with the product data
-                        var productModal = document.getElementById('product-modal');
-                        productModal.addEventListener('show.bs.modal', function (event) {
-                            var button = event.relatedTarget; // Button that triggered the modal
-                            var productId = button.getAttribute('data-product-id');
-                            var productName = button.getAttribute('data-product-name');
-                            var categoryId = button.getAttribute('data-category-id');
-                            var productSalary = button.getAttribute('data-product-salary');
-                            var description = button.getAttribute('data-description');
-                            var duration = button.getAttribute('data-duration');
-                            var productImg = button.getAttribute('data-product-img');
+                      
+                      document.addEventListener('DOMContentLoaded', function () {
+    var productModal = document.getElementById('product-modal');
+    productModal.addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget; // Button that triggered the modal
 
-                            // Update the form inputs
-                            var modalForm = productModal.querySelector('form');
-                            modalForm.action = "/profileSetting/productMangement/edit-product/" + productId;  // Set form action with the product ID
+        // Extract data attributes from the button
+        var productId = button.getAttribute('data-product-id');
+        var productName = button.getAttribute('data-product-name');
+        var categoryName = button.getAttribute('data-category-id'); // Assuming this is the category ID
+        var productSalary = button.getAttribute('data-product-salary');
+        var description = button.getAttribute('data-description');
+        var duration = button.getAttribute('data-duration');
+        var productImg = button.getAttribute('data-product-img');
 
-                            modalForm.querySelector('#product_name').value = productName;
-                            modalForm.querySelector('#product_salary').value = productSalary;
-                            modalForm.querySelector('#description').value = description;
-                            modalForm.querySelector('#Duration_of_righteousness').value = duration;
-                            modalForm.querySelector('#Product_img').src = "/storage/" + productImg;  // If you want to display the image in the form
+        // Update the form inputs in the modal
+        var modalForm = productModal.querySelector('form');
+        modalForm.action = "/profileSetting/productMangement/edit-product/" + productId; // Set form action with the product ID
 
-                            // Set the selected category
-                            var categorySelect = modalForm.querySelector('#category_name');
-                            categorySelect.value = categoryId;
-                        });
+        modalForm.querySelector('#product_name').value = productName;
+        modalForm.querySelector('#product_salary').value = productSalary;
+
+        modalForm.querySelector('#description').value = description;
+        modalForm.querySelector('#Duration_of_righteousness').value = duration;
+
+        // Set the selected category
+        var categorySelect = modalForm.querySelector('#category_name');
+
+// Loop through options to find the one that matches the categoryName
+Array.from(categorySelect.options).forEach(function(option) {
+    if (option.value === categoryName) {
+        option.selected = true; // Set the matching option as selected
+    }
+});
+
+        // If you want to display the image in the form, set the src attribute
+        var imgElement = modalForm.querySelector('#Product_img_display');
+        if (imgElement) {
+            imgElement.src = "/storage/" + productImg;
+        }
+    });
+                                
+                              
+});
+
                     </script>
 
 

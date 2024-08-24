@@ -22,6 +22,8 @@ class Settings extends Model
         'twitter_url',
         'insta_url',
         'youtube_url',
+        'home_description1',
+        'home_description1'
     ];
 
     // Optionally, define other properties or methods
