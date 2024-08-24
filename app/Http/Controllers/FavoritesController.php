@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Favorite;
 use App\Models\Settings;
+use App\Models\Category;
 
 class FavoritesController extends Controller
 {
@@ -45,23 +46,30 @@ class FavoritesController extends Controller
     {
         $settings = Settings::first();
         $user = Auth::user();
+        $categories = Category::all();
         $favorites = Favorite::where('user_id', $user->id)
                              ->with('product')
                              ->get();
 
-        return view('favorites', compact('favorites','settings'));
+        return view('favorites', compact('favorites','settings','categories'));
     }
 
     public function destroy($id)
-    {
-        try {
-            $favorite = Favorite::findOrFail($id);
+{
+    try {
+        $favorite = Favorite::where('id', $id)->where('user_id', Auth::id())->first();
+        
+        if ($favorite) {
             $favorite->delete();
-            return response()->json(['message' => 'Favorite removed successfully.']);
-        } catch (\Exception $e) {
-            return response()->json(['message' => 'Error removing favorite.'], 500);
+            return response()->json(['success' => true, 'message' => 'Favorite removed successfully.']);
+        } else {
+            return response()->json(['success' => false, 'message' => 'Favorite not found.'], 404);
         }
+    } catch (\Exception $e) {
+        return response()->json(['success' => false, 'message' => 'Error removing favorite.'], 500);
     }
+}
+
     
 
 }

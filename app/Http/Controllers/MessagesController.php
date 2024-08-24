@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Settings;
 use App\Models\Contacts;
+use App\Models\Category;
 
 
 class MessagesController extends Controller
@@ -19,6 +20,8 @@ class MessagesController extends Controller
         // Search query
         $query = $request->input('search');
         
+        $categories = Category::all();
+
         // Fetch contacts with search and pagination
         $contacts = Contacts::where('name', 'LIKE', "%{$query}%")
                             ->orWhere('email', 'LIKE', "%{$query}%")
@@ -27,7 +30,7 @@ class MessagesController extends Controller
                             ->orWhere('product', 'LIKE', "%{$query}%")
                             ->paginate(10); // 10 items per page
     
-        return view('messages', ['settings' => $settings, 'contacts' => $contacts]);
+        return view('messages', ['settings' => $settings, 'contacts' => $contacts,'categories'=>$categories]);
     }
     
 

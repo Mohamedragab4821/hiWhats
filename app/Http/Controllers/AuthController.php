@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Users;
 use App\Models\Settings;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
@@ -17,10 +18,12 @@ class AuthController extends Controller
 {
     $products = Product::all(); // Fetch all products from the database
     $settings = Settings::first(); // Fetch the settings
+    $categories=Category::all();
 
     return view('home', [
         'products' => $products,
         'settings' => $settings,
+        'categories'=>$categories
     ]);
 }
 public function logout(Request $request)
@@ -90,8 +93,10 @@ public function Registeration(Request $request)
     public function indexProfileSetting()
     {
         $settings = Settings::first();
+        $categories = Category::all();
 
-        return view('dashboard',['settings'=>$settings]);
+
+        return view('dashboard',['settings'=>$settings,'categories'=>$categories]);
     }
 
 
