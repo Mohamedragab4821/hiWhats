@@ -169,8 +169,8 @@
             </div>
           </div>
         </div>
-      </header>
-      @include('Includes.home_header')
+       </header>
+      {{-- @include('Includes.home_header') --}}
 
       <!-- Hero-->
       <section class="mb-lg-2 bg-faded-accent bg-size-cover" style="padding-top: 80px; background-image: url(img/nft/home/hero-bg.png);">
