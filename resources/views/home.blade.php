@@ -147,7 +147,7 @@
       <!-- Product carousel (Recent Drops)-->
       <section class="container mb-2 py-lg-5 py-4">
         <div class="d-flex align-items-center justify-content-between mb-sm-3 mb-2">
-          <h2 class="h3 mb-0">ابرز الخدمات</h2><a class="btn btn-outline-accent ms-3" href="nft-catalog-v1.html">اكتشف المزيد<i class="ci-arrow-right ms-2"></i></a>
+          <h2 class="h3 mb-0">ابرز الأقسام</h2><a class="btn btn-outline-accent ms-3" href="nft-catalog-v1.html">اكتشف المزيد<i class="ci-arrow-right ms-2"></i></a>
         </div>
         <!-- Product carousel-->
         <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
@@ -339,8 +339,8 @@
             <div class="d-flex flex-wrap mb-3">
                 <h2 class="h3 mb-0">ابرز&nbsp;</h2>
                 <div class="dropdown d-inline-block" data-bs-toggle="select">
-                    <a class="dropdown-toggle h3 text-primary" href="#" data-bs-toggle="dropdown">
-                        <span class="dropdown-toggle-label">الاقسام</span>
+                    <a class="h3 text-primary" href="#" data-bs-toggle="dropdown">
+                        <span class="dropdown-toggle-label">الخدمات</span>
                     </a>
                     <input type="hidden" name="trending-category">
                     <ul class="dropdown-menu dropdown-menu-end">
