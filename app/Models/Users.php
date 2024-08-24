@@ -14,7 +14,8 @@ class Users extends Authenticatable
         'user_name',
         'email',
         'phone',
-        'password'
+        'password',
+        'image'
     ];
 
     // Optionally, set the table name if it's different

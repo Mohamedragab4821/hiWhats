@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+// use App\Http\Controllers\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Models\Users;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     public function home(){
+        // $products = Product::all(); // Fetch all products or use any specific query
         return view('home');
     }
     public function login(Request $request)
@@ -33,30 +35,36 @@ class AuthController extends Controller
 }
 
 
-    public function Registeration(Request $request)
-    {
+public function Registeration(Request $request)
+{
+    Log::info('Register method called', $request->all());
 
-        Log::info('Register method called', $request->all());
-        // dd($request);
-        // Validate the input
-        $validatedData = $request->validate([
-            'userName' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8',
-            'phone' => 'required|string|max:255',
-        ]);
+    // Validate the input, including the image
+    $validatedData = $request->validate([
+        'userName' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users',
+        'password' => 'required|string|min:8',
+        'phone' => 'required|string|max:255',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Image validation
+    ]);
 
-        // Create a new user with the validated data and a fixed role value
-        $user = Users::create([
-            'user_name' => $validatedData['userName'],
-            'email' => $validatedData['email'],
-            'password' => Hash::make($validatedData['password']),
-            'phone' => $validatedData['phone'],
-            'role' => 'user', // Set the role to 'user'
-        ]);
-
-        return redirect()->route('home' ,['user' => $user])->with('success', 'Login successful');
+    // Handle the image upload if provided
+    $imagePath = null;
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('profile_images', 'public');
     }
+
+    // Create a new user with the validated data and a fixed role value
+    $user = Users::create([
+        'user_name' => $validatedData['userName'],
+        'email' => $validatedData['email'],
+        'password' => Hash::make($validatedData['password']),
+        'phone' => $validatedData['phone'],
+        'image' => $imagePath, // Store the image path in the database
+    ]);
+
+    return redirect()->route('home', ['user' => $user])->with('success', 'Registration successful');
+}
 
     public function index()
     {

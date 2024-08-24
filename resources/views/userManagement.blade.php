@@ -25,6 +25,14 @@
     <link rel="stylesheet" media="screen" href="{{ asset('vendor/tiny-slider/dist/tiny-slider.css') }}"/>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="{{ asset('css/theme.min.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Google Tag Manager-->
     <script>
@@ -34,6 +42,190 @@
       '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-WKV3GT5');
     </script>
+  <style>
+    body {
+        color: #566787;
+        background: #f5f5f5;
+        font-family: 'Varela Round', sans-serif;
+        font-size: 13px;
+    }
+    .table-responsive {
+        margin: 30px auto;
+        max-width: 90%; /* Adjust this percentage as needed */
+    }
+    .table-wrapper {
+        min-width: 800px; /* Adjust this to your desired table width */
+        background: #fff;
+        padding: 20px 25px;
+        border-radius: 3px;
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+    .table-title {
+        padding-bottom: 15px;
+        background: #299be4;
+        color: #fff;
+        padding: 16px 30px;
+        margin: -20px -25px 10px;
+        border-radius: 3px 3px 0 0;
+    }
+    .table-title h2 {
+        margin: 5px 0 0;
+        font-size: 24px;
+    }
+    .table-title .btn {
+        color: #566787;
+        float: right;
+        font-size: 13px;
+        background: #fff;
+        border: none;
+        min-width: 50px;
+        border-radius: 2px;
+        border: none;
+        outline: none !important;
+        margin-left: 10px;
+    }
+    .table-title .btn:hover, .table-title .btn:focus {
+        color: #566787;
+        background: #f2f2f2;
+    }
+    .table-title .btn i {
+        float: left;
+        font-size: 21px;
+        margin-right: 5px;
+    }
+    .table-title .btn span {
+        float: left;
+        margin-top: 2px;
+    }
+    table.table {
+        width: 100%;
+    }
+    table.table tr th, table.table tr td {
+        border-color: #e9e9e9;
+        padding: 12px 15px;
+        vertical-align: middle;
+    }
+    table.table tr th:first-child {
+        width: 60px;
+    }
+    table.table tr th:last-child {
+        width: 100px;
+    }
+    table.table-striped tbody tr:nth-of-type(odd) {
+        background-color: #fcfcfc;
+    }
+    table.table-striped.table-hover tbody tr:hover {
+        background: #f5f5f5;
+    }
+    table.table th i {
+        font-size: 13px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+    table.table td:last-child i {
+        opacity: 0.9;
+        font-size: 22px;
+        margin: 0 5px;
+    }
+    table.table td a {
+        font-weight: bold;
+        color: #566787;
+        display: inline-block;
+        text-decoration: none;
+    }
+    table.table td a:hover {
+        color: #2196F3;
+    }
+    table.table td a.settings {
+        color: #2196F3;
+    }
+    table.table td a.delete {
+        color: #F44336;
+    }
+    table.table td i {
+        font-size: 19px;
+    }
+    .avatar {
+        border-radius: 50%;
+        vertical-align: middle;
+        width: 40px; /* Adjust size as needed */
+        height: 40px; /* Adjust size as needed */
+        object-fit: cover; /* Ensure image scales well */
+        margin-right: 10px;
+    }
+    .status {
+        font-size: 30px;
+        margin: 2px 2px 0 0;
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 10px;
+    }
+    .text-success {
+        color: #10c469;
+    }
+    .text-info {
+        color: #62c9e8;
+    }
+    .text-warning {
+        color: #FFC107;
+    }
+    .text-danger {
+        color: #ff5b5b;
+    }
+    .pagination {
+        float: right;
+        margin: 0 0 5px;
+    }
+    .pagination li a {
+        border: none;
+        font-size: 13px;
+        min-width: 30px;
+        min-height: 30px;
+        color: #999;
+        margin: 0 2px;
+        line-height: 30px;
+        border-radius: 2px !important;
+        text-align: center;
+        padding: 0 6px;
+    }
+    .pagination li a:hover {
+        color: #666;
+    }
+    .pagination li.active a, .pagination li.active a.page-link {
+        background: #03A9F4;
+    }
+    .pagination li.active a:hover {
+        background: #0397d6;
+    }
+    .pagination li.disabled i {
+        color: #ccc;
+    }
+    .pagination li i {
+        font-size: 16px;
+        padding-top: 6px;
+    }
+    .hint-text {
+        float: left;
+        margin-top: 10px;
+        font-size: 13px;
+    }
+    .action-buttons {
+        align-items: center;
+        gap: 10px; /* Adjust spacing between buttons if needed */
+    }
+    .action-buttons .btn-link {
+        padding: 0;
+        border: none;
+        background: none;
+        color: #566787;
+        cursor: pointer;
+        font-size: 22px; /* Adjust icon size if needed */
+    }
+    .action-buttons .btn-link:hover {
+        color: #2196F3;
+    }
+</style>
+
   </head>
   <!-- Body-->
   <body class="handheld-toolbar-enabled">
@@ -175,9 +367,8 @@
       <div class="page-title-overlap bg-accent pt-4">
         <div class="container d-flex flex-wrap flex-sm-nowrap justify-content-center justify-content-sm-between align-items-center mb-2 pt-2">
           <div class="d-flex align-items-center">
-            <div class="img-thumbnail rounded-circle position-relative flex-shrink-0" style="width: 6.375rem;"><img class="rounded-circle" src="img/nft/vendor/avatar.png" alt="@foxnet_creator"></div>
             <div class="ps-3">
-              <h3 class="h5 mb-2 text-light">@foxnet_creator</h3><span class="d-block text-light fs-sm opacity-60">Joined July 2021</span>
+              <h3 class="h5 mb-2 text-light">Users</h3>
             </div>
           </div>
           <div class="my-sm-0 my-3 text-sm-end pt-1">
@@ -199,7 +390,7 @@
               <div class="h-100 border-end mb-2">
                 <div class="d-lg-block collapse" id="account-menu">
                   <ul class="list-unstyled mb-0">
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="nft-account-settings.html"><i class="ci-settings opacity-60 me-2"></i>Profile Settings</a></li>
+                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{ route('dashboard', ['id' => Auth::user()->id]) }}"><i class="ci-settings opacity-60 me-2"></i>Profile Settings</a></li>
                     <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="nft-account-my-items.html"><i class="ci-image opacity-60 me-2"></i>My Items<span class="fs-sm text-muted ms-auto">5</span></a></li>
                     <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="nft-account-my-collections.html"><i class="ci-view-list opacity-60 me-2"></i>My Collections<span class="fs-sm text-muted ms-auto">2</span></a></li>
                     <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="nft-account-favorites.html"><i class="ci-heart opacity-60 me-2"></i>Favorites<span class="fs-sm text-muted ms-auto">3</span></a></li>
@@ -212,50 +403,70 @@
             </aside>
             <!-- Content-->
             <section class="col-lg-9 pt-lg-4 pb-4 mb-3">
-              <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
-                  <h1 class="h3 mb-4 pt-2 text-center text-sm-start">Profile Settings</h1>
-                  <div class="bg-secondary rounded-3 p-4 mb-4 text-center text-sm-start">
-                      <div class="d-flex flex-sm-row flex-column align-items-sm-start align-items-center">
-                          <!-- Display the user's profile image -->
-                          <img class="rounded mb-sm-0 mb-3" src="{{ Auth::user()->image ? asset('storage/' . Auth::user()->image) : 'img/nft/vendor/avatar-square.jpg' }}" width="90" alt="Image">
-                          <div class="ms-n2 ps-sm-4">
-                              <!-- Form for changing the avatar -->
-                              <form method="POST" action="{{ route('avatar.update') }}" enctype="multipart/form-data">
-                                  @csrf
-                                  <input type="file" name="image" class="form-control mb-2">
-                                  <button class="btn btn-outline-accent mb-2 ms-2" type="submit"><i class="ci-loading me-2"></i>Change <span class='d-none d-sm-inline'>avatar</span></button>
-                              </form>
-                              <!-- Form for deleting the avatar -->
-                              <form method="POST" action="{{ route('avatar.delete') }}">
-                                  @csrf
-                                  @method('DELETE')
-                                  <button class="btn btn-outline-danger mb-2 ms-2" type="submit"><i class="ci-trash me-2"></i>Delete</button>
-                              </form>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- Form for updating user data -->
-                  <form method="POST" action="{{ route('profile.update') }}">
-                      @csrf
-                      <div class="row gy-3 mb-4 pb-md-3 mb-2">
-                          <div class="col-sm-6">
-                              <label class="form-label" for="profile-name">Full name</label>
-                              <input class="form-control" id="profile-name" type="text" value="{{ Auth::user()->user_name }}" name="user_name">
-                          </div>
-                          <div class="col-sm-6">
-                              <label class="form-label" for="profile-uid">Phone</label>
-                              <input class="form-control" id="profile-uid" type="text" value="{{ Auth::user()->phone }}" name="phone">
-                          </div>
-                          <div class="col-sm-6">
-                              <label class="form-label" for="profile-email">Email</label>
-                              <input class="form-control" id="profile-email" type="email" value="{{ Auth::user()->email }}" name="email">
-                          </div>
-                      </div>
-                      <div class="d-flex flex-sm-row flex-column">
-                          <button class="btn btn-accent" type="submit">Update profile</button>
-                      </div>
-                  </form>
-              </div>
+                <div class="container-xl">
+                    <div class="table-responsive">
+                        <div class="table-wrapper">
+                            <div class="table-title">
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <h2>User <b>Management</b></h2>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Add New User</span></a>
+                                        <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE24D;</i> <span>Export to Excel</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Date Created</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($users as $user)
+                                        <tr>
+                                            <td>{{ $user->id }}</td>
+                                            <td>
+                                                <a href="#">
+                                                    <img src="{{ asset('storage/' . $user->image) }}" class="avatar" alt="Avatar">
+                                                </a>
+                                            </td>
+                                            <td>{{ $user->user_name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->phone }}</td>
+                                            <td>{{ $user->created_at->format('d/m/Y') }}</td>
+                                            <td class="action-buttons">
+                                                <!-- Settings Button -->
+                                                <a href="{{ route('dashboard', ['id' => $user->id]) }}" class="btn-link settings" title="Settings" data-toggle="tooltip">
+                                                    <i class="material-icons">&#xE8B8;</i>
+                                                </a>
+                                                
+                                                <!-- Delete Button -->
+                                                <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;" class="delete-form">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn-link" title="Delete" data-toggle="tooltip">
+                                                        <i class="material-icons">&#xE5C9;</i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                            
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            
+                            <!-- Pagination would be here if needed -->
+                        </div>
+                    </div>
+                </div>
           </section>
           
           
@@ -348,7 +559,30 @@
     <script src="{{ asset('vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js') }}"></script>
     <!-- Main theme script-->
     <script src="{{ asset('js/theme.min.js') }}"></script>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.delete-form').forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevent default form submission
+                    const form = event.target;
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!',
+                        cancelButtonText: 'Cancel'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit(); // Submit the form if confirmed
+                        }
+                    });
+                });
+            });
+        });
+    </script>
   </body>
 
 <!-- Mirrored from cartzilla.createx.studio/nft-account-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Aug 2022 18:19:25 GMT -->
