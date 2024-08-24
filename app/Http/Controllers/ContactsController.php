@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Settings;
 use App\Models\Contacts;
+use App\Models\Category;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +19,9 @@ class ContactsController extends Controller
     {
         $settings = Settings::first();
 
-        return view('contacts',['settings'=>$settings]);
+        $categories = Category::all();
+
+        return view('contacts',['settings'=>$settings,'categories'=>$categories]);
 
     }
 

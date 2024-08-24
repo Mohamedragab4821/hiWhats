@@ -11,6 +11,8 @@
     <meta name="keywords" content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap, html5, css3, js, gallery, slider, touch, creative, clean">
     <meta name="author" content="Createx Studio">
     <!-- Viewport-->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
@@ -146,16 +148,18 @@
                               </a>
                               </button>
                               <button 
-                                class="btn-delete btn-sm position-absolute top-0 end-0" 
-                                type="button" 
-                                data-bs-toggle="tooltip" 
-                                data-bs-placement="left" 
-                                title="Remove from Favorites" 
-                                style="margin: 12px;border: none"
-                                onclick="removeFromFavorites({{ $favorite->id }})"
-                              >
-                                <i class="ci-trash"></i>
-                              </button>
+    class="btn-delete btn-sm position-absolute top-0 end-0" 
+    type="button" 
+    data-bs-toggle="tooltip" 
+    data-bs-placement="left" 
+    title="Remove from Favorites" 
+    style="margin: 12px;border: none"
+    onclick="removeFromFavorites({{ $favorite->id }})"
+>
+    <i class="ci-trash"></i>
+</button>
+
+
                             </div>
                             <div class="card-body">
                               <h5 class="card-title mb-2 fs-base"><a class="d-block text-truncate" href="#">{{ $favorite->product->product_name }}</a></h5>
@@ -198,47 +202,55 @@
     <script src="{{ asset('js/theme.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-          const signInForm = document.querySelector('#signin-tab form');
-          const signUpForm = document.querySelector('#signup-tab form');
-      
-          // Handle sign-in form submission
-          signInForm.addEventListener('submit', function (e) {
-            e.preventDefault(); // Prevent default form submission
-      
-            // Perform form validation or AJAX request here
-      
-            // Show success alert
-            Swal.fire({
-              icon: 'success',
-              title: 'Signed in successfully!',
-              text: 'You have been signed in.',
-              confirmButtonText: 'OK'
-            }).then(() => {
-              // Redirect or perform any additional actions
-              window.location.href = 'your-dashboard-url'; // Replace with your actual URL
+     function removeFromFavorites(favoriteId) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch(`/favorites/${favoriteId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire(
+                        'Deleted!',
+                        'Your favorite has been deleted.',
+                        'success'
+                    ).then(() => {
+                        location.reload(); // Reload the page to reflect changes
+                    });
+                } else {
+                    Swal.fire(
+                        'Error!',
+                        data.message || 'Failed to delete the favorite.',
+                        'error'
+                    );
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire(
+                    'Error!',
+                    'Something went wrong.',
+                    'error'
+                );
             });
-          });
-      
-          // Handle sign-up form submission
-          signUpForm.addEventListener('submit', function (e) {
-            e.preventDefault(); // Prevent default form submission
-      
-            // Perform form validation or AJAX request here
-      
-            // Show success alert
-            Swal.fire({
-              icon: 'success',
-              title: 'Signed up successfully!',
-              text: 'Your account has been created.',
-              confirmButtonText: 'OK'
-            }).then(() => {
-              // Redirect or perform any additional actions
-              window.location.href = 'your-welcome-url'; // Replace with your actual URL
-            });
-          });
-        });
-      </script>
+        }
+    });
+}
+
+    </script>
       
   </body>
 

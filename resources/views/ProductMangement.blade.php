@@ -54,6 +54,22 @@
       <div class="container mb-5 pb-3">
         <div class="bg-light shadow-lg rounded-3 overflow-hidden">
           <div class="row">
+            @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
             <!-- Sidebar-->
             @include('Includes.leftSideMenue')
 

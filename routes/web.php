@@ -8,8 +8,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\ContactsController;
-
-
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', [AuthController::class, 'home'])->name('home');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -43,7 +42,17 @@ Route::post('/favorites', [FavoritesController::class, 'store'])->name('favorite
 // Route to display the user's favorites page
 Route::get('/favorites', [FavoritesController::class, 'index'])->name('favorites.index');
 
+// Route::delete('/favorites/{id}', [FavoritesController::class, 'destroy'])->name('favorites.destroy');
+// routes/web.php or routes/api.php
 Route::delete('/favorites/{id}', [FavoritesController::class, 'destroy'])->name('favorites.destroy');
 
 Route::get('/contacts', [ContactsController::class, 'index'])->name('contacts.index');
 Route::post('/contacts/create', [ContactsController::class, 'store'])->name('contacts.store');
+
+
+// Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
+Route::get('/categories/{id}', [CategoryController::class, 'index'])->name('categories');
+Route::get('/services', [CategoryController::class, 'indexServices'])->name('services');
+
+// Route::get('/categories', CategoryController::class,'index')->name('categories');
+

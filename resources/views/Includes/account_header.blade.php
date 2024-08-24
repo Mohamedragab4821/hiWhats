@@ -28,16 +28,20 @@
             <!-- Primary menu-->
             <ul class="navbar-nav">
                 <li class="nav-item active"><a class="nav-link" href="{{route('home')}}">الصفحه الرئيسه</a></li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">الاقسام</a>
-                  <ul class="dropdown-menu">
-                      {{-- @foreach ($categorys as $category)
-                      <li><a class="dropdown-item" href="nft-catalog-v1.html">category->category_name</a></li>
-                      @endforeach --}}
-                    <li><a class="dropdown-item" href="nft-catalog-v1.html">Catalog v.1</a></li>
-                    
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      الاقسام
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="categoriesDropdown">
+                      @foreach($categories as $category)
+                          <li>
+                              <a class="dropdown-item" href="{{ route('categories', $category->category_id) }}">
+                                  {{ $category->category_name }}
+                              </a>
+                          </li>
+                      @endforeach
                   </ul>
-                </li>
-                <li class="nav-item "><a class="nav-link" href="home-nft.html">كل الخدمات</a></li>
+                </li>                <li class="nav-item "><a class="nav-link" href="{{route('services')}}">كل الخدمات</a></li>
                 <li class="nav-item "><a class="nav-link" href="{{route('contacts.index')}}">طلب خدمه</a></li>
                 <li class="nav-item "><a class="nav-link" href="home-nft.html">من نحن</a></li>
                 <li class="nav-item "><a class="nav-link" href="home-nft.html">رؤيتنا</a></li>

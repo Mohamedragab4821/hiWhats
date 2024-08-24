@@ -71,22 +71,25 @@ class ProductController extends Controller
     public function indexcategoryMangement()
     {
         $category = Category::all();
+        $categories = Category::all();
         $settings = Settings::first();
 
-        return view('CategoryMangement',['category'=>$category,'settings'=>$settings]);
+        return view('CategoryMangement',['category'=>$category,'settings'=>$settings,'categories'=>$categories]);
     }
 
     public function indexproductMangement()
     {
         $products = Product::all();
         $settings = Settings::first();
+        $categories = Category::all();
 
-        return view('ProductMangement', ['products' => $products,'settings'=>$settings]);
+        return view('ProductMangement', ['products' => $products,'settings'=>$settings,'categories'=>$categories]);
     }
 
 
 
-    public function storeProduct(Request $request){
+    public function storeProduct(Request $request)
+    {
         $validatedData = $request->validate([
             'product_name' => 'required|string|max:255',
             'category_id' => 'required|integer',
@@ -94,28 +97,21 @@ class ProductController extends Controller
             'product_salary' => 'required|numeric',
             'description' => 'required|string',
             'Duration_of_righteousness' => 'required|string|max:255',
-            'Product_img' => 'required|image|mimes:jpg,jpeg,png|max:2048', // Ensure the image is valid
+            'Product_img' => 'required|image|mimes:jpg,jpeg,png|max:2048',
         ]);
-
-        // Handle the image upload
-        if ($request->hasFile('Product_img')) {
+        try {
             $imagePath = $request->file('Product_img')->store('product_images', 'public');
+    
+            $product = new Product($validatedData);
+            $product->Product_img = $imagePath;
+            $product->save();
+    
+            return redirect()->route('productMangement')->with('success', 'Product added successfully!');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['Error adding product: ' . $e->getMessage()]);
         }
-
-        // Create a new product record in the database
-        $product = new Product();
-        $product->product_name = $validatedData['product_name'];
-        $product->category_id = $validatedData['category_id'];
-        $product->category_name = $validatedData['category_name'];
-        $product->product_salary = $validatedData['product_salary'];
-        $product->description = $validatedData['description'];
-        $product->Duration_of_righteousness = $validatedData['Duration_of_righteousness'];
-        $product->Product_img = $imagePath ?? null; // Store the image path in the database
-        $product->save();
-
-        // Return a success response
-        return redirect()->route('productMangement')->with('success', 'Product added successfully!');
     }
+    
 
     public function deleteProduct($product_id){
         $product = Product::where('product_id',$product_id);
