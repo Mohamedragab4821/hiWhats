@@ -58,48 +58,79 @@
             @include('Includes.leftSideMenue')
 
             <!-- Content-->
-            <section class="col-lg-9 pt-lg-4 pb-4 mb-3">
-              <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
-                  <h1 class="h3 mb-4 pt-2 text-center text-sm-start">Profile Settings</h1>
-                  <div class="bg-secondary rounded-3 p-4 mb-4 text-center text-sm-start">
-                      <div class="d-flex flex-sm-row flex-column align-items-sm-start align-items-center">
-                          <!-- Display the user's profile image -->
-                          <img class="rounded mb-sm-0 mb-3" src="{{ Auth::user()->image ? asset('storage/' . Auth::user()->image) : asset('img/nft/vendor/avatar-square.jpg') }}" width="90" alt="Image">
-                      </div>
-                  </div>
-                  <!-- Form for updating user data, including avatar -->
-                  <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
-                      @csrf
-                      <div class="row gy-3 mb-4 pb-md-3 mb-2">
-                          <div class="col-sm-6">
-                              <label class="form-label" for="profile-name">Full name</label>
-                              <input class="form-control" id="profile-name" type="text" value="{{ Auth::user()->user_name }}" name="user_name">
-                          </div>
-                          <div class="col-sm-6">
-                              <label class="form-label" for="profile-phone">Phone</label>
-                              <input class="form-control" id="profile-phone" type="text" value="{{ Auth::user()->phone }}" name="phone">
-                          </div>
-                          <div class="col-sm-6">
-                              <label class="form-label" for="profile-email">Email</label>
-                              <input class="form-control" id="profile-email" type="email" value="{{ Auth::user()->email }}" name="email">
-                          </div>
-                          <div class="col-sm-6">
-                              <label class="form-label" for="profile-avatar">Avatar</label>
-                              <input class="form-control" id="profile-avatar" type="file" name="image">
-                          </div>
-                      </div>
-                      <div class="d-flex flex-sm-row flex-column">
-                          <button class="btn btn-accent" type="submit">Update profile</button>
-                      </div>
-                  </form>
+            <section class="col-lg-8">
+              <!-- Toolbar-->
+              <div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
+                <h6 class="fs-base text-light mb-0">List of items you added to wishlist:</h6><a class="btn btn-primary btn-sm" href="#category-modal" data-bs-toggle="modal" ><i class="ci-add me-2"></i>Add Categores</a>
               </div>
-          </section>
-          
-          
-          
-          
-          
-          
+              <div class="modal fade" id="category-modal" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header bg-secondary">
+                        <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                          <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true">Add Product</a></li>
+                        </ul>
+                        <img src="" alt="">
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body tab-content py-4">
+                          <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="category-form" action="{{ route('storeCategory') }}" method="POST" enctype="multipart/form-data">
+                              @csrf
+
+                              <!-- Category Name -->
+                              <div class="mb-3">
+                                  <label class="form-label" for="category_name">Category Name</label>
+                                  <input class="form-control" type="text" id="category_name" name="category_name" placeholder="Enter category name" required>
+                                  <div class="invalid-feedback">Please provide a valid category name.</div>
+                              </div>
+
+                              <!-- Category Description -->
+                              <div class="mb-3">
+                                  <label class="form-label" for="category_description">Category Description</label>
+                                  <textarea class="form-control" id="category_description" name="category_description" rows="3" placeholder="Enter category description" required></textarea>
+                                  <div class="invalid-feedback">Please provide a valid description.</div>
+                              </div>
+
+                              <!-- Category Image -->
+                              <div class="mb-3">
+                                  <label class="form-label" for="category_img">Category Image</label>
+                                  <input class="form-control" type="file" id="category_img" name="category_img">
+                                  <div class="invalid-feedback">Please upload a category image.</div>
+                              </div>
+
+                              <!-- Submit Button -->
+                              <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Add Category</button>
+                          </form>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <!-- Wishlist-->
+              <!-- Item-->
+              @foreach ($category as $categores )
+
+
+              <div class="d-sm-flex justify-content-between mt-lg-4 mb-4 pb-3 pb-sm-2 border-bottom">
+                <div class="d-block d-sm-flex align-items-start text-center text-sm-start">
+                  <a class="d-block flex-shrink-0 mx-auto me-sm-4" href="shop-single-v1.html" style="width: 10rem;">
+                      <img src="{{ asset('storage/' . $categores->category_img) }}" alt="Category Image">
+                  </a>
+                  <div class="pt-2">
+                    <h3 class="product-title fs-base mb-2"><a>{{ $categores->category_name }}</a></h3>
+                    <div class="fs-sm"><span class="text-muted me-2">description:</span>{{ $categores->category_description }}</div>
+                  </div>
+                </div>
+                <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
+                  <button class="btn btn-outline-danger btn-sm" type="button"><i class="ci-trash me-2"></i>Remove</button>
+                </div>
+              </div>
+              @endforeach
+              <!-- Item-->
+
+              <!-- Item-->
+
+            </section>
+          <!--End Content-->
           </div>
         </div>
       </div>

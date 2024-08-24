@@ -23,6 +23,19 @@ class AuthController extends Controller
         'settings' => $settings,
     ]);
 }
+public function logout(Request $request)
+{
+    Auth::logout();
+
+    // Invalidate the session
+    $request->session()->invalidate();
+
+    // Regenerate the CSRF token
+    $request->session()->regenerateToken();
+
+    // Redirect to the login page or any other page
+    return redirect()->route('home');
+}
     public function login(Request $request)
 {
     $validatedData = $request->validate([

@@ -10,7 +10,11 @@ class Product extends Model
     use HasFactory;
 
     protected $table = 'product';
+    protected $primaryKey = 'product_id'; // Set this to your primary key field name
+    public $incrementing = false;
+    // Define the table name if it's different from the plural form of the model name
 
+    // Define the fillable attributes for mass assignment
     protected $fillable = [
         'product_name',
         'category_id',
