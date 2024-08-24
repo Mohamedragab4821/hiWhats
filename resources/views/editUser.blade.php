@@ -117,7 +117,7 @@
     <main class="page-wrapper">
       <!-- Navbar for NFT Marketplace demo-->
       <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
-      <header class="navbar d-block navbar-sticky navbar-expand-lg navbar-light bg-light">
+      {{-- <header class="navbar d-block navbar-sticky navbar-expand-lg navbar-light bg-light">
         <div class="container"><a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="index.html"><img src="img/logo-dark.png" width="142" alt="Cartzilla"></a><a class="navbar-brand d-sm-none me-2 order-lg-1" href="index.html"><img src="img/logo-icon.png" width="74" alt="Cartzilla"></a>
           <div class="navbar-toolbar d-flex align-items-center order-lg-3">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool d-none d-lg-flex" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#searchBox" role="button" aria-expanded="false" aria-controls="searchBox"><span class="navbar-tool-tooltip">Search</span>
@@ -174,7 +174,10 @@
             </div>
           </div>
         </div>
-      </header>
+      </header> --}}
+
+      @include('Includes.account_header')
+
       <div class="page-title-overlap bg-accent pt-4">
         <div class="container d-flex flex-wrap flex-sm-nowrap justify-content-center justify-content-sm-between align-items-center mb-2 pt-2">
           <div class="d-flex align-items-center">

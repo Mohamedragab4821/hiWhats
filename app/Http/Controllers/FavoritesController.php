@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Favorite;
+use App\Models\Settings;
 
 class FavoritesController extends Controller
 {
@@ -42,12 +43,13 @@ class FavoritesController extends Controller
      */
     public function index()
     {
+        $settings=Settings::all();
         $user = Auth::user();
         $favorites = Favorite::where('user_id', $user->id)
                              ->with('product')
                              ->get();
 
-        return view('favorites', compact('favorites'));
+        return view('favorites', compact('favorites','settings'));
     }
 
     public function destroy($id)
