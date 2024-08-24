@@ -118,10 +118,63 @@
             </div>
           </div>
         </div>
-      </div>
+    </div>
     <main class="page-wrapper">
       <!-- Navbar for NFT Marketplace demo-->
       <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+      <header class="navbar d-block navbar-sticky navbar-expand-lg navbar-light position-absolute w-100">
+        <div class="container"><a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="index.html"><img src="img/logo-dark.png" width="142" alt="Cartzilla"></a><a class="navbar-brand d-sm-none me-2 order-lg-1" href="index.html"><img src="img/logo-icon.png" width="74" alt="Cartzilla"></a>
+          <div class="navbar-toolbar d-flex align-items-center order-lg-3">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool d-none d-lg-flex" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#searchBox" role="button" aria-expanded="false" aria-controls="searchBox"><span class="navbar-tool-tooltip">بحث</span>
+              <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-search"></i></div></a><a class="navbar-tool ms-lg-2" href="#signin-modal" data-bs-toggle="modal"><span class="navbar-tool-tooltip">تسجيل</span>
+              <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-user"></i></div></a>
+          </div>
+          <div class="collapse navbar-collapse me-auto order-lg-2" id="navbarCollapse">
+            <!-- Search (mobile)-->
+            <div class="d-lg-none py-3">
+              <div class="input-group"><i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                <input class="form-control rounded-start" type="text" placeholder="What do you need?">
+              </div>
+            </div>
+            <!-- Primary menu-->
+            <ul class="navbar-nav">
+              <li class="nav-item active"><a class="nav-link" href="home-nft.html">الصفحه الرئيسه</a></li>
+              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">الاقسام</a>
+                <ul class="dropdown-menu">
+                    {{-- @foreach ($categorys as $category)
+                    <li><a class="dropdown-item" href="nft-catalog-v1.html">category->category_name</a></li>
+                    @endforeach --}}
+                  <li><a class="dropdown-item" href="nft-catalog-v1.html">Catalog v.1</a></li>
+
+                </ul>
+              </li>
+              <li class="nav-item "><a class="nav-link" href="home-nft.html">كل الخدمات</a></li>
+              <li class="nav-item "><a class="nav-link" href="home-nft.html">من نحن</a></li>
+              <li class="nav-item "><a class="nav-link" href="home-nft.html">رؤيتنا</a></li>
+
+
+              @if(Auth::user())
+              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">حسابي</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{{ route('profileSetting') }}">Profile Settings</a></li>
+                  <li><a class="dropdown-item" href="nft-account-my-items.html">Messages</a></li>
+                  <li><a class="dropdown-item" href="nft-account-favorites.html">Favorites</a></li>
+                  <li><a class="dropdown-item" href="nft-account-notifications.html">Logout</a></li>
+                </ul>
+              </li>
+              @endif
+            </ul>
+          </div>
+        </div>
+        <!-- Search collapse-->
+        <div class="search-box collapse" id="searchBox">
+          <div class="container py-2">
+            <div class="input-group"><i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+              <input class="form-control rounded-start" type="text" placeholder="What do you need?">
+            </div>
+          </div>
+        </div>
+      </header>
       @include('Includes.home_header')
 
       <!-- Hero-->
@@ -290,7 +343,7 @@
                 <article class="card h-100 border-0 shadow">
                   <div class="card-img-top position-relative overflow-hidden"><a class="d-block" href="nft-single-auction-live.html"><img src="{{$product->image_url}}" alt="{{$product->image_meta}}"></a>
                     <!-- Countdown timer-->
-                    
+
                     <!-- Wishlist button-->
                     <button class="btn-wishlist btn-sm position-absolute top-0 end-0" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Favorites" style="margin: 12px;"><i class="ci-heart"></i></button>
                   </div>
@@ -497,7 +550,7 @@
       </div>
     </div>
   </section>
-  
+
     </main>
     <!-- Bg shape-->
     <div class="pt-4 bg-secondary">

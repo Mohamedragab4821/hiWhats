@@ -119,7 +119,7 @@
           <div class="navbar-toolbar d-flex align-items-center order-lg-3">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool d-none d-lg-flex" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#searchBox" role="button" aria-expanded="false" aria-controls="searchBox"><span class="navbar-tool-tooltip">Search</span>
               <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-search"></i></div></a>
-            <div class="navbar-tool dropdown ms-lg-3 ms-2"><a class="navbar-tool-icon-box d-inline-block w-auto h-auto dropdown-toggle mt-n1" href="nft-account-settings.html"><img src="img/nft/vendor/avatar-sm.png" width="36" alt="user"></a>
+            <div class="navbar-tool dropdown ms-lg-3 ms-2"><a class="navbar-tool-icon-box d-inline-block w-auto h-auto dropdown-toggle mt-n1" href="nft-account-settings.html"><img src="img/nft/vendor/avatar-sm.png" width="36" alt="User"></a>
               <div class="dropdown-menu dropdown-menu-end">
                 <div style="min-width: 14rem;">
                   <h6 class="dropdown-header">@foxnet_creator</h6><a class="dropdown-item d-flex align-items-center" href="nft-account-settings.html"><i class="ci-settings opacity-60 me-2"></i>Profile Settings</a><a class="dropdown-item d-flex align-items-center" href="nft-account-my-items.html"><i class="ci-image opacity-60 me-2"></i>My Items<span class="fs-xs text-muted ms-auto">5</span></a><a class="dropdown-item d-flex align-items-center" href="nft-account-my-collections.html"><i class="ci-view-list opacity-60 me-2"></i>My Collections<span class="fs-xs text-muted ms-auto">2</span></a><a class="dropdown-item d-flex align-items-center" href="nft-account-favorites.html"><i class="ci-heart opacity-60 me-2"></i>Favorites<span class="fs-xs text-muted ms-auto">3</span></a><a class="dropdown-item d-flex align-items-center" href="nft-account-notifications.html"><i class="ci-bell opacity-60 me-2"></i>Notifications</a>
@@ -156,7 +156,6 @@
                   <li><a class="dropdown-item" href="nft-account-my-collections.html">My Collections</a></li>
                   <li><a class="dropdown-item" href="nft-account-favorites.html">Favorites</a></li>
                   <li><a class="dropdown-item" href="nft-account-notifications.html">Notifications</a></li>
-                  <li><a class="dropdown-item" href="nft-account-notifications.html">User Management</a></li>
                 </ul>
               </li>
               <li class="nav-item"><a class="nav-link" href="index.html">Back to main demo</a></li>
@@ -188,6 +187,23 @@
           </div>
         </div>
       </div>
+      <div class="page-title-overlap bg-dark pt-4">
+        <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
+          <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
+                <li class="breadcrumb-item"><a class="text-nowrap" href="index.html"><i class="ci-home"></i>Home</a></li>
+                <li class="breadcrumb-item text-nowrap"><a href="#">Account</a>
+                </li>
+                <li class="breadcrumb-item text-nowrap active" aria-current="page">Products</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
+            <h1 class="h3 text-light mb-0">My Products</h1>
+          </div>
+        </div>
+      </div>
       <div class="container mb-5 pb-3">
         <div class="bg-light shadow-lg rounded-3 overflow-hidden">
           <div class="row">
@@ -206,59 +222,122 @@
                     <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="nft-account-notifications.html"><i class="ci-bell opacity-60 me-2"></i>Notifications</a></li>
                     <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{ route('productMangement') }}"><i class="ci-bell opacity-60 me-2"></i>Product Mangement</a></li>
                     <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{ route('categoryMangement') }}"><i class="ci-bell opacity-60 me-2"></i>Category Mangement</a></li>
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="nft-account-notifications.html"><i class="ci-bell opacity-60 me-2"></i>Notifications</a></li>
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('userManagement')}}"><i class="ci-bell opacity-60 me-2"></i>User Management</a></li>
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="nft-account-notifications.html"><i class="ci-bell opacity-60 me-2"></i>Messages</a></li>
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('settings.index')}}"><i class="ci-sign-out opacity-60 me-2"></i>Settings</a></li>
-
                     <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-signin.html"><i class="ci-sign-out opacity-60 me-2"></i>Sign out</a></li>
                   </ul>
                 </div>
               </div>
             </aside>
             <!-- Content-->
-            <section class="col-lg-9 pt-lg-4 pb-4 mb-3">
-              <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
-                  <h1 class="h3 mb-4 pt-2 text-center text-sm-start">Profile Settings</h1>
-                  <div class="bg-secondary rounded-3 p-4 mb-4 text-center text-sm-start">
-                      <div class="d-flex flex-sm-row flex-column align-items-sm-start align-items-center">
-                          <!-- Display the user's profile image -->
-                          <img class="rounded mb-sm-0 mb-3" src="{{ Auth::user()->image ? asset('storage/' . Auth::user()->image) : asset('img/nft/vendor/avatar-square.jpg') }}" width="90" alt="Image">
+            <section class="col-lg-8">
+                <!-- Toolbar-->
+                <div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
+                  <h6 class="fs-base text-light mb-0">List of items you added to wishlist:</h6><a class="btn btn-primary btn-sm" href="#product-modal" data-bs-toggle="modal">Add Product</a>
+                </div>
+                <div class="modal fade" id="product-modal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header bg-secondary">
+                          <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                            <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true">Add Product</a></li>
+                          </ul>
+                          <img src="" alt="">
+                          <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body tab-content py-4">
+                            <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="product-form" action="{{ route('storeProduct') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <!-- Product Name -->
+                                <div class="mb-3">
+                                    <label class="form-label" for="product_name">Product Name</label>
+                                    <input class="form-control" type="text" id="product_name" name="product_name" placeholder="Enter product name" required>
+                                    <div class="invalid-feedback">Please provide a valid product name.</div>
+                                </div>
+
+                                <!-- Category ID -->
+                                <div class="mb-3">
+                                    <label class="form-label" for="category_id">Category ID</label>
+                                    <input class="form-control" type="number" id="category_id" name="category_id" placeholder="Enter category ID" required>
+                                    <div class="invalid-feedback">Please provide a valid category ID.</div>
+                                </div>
+
+                                <!-- Category Name -->
+                                <div class="mb-3">
+                                    <label class="form-label" for="category_name">Category Name</label>
+                                    <input class="form-control" type="text" id="category_name" name="category_name" placeholder="Enter category name" required>
+                                    <div class="invalid-feedback">Please provide a valid category name.</div>
+                                </div>
+
+                                <!-- Product Salary -->
+                                <div class="mb-3">
+                                    <label class="form-label" for="product_salary">Product Salary</label>
+                                    <input class="form-control" type="number" id="product_salary" name="product_salary" placeholder="Enter product salary" required>
+                                    <div class="invalid-feedback">Please provide a valid product salary.</div>
+                                </div>
+
+                                <!-- Description -->
+                                <div class="mb-3">
+                                    <label class="form-label" for="description">Description</label>
+                                    <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter product description" required></textarea>
+                                    <div class="invalid-feedback">Please provide a valid description.</div>
+                                </div>
+
+                                <!-- Duration of Righteousness -->
+                                <div class="mb-3">
+                                    <label class="form-label" for="Duration_of_righteousness">Duration of Righteousness</label>
+                                    <input class="form-control" type="text" id="Duration_of_righteousness" name="Duration_of_righteousness" placeholder="Enter duration of righteousness" required>
+                                    <div class="invalid-feedback">Please provide a valid duration.</div>
+                                </div>
+
+                                <!-- Product Image -->
+                                <div class="mb-3">
+                                    <label class="form-label" for="Product_img">Product Image</label>
+                                    <input class="form-control" type="file" id="Product_img" name="Product_img" required>
+                                    <div class="invalid-feedback">Please upload a product image.</div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Add Product</button>
+                            </form>
+
+                        </div>
                       </div>
-                  </div>
-                  <!-- Form for updating user data, including avatar -->
-                  <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
-                      @csrf
-                      <div class="row gy-3 mb-4 pb-md-3 mb-2">
-                          <div class="col-sm-6">
-                              <label class="form-label" for="profile-name">Full name</label>
-                              <input class="form-control" id="profile-name" type="text" value="{{ Auth::user()->user_name }}" name="user_name">
-                          </div>
-                          <div class="col-sm-6">
-                              <label class="form-label" for="profile-phone">Phone</label>
-                              <input class="form-control" id="profile-phone" type="text" value="{{ Auth::user()->phone }}" name="phone">
-                          </div>
-                          <div class="col-sm-6">
-                              <label class="form-label" for="profile-email">Email</label>
-                              <input class="form-control" id="profile-email" type="email" value="{{ Auth::user()->email }}" name="email">
-                          </div>
-                          <div class="col-sm-6">
-                              <label class="form-label" for="profile-avatar">Avatar</label>
-                              <input class="form-control" id="profile-avatar" type="file" name="image">
-                          </div>
-                      </div>
-                      <div class="d-flex flex-sm-row flex-column">
-                          <button class="btn btn-accent" type="submit">Update profile</button>
-                      </div>
-                  </form>
-              </div>
-          </section>
-          
-          
-          
-          
-          
-          
+                    </div>
+                </div>
+                <!-- Wishlist-->
+                <!-- Item-->
+                @foreach ($products as $product)
+                <div class="d-sm-flex justify-content-between mt-lg-4 mb-4 pb-3 pb-sm-2 border-bottom">
+                    <div class="d-block d-sm-flex align-items-start text-center text-sm-start">
+                        <a class="d-block flex-shrink-0 mx-auto me-sm-4" href="shop-single-v1.html" style="width: 10rem;">
+                            <img src="{{ asset('storage/' . $product->Product_img) }}" alt="Product">
+                        </a>
+                        <div class="pt-2">
+                            <h3 class="product-title fs-base mb-2">
+                                <a href="shop-single-v1.html">{{ $product->product_name }}</a>
+                            </h3>
+                            <div class="fs-sm">
+                                <span class="text-muted me-2"> وصــف : </span> {{ $product->description }}
+                            </div>
+                            <div class="fs-sm">
+                                <span class="text-muted me-2">تاريخ الانتهاء :</span>{{ $product->Duration_of_righteousness }}
+                            </div>
+                            <div class="fs-lg text-accent pt-2">{{ $product->product_salary}}</div>
+                        </div>
+                    </div>
+                    <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
+                        <form action="{{ route('deleteProduct', ['product_id' => $product->product_id]) }}" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-outline-danger btn-sm" type="submit"><i class="ci-trash me-2"></i>Remove</button>
+                        </form>
+                    </div>
+                </div>
+            @endforeach
+
+
+                <!-- Item-->
+
+              </section>
           </div>
         </div>
       </div>

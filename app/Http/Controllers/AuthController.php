@@ -34,7 +34,7 @@ class AuthController extends Controller
         'email' => $validatedData['email'],
         'password' => $validatedData['password']
     ])) {
-        $user = Auth::user(); 
+        $user = Auth::user();
         // احصل على المستخدم بعد تسجيل الدخول بنجاح
         return redirect()->route('home', ['user' => $user])->with('success', 'Login successful');
     } else {
@@ -74,10 +74,12 @@ public function Registeration(Request $request)
     return redirect()->route('home', ['user' => $user])->with('success', 'Registration successful');
 }
 
-    public function index()
+    public function indexProfileSetting()
     {
-        //
+        return view('dashboard');
     }
+
+
 
     /**
      * Show the form for creating a new resource.
