@@ -89,7 +89,9 @@ public function Registeration(Request $request)
 
     public function indexProfileSetting()
     {
-        return view('dashboard');
+        $settings = Settings::first();
+
+        return view('dashboard',['settings'=>$settings]);
     }
 
 

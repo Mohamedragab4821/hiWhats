@@ -167,31 +167,31 @@
                           </button>
                       </div>
                       <script>
-                          // When the modal is shown, populate the form fields with the product data
-var productModal = document.getElementById('product-modal');
-productModal.addEventListener('show.bs.modal', function (event) {
-  var button = event.relatedTarget; // Button that triggered the modal
-  var productId = button.getAttribute('data-product-id');
-  var productName = button.getAttribute('data-product-name');
-  var categoryId = button.getAttribute('data-category-id');
-  var categoryName = button.getAttribute('data-category-name');
-  var productSalary = button.getAttribute('data-product-salary');
-  var description = button.getAttribute('data-description');
-  var duration = button.getAttribute('data-duration');
-  var productImg = button.getAttribute('data-product-img');
+                            // When the modal is shown, populate the form fields with the product data
+  var productModal = document.getElementById('product-modal');
+  productModal.addEventListener('show.bs.modal', function (event) {
+    var button = event.relatedTarget; // Button that triggered the modal
+    var productId = button.getAttribute('data-product-id');
+    var productName = button.getAttribute('data-product-name');
+    var categoryId = button.getAttribute('data-category-id');
+    var categoryName = button.getAttribute('data-category-name');
+    var productSalary = button.getAttribute('data-product-salary');
+    var description = button.getAttribute('data-description');
+    var duration = button.getAttribute('data-duration');
+    var productImg = button.getAttribute('data-product-img');
 
-  // Update the form inputs
-  var modalForm = productModal.querySelector('form');
-  modalForm.action = "/profileSetting/productMangement/edit-product/" + productId;  // Set form action with the product ID
+    // Update the form inputs
+    var modalForm = productModal.querySelector('form');
+    modalForm.action = "/profileSetting/productMangement/edit-product/" + productId;  // Set form action with the product ID
 
-  modalForm.querySelector('#product_name').value = productName;
-  modalForm.querySelector('#category_id').value = categoryId;
-  modalForm.querySelector('#category_name').value = categoryName;
-  modalForm.querySelector('#product_salary').value = productSalary;
-  modalForm.querySelector('#description').value = description;
-  modalForm.querySelector('#Duration_of_righteousness').value = duration;
-  modalForm.querySelector('#Product_img').src = "/storage/" + productImg;  // If you want to display the image in the form
-});
+    modalForm.querySelector('#product_name').value = productName;
+    modalForm.querySelector('#category_id').value = categoryId;
+    modalForm.querySelector('#category_name').value = categoryName;
+    modalForm.querySelector('#product_salary').value = productSalary;
+    modalForm.querySelector('#description').value = description;
+    modalForm.querySelector('#Duration_of_righteousness').value = duration;
+    modalForm.querySelector('#Product_img').src = "/storage/" + productImg;  // If you want to display the image in the form
+  });
 
                       </script>
                   </div>

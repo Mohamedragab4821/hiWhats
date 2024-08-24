@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Users;
+use App\Models\Settings;
+
 
 
 class DashboardController extends Controller
@@ -17,7 +19,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $settings = Settings::first();
+
+        return view('dashboard',['settings'=>$settings]);
     }
 
     public function indexEditUser($id)
