@@ -43,7 +43,7 @@ class FavoritesController extends Controller
      */
     public function index()
     {
-        $settings=Settings::all();
+        $settings = Settings::first();
         $user = Auth::user();
         $favorites = Favorite::where('user_id', $user->id)
                              ->with('product')
