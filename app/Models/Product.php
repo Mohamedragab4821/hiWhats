@@ -9,6 +9,8 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'product_id'; // Set this to your primary key field name
+    public $incrementing = false;
     // Define the table name if it's different from the plural form of the model name
     protected $table = 'product';  // Assuming your table is named 'products'
 
