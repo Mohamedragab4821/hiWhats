@@ -107,24 +107,107 @@
               </div>
               <!-- Wishlist-->
               <!-- Item-->
-              @foreach ($category as $categores )
-
-
+              @foreach ($category as $category)
               <div class="d-sm-flex justify-content-between mt-lg-4 mb-4 pb-3 pb-sm-2 border-bottom">
-                <div class="d-block d-sm-flex align-items-start text-center text-sm-start">
-                  <a class="d-block flex-shrink-0 mx-auto me-sm-4" href="shop-single-v1.html" style="width: 10rem;">
-                      <img src="{{ asset('storage/' . $categores->category_img) }}" alt="Category Image">
-                  </a>
-                  <div class="pt-2">
-                    <h3 class="product-title fs-base mb-2"><a>{{ $categores->category_name }}</a></h3>
-                    <div class="fs-sm"><span class="text-muted me-2">description:</span>{{ $categores->category_description }}</div>
+                  <div class="d-block d-sm-flex align-items-start text-center text-sm-start">
+                      <!-- Display category image -->
+                      <a class="d-block flex-shrink-0 mx-auto me-sm-4" href="shop-single-v1.html" style="width: 10rem;">
+                          <img src="{{ asset('storage/' . $category->category_img) }}" alt="Category Image">
+                      </a>
+                      <div class="pt-2">
+                          <h3 class="product-title fs-base mb-2">
+                              <a>{{ $category->category_name }}</a>
+                          </h3>
+                          <div class="fs-sm">
+                              <span class="text-muted me-2">Description:</span>{{ $category->category_description }}
+                          </div>
+                      </div>
                   </div>
-                </div>
-                <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
-                  <button class="btn btn-outline-danger btn-sm" type="button"><i class="ci-trash me-2"></i>Remove</button>
-                </div>
+
+                  <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
+                      <!-- Form to delete category -->
+                      <form action="{{ route('destroyCategory', $category->category_id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this category?');">
+                          @csrf
+                          @method('DELETE')
+                          <button class="btn btn-outline-danger btn-sm" type="submit"><i class="ci-trash me-2"></i>Remove</button>
+                      </form>
+
+                      <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
+                          <!-- Edit Button -->
+                          <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#categoryy-modal"
+                              data-category-id="{{ $category->category_id }}"
+                              data-category-name="{{ $category->category_name }}"
+                              data-category-description="{{ $category->category_description }}"
+                              data-category-img="{{ $category->category_img }}">
+                              <i class="ci-edit me-2"></i>Edit
+                          </button>
+                      </div>
+                  </div>
               </div>
-              @endforeach
+          @endforeach
+
+          <!-- Edit Modal -->
+          <div class="modal fade" id="categoryy-modal" tabindex="-1" role="dialog">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header bg-secondary">
+                          <h5 class="modal-title">Edit Category</h5>
+                          <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form class="needs-validation" id="category-form" method="POST" enctype="multipart/form-data" novalidate>
+                              @csrf
+                              @method('POST')
+
+                              <!-- Category Name -->
+                              <div class="mb-3">
+                                  <label class="form-label" for="category_name">Category Name</label>
+                                  <input class="form-control" type="text" id="category_name" name="category_name" required>
+                                  <div class="invalid-feedback">Please provide a valid category name.</div>
+                              </div>
+
+                              <!-- Category Description -->
+                              <div class="mb-3">
+                                  <label class="form-label" for="category_description">Category Description</label>
+                                  <textarea class="form-control" id="category_description" name="category_description" rows="3" required></textarea>
+                                  <div class="invalid-feedback">Please provide a valid description.</div>
+                              </div>
+
+                              <!-- Category Image -->
+                              <div class="mb-3">
+                                  <label class="form-label" for="category_img">Category Image</label>
+                                  <input class="form-control" type="file" id="category_img" name="category_img">
+                                  <div class="invalid-feedback">Please upload a category image.</div>
+                              </div>
+
+                              <!-- Submit Button -->
+                              <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Update Category</button>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Script for Handling Modal Data -->
+          <script>
+              // When the modal is shown, populate the form fields with the category data
+              var categoryModal = document.getElementById('categoryy-modal');
+              categoryModal.addEventListener('show.bs.modal', function (event) {
+                  var button = event.relatedTarget; // Button that triggered the modal
+                  var categoryId = button.getAttribute('data-category-id');
+                  var categoryName = button.getAttribute('data-category-name');
+                  var categoryDescription = button.getAttribute('data-category-description');
+                  var categoryImg = button.getAttribute('data-category-img');
+
+                  // Update the form inputs
+                  var modalForm = categoryModal.querySelector('form');
+                  modalForm.action = "/profileSetting/categoryMangement/update/" + categoryId;  // Set form action with the category ID
+
+                  modalForm.querySelector('#category_name').value = categoryName;
+                  modalForm.querySelector('#category_description').value = categoryDescription;
+                  // The image field will be empty for uploading new ones, but you can leave it to upload new images if needed
+              });
+          </script>
               <!-- Item-->
 
               <!-- Item-->
