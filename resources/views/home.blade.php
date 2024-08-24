@@ -47,6 +47,7 @@
     <main class="page-wrapper">
       <!-- Navbar for NFT Marketplace demo-->
       <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+
       @include('Includes.home_header')
 
       <!-- Hero-->
@@ -260,7 +261,7 @@
                 <article class="card h-100 border-0 shadow">
                   <div class="card-img-top position-relative overflow-hidden"><a class="d-block" href="nft-single-auction-live.html"><img src="{{$product->image_url}}" alt="{{$product->image_meta}}"></a>
                     <!-- Countdown timer-->
-                    
+
                     <!-- Wishlist button-->
                     <button class="btn-wishlist btn-sm position-absolute top-0 end-0" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Favorites" style="margin: 12px;"><i class="ci-heart"></i></button>
                   </div>
@@ -467,7 +468,7 @@
       </div>
     </div>
   </section>
-  
+
     </main>
     <!-- Bg shape-->
     <div class="pt-4 bg-secondary">

@@ -44,10 +44,10 @@
               @if(Auth::user())
               <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">حسابي</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="nft-account-settings.html">Profile Settings</a></li>
+                  <li><a class="dropdown-item" href="{{route('profileSetting')}}">Profile Settings</a></li>
                   <li><a class="dropdown-item" href="{{route('settings.index')}}">Website Settings</a></li>
-                  <li><a class="dropdown-item" href="nft-account-my-items.html">Messages</a></li>
-                  <li><a class="dropdown-item" href="nft-account-favorites.html">Favorites</a></li>
+                  <li><a class="dropdown-item" href="{{route('messages.index')}}">Messages</a></li>
+                  <li><a class="dropdown-item" href="{{route('settings.index')}}">Favorites</a></li>
                   <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
                 </ul>
               </li>
