@@ -337,10 +337,10 @@
       <section class="mb-4 py-5 bg-secondary">
         <div class="container py-lg-4">
             <div class="d-flex flex-wrap mb-3">
-                <h2 class="h3 mb-0">ابرز&nbsp;</h2>
+                <h2 class="h3 mb-0">الخدمات&nbsp;</h2>
                 <div class="dropdown d-inline-block" data-bs-toggle="select">
                     <a class="h3 text-primary" href="#" data-bs-toggle="dropdown">
-                        <span class="dropdown-toggle-label">الخدمات</span>
+                        <span class="dropdown-toggle-label">ابرز</span>
                     </a>
                     <input type="hidden" name="trending-category">
                     <ul class="dropdown-menu dropdown-menu-end">
@@ -364,7 +364,7 @@
                   <!-- Product item -->
                   <div class="col py-3">
                       <article class="card h-100 border-0">
-                          <div class="card-img-top position-relative overflow-hidden">
+                          <div class="card-img-top position-relative overflow-hidden" style="width: 285px;height: 285px;">
                               <a class="d-block" href="#">
                                   <img class="avatar" src="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}" alt="Product image">
                               </a>

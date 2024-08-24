@@ -32,8 +32,9 @@ Route::get('/profileSetting/categoryMangement', [ProductController::class, 'inde
 Route::post('/profileSetting/productMangement/store', [ProductController::class, 'storeProduct'])->name('storeProduct');
 Route::delete('/profileSetting/productMangement/delete/{product_id}', [ProductController::class, 'deleteProduct'])->name('deleteProduct');
 Route::post('/profileSetting/productMangement/edit-product/{product_id}', [ProductController::class, 'updateProduct'])->name('editProduct');
-Route::post('/profileSetting/categoryMangement/', [ProductController::class, 'storeCategory'])->name('storeCategory');
-
+Route::post('/profileSetting/categoryMangement', [ProductController::class, 'storeCategory'])->name('storeCategory');
+Route::delete('/profileSetting/categoryMangement/delete/{id}', [ProductController::class, 'destroyCategory'])->name('destroyCategory');
+Route::post('/profileSetting/categoryMangement/update/{id}', [ProductController::class, 'updateCategory'])->name('updateCategory');
 Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
 Route::put('/settings/update', [SettingController::class, 'update'])->name('settings.update');
 Route::get('/messages', [MessagesController::class, 'index'])->name('messages.index');

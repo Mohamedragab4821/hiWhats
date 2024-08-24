@@ -61,78 +61,79 @@
             <section class="col-lg-8">
               <!-- Toolbar-->
               <div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
-                <h6 class="fs-base text-light mb-0">List of items you added to wishlist:</h6><a class="btn btn-primary btn-sm" href="#product-modal" data-bs-toggle="modal">Add Product</a>
+                <h6 class="fs-base text-light mb-0">List of items you added to wishlist:</h6><a class="btn btn-primary btn-sm" href="#productt-modal" data-bs-toggle="modal">Add Product</a>
               </div>
-              <div class="modal fade" id="product-modal" tabindex="-1" role="dialog">
+              <div class="modal fade" id="productt-modal" tabindex="-1" role="dialog">
                   <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                       <div class="modal-header bg-secondary">
-                        
-                        @if (session('success'))
-                                <div class="alert alert-success">{{ session('success') }}</div>
-                            @elseif (session('error'))
-                                <div class="alert alert-danger">{{ session('error') }}</div>
-                            @endif
+                        <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                          <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true">Add Product</a></li>
+                        </ul>
                         <img src="" alt="">
                         <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body tab-content py-4">
-                        <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="product-form" action="{{ route('storeProduct') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <!-- Success and Error Messages -->
-                            <!-- Product Name -->
-                            <div class="mb-3">
-                                <label class="form-label" for="product_name">Product Name</label>
-                                <input class="form-control" type="text" id="product_name" name="product_name" placeholder="Enter product name" required>
-                                <div class="invalid-feedback">Please provide a valid product name.</div>
-                            </div>
-                        
-                            <!-- Category ID -->
-                            <div class="mb-3">
-                                <label class="form-label" for="category_id">Category ID</label>
-                                <input class="form-control" type="number" id="category_id" name="category_id" placeholder="Enter category ID" required>
-                                <div class="invalid-feedback">Please provide a valid category ID.</div>
-                            </div>
-                        
-                            <!-- Category Name -->
-                            <div class="mb-3">
+                          <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="product-form" action="{{ route('storeProduct') }}" method="POST" enctype="multipart/form-data">
+                              @csrf
+                              <!-- Product Name -->
+                              <div class="mb-3">
+                                  <label class="form-label" for="product_name">Product Name</label>
+                                  <input class="form-control" type="text" id="product_name" name="product_name" placeholder="Enter product name" required>
+                                  <div class="invalid-feedback">Please provide a valid product name.</div>
+                              </div>
+
+                              <!-- Category ID -->
+                              {{-- <div class="mb-3">
+                                  <label class="form-label" for="category_id">Category ID</label>
+                                  <input class="form-control" type="number" id="category_id" name="category_id" placeholder="Enter category ID" required>
+                                  <div class="invalid-feedback">Please provide a valid category ID.</div>
+                              </div> --}}
+
+                              <!-- Category Name -->
+                              <div class="mb-3">
                                 <label class="form-label" for="category_name">Category Name</label>
-                                <input class="form-control" type="text" id="category_name" name="category_name" placeholder="Enter category name" required>
-                                <div class="invalid-feedback">Please provide a valid category name.</div>
+                                <select class="form-control" id="category_name" name="category_name" required>
+                                    <option value="" disabled selected>Select a category</option>
+                                    @foreach($category1 as $category)
+                                        <option value="{{ $category->category_name }}">{{ $category->category_name }}</option>
+                                    @endforeach
+                                </select>
+                                
+                                                                
+                                <div class="invalid-feedback">Please select a valid category name.</div>
                             </div>
-                        
-                            <!-- Product Salary -->
-                            <div class="mb-3">
-                                <label class="form-label" for="product_salary">Product Salary</label>
-                                <input class="form-control" type="number" id="product_salary" name="product_salary" placeholder="Enter product salary" required>
-                                <div class="invalid-feedback">Please provide a valid product salary.</div>
-                            </div>
-                        
-                            <!-- Description -->
-                            <div class="mb-3">
-                                <label class="form-label" for="description">Description</label>
-                                <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter product description" required></textarea>
-                                <div class="invalid-feedback">Please provide a valid description.</div>
-                            </div>
-                        
-                            <!-- Duration of Righteousness -->
-                            <div class="mb-3">
-                                <label class="form-label" for="Duration_of_righteousness">Duration of Righteousness</label>
-                                <input class="form-control" type="text" id="Duration_of_righteousness" name="Duration_of_righteousness" placeholder="Enter duration of righteousness" required>
-                                <div class="invalid-feedback">Please provide a valid duration.</div>
-                            </div>
-                        
-                            <!-- Product Image -->
-                            <div class="mb-3">
-                                <label class="form-label" for="Product_img">Product Image</label>
-                                <input class="form-control" type="file" id="Product_img" name="Product_img" required>
-                                <div class="invalid-feedback">Please upload a product image.</div>
-                            </div>
-                        
-                            <!-- Submit Button -->
-                            <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Add Product</button>
-                        </form>
-                        
+                              <!-- Product Salary -->
+                              <div class="mb-3">
+                                  <label class="form-label" for="product_salary">Product Salary</label>
+                                  <input class="form-control" type="number" id="product_salary" name="product_salary" placeholder="Enter product salary" required>
+                                  <div class="invalid-feedback">Please provide a valid product salary.</div>
+                              </div>
+
+                              <!-- Description -->
+                              <div class="mb-3">
+                                  <label class="form-label" for="description">Description</label>
+                                  <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter product description" required></textarea>
+                                  <div class="invalid-feedback">Please provide a valid description.</div>
+                              </div>
+
+                              <!-- Duration of Righteousness -->
+                              <div class="mb-3">
+                                  <label class="form-label" for="Duration_of_righteousness">Duration of Righteousness</label>
+                                  <input class="form-control" type="text" id="Duration_of_righteousness" name="Duration_of_righteousness" placeholder="Enter duration of righteousness" required>
+                                  <div class="invalid-feedback">Please provide a valid duration.</div>
+                              </div>
+
+                              <!-- Product Image -->
+                              <div class="mb-3">
+                                  <label class="form-label" for="Product_img">Product Image</label>
+                                  <input class="form-control" type="file" id="Product_img" name="Product_img" required>
+                                  <div class="invalid-feedback">Please upload a product image.</div>
+                              </div>
+
+                              <!-- Submit Button -->
+                              <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Add Product</button>
+                          </form>
 
                       </div>
                     </div>
@@ -140,7 +141,6 @@
               </div>
               <!-- Wishlist-->
               <!-- Item-->
-              
               @foreach ($products as $product)
               <div class="d-sm-flex justify-content-between mt-lg-4 mb-4 pb-3 pb-sm-2 border-bottom">
                   <div class="d-block d-sm-flex align-items-start text-center text-sm-start">
@@ -168,38 +168,71 @@
                       </form>
                       <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
                           <!-- Edit Button -->
-                          <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#product-modal" data-product-id="{{ $product->product_id }}" data-product-name="{{ $product->product_name }}" data-category-id="{{ $product->category_id }}" data-category-name="{{ $product->category_name }}" data-product-salary="{{ $product->product_salary }}" data-description="{{ $product->description }}" data-duration="{{ $product->Duration_of_righteousness }}" data-product-img="{{ $product->Product_img }}">
-                              <i class="ci-edit me-2"></i>Edit
-                          </button>
+                          <button 
+    class="btn btn-outline-primary btn-sm" 
+    type="button" 
+    data-bs-toggle="modal" 
+    data-bs-target="#product-modal" 
+    data-product-id="{{ $product->product_id }}" 
+    data-product-name="{{ $product->product_name }}" 
+    data-category-name="{{ $product->category_name }}" 
+    data-product-salary="{{ $product->product_salary }}" 
+    data-description="{{ $product->description }}" 
+    data-duration="{{ $product->Duration_of_righteousness }}" 
+    data-product-img="{{ $product->Product_img }}">
+    <i class="ci-edit me-2"></i>Edit
+</button>
+
                       </div>
                       <script>
-                            // When the modal is shown, populate the form fields with the product data
-  var productModal = document.getElementById('product-modal');
-  productModal.addEventListener('show.bs.modal', function (event) {
-    var button = event.relatedTarget; // Button that triggered the modal
-    var productId = button.getAttribute('data-product-id');
-    var productName = button.getAttribute('data-product-name');
-    var categoryId = button.getAttribute('data-category-id');
-    var categoryName = button.getAttribute('data-category-name');
-    var productSalary = button.getAttribute('data-product-salary');
-    var description = button.getAttribute('data-description');
-    var duration = button.getAttribute('data-duration');
-    var productImg = button.getAttribute('data-product-img');
+                      
+                      document.addEventListener('DOMContentLoaded', function () {
+    var productModal = document.getElementById('product-modal');
+    productModal.addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget; // Button that triggered the modal
 
-    // Update the form inputs
-    var modalForm = productModal.querySelector('form');
-    modalForm.action = "/profileSetting/productMangement/edit-product/" + productId;  // Set form action with the product ID
+        // Extract data attributes from the button
+        var productId = button.getAttribute('data-product-id');
+        var productName = button.getAttribute('data-product-name');
+        var categoryName = button.getAttribute('data-category-id'); // Assuming this is the category ID
+        var productSalary = button.getAttribute('data-product-salary');
+        var description = button.getAttribute('data-description');
+        var duration = button.getAttribute('data-duration');
+        var productImg = button.getAttribute('data-product-img');
 
-    modalForm.querySelector('#product_name').value = productName;
-    modalForm.querySelector('#category_id').value = categoryId;
-    modalForm.querySelector('#category_name').value = categoryName;
-    modalForm.querySelector('#product_salary').value = productSalary;
-    modalForm.querySelector('#description').value = description;
-    modalForm.querySelector('#Duration_of_righteousness').value = duration;
-    modalForm.querySelector('#Product_img').src = "/storage/" + productImg;  // If you want to display the image in the form
-  });
+        // Update the form inputs in the modal
+        var modalForm = productModal.querySelector('form');
+        modalForm.action = "/profileSetting/productMangement/edit-product/" + productId; // Set form action with the product ID
 
-                      </script>
+        modalForm.querySelector('#product_name').value = productName;
+        modalForm.querySelector('#product_salary').value = productSalary;
+
+        modalForm.querySelector('#description').value = description;
+        modalForm.querySelector('#Duration_of_righteousness').value = duration;
+
+        // Set the selected category
+        var categorySelect = modalForm.querySelector('#category_name');
+
+// Loop through options to find the one that matches the categoryName
+Array.from(categorySelect.options).forEach(function(option) {
+    if (option.value === categoryName) {
+        option.selected = true; // Set the matching option as selected
+    }
+});
+
+        // If you want to display the image in the form, set the src attribute
+        var imgElement = modalForm.querySelector('#Product_img_display');
+        if (imgElement) {
+            imgElement.src = "/storage/" + productImg;
+        }
+    });
+                                
+                              
+});
+
+                    </script>
+
+
                   </div>
 
               </div>
@@ -222,18 +255,23 @@
                                   </div>
 
                                   <!-- Category ID -->
-                                  <div class="mb-3">
+                                  {{-- <div class="mb-3">
                                       <label class="form-label" for="category_id">Category ID</label>
                                       <input class="form-control" type="number" id="category_id" name="category_id" required>
                                       <div class="invalid-feedback">Please provide a valid category ID.</div>
-                                  </div>
+                                  </div> --}}
 
                                   <!-- Category Name -->
                                   <div class="mb-3">
-                                      <label class="form-label" for="category_name">Category Name</label>
-                                      <input class="form-control" type="text" id="category_name" name="category_name" required>
-                                      <div class="invalid-feedback">Please provide a valid category name.</div>
-                                  </div>
+                                    <label class="form-label" for="category_name">Category Name</label>
+                                    <select class="form-control" id="category_name" name="category_name" required>
+                                        <option value="" disabled selected>Select a category</option>
+                                        @foreach($category1 as $category)
+                                            <option value="{{ $category->category_name }}">{{ $category->category_name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="invalid-feedback">Please select a valid category name.</div>
+                                </div>
 
                                   <!-- Product Salary -->
                                   <div class="mb-3">
