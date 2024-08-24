@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Users;
 use App\Models\Settings;
-
+use App\Models\Category;
 
 
 class DashboardController extends Controller
@@ -20,20 +20,24 @@ class DashboardController extends Controller
     public function index()
     {
         $settings = Settings::first();
-
-        return view('dashboard',['settings'=>$settings]);
+        $categories = Category::all();
+        return view('dashboard',['settings'=>$settings,'categories'=>$categories]);
     }
 
     public function indexEditUser($id)
     {
         $user = Users::findOrFail($id);
-        return view('editUser',['user'=>$user]);
+        $settings = Settings::first();
+        $categories = Category::all();
+        return view('editUser',['user'=>$user,'categories'=>$categories,'settings'=>$settings]);
     }
 
     public function indexUserManagement()
     {
         $users = Users::all();
-        return view('userManagement',['users'=>$users]);
+        $settings = Settings::first();
+        $categories = Category::all();
+        return view('userManagement',['users'=>$users,'categories'=>$categories,'settings'=>$settings]);
     }
 
     /**

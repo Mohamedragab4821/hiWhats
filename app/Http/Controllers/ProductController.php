@@ -71,9 +71,10 @@ class ProductController extends Controller
     public function indexcategoryMangement()
     {
         $category = Category::all();
+        $categories = Category::all();
         $settings = Settings::first();
 
-        return view('CategoryMangement',['category'=>$category,'settings'=>$settings]);
+        return view('CategoryMangement',['category'=>$category,'settings'=>$settings,'categories'=>$categories]);
     }
 
     public function indexproductMangement()
@@ -83,8 +84,9 @@ class ProductController extends Controller
         $category = Category::all();
         // $category1 = Category::all();
 
+        $categories = Category::all();
 
-        return view('ProductMangement', ['products' => $products,'settings'=>$settings,'category'=>$category,'category1'=>$category]);
+        return view('ProductMangement', ['products' => $products,'settings'=>$settings,'category'=>$category,'category1'=>$category,'categories'=>$categories]);
     }
 
 
@@ -204,6 +206,7 @@ class ProductController extends Controller
 
     public function storeCategory(Request $request)
 {
+
     // Validate the request
     $request->validate([
         'category_name' => 'required|string|max:255',

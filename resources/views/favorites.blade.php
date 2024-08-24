@@ -11,6 +11,8 @@
     <meta name="keywords" content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap, html5, css3, js, gallery, slider, touch, creative, clean">
     <meta name="author" content="Createx Studio">
     <!-- Viewport-->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
@@ -43,75 +45,8 @@
       <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
     </noscript>
     <!-- Sign in / sign up modal-->
-    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header bg-secondary">
-            <ul class="nav nav-tabs card-header-tabs" role="tablist">
-              <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>Sign in</a></li>
-              <li class="nav-item"><a class="nav-link fw-medium" href="#signup-tab" data-bs-toggle="tab" role="tab" aria-selected="false"><i class="ci-user me-2 mt-n1"></i>Sign up</a></li>
-            </ul>
-            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body tab-content py-4">
-            <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab">
-              <div class="mb-3">
-                <label class="form-label" for="si-email">Email address</label>
-                <input class="form-control" type="email" id="si-email" placeholder="johndoe@example.com" required>
-                <div class="invalid-feedback">Please provide a valid email address.</div>
-              </div>
-              <div class="mb-3">
-                <label class="form-label" for="si-password">Password</label>
-                <div class="password-toggle">
-                  <input class="form-control" type="password" id="si-password" required>
-                  <label class="password-toggle-btn" aria-label="Show/hide password">
-                    <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
-                  </label>
-                </div>
-              </div>
-              <div class="mb-3 d-flex flex-wrap justify-content-between">
-                <div class="form-check mb-2">
-                  <input class="form-check-input" type="checkbox" id="si-remember">
-                  <label class="form-check-label" for="si-remember">Remember me</label>
-                </div><a class="fs-sm" href="#">Forgot password?</a>
-              </div>
-              <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign in</button>
-            </form>
-            <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab">
-              <div class="mb-3">
-                <label class="form-label" for="su-name">Full name</label>
-                <input class="form-control" type="text" id="su-name" placeholder="John Doe" required>
-                <div class="invalid-feedback">Please fill in your name.</div>
-              </div>
-              <div class="mb-3">
-                <label for="su-email">Email address</label>
-                <input class="form-control" type="email" id="su-email" placeholder="johndoe@example.com" required>
-                <div class="invalid-feedback">Please provide a valid email address.</div>
-              </div>
-              <div class="mb-3">
-                <label class="form-label" for="su-password">Password</label>
-                <div class="password-toggle">
-                  <input class="form-control" type="password" id="su-password" required>
-                  <label class="password-toggle-btn" aria-label="Show/hide password">
-                    <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
-                  </label>
-                </div>
-              </div>
-              <div class="mb-3">
-                <label class="form-label" for="su-password-confirm">Confirm password</label>
-                <div class="password-toggle">
-                  <input class="form-control" type="password" id="su-password-confirm" required>
-                  <label class="password-toggle-btn" aria-label="Show/hide password">
-                    <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
-                  </label>
-                </div>
-              </div>
-              <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign up</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+    @include('Includes.signin_signup')
+
     <main class="page-wrapper">
       <!-- Navbar for NFT Marketplace demo-->
       <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
@@ -146,16 +81,18 @@
                               </a>
                               </button>
                               <button 
-                                class="btn-delete btn-sm position-absolute top-0 end-0" 
-                                type="button" 
-                                data-bs-toggle="tooltip" 
-                                data-bs-placement="left" 
-                                title="Remove from Favorites" 
-                                style="margin: 12px;border: none"
-                                onclick="removeFromFavorites({{ $favorite->id }})"
-                              >
-                                <i class="ci-trash"></i>
-                              </button>
+    class="btn-delete btn-sm position-absolute top-0 end-0" 
+    type="button" 
+    data-bs-toggle="tooltip" 
+    data-bs-placement="left" 
+    title="Remove from Favorites" 
+    style="margin: 12px;border: none"
+    onclick="removeFromFavorites({{ $favorite->id }})"
+>
+    <i class="ci-trash"></i>
+</button>
+
+
                             </div>
                             <div class="card-body">
                               <h5 class="card-title mb-2 fs-base"><a class="d-block text-truncate" href="#">{{ $favorite->product->product_name }}</a></h5>
@@ -198,47 +135,55 @@
     <script src="{{ asset('js/theme.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-          const signInForm = document.querySelector('#signin-tab form');
-          const signUpForm = document.querySelector('#signup-tab form');
-      
-          // Handle sign-in form submission
-          signInForm.addEventListener('submit', function (e) {
-            e.preventDefault(); // Prevent default form submission
-      
-            // Perform form validation or AJAX request here
-      
-            // Show success alert
-            Swal.fire({
-              icon: 'success',
-              title: 'Signed in successfully!',
-              text: 'You have been signed in.',
-              confirmButtonText: 'OK'
-            }).then(() => {
-              // Redirect or perform any additional actions
-              window.location.href = 'your-dashboard-url'; // Replace with your actual URL
+     function removeFromFavorites(favoriteId) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch(`/favorites/${favoriteId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire(
+                        'Deleted!',
+                        'Your favorite has been deleted.',
+                        'success'
+                    ).then(() => {
+                        location.reload(); // Reload the page to reflect changes
+                    });
+                } else {
+                    Swal.fire(
+                        'Error!',
+                        data.message || 'Failed to delete the favorite.',
+                        'error'
+                    );
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire(
+                    'Error!',
+                    'Something went wrong.',
+                    'error'
+                );
             });
-          });
-      
-          // Handle sign-up form submission
-          signUpForm.addEventListener('submit', function (e) {
-            e.preventDefault(); // Prevent default form submission
-      
-            // Perform form validation or AJAX request here
-      
-            // Show success alert
-            Swal.fire({
-              icon: 'success',
-              title: 'Signed up successfully!',
-              text: 'Your account has been created.',
-              confirmButtonText: 'OK'
-            }).then(() => {
-              // Redirect or perform any additional actions
-              window.location.href = 'your-welcome-url'; // Replace with your actual URL
-            });
-          });
-        });
-      </script>
+        }
+    });
+}
+
+    </script>
       
   </body>
 
