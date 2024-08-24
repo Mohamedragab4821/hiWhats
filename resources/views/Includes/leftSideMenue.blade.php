@@ -20,7 +20,6 @@
               <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('settings.index')}}"><i class="ci-sign-out opacity-60 me-2"></i>Website Settings</a></li>
               <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{ route('productMangement') }}"><i class="ci-bell opacity-60 me-2"></i>Product Mangement</a></li>
                     <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{ route('categoryMangement') }}"><i class="ci-bell opacity-60 me-2"></i>Category Mangement</a></li>
-
               <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-signin.html"><i class="ci-sign-out opacity-60 me-2"></i>Sign out</a></li>
             </ul>
           </div>
