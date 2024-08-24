@@ -78,38 +78,43 @@
                 </div>
                 <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign in</button>
               </form>
-              <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab" action="{{ route('Registeration') }}" method="POST">
-                  @csrf
+              <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab" action="{{ route('Registeration') }}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="mb-3">
-                  <label class="form-label" for="su-name">Full name</label>
-                  <input class="form-control" type="text" id="userName" name="userName" placeholder="John Doe" required>
-                  <div class="invalid-feedback">Please fill in your name.</div>
+                    <label class="form-label" for="su-name">Full name</label>
+                    <input class="form-control" type="text" id="userName" name="userName" placeholder="John Doe" required>
+                    <div class="invalid-feedback">Please fill in your name.</div>
                 </div>
                 <div class="mb-3">
-                  <label for="su-email">Email address</label>
-                  <input class="form-control" type="email" id="email" name="email" placeholder="johndoe@example.com" required>
-                  <div class="invalid-feedback">Please provide a valid email address.</div>
+                    <label for="su-email">Email address</label>
+                    <input class="form-control" type="email" id="email" name="email" placeholder="johndoe@example.com" required>
+                    <div class="invalid-feedback">Please provide a valid email address.</div>
                 </div>
                 <div class="mb-3">
-                  <label class="form-label" for="su-password">Password</label>
-                  <div class="password-toggle">
-                    <input class="form-control" type="password" id="password" name="password" required>
-                    <label class="password-toggle-btn" aria-label="Show/hide password">
-                      <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
-                    </label>
-                  </div>
+                    <label class="form-label" for="su-password">Password</label>
+                    <div class="password-toggle">
+                        <input class="form-control" type="password" id="password" name="password" required>
+                        <label class="password-toggle-btn" aria-label="Show/hide password">
+                            <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                        </label>
+                    </div>
                 </div>
                 <div class="mb-3">
-                  <label class="form-label" for="su-password-confirm">Phone Number</label>
-                  <div class="password-toggle">
-                    <input class="form-control" type="text" id="phone" name="phone" required>
-                    <label class="password-toggle-btn">
-                      <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
-                    </label>
-                  </div>
+                    <label class="form-label" for="su-password-confirm">Phone Number</label>
+                    <div class="password-toggle">
+                        <input class="form-control" type="text" id="phone" name="phone" required>
+                        <label class="password-toggle-btn">
+                            <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="image">Profile Image</label>
+                    <input class="form-control" type="file" id="image" name="image" accept="image/*">
                 </div>
                 <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign up</button>
-              </form>
+            </form>
+            
             </div>
           </div>
         </div>
@@ -207,115 +212,70 @@
       </section>
             <!-- Product carousel (Trending in)-->
             <section class="mb-4 py-5 bg-secondary">
-                <div class="container py-lg-4">
+              <div class="container py-lg-4">
                   <div class="d-flex flex-wrap mb-3">
-                    <h2 class="h3 mb-0">ابرز&nbsp;</h2>
-                    <div class="dropdown d-inline-block" data-bs-toggle="select"><a class="dropdown-toggle h3 text-primary" href="#" data-bs-toggle="dropdown"><span class="dropdown-toggle-label">الاقسام</span></a>
-                      <input type="hidden" name="trending-category">
-                      <ul class="dropdown-menu dropdown-menu-end">
-                        {{-- @foreach ($categorys as $category)
-                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">{{$category->category_name}}</span></a></li>
-                        @endforeach --}}
-                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">All categories</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Premium</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Art</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Photography</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Music</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Gaming</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Sports</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Collections</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Utility</span></a></li>
-                      </ul>
-                    </div>
+                      <h2 class="h3 mb-0">ابرز&nbsp;</h2>
+                      <div class="dropdown d-inline-block" data-bs-toggle="select">
+                          <a class="dropdown-toggle h3 text-primary" href="#" data-bs-toggle="dropdown">
+                              <span class="dropdown-toggle-label">الاقسام</span>
+                          </a>
+                          <input type="hidden" name="trending-category">
+                          <ul class="dropdown-menu dropdown-menu-end">
+                              <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">All categories</span></a></li>
+                              <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Premium</span></a></li>
+                              <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Art</span></a></li>
+                              <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Photography</span></a></li>
+                              <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Music</span></a></li>
+                              <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Gaming</span></a></li>
+                              <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Sports</span></a></li>
+                              <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Collections</span></a></li>
+                              <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Utility</span></a></li>
+                          </ul>
+                      </div>
                   </div>
-                  <!-- Product carousel-->
+          
+                  <!-- Product carousel -->
                   <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
-                    <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
-                      <!-- Product item-->
-                      <div class="col py-3">
-                        <article class="card h-100 border-0">
-                          <div class="card-img-top position-relative overflow-hidden"><a class="d-block" href="nft-single-buy.html"><img src="img/nft/catalog/05.jpg" alt="Product image"></a>
-                            <!-- Wishlist button-->
-                            <button class="btn-wishlist btn-sm position-absolute top-0 end-0" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Favorites" style="margin: 12px;"><i class="ci-heart"></i></button>
+                      <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
+                          @foreach($products as $product)
+                          <!-- Product item -->
+                          <div class="col py-3">
+                              <article class="card h-100 border-0">
+                                  <div class="card-img-top position-relative overflow-hidden">
+                                      <a class="d-block" href="#">
+                                          <img class="avatar" src="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}" alt="Product image">
+                                      </a>
+                                      <button class="btn-wishlist btn-sm position-absolute top-0 end-0" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Favorites" style="margin: 12px;">
+                                          <i class="ci-heart"></i>
+                                      </button>
+                                  </div>
+                                  <div class="card-body">
+                                      <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="#">{{ $product->product_name }}</a></h3>
+                                      <span class="fs-sm text-muted">Current bid:</span>
+                                      <div class="d-flex align-items-center flex-wrap">
+                                          <h4 class="mt-1 mb-0 fs-base text-darker">{{ $product->product_salary }} ETH</h4>
+                                      </div>
+                                  </div>
+                                  <div class="card-footer mt-n1 py-0 border-0">
+                                      <div class="d-flex align-items-center position-relative mb-1 py-3 border-top">
+                                          <a class="nav-link-style fs-sm stretched-link" href="#">{{ '@'.$product->product_name }}</a>
+                                      </div>
+                                  </div>
+                              </article>
                           </div>
-                          <div class="card-body">
-                            <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="nft-single-buy.html">Aesthetic art collage</a></h3><span class="fs-sm text-muted">Reserve price:</span>
-                            <div class="d-flex align-items-center flex-wrap">
-                              <h4 class="mt-1 mb-0 fs-base text-darker">0.6 ETH</h4><span class="mt-1 ms-1 fs-xs text-muted">(≈ $ 2,400.65)</span>
-                            </div>
-                          </div>
-                          <div class="card-footer mt-n1 py-0 border-0">
-                            <div class="d-flex align-items-center position-relative mb-1 py-3 border-top"><img class="me-2 rounded-circle" src="img/nft/catalog/avatars/05.png" width="32" alt="Avatar"><a class="nav-link-style fs-sm stretched-link" href="nft-vendor.html">@Sharan_Pagadala</a></div>
-                          </div>
-                        </article>
+                          @endforeach
                       </div>
-                      <!-- Product item-->
-                      <div class="col py-3">
-                        <article class="card h-100 border-0">
-                          <div class="card-img-top position-relative overflow-hidden"><a class="d-block" href="nft-single-auction-live.html"><img src="img/nft/catalog/06.jpg" alt="Product image"></a>
-                            <!-- Countdown timer-->
-                            <div class="badge bg-dark m-3 fs-sm position-absolute top-0 start-0 zindex-5"><i class="ci-time me-1"></i>
-                              <div class="countdown d-inline" data-countdown="12/31/2022 12:00:00 PM"><span class="countdown-hours mb-0 me-0"><span class="countdown-value">0</span><span class="countdown-label fs-lg">:</span></span><span class="countdown-minutes mb-0 me-0"><span class="countdown-value">0</span><span class="countdown-label fs-lg">:</span></span><span class="countdown-seconds mb-0 me-0"><span class="countdown-value">0</span></span></div>
-                            </div>
-                            <!-- Wishlist button-->
-                            <button class="btn-wishlist btn-sm position-absolute top-0 end-0" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Favorites" style="margin: 12px;"><i class="ci-heart"></i></button>
-                          </div>
-                          <div class="card-body">
-                            <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="nft-single-auction-live.html">Ocean and sky</a></h3><span class="fs-sm text-muted">Current bid:</span>
-                            <div class="d-flex align-items-center flex-wrap">
-                              <h4 class="mt-1 mb-0 fs-base text-darker">0.5 ETH</h4><span class="mt-1 ms-1 fs-xs text-muted">(≈ $ 2,000.55)</span>
-                            </div>
-                          </div>
-                          <div class="card-footer mt-n1 py-0 border-0">
-                            <div class="d-flex align-items-center position-relative mb-1 py-3 border-top"><img class="me-2 rounded-circle" src="img/nft/catalog/avatars/06.png" width="32" alt="Avatar"><a class="nav-link-style fs-sm stretched-link" href="nft-vendor.html">@Simonlee</a></div>
-                          </div>
-                        </article>
-                      </div>
-                      <!-- Product item-->
-                      <div class="col py-3">
-                        <article class="card h-100 border-0">
-                          <div class="card-img-top position-relative overflow-hidden"><a class="d-block" href="nft-single-auction-live.html"><img src="img/nft/catalog/07.jpg" alt="Product image"></a>
-                            <!-- Countdown timer-->
-                            <div class="badge bg-dark m-3 fs-sm position-absolute top-0 start-0 zindex-5"><i class="ci-time me-1"></i>
-                              <div class="countdown d-inline" data-countdown="12/31/2022 12:00:00 PM"><span class="countdown-hours mb-0 me-0"><span class="countdown-value">0</span><span class="countdown-label fs-lg">:</span></span><span class="countdown-minutes mb-0 me-0"><span class="countdown-value">0</span><span class="countdown-label fs-lg">:</span></span><span class="countdown-seconds mb-0 me-0"><span class="countdown-value">0</span></span></div>
-                            </div>
-                            <!-- Wishlist button-->
-                            <button class="btn-wishlist btn-sm position-absolute top-0 end-0" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Favorites" style="margin: 12px;"><i class="ci-heart"></i></button>
-                          </div>
-                          <div class="card-body">
-                            <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="nft-single-auction-live.html">3d aesthetics with shapes</a></h3><span class="fs-sm text-muted">Current bid:</span>
-                            <div class="d-flex align-items-center flex-wrap">
-                              <h4 class="mt-1 mb-0 fs-base text-darker">0.156 ETH</h4><span class="mt-1 ms-1 fs-xs text-muted">(≈ $ 595.76)</span>
-                            </div>
-                          </div>
-                          <div class="card-footer mt-n1 py-0 border-0">
-                            <div class="d-flex align-items-center position-relative mb-1 py-3 border-top"><img class="me-2 rounded-circle" src="img/nft/catalog/avatars/07.png" width="32" alt="Avatar"><a class="nav-link-style fs-sm stretched-link" href="nft-vendor.html">@Shubham_Dhage</a></div>
-                          </div>
-                        </article>
-                      </div>
-                      <!-- Product item-->
-                      <div class="col py-3">
-                        <article class="card h-100 border-0">
-                          <div class="card-img-top position-relative overflow-hidden"><a class="d-block" href="nft-single-auction-live.html"><img src="img/nft/catalog/08.jpg" alt="Product image"></a>
-                            <!-- Wishlist button-->
-                            <button class="btn-wishlist btn-sm position-absolute top-0 end-0" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Favorites" style="margin: 12px;"><i class="ci-heart"></i></button>
-                          </div>
-                          <div class="card-body">
-                            <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="nft-single-auction-live.html">Astronaut surrounded by lights</a></h3><span class="fs-sm text-muted">Reserve price:</span>
-                            <div class="d-flex align-items-center flex-wrap">
-                              <h4 class="mt-1 mb-0 fs-base text-darker">0.1 ETH</h4><span class="mt-1 ms-1 fs-xs text-muted">(≈ $ 400.19)</span>
-                            </div>
-                          </div>
-                          <div class="card-footer mt-n1 py-0 border-0">
-                            <div class="d-flex align-items-center position-relative mb-1 py-3 border-top"><img class="me-2 rounded-circle" src="img/nft/catalog/avatars/08.png" width="32" alt="Avatar"><a class="nav-link-style fs-sm stretched-link" href="nft-vendor.html">@DistroKid</a></div>
-                          </div>
-                        </article>
-                      </div>
-                    </div>
                   </div>
-                  <div class="d-flex flex-sm-row flex-column justify-content-center pt-4"><a class="btn btn-outline-accent" href="nft-catalog-v2.html">Browse marketplace</a></div>
-                </div>
-              </section>
+                  <div class="d-flex flex-sm-row flex-column justify-content-center pt-4">
+                      <a class="btn btn-outline-accent" href="#">Browse marketplace</a>
+                  </div>
+              </div>
+          </section>
+          
+          
+          
+            
+          
       <!-- Product carousel (Recent Drops)-->
       <section class="container mb-2 py-lg-5 py-4">
         <div class="d-flex align-items-center justify-content-between mb-sm-3 mb-2">

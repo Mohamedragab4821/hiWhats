@@ -34,6 +34,9 @@
       '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-WKV3GT5');
     </script>
+    <style>
+        
+    </style>
   </head>
   <!-- Body-->
   <body class="handheld-toolbar-enabled">
@@ -215,42 +218,43 @@
             </aside>
             <!-- Content-->
             <section class="col-lg-9 pt-lg-4 pb-4 mb-3">
-              <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
-                  <h1 class="h3 mb-4 pt-2 text-center text-sm-start">Profile Settings</h1>
-                  <div class="bg-secondary rounded-3 p-4 mb-4 text-center text-sm-start">
-                      <div class="d-flex flex-sm-row flex-column align-items-sm-start align-items-center">
-                          <!-- Display the user's profile image -->
-                          <img class="rounded mb-sm-0 mb-3" src="{{ Auth::user()->image ? asset('storage/' . Auth::user()->image) : asset('img/nft/vendor/avatar-square.jpg') }}" width="90" alt="Image">
-                      </div>
-                  </div>
-                  <!-- Form for updating user data, including avatar -->
-                  <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
-                      @csrf
-                      <div class="row gy-3 mb-4 pb-md-3 mb-2">
-                          <div class="col-sm-6">
-                              <label class="form-label" for="profile-name">Full name</label>
-                              <input class="form-control" id="profile-name" type="text" value="{{ Auth::user()->user_name }}" name="user_name">
-                          </div>
-                          <div class="col-sm-6">
-                              <label class="form-label" for="profile-phone">Phone</label>
-                              <input class="form-control" id="profile-phone" type="text" value="{{ Auth::user()->phone }}" name="phone">
-                          </div>
-                          <div class="col-sm-6">
-                              <label class="form-label" for="profile-email">Email</label>
-                              <input class="form-control" id="profile-email" type="email" value="{{ Auth::user()->email }}" name="email">
-                          </div>
-                          <div class="col-sm-6">
-                              <label class="form-label" for="profile-avatar">Avatar</label>
-                              <input class="form-control" id="profile-avatar" type="file" name="image">
-                          </div>
-                      </div>
-                      <div class="d-flex flex-sm-row flex-column">
-                          <button class="btn btn-accent" type="submit">Update profile</button>
-                      </div>
-                  </form>
-              </div>
-          </section>
-          
+                <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
+                    <h1 class="h3 mb-4 pt-2 text-center text-sm-start">Profile Settings</h1>
+                    <div class="bg-secondary rounded-3 p-4 mb-4 text-center text-sm-start">
+                        <div class="d-flex flex-sm-row flex-column align-items-sm-start align-items-center">
+                            <!-- Display the user's profile image -->
+                            <img class="rounded mb-sm-0 mb-3" src="{{ $user->image ? asset('storage/' . $user->image) : asset('img/nft/vendor/avatar-square.jpg') }}" width="90" alt="Image">
+                        </div>
+                    </div>
+                    <!-- Form for updating user data, including avatar -->
+                    <form method="POST" action="{{ route('profile.update', $user->id) }}" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <div class="row gy-3 mb-4 pb-md-3 mb-2">
+                            <div class="col-sm-6">
+                                <label class="form-label" for="profile-name">Full name</label>
+                                <input class="form-control" id="profile-name" type="text" value="{{ $user->user_name }}" name="user_name">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="profile-phone">Phone</label>
+                                <input class="form-control" id="profile-phone" type="text" value="{{ $user->phone }}" name="phone">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="profile-email">Email</label>
+                                <input class="form-control" id="profile-email" type="email" value="{{ $user->email }}" name="email">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="profile-avatar">Avatar</label>
+                                <input class="form-control" id="profile-avatar" type="file" name="image">
+                            </div>
+                        </div>
+                        <div class="d-flex flex-sm-row flex-column">
+                            <button class="btn btn-accent" type="submit">Update profile</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            
           
           
           

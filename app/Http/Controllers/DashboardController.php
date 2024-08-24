@@ -17,8 +17,13 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        
         return view('dashboard');
+    }
+
+    public function indexEditUser($id)
+    {
+        $user = Users::findOrFail($id);
+        return view('editUser',['user'=>$user]);
     }
 
     public function indexUserManagement()
@@ -110,74 +115,78 @@ class DashboardController extends Controller
     
 
 
-    public function updateAvatar(Request $request)
-    {
-        $request->validate([
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
+    // public function updateAvatar(Request $request)
+    // {
+    //     $request->validate([
+    //         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    //     ]);
 
-        $user = Auth::user();
+    //     $user = Auth::user();
 
-        if ($request->hasFile('image')) {
-            // Delete old image if exists
-            if ($user->image) {
-                Storage::disk('public')->delete($user->image);
-            }
+    //     if ($request->hasFile('image')) {
+    //         // Delete old image if exists
+    //         if ($user->image) {
+    //             Storage::disk('public')->delete($user->image);
+    //         }
 
-            // Store new image
-            $imagePath = $request->file('image')->store('profile_images', 'public');
-            $user->image = $imagePath;
-            $user->save();
-        }
+    //         // Store new image
+    //         $imagePath = $request->file('image')->store('profile_images', 'public');
+    //         $user->image = $imagePath;
+    //         $user->save();
+    //     }
 
-        return redirect()->back()->with('success', 'Avatar updated successfully.');
-    }
+    //     return redirect()->back()->with('success', 'Avatar updated successfully.');
+    // }
 
     // Method to handle avatar deletion
-    public function deleteAvatar()
-    {
-        $user = Auth::user();
+    public function updateProfile(Request $request)
+{
+    $request->validate([
+        'user_name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255',
+        'phone' => 'required|string|max:255',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
 
-        // Delete the avatar image if it exists
+    $user = Auth::user();
+    
+    // Update user information
+    $user->user_name = $request->input('user_name');
+    $user->email = $request->input('email');
+    $user->phone = $request->input('phone');
+
+    // Handle the image upload if provided
+    if ($request->hasFile('image')) {
+        // Delete old image if exists
         if ($user->image) {
             Storage::disk('public')->delete($user->image);
-            $user->image = null;
-            $user->save();
         }
 
-        return redirect()->back()->with('success', 'Avatar deleted successfully.');
+        // Store new image
+        $imagePath = $request->file('image')->store('profile_images', 'public');
+        $user->image = $imagePath;
     }
-    public function updateProfile(Request $request)
-    {
-        $request->validate([
-            'user_name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255',
-            'phone' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
 
-        $user = Auth::user();
-        
-        // Update user information
-        $user->user_name = $request->input('user_name');
-        $user->email = $request->input('email');
-        $user->phone = $request->input('phone');
+    $user->save();
 
-        // Handle the image upload if provided
-        if ($request->hasFile('image')) {
-            // Delete old image if exists
-            if ($user->image) {
-                Storage::disk('public')->delete($user->image);
-            }
+    return redirect()->back()->with('success', 'Profile updated successfully.');
+}
 
-            // Store new image
-            $imagePath = $request->file('image')->store('profile_images', 'public');
-            $user->image = $imagePath;
-        }
-
+    
+public function deleteAvatar(Request $request)
+{
+    $user = User::findOrFail($request->input('user_id'));
+    
+    // Delete the avatar image if it exists
+    if ($user->image) {
+        Storage::disk('public')->delete($user->image);
+        $user->image = null;
         $user->save();
-
-        return redirect()->back()->with('success', 'Profile updated successfully.');
     }
+
+    return redirect()->back()->with('success', 'Avatar deleted successfully.');
+}
+
+
 
 }
