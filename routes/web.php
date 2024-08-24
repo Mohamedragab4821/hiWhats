@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\MessagesController;
 
 
 
@@ -15,3 +17,6 @@ Route::get('/profileSetting/productMangement', [ProductController::class, 'index
 Route::get('/profileSetting/categoryMangement', [ProductController::class, 'indexcategoryMangement'])->name('categoryMangement');
 Route::post('/profileSetting/productMangement/store', [ProductController::class, 'storeProduct'])->name('storeProduct');
 Route::delete('/profileSetting/productMangement/delete/{product_id}', [ProductController::class, 'deleteProduct'])->name('deleteProduct');
+Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
+Route::put('/settings/update', [SettingController::class, 'update'])->name('settings.update');
+Route::get('/messages', [MessagesController::class, 'index'])->name('messages.index');
