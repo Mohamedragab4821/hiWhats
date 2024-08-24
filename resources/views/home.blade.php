@@ -138,74 +138,7 @@
         </div>
       </section>
             <!-- Product carousel (Trending in)-->
-            <section class="mb-4 py-5 bg-secondary">
-              <div class="container py-lg-4">
-                  <div class="d-flex flex-wrap mb-3">
-                      <h2 class="h3 mb-0">ابرز&nbsp;</h2>
-                      <div class="dropdown d-inline-block" data-bs-toggle="select">
-                          <a class="dropdown-toggle h3 text-primary" href="#" data-bs-toggle="dropdown">
-                              <span class="dropdown-toggle-label">الاقسام</span>
-                          </a>
-                          <input type="hidden" name="trending-category">
-                          <ul class="dropdown-menu dropdown-menu-end">
-                              <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">All categories</span></a></li>
-                              <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Premium</span></a></li>
-                              <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Art</span></a></li>
-                              <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Photography</span></a></li>
-                              <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Music</span></a></li>
-                              <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Gaming</span></a></li>
-                              <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Sports</span></a></li>
-                              <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Collections</span></a></li>
-                              <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Utility</span></a></li>
-                          </ul>
-                      </div>
-                  </div>
-          
-                  <!-- Product carousel -->
-                  <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
-                    <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
-                        @foreach($products as $product)
-                        <!-- Product item -->
-                        <div class="col py-3">
-                            <article class="card h-100 border-0">
-                                <div class="card-img-top position-relative overflow-hidden">
-                                    <a class="d-block" href="#">
-                                        <img class="avatar" src="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}" alt="Product image">
-                                    </a>
-                                    <button 
-                                        class="btn-wishlist btn-sm position-absolute top-0 end-0" 
-                                        type="button" 
-                                        data-bs-toggle="tooltip" 
-                                        data-bs-placement="left" 
-                                        title="Add to Favorites" 
-                                        style="margin: 12px;"
-                                        onclick="addToFavorites({{ $product->product_id }})"
-                                    >
-                                        <i class="ci-heart"></i>
-                                    </button>
-                                </div>
-                                <div class="card-body">
-                                    <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="#">{{ $product->product_name }}</a></h3>
-                                    <span class="fs-sm text-muted">Current bid:</span>
-                                    <div class="d-flex align-items-center flex-wrap">
-                                        <h4 class="mt-1 mb-0 fs-base text-darker">{{ $product->product_salary }} ETH</h4>
-                                    </div>
-                                </div>
-                                <div class="card-footer mt-n1 py-0 border-0">
-                                    <div class="d-flex align-items-center position-relative mb-1 py-3 border-top">
-                                        <a class="nav-link-style fs-sm stretched-link" href="#">{{ '@'.$product->product_name }}</a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-                  <div class="d-flex flex-sm-row flex-column justify-content-center pt-4">
-                      <a class="btn btn-outline-accent" href="#">Browse marketplace</a>
-                  </div>
-              </div>
-          </section>
+            
           
           
           
@@ -401,6 +334,66 @@
         </div>
       </section>
 
+      <section class="mb-4 py-5 bg-secondary">
+        <div class="container py-lg-4">
+            <div class="d-flex flex-wrap mb-3">
+                <h2 class="h3 mb-0">ابرز&nbsp;</h2>
+                <div class="dropdown d-inline-block" data-bs-toggle="select">
+                    <a class="dropdown-toggle h3 text-primary" href="#" data-bs-toggle="dropdown">
+                        <span class="dropdown-toggle-label">الاقسام</span>
+                    </a>
+                    <input type="hidden" name="trending-category">
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">All categories</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Premium</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Art</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Photography</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Music</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Gaming</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Sports</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Collections</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Utility</span></a></li>
+                    </ul>
+                </div>
+            </div>
+    
+            <!-- Product carousel -->
+            <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
+              <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
+                  @foreach($products as $product)
+                  <!-- Product item -->
+                  <div class="col py-3">
+                      <article class="card h-100 border-0">
+                          <div class="card-img-top position-relative overflow-hidden">
+                              <a class="d-block" href="#">
+                                  <img class="avatar" src="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}" alt="Product image">
+                              </a>
+                              <button 
+                                  class="btn-wishlist btn-sm position-absolute top-0 end-0" 
+                                  type="button" 
+                                  data-bs-toggle="tooltip" 
+                                  data-bs-placement="left" 
+                                  title="Add to Favorites" 
+                                  style="margin: 12px;"
+                                  onclick="addToFavorites({{ $product->product_id }})"
+                              >
+                                  <i class="ci-heart"></i>
+                              </button>
+                          </div>
+                          <div class="card-body">
+                              <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="#">{{ $product->product_name }}</a></h3>
+                              <span class="fs-sm text-muted">Current bid:</span>
+                              <div class="d-flex align-items-center flex-wrap">
+                                  <h4 class="mt-1 mb-0 fs-base text-darker">{{ $product->product_salary }} ETH</h4>
+                              </div>
+                          </div>
+                      </article>
+                  </div>
+                  @endforeach
+              </div>
+          </div>
+        </div>
+    </section>
 
 
     <!-- Features-->
