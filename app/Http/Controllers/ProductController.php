@@ -80,42 +80,54 @@ class ProductController extends Controller
     {
         $products = Product::all();
         $settings = Settings::first();
+        $category = Category::all();
+        // $category1 = Category::all();
 
-        return view('ProductMangement', ['products' => $products,'settings'=>$settings]);
+
+        return view('ProductMangement', ['products' => $products,'settings'=>$settings,'category'=>$category,'category1'=>$category]);
     }
 
 
 
-    public function storeProduct(Request $request){
-        $validatedData = $request->validate([
-            'product_name' => 'required|string|max:255',
-            'category_id' => 'required|integer',
-            'category_name' => 'required|string|max:255',
-            'product_salary' => 'required|numeric',
-            'description' => 'required|string',
-            'Duration_of_righteousness' => 'required|string|max:255',
-            'Product_img' => 'required|image|mimes:jpg,jpeg,png|max:2048', // Ensure the image is valid
-        ]);
+    public function storeProduct(Request $request)
+{
+    $validatedData = $request->validate([
+        'product_name' => 'required|string|max:255',
+        'category_name' => 'required|string|max:255', // We'll use the category name to find the category ID
+        'product_salary' => 'required|numeric',
+        'description' => 'required|string',
+        'Duration_of_righteousness' => 'required|string|max:255',
+        'Product_img' => 'required|image|mimes:jpg,jpeg,png|max:2048', // Ensure the image is valid
+    ]);
 
-        // Handle the image upload
-        if ($request->hasFile('Product_img')) {
-            $imagePath = $request->file('Product_img')->store('product_images', 'public');
-        }
-
-        // Create a new product record in the database
-        $product = new Product();
-        $product->product_name = $validatedData['product_name'];
-        $product->category_id = $validatedData['category_id'];
-        $product->category_name = $validatedData['category_name'];
-        $product->product_salary = $validatedData['product_salary'];
-        $product->description = $validatedData['description'];
-        $product->Duration_of_righteousness = $validatedData['Duration_of_righteousness'];
-        $product->Product_img = $imagePath ?? null; // Store the image path in the database
-        $product->save();
-
-        // Return a success response
-        return redirect()->route('productMangement')->with('success', 'Product added successfully!');
+    // Handle the image upload
+    if ($request->hasFile('Product_img')) {
+        $imagePath = $request->file('Product_img')->store('product_images', 'public');
     }
+
+    // Find the category by name and retrieve its ID
+    $category = Category::where('category_name', $validatedData['category_name'])->first();
+
+    if (!$category) {
+        // Handle the case where the category is not found
+        return redirect()->back()->withErrors(['category_name' => 'Category not found.']);
+    }
+
+    // Create a new product record in the database
+    $product = new Product();
+    $product->product_name = $validatedData['product_name'];
+    $product->category_id = $category->category_id; // Store the category ID
+    $product->category_name = $category->category_name; // Optionally, you can store the category name too
+    $product->product_salary = $validatedData['product_salary'];
+    $product->description = $validatedData['description'];
+    $product->Duration_of_righteousness = $validatedData['Duration_of_righteousness'];
+    $product->Product_img = $imagePath ?? null; // Store the image path in the database
+    $product->save();
+
+    // Return a success response
+    return redirect()->route('productMangement')->with('success', 'Product added successfully!');
+}
+
 
     public function deleteProduct($product_id){
         $product = Product::where('product_id',$product_id);
@@ -138,10 +150,10 @@ class ProductController extends Controller
     public function updateProduct(Request $request, $product_id)
     {
         // Validate the request
-        $request->validate([
+        $categories = Category::all();
+        $validatedData = $request->validate([
             'product_name' => 'required|string|max:255',
-            'category_id' => 'required|integer',
-            'category_name' => 'required|string|max:255',
+            'category_name' => 'required|string|max:255', // Validate category_name (category_id is derived)
             'product_salary' => 'required|numeric',
             'description' => 'required|string|max:1000',
             'Duration_of_righteousness' => 'required|string|max:255',
@@ -154,6 +166,14 @@ class ProductController extends Controller
             return redirect()->back()->withErrors(['Product not found.']);
         }
 
+        // Find the category by name and retrieve its ID
+        $category = Category::where('category_name', $validatedData['category_name'])->first();
+
+        if (!$category) {
+            // Handle the case where the category is not found
+            return redirect()->back()->withErrors(['category_name' => 'Category not found.']);
+        }
+
         // Check if a new image is uploaded
         if ($request->hasFile('Product_img')) {
             // Handle the new image upload
@@ -163,18 +183,15 @@ class ProductController extends Controller
 
             // Update the product image path in the database
             $product->Product_img = $filePath;
-        } else {
-            // Keep the old image if no new one is uploaded
-            $product->Product_img = $request->input('current_image');
         }
 
         // Update other product fields
-        $product->product_name = $request->input('product_name');
-        $product->category_id = $request->input('category_id');
-        $product->category_name = $request->input('category_name');
-        $product->product_salary = $request->input('product_salary');
-        $product->description = $request->input('description');
-        $product->Duration_of_righteousness = $request->input('Duration_of_righteousness');
+        $product->product_name = $validatedData['product_name'];
+        $product->category_id = $category->category_id; // Use the category ID found from the name
+        $product->category_name = $category->category_name; // Optionally, you can keep the category name too
+        $product->product_salary = $validatedData['product_salary'];
+        $product->description = $validatedData['description'];
+        $product->Duration_of_righteousness = $validatedData['Duration_of_righteousness'];
 
         // Save the updated product
         $product->save();
@@ -182,6 +199,7 @@ class ProductController extends Controller
         // Redirect back with success message
         return redirect()->route('productMangement')->with('success', 'Product updated successfully!');
     }
+
 
 
     public function storeCategory(Request $request)
@@ -210,6 +228,58 @@ class ProductController extends Controller
 
     // Redirect back with a success message
     return redirect()->route('categoryMangement')->with('success', 'Category added successfully!');
+}
+
+
+public function destroyCategory($id)
+{
+    // Find the product by ID
+    $Category = Category::findOrFail($id);
+
+    // Delete the product
+    $Category->delete();
+
+    // Redirect back with success message
+    return redirect()->route('categoryMangement')->with('success', 'Category deleted successfully!');
+}
+
+
+public function updateCategory(Request $request, $category_id)
+{
+    // dd($request);
+    // Validate the request
+    $request->validate([
+        'category_name' => 'required|string|max:255',
+        'category_img' => 'sometimes|file|image|max:2048',
+        'category_description' => 'required|string|max:1000',
+    ]);
+
+    // Find the category by ID
+    $category = Category::find($category_id);
+
+    if (!$category) {
+        return response()->json(['message' => 'Category not found'], 404);
+    }
+
+    // Update category attributes
+    $category->category_name = $request->input('category_name');
+    $category->category_description = $request->input('category_description');
+
+    // Check if a new image is uploaded
+    if ($request->hasFile('category_img')) {
+        // Handle the new image upload
+        $file = $request->file('category_img');
+        $fileName = time() . '_' . $file->getClientOriginalName();
+        $filePath = $file->storeAs('categories', $fileName, 'public');
+
+        // Update the category image path in the database
+        $category->category_img = $filePath;
+    }
+
+    // Save the updated category
+    $category->save();
+
+    return redirect()->route('categoryMangement')->with('success', 'Category updated successfully!');
 }
 
 

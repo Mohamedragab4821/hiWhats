@@ -61,9 +61,9 @@
             <section class="col-lg-8">
               <!-- Toolbar-->
               <div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
-                <h6 class="fs-base text-light mb-0">List of items you added to wishlist:</h6><a class="btn btn-primary btn-sm" href="#product-modal" data-bs-toggle="modal">Add Product</a>
+                <h6 class="fs-base text-light mb-0">List of items you added to wishlist:</h6><a class="btn btn-primary btn-sm" href="#productt-modal" data-bs-toggle="modal">Add Product</a>
               </div>
-              <div class="modal fade" id="product-modal" tabindex="-1" role="dialog">
+              <div class="modal fade" id="productt-modal" tabindex="-1" role="dialog">
                   <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                       <div class="modal-header bg-secondary">
@@ -84,19 +84,23 @@
                               </div>
 
                               <!-- Category ID -->
-                              <div class="mb-3">
+                              {{-- <div class="mb-3">
                                   <label class="form-label" for="category_id">Category ID</label>
                                   <input class="form-control" type="number" id="category_id" name="category_id" placeholder="Enter category ID" required>
                                   <div class="invalid-feedback">Please provide a valid category ID.</div>
-                              </div>
+                              </div> --}}
 
                               <!-- Category Name -->
                               <div class="mb-3">
-                                  <label class="form-label" for="category_name">Category Name</label>
-                                  <input class="form-control" type="text" id="category_name" name="category_name" placeholder="Enter category name" required>
-                                  <div class="invalid-feedback">Please provide a valid category name.</div>
-                              </div>
-
+                                <label class="form-label" for="category_name">Category Name</label>
+                                <select class="form-control" id="category_name" name="category_name" required>
+                                    <option value="" disabled selected>Select a category</option>
+                                    @foreach($category as $category)
+                                        <option value="{{ $category->category_name }}">{{ $category->category_name }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="invalid-feedback">Please select a valid category name.</div>
+                            </div>
                               <!-- Product Salary -->
                               <div class="mb-3">
                                   <label class="form-label" for="product_salary">Product Salary</label>
@@ -167,33 +171,35 @@
                           </button>
                       </div>
                       <script>
-                            // When the modal is shown, populate the form fields with the product data
-  var productModal = document.getElementById('product-modal');
-  productModal.addEventListener('show.bs.modal', function (event) {
-    var button = event.relatedTarget; // Button that triggered the modal
-    var productId = button.getAttribute('data-product-id');
-    var productName = button.getAttribute('data-product-name');
-    var categoryId = button.getAttribute('data-category-id');
-    var categoryName = button.getAttribute('data-category-name');
-    var productSalary = button.getAttribute('data-product-salary');
-    var description = button.getAttribute('data-description');
-    var duration = button.getAttribute('data-duration');
-    var productImg = button.getAttribute('data-product-img');
+                        // When the modal is shown, populate the form fields with the product data
+                        var productModal = document.getElementById('product-modal');
+                        productModal.addEventListener('show.bs.modal', function (event) {
+                            var button = event.relatedTarget; // Button that triggered the modal
+                            var productId = button.getAttribute('data-product-id');
+                            var productName = button.getAttribute('data-product-name');
+                            var categoryId = button.getAttribute('data-category-id');
+                            var productSalary = button.getAttribute('data-product-salary');
+                            var description = button.getAttribute('data-description');
+                            var duration = button.getAttribute('data-duration');
+                            var productImg = button.getAttribute('data-product-img');
 
-    // Update the form inputs
-    var modalForm = productModal.querySelector('form');
-    modalForm.action = "/profileSetting/productMangement/edit-product/" + productId;  // Set form action with the product ID
+                            // Update the form inputs
+                            var modalForm = productModal.querySelector('form');
+                            modalForm.action = "/profileSetting/productMangement/edit-product/" + productId;  // Set form action with the product ID
 
-    modalForm.querySelector('#product_name').value = productName;
-    modalForm.querySelector('#category_id').value = categoryId;
-    modalForm.querySelector('#category_name').value = categoryName;
-    modalForm.querySelector('#product_salary').value = productSalary;
-    modalForm.querySelector('#description').value = description;
-    modalForm.querySelector('#Duration_of_righteousness').value = duration;
-    modalForm.querySelector('#Product_img').src = "/storage/" + productImg;  // If you want to display the image in the form
-  });
+                            modalForm.querySelector('#product_name').value = productName;
+                            modalForm.querySelector('#product_salary').value = productSalary;
+                            modalForm.querySelector('#description').value = description;
+                            modalForm.querySelector('#Duration_of_righteousness').value = duration;
+                            modalForm.querySelector('#Product_img').src = "/storage/" + productImg;  // If you want to display the image in the form
 
-                      </script>
+                            // Set the selected category
+                            var categorySelect = modalForm.querySelector('#category_name');
+                            categorySelect.value = categoryId;
+                        });
+                    </script>
+
+
                   </div>
 
               </div>
@@ -216,18 +222,23 @@
                                   </div>
 
                                   <!-- Category ID -->
-                                  <div class="mb-3">
+                                  {{-- <div class="mb-3">
                                       <label class="form-label" for="category_id">Category ID</label>
                                       <input class="form-control" type="number" id="category_id" name="category_id" required>
                                       <div class="invalid-feedback">Please provide a valid category ID.</div>
-                                  </div>
+                                  </div> --}}
 
                                   <!-- Category Name -->
                                   <div class="mb-3">
-                                      <label class="form-label" for="category_name">Category Name</label>
-                                      <input class="form-control" type="text" id="category_name" name="category_name" required>
-                                      <div class="invalid-feedback">Please provide a valid category name.</div>
-                                  </div>
+                                    <label class="form-label" for="category_name">Category Name</label>
+                                    <select class="form-control" id="category_name" name="category_name" required>
+                                        <option value="" disabled selected>Select a category</option>
+                                        @foreach($category1 as $category)
+                                            <option value="{{ $category->category_name }}">{{ $category->category_name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="invalid-feedback">Please select a valid category name.</div>
+                                </div>
 
                                   <!-- Product Salary -->
                                   <div class="mb-3">
