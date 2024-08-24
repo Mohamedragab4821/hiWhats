@@ -67,67 +67,72 @@
                   <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                       <div class="modal-header bg-secondary">
-                        <ul class="nav nav-tabs card-header-tabs" role="tablist">
-                          <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true">Add Product</a></li>
-                        </ul>
+                        
+                        @if (session('success'))
+                                <div class="alert alert-success">{{ session('success') }}</div>
+                            @elseif (session('error'))
+                                <div class="alert alert-danger">{{ session('error') }}</div>
+                            @endif
                         <img src="" alt="">
                         <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body tab-content py-4">
-                          <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="product-form" action="{{ route('storeProduct') }}" method="POST" enctype="multipart/form-data">
-                              @csrf
-                              <!-- Product Name -->
-                              <div class="mb-3">
-                                  <label class="form-label" for="product_name">Product Name</label>
-                                  <input class="form-control" type="text" id="product_name" name="product_name" placeholder="Enter product name" required>
-                                  <div class="invalid-feedback">Please provide a valid product name.</div>
-                              </div>
-
-                              <!-- Category ID -->
-                              <div class="mb-3">
-                                  <label class="form-label" for="category_id">Category ID</label>
-                                  <input class="form-control" type="number" id="category_id" name="category_id" placeholder="Enter category ID" required>
-                                  <div class="invalid-feedback">Please provide a valid category ID.</div>
-                              </div>
-
-                              <!-- Category Name -->
-                              <div class="mb-3">
-                                  <label class="form-label" for="category_name">Category Name</label>
-                                  <input class="form-control" type="text" id="category_name" name="category_name" placeholder="Enter category name" required>
-                                  <div class="invalid-feedback">Please provide a valid category name.</div>
-                              </div>
-
-                              <!-- Product Salary -->
-                              <div class="mb-3">
-                                  <label class="form-label" for="product_salary">Product Salary</label>
-                                  <input class="form-control" type="number" id="product_salary" name="product_salary" placeholder="Enter product salary" required>
-                                  <div class="invalid-feedback">Please provide a valid product salary.</div>
-                              </div>
-
-                              <!-- Description -->
-                              <div class="mb-3">
-                                  <label class="form-label" for="description">Description</label>
-                                  <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter product description" required></textarea>
-                                  <div class="invalid-feedback">Please provide a valid description.</div>
-                              </div>
-
-                              <!-- Duration of Righteousness -->
-                              <div class="mb-3">
-                                  <label class="form-label" for="Duration_of_righteousness">Duration of Righteousness</label>
-                                  <input class="form-control" type="text" id="Duration_of_righteousness" name="Duration_of_righteousness" placeholder="Enter duration of righteousness" required>
-                                  <div class="invalid-feedback">Please provide a valid duration.</div>
-                              </div>
-
-                              <!-- Product Image -->
-                              <div class="mb-3">
-                                  <label class="form-label" for="Product_img">Product Image</label>
-                                  <input class="form-control" type="file" id="Product_img" name="Product_img" required>
-                                  <div class="invalid-feedback">Please upload a product image.</div>
-                              </div>
-
-                              <!-- Submit Button -->
-                              <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Add Product</button>
-                          </form>
+                        <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="product-form" action="{{ route('storeProduct') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <!-- Success and Error Messages -->
+                            <!-- Product Name -->
+                            <div class="mb-3">
+                                <label class="form-label" for="product_name">Product Name</label>
+                                <input class="form-control" type="text" id="product_name" name="product_name" placeholder="Enter product name" required>
+                                <div class="invalid-feedback">Please provide a valid product name.</div>
+                            </div>
+                        
+                            <!-- Category ID -->
+                            <div class="mb-3">
+                                <label class="form-label" for="category_id">Category ID</label>
+                                <input class="form-control" type="number" id="category_id" name="category_id" placeholder="Enter category ID" required>
+                                <div class="invalid-feedback">Please provide a valid category ID.</div>
+                            </div>
+                        
+                            <!-- Category Name -->
+                            <div class="mb-3">
+                                <label class="form-label" for="category_name">Category Name</label>
+                                <input class="form-control" type="text" id="category_name" name="category_name" placeholder="Enter category name" required>
+                                <div class="invalid-feedback">Please provide a valid category name.</div>
+                            </div>
+                        
+                            <!-- Product Salary -->
+                            <div class="mb-3">
+                                <label class="form-label" for="product_salary">Product Salary</label>
+                                <input class="form-control" type="number" id="product_salary" name="product_salary" placeholder="Enter product salary" required>
+                                <div class="invalid-feedback">Please provide a valid product salary.</div>
+                            </div>
+                        
+                            <!-- Description -->
+                            <div class="mb-3">
+                                <label class="form-label" for="description">Description</label>
+                                <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter product description" required></textarea>
+                                <div class="invalid-feedback">Please provide a valid description.</div>
+                            </div>
+                        
+                            <!-- Duration of Righteousness -->
+                            <div class="mb-3">
+                                <label class="form-label" for="Duration_of_righteousness">Duration of Righteousness</label>
+                                <input class="form-control" type="text" id="Duration_of_righteousness" name="Duration_of_righteousness" placeholder="Enter duration of righteousness" required>
+                                <div class="invalid-feedback">Please provide a valid duration.</div>
+                            </div>
+                        
+                            <!-- Product Image -->
+                            <div class="mb-3">
+                                <label class="form-label" for="Product_img">Product Image</label>
+                                <input class="form-control" type="file" id="Product_img" name="Product_img" required>
+                                <div class="invalid-feedback">Please upload a product image.</div>
+                            </div>
+                        
+                            <!-- Submit Button -->
+                            <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Add Product</button>
+                        </form>
+                        
 
                       </div>
                     </div>
@@ -135,6 +140,7 @@
               </div>
               <!-- Wishlist-->
               <!-- Item-->
+              
               @foreach ($products as $product)
               <div class="d-sm-flex justify-content-between mt-lg-4 mb-4 pb-3 pb-sm-2 border-bottom">
                   <div class="d-block d-sm-flex align-items-start text-center text-sm-start">
