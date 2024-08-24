@@ -138,12 +138,6 @@
         </div>
       </section>
             <!-- Product carousel (Trending in)-->
-            
-          
-          
-          
-            
-          
       <!-- Product carousel (Recent Drops)-->
       <section class="container mb-2 py-lg-5 py-4">
         <div class="d-flex align-items-center justify-content-between mb-sm-3 mb-2">
@@ -356,44 +350,138 @@
                     </ul>
                 </div>
             </div>
-    
+
             <!-- Product carousel -->
             <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
               <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
-                  @foreach($products as $product)
-                  <!-- Product item -->
-                  <div class="col py-3">
-                      <article class="card h-100 border-0">
-                          <div class="card-img-top position-relative overflow-hidden">
-                              <a class="d-block" href="#">
-                                  <img class="avatar" src="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}" alt="Product image">
-                              </a>
-                              <button 
-                                  class="btn-wishlist btn-sm position-absolute top-0 end-0" 
-                                  type="button" 
-                                  data-bs-toggle="tooltip" 
-                                  data-bs-placement="left" 
-                                  title="Add to Favorites" 
-                                  style="margin: 12px;"
-                                  onclick="addToFavorites({{ $product->product_id }})"
-                              >
-                                  <i class="ci-heart"></i>
-                              </button>
-                          </div>
-                          <div class="card-body">
-                              <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="#">{{ $product->product_name }}</a></h3>
-                              <span class="fs-sm text-muted">Current bid:</span>
-                              <div class="d-flex align-items-center flex-wrap">
-                                  <h4 class="mt-1 mb-0 fs-base text-darker">{{ $product->product_salary }} ETH</h4>
-                              </div>
-                          </div>
-                      </article>
-                  </div>
-                  @endforeach
+                @foreach($products as $product)
+                <div class="col py-3">
+                    <a href="#signinnn-modal" data-bs-toggle="modal"
+                       data-product-name="{{ $product->product_name }}"
+                       data-product-img="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
+                       data-product-salary="{{ $product->product_salary }}"
+                       data-description="{{ $product->description }}"
+                       data-duration="{{ $product->Duration_of_righteousness }}"
+                       data-bs-target="#signinnn-modal">
+                        <article class="card h-100 border-0">
+                            <div class="card-img-top position-relative overflow-hidden">
+                                <img class="avatar" src="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}" alt="Product image">
+                                <button
+                                    class="btn-wishlist btn-sm position-absolute top-0 end-0"
+                                    type="button"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="left"
+                                    title="Add to Favorites"
+                                    style="margin: 12px;"
+                                    onclick="addToFavorites({{ $product->product_id }})">
+                                    <i class="ci-heart"></i>
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="#">{{ $product->product_name }}</a></h3>
+                                <span class="fs-sm text-muted">Current bid:</span>
+                                <div class="d-flex align-items-center flex-wrap">
+                                    <h4 class="mt-1 mb-0 fs-base text-darker">{{ $product->product_salary }} ETH</h4>
+                                </div>
+                            </div>
+                        </article>
+                    </a>
+                </div>
+            @endforeach
+
               </div>
           </div>
         </div>
     </section>
+    <div class="modal fade" id="signinnn-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-secondary">
+                    <h5 class="modal-title">Product Details</h5>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pb-0">
+                    <div class="d-sm-flex justify-content-between mb-4 pb-3 pb-sm-2 border-bottom">
+                        <div class="d-sm-flex text-center text-sm-start">
+                            <a class="d-inline-block flex-shrink-0 mx-auto" style="width: 15rem;">
+                                <img id="modal-product-img" src="" alt="Product" style="width: 100%; height: auto;">
+                            </a>
+                            <div class="ps-sm-4 pt-2">
+                                <h3 id="modal-product-name" class="product-title fs-base mb-2"></h3>
+                                <div class="fs-sm"><span class="text-muted me-2">Description:</span><span id="modal-description"></span></div>
+                                <div class="fs-sm"><span class="text-muted me-2">Duration:</span><span id="modal-duration"></span></div>
+                                <div class="fs-lg text-accent pt-2">Price: <span id="modal-product-salary"></span></div>
+                                <div class="mt-3">
+                                    <button type="button" class="btn btn-outline-primary">طلب الخدمه عبر الايميل</button>
+                                    <button type="button" class="btn btn-outline-success">طلب الخدمه عبر الواتساب</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Styles -->
+    <style>
+        .card {
+            transition: box-shadow 0.3s ease; /* Smooth transition for the shadow effect */
+            width: 300px; /* Adjust the width as needed */
+            height: 400px; /* Adjust the height as needed */
+        }
+
+        .card-img-top img {
+            width: 100%; /* Make the image cover the card width */
+            height: 200px; /* Adjust the height as needed */
+            object-fit: cover; /* Ensure the image covers the area without distortion */
+        }
+
+        .modal-dialog {
+            max-width: 800px; /* Adjust the width of the modal as needed */
+        }
+
+        .modal-content {
+            padding: 1.5rem; /* Adjust the padding inside the modal as needed */
+        }
+
+        .modal-body {
+            padding: 2rem; /* Adjust the padding inside the modal body as needed */
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Change the values as needed */
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var productModal = document.getElementById('signinnn-modal');
+            productModal.addEventListener('show.bs.modal', function(event) {
+                var button = event.relatedTarget; // Button that triggered the modal
+
+                // Get the product data from the button's data attributes
+                var productName = button.getAttribute('data-product-name');
+                var productImg = button.getAttribute('data-product-img');
+                var productSalary = button.getAttribute('data-product-salary');
+                var description = button.getAttribute('data-description');
+                var duration = button.getAttribute('data-duration');
+
+                // Find the modal elements
+                var modalProductName = productModal.querySelector('#modal-product-name');
+                var modalProductImg = productModal.querySelector('#modal-product-img');
+                var modalProductSalary = productModal.querySelector('#modal-product-salary');
+                var modalDescription = productModal.querySelector('#modal-description');
+                var modalDuration = productModal.querySelector('#modal-duration');
+
+                // Set the modal content
+                modalProductName.textContent = productName;
+                modalProductImg.src = productImg;
+                modalProductSalary.textContent = productSalary;
+                modalDescription.textContent = description;
+                modalDuration.textContent = duration;
+            });
+        });
+    </script>
 
 
     <!-- Features-->

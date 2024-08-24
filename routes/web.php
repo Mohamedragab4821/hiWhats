@@ -48,3 +48,4 @@ Route::delete('/favorites/{id}', [FavoritesController::class, 'destroy'])->name(
 
 Route::get('/contacts', [ContactsController::class, 'index'])->name('contacts.index');
 Route::post('/contacts/create', [ContactsController::class, 'store'])->name('contacts.store');
+Route::get('/displayProduct/{product_id}', [ProductController::class, 'displayProduct'])->name('displayProduct');
