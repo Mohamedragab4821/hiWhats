@@ -362,7 +362,7 @@
                        data-duration="{{ $product->Duration_of_righteousness }}"
                        data-bs-target="#signinnn-modal">
                         <article class="card h-100 border-0">
-                            <div class="card-img-top position-relative overflow-hidden">
+                            <div class="card-img-top position-relative overflow-hidden" style="width: 285px;height: 285px;">
                                 <img class="avatar" src="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}" alt="Product image">
                                 <button
                                     class="btn-wishlist btn-sm position-absolute top-0 end-0"
@@ -410,8 +410,9 @@
                                 <div class="fs-sm"><span class="text-muted me-2">Duration:</span><span id="modal-duration"></span></div>
                                 <div class="fs-lg text-accent pt-2">Price: <span id="modal-product-salary"></span></div>
                                 <div class="mt-3">
-                                    <button type="button" class="btn btn-outline-primary">طلب الخدمه عبر الايميل</button>
-                                    <button type="button" class="btn btn-outline-success">طلب الخدمه عبر الواتساب</button>
+                                  <a href="{{ route('contacts.index') }}" class="btn btn-outline-primary">طلب الخدمه عبر الايميل</a>
+                                  <a a href="#" data-bs-toggle="modal" data-bs-target="#whatsappModal" class="btn btn-outline-success">طلب الخدمه عبر الواتساب</a>
+                                  
                                 </div>
                             </div>
                         </div>
