@@ -38,6 +38,7 @@
                   </ul>
                 </li>
                 <li class="nav-item "><a class="nav-link" href="home-nft.html">كل الخدمات</a></li>
+                <li class="nav-item "><a class="nav-link" href="{{route('contacts.index')}}">طلب خدمه</a></li>
                 <li class="nav-item "><a class="nav-link" href="home-nft.html">من نحن</a></li>
                 <li class="nav-item "><a class="nav-link" href="home-nft.html">رؤيتنا</a></li>
   
@@ -46,10 +47,10 @@
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">حسابي</a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{route('settings.index')}}">Profile Settings</a></li>
-                    <li><a class="dropdown-item" href="nft-account-my-items.html">Messages</a></li>
+                    <li><a class="dropdown-item" href="{{route('messages.index')}}">Messages</a></li>
                     <li><a class="dropdown-item" href="{{route('settings.index')}}">Website Settings</a></li>
                     <li><a class="dropdown-item" href="nft-account-favorites.html">Favorites</a></li>
-                    <li><a class="dropdown-item" href="nft-account-notifications.html">Logout</a></li>
+                    <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
                   </ul>
                 </li>
                 @endif

@@ -12,7 +12,9 @@
           <div class="navbar-toolbar d-flex align-items-center order-lg-3">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool d-none d-lg-flex" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#searchBox" role="button" aria-expanded="false" aria-controls="searchBox"><span class="navbar-tool-tooltip">بحث</span>
               <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-search"></i></div></a><a class="navbar-tool ms-lg-2" href="#signin-modal" data-bs-toggle="modal"><span class="navbar-tool-tooltip">تسجيل</span>
-              <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-user"></i></div></a>
+                @if(!Auth::user())
+                <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-user"></i></div></a>
+                @endif
           </div>
           <div class="collapse navbar-collapse me-auto order-lg-2" id="navbarCollapse">
             <!-- Search (mobile)-->
@@ -34,6 +36,7 @@
                 </ul>
               </li>
               <li class="nav-item "><a class="nav-link" href="home-nft.html">كل الخدمات</a></li>
+              <li class="nav-item "><a class="nav-link" href="{{route('contacts.index')}}">طلب خدمه</a></li>
               <li class="nav-item "><a class="nav-link" href="home-nft.html">من نحن</a></li>
               <li class="nav-item "><a class="nav-link" href="home-nft.html">رؤيتنا</a></li>
 
@@ -45,7 +48,7 @@
                   <li><a class="dropdown-item" href="{{route('settings.index')}}">Website Settings</a></li>
                   <li><a class="dropdown-item" href="nft-account-my-items.html">Messages</a></li>
                   <li><a class="dropdown-item" href="nft-account-favorites.html">Favorites</a></li>
-                  <li><a class="dropdown-item" href="nft-account-notifications.html">Logout</a></li>
+                  <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
                 </ul>
               </li>
               @endif

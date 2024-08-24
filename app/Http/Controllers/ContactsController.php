@@ -6,30 +6,21 @@ use Illuminate\Http\Request;
 use App\Models\Settings;
 use App\Models\Contacts;
 
+use Illuminate\Support\Facades\Auth;
 
-class MessagesController extends Controller
+
+class ContactsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
         $settings = Settings::first();
-        
-        // Search query
-        $query = $request->input('search');
-        
-        // Fetch contacts with search and pagination
-        $contacts = Contacts::where('name', 'LIKE', "%{$query}%")
-                            ->orWhere('email', 'LIKE', "%{$query}%")
-                            ->orWhere('phone', 'LIKE', "%{$query}%")
-                            ->orWhere('message', 'LIKE', "%{$query}%")
-                            ->orWhere('product', 'LIKE', "%{$query}%")
-                            ->paginate(10); // 10 items per page
-    
-        return view('messages', ['settings' => $settings, 'contacts' => $contacts]);
+
+        return view('contacts',['settings'=>$settings]);
+
     }
-    
 
     /**
      * Show the form for creating a new resource.
@@ -44,7 +35,24 @@ class MessagesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the incoming request data
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
+            'phone' => 'required|string|max:255',
+            'product' => 'required|string|max:255',
+            'message' => 'required|string',
+
+        ]);
+        $validatedData['user_id']=Auth::user()->id;
+
+        try {
+            Contacts::create($validatedData);
+            return redirect()->back()->with('success',  'تم إرسال رسالتك بنجاح!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+       
     }
 
     /**

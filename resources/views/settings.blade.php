@@ -116,45 +116,14 @@
       <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
       @include('Includes.account_header')
 
-      <div class="page-title-overlap bg-accent pt-4">
-        <div class="container d-flex flex-wrap flex-sm-nowrap justify-content-center justify-content-sm-between align-items-center mb-2 pt-2">
-          <div class="d-flex align-items-center">
-            <div class="img-thumbnail rounded-circle position-relative flex-shrink-0" style="width: 6.375rem;"><img class="rounded-circle" src="img/nft/vendor/avatar.png" alt="@foxnet_creator"></div>
-            <div class="ps-3">
-              <h3 class="h5 mb-2 text-light">@foxnet_creator</h3><span class="d-block text-light fs-sm opacity-60">Joined July 2021</span>
-            </div>
-          </div>
-          <div class="my-sm-0 my-3 text-sm-end pt-1">
-            <div class="d-flex align-items-center text-nowrap fs-sm">
-              <div class="mb-2 me-sm-3 me-2 text-muted"><span class='fw-medium text-light'>766</span> <span class='text-white opacity-70'>followers</span></div>
-              <div class="mb-2 ps-sm-3 ps-2 border-start border-light text-muted"><span class='fw-medium text-light'>2K</span> <span class='text-white opacity-70'>following</span></div>
-            </div><a class="text-light" href="#">0x1dDB2C08s97...9Ecd<i class="ci-copy ms-2 fs-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy"></i></a>
-          </div>
-        </div>
-      </div>
+      @include('Includes.navBar')
+
       <div class="container mb-5 pb-3">
         <div class="bg-light shadow-lg rounded-3 overflow-hidden">
           <div class="row">
             <!-- Sidebar-->
-            <aside class="col-lg-3 pe-xl-5">
-              <!-- Account menu toggler (hidden on screens larger 992px)-->
-              <div class="d-block d-lg-none p-4"><a class="btn btn-outline-accent d-block" href="#account-menu" data-bs-toggle="collapse"><i class="ci-menu me-2"></i>Account menu</a></div>
-              <!-- Actual menu-->
-              <div class="h-100 border-end mb-2">
-                <div class="d-lg-block collapse" id="account-menu">
-                  <ul class="list-unstyled mb-0">
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="nft-account-settings.html"><i class="ci-settings opacity-60 me-2"></i>Profile Settings</a></li>
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="nft-account-my-items.html"><i class="ci-image opacity-60 me-2"></i>My Items<span class="fs-sm text-muted ms-auto">5</span></a></li>
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="nft-account-my-collections.html"><i class="ci-view-list opacity-60 me-2"></i>My Collections<span class="fs-sm text-muted ms-auto">2</span></a></li>
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="nft-account-favorites.html"><i class="ci-heart opacity-60 me-2"></i>Favorites<span class="fs-sm text-muted ms-auto">3</span></a></li>
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="nft-account-notifications.html"><i class="ci-bell opacity-60 me-2"></i>Messages</a></li>
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-signin.html"><i class="ci-sign-out opacity-60 me-2"></i>Settings</a></li>
+            @include('Includes.leftSideMenue')
 
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-signin.html"><i class="ci-sign-out opacity-60 me-2"></i>Sign out</a></li>
-                  </ul>
-                </div>
-              </div>
-            </aside>
             <!-- Content-->
 
             <section class="col-lg-9 pt-lg-4 pb-4 mb-3">
