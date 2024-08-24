@@ -60,8 +60,10 @@ class AuthController extends Controller
 
     public function indexProfileSetting()
     {
-        return view('')
+        return view('dashboard');
     }
+
+
 
     /**
      * Show the form for creating a new resource.

@@ -113,7 +113,7 @@
             </div>
           </div>
         </div>
-      </div>
+    </div>
     <main class="page-wrapper">
       <!-- Navbar for NFT Marketplace demo-->
       <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->

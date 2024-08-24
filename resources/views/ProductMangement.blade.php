@@ -187,6 +187,23 @@
           </div>
         </div>
       </div>
+      <div class="page-title-overlap bg-dark pt-4">
+        <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
+          <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
+                <li class="breadcrumb-item"><a class="text-nowrap" href="index.html"><i class="ci-home"></i>Home</a></li>
+                <li class="breadcrumb-item text-nowrap"><a href="#">Account</a>
+                </li>
+                <li class="breadcrumb-item text-nowrap active" aria-current="page">Products</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
+            <h1 class="h3 text-light mb-0">My Products</h1>
+          </div>
+        </div>
+      </div>
       <div class="container mb-5 pb-3">
         <div class="bg-light shadow-lg rounded-3 overflow-hidden">
           <div class="row">
@@ -211,68 +228,116 @@
               </div>
             </aside>
             <!-- Content-->
-            <section class="col-lg-9 pt-lg-4 pb-4 mb-3">
-              <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
-                <h1 class="h3 mb-4 pt-2 text-center text-sm-start">Profile Settings</h1>
-                <div class="bg-secondary rounded-3 p-4 mb-4 text-center text-sm-start">
-                  <div class="d-flex flex-sm-row flex-column align-items-sm-start align-items-center"><img class="rounded mb-sm-0 mb-3" src="img/nft/vendor/avatar-square.jpg" width="90" alt="Createx Studio">
-                    <div class="ms-n2 ps-sm-4">
-                      <button class="btn btn-outline-accent mb-2 ms-2" type="button"><i class="ci-loading me-2"></i>Change <span class='d-none d-sm-inline'>avatar</span></button>
-                      <button class="btn btn-outline-danger mb-2 ms-2" type="button"><i class="ci-trash me-2"></i>Delete</button>
-                      <div class="pt-1 mb-0 fs-sm text-muted">We recommend an image of at least 400x400. Gifs work too :)</div>
-                    </div>
-                  </div>
+            <section class="col-lg-8">
+                <!-- Toolbar-->
+                <div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
+                  <h6 class="fs-base text-light mb-0">List of items you added to wishlist:</h6><a class="btn btn-primary btn-sm" href="#product-modal" data-bs-toggle="modal">Add Product</a>
                 </div>
-                <form>
-                  <div class="row gy-3 mb-4 pb-md-3 mb-2">
-                    <div class="col-sm-6">
-                      <label class="form-label" for="profile-name">Full name</label>
-                      <input class="form-control" id="profile-name" type="text" value="Robert Fox">
+                <div class="modal fade" id="product-modal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header bg-secondary">
+                          <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                            <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true">Add Product</a></li>
+                          </ul>
+                          <img src="" alt="">
+                          <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body tab-content py-4">
+                            <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="product-form" action="{{ route('storeProduct') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <!-- Product Name -->
+                                <div class="mb-3">
+                                    <label class="form-label" for="product_name">Product Name</label>
+                                    <input class="form-control" type="text" id="product_name" name="product_name" placeholder="Enter product name" required>
+                                    <div class="invalid-feedback">Please provide a valid product name.</div>
+                                </div>
+
+                                <!-- Category ID -->
+                                <div class="mb-3">
+                                    <label class="form-label" for="category_id">Category ID</label>
+                                    <input class="form-control" type="number" id="category_id" name="category_id" placeholder="Enter category ID" required>
+                                    <div class="invalid-feedback">Please provide a valid category ID.</div>
+                                </div>
+
+                                <!-- Category Name -->
+                                <div class="mb-3">
+                                    <label class="form-label" for="category_name">Category Name</label>
+                                    <input class="form-control" type="text" id="category_name" name="category_name" placeholder="Enter category name" required>
+                                    <div class="invalid-feedback">Please provide a valid category name.</div>
+                                </div>
+
+                                <!-- Product Salary -->
+                                <div class="mb-3">
+                                    <label class="form-label" for="product_salary">Product Salary</label>
+                                    <input class="form-control" type="number" id="product_salary" name="product_salary" placeholder="Enter product salary" required>
+                                    <div class="invalid-feedback">Please provide a valid product salary.</div>
+                                </div>
+
+                                <!-- Description -->
+                                <div class="mb-3">
+                                    <label class="form-label" for="description">Description</label>
+                                    <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter product description" required></textarea>
+                                    <div class="invalid-feedback">Please provide a valid description.</div>
+                                </div>
+
+                                <!-- Duration of Righteousness -->
+                                <div class="mb-3">
+                                    <label class="form-label" for="Duration_of_righteousness">Duration of Righteousness</label>
+                                    <input class="form-control" type="text" id="Duration_of_righteousness" name="Duration_of_righteousness" placeholder="Enter duration of righteousness" required>
+                                    <div class="invalid-feedback">Please provide a valid duration.</div>
+                                </div>
+
+                                <!-- Product Image -->
+                                <div class="mb-3">
+                                    <label class="form-label" for="Product_img">Product Image</label>
+                                    <input class="form-control" type="file" id="Product_img" name="Product_img" required>
+                                    <div class="invalid-feedback">Please upload a product image.</div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Add Product</button>
+                            </form>
+
+                        </div>
+                      </div>
                     </div>
-                    <div class="col-sm-6">
-                      <label class="form-label" for="profile-username">Username</label>
-                      <input class="form-control" id="profile-username" type="text" placeholder="@enter_name">
+                </div>
+                <!-- Wishlist-->
+                <!-- Item-->
+                @foreach ($products as $product)
+                <div class="d-sm-flex justify-content-between mt-lg-4 mb-4 pb-3 pb-sm-2 border-bottom">
+                    <div class="d-block d-sm-flex align-items-start text-center text-sm-start">
+                        <a class="d-block flex-shrink-0 mx-auto me-sm-4" href="shop-single-v1.html" style="width: 10rem;">
+                            <img src="{{ asset('storage/' . $product->Product_img) }}" alt="Product">
+                        </a>
+                        <div class="pt-2">
+                            <h3 class="product-title fs-base mb-2">
+                                <a href="shop-single-v1.html">{{ $product->product_name }}</a>
+                            </h3>
+                            <div class="fs-sm">
+                                <span class="text-muted me-2"> وصــف : </span> {{ $product->description }}
+                            </div>
+                            <div class="fs-sm">
+                                <span class="text-muted me-2">تاريخ الانتهاء :</span>{{ $product->Duration_of_righteousness }}
+                            </div>
+                            <div class="fs-lg text-accent pt-2">{{ $product->product_salary}}</div>
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                      <label class="form-label" for="profile-uid">UID</label>
-                      <input class="form-control" id="profile-uid" type="text" value="374702749">
+                    <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
+                        <form action="{{ route('deleteProduct', ['product_id' => $product->product_id]) }}" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-outline-danger btn-sm" type="submit"><i class="ci-trash me-2"></i>Remove</button>
+                        </form>
                     </div>
-                    <div class="col-sm-6">
-                      <label class="form-label" for="profile-email">Email</label>
-                      <input class="form-control" id="profile-email" type="email" value="example@gmail.com">
-                    </div>
-                    <div class="col-12">
-                      <label class="form-label" for="profile-bio">Short bio</label>
-                      <textarea class="form-control" id="profile-bio" rows="4" placeholder="Tell about yourself in few words"></textarea><span class="form-text">0 of 500 characters used.</span>
-                    </div>
-                  </div>
-                  <h3 class="h5 mb-3">Social media profiles</h3>
-                  <div class="row gy-3 mb-4 pb-2">
-                    <div class="col-sm-6">
-                      <label class="form-label" for="profile-website">Website</label>
-                      <input class="form-control" id="profile-website" type="url" placeholder="Enter URL">
-                    </div>
-                    <div class="col-sm-6">
-                      <label class="form-label" for="profile-twitter">Twitter</label>
-                      <input class="form-control" id="profile-twitter" type="url" placeholder="Enter URL">
-                    </div>
-                    <div class="col-sm-6">
-                      <label class="form-label" for="profile-facebook">Facebook</label>
-                      <input class="form-control" id="profile-facebook" type="url" placeholder="Enter URL">
-                    </div>
-                    <div class="col-sm-6">
-                      <label class="form-label" for="profile-instagram">Instagram</label>
-                      <input class="form-control" id="profile-instagram" type="url" placeholder="Enter URL">
-                    </div>
-                    <div class="col-12"><a href="#"><i class="ci-add me-2"></i><ins>Add more</ins></a></div>
-                  </div>
-                  <!-- Submit-->
-                  <div class="d-flex flex-sm-row flex-column">
-                    <button class="btn btn-accent" type="submit">Update profile</button>
-                  </div>
-                </form>
-              </div>
-            </section>
+                </div>
+            @endforeach
+
+
+                <!-- Item-->
+
+              </section>
           </div>
         </div>
       </div>
