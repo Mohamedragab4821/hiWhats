@@ -69,7 +69,7 @@
     </script>
 <body>
     <header class="navbar d-block navbar-sticky navbar-expand-lg navbar-light bg-light">
-        <div class="container"><a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="index.html"><img src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="142" alt="Cartzilla"></a><a class="navbar-brand d-sm-none me-2 order-lg-1" href="index.html"><img src="img/logo-icon.png" width="74" alt="Cartzilla"></a>
+        <div class="container"><a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="{{route('home')}}"><img src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="142" alt="Cartzilla"></a><a class="navbar-brand d-sm-none me-2 order-lg-1" href="index.html"><img src="img/logo-icon.png" width="74" alt="Cartzilla"></a>
           <div class="navbar-toolbar d-flex align-items-center order-lg-3">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool d-none d-lg-flex" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#searchBox" role="button" aria-expanded="false" aria-controls="searchBox"><span class="navbar-tool-tooltip">Search</span>
               <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-search"></i></div></a>
@@ -114,10 +114,12 @@
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{route('profileSetting')}}">Profile Settings</a></li>
                     <li><a class="dropdown-item" href="{{route('favorites.index')}}">Favorites</a></li>
+                    @if(Auth::user()->access=='admin')
                     <li><a class="dropdown-item" href="{{route('messages.index')}}">Messages</a></li>
                     <li><a class="dropdown-item" href="{{route('settings.index')}}">Website Settings</a></li>
                     <li><a class="dropdown-item" href="{{route('productMangement')}}">Product Mangement</a></li>
                     <li><a class="dropdown-item" href="{{route('categoryMangement')}}">Category Mangement</a></li>
+                    @endif
                     <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
                   </ul>
                 </li>
