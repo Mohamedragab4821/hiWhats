@@ -70,7 +70,7 @@
 
     <header class="navbar d-block navbar-sticky navbar-expand-lg navbar-light position-absolute w-100">
         <div class="container">
-            <a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="index.html">
+            <a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="{{route('home')}}l">
                 <img src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="142" alt="Cartzilla">
             </a>
             <a class="navbar-brand d-sm-none me-2 order-lg-1" href="index.html">
@@ -126,10 +126,12 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{route('profileSetting')}}">Profile Settings</a></li>
                                 <li><a class="dropdown-item" href="{{route('favorites.index')}}">Favorites</a></li>
+                                @if(Auth::user()->access=='admin')
                                 <li><a class="dropdown-item" href="{{route('messages.index')}}">Messages</a></li>
                                 <li><a class="dropdown-item" href="{{route('settings.index')}}">Website Settings</a></li>
                                 <li><a class="dropdown-item" href="{{route('productMangement')}}">Product Mangement</a></li>
                                 <li><a class="dropdown-item" href="{{route('categoryMangement')}}">Category Mangement</a></li>
+                                @endif
                                 <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
                             </ul>
                         </li>
