@@ -57,3 +57,6 @@ Route::get('/services', [CategoryController::class, 'indexServices'])->name('ser
 
 // Route::get('/categories', CategoryController::class,'index')->name('categories');
 
+Route::get('/category/search', [CategoryController::class, 'search'])->name('category.search');
+
+
