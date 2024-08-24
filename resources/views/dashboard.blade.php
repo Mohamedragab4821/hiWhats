@@ -210,6 +210,7 @@
                     <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('userManagement')}}"><i class="ci-bell opacity-60 me-2"></i>User Management</a></li>
                     <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="nft-account-notifications.html"><i class="ci-bell opacity-60 me-2"></i>Messages</a></li>
                     <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('settings.index')}}"><i class="ci-sign-out opacity-60 me-2"></i>Settings</a></li>
+                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('favorites.index')}}"><i class="ci-sign-out opacity-60 me-2"></i>Favorites</a></li>
 
                     <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-signin.html"><i class="ci-sign-out opacity-60 me-2"></i>Sign out</a></li>
                   </ul>

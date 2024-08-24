@@ -1,10 +1,11 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Users extends Authenticatable
+class User extends Authenticatable
 {
     use HasFactory;
 
@@ -18,9 +19,13 @@ class Users extends Authenticatable
         'image'
     ];
 
-    // Optionally, set the table name if it's different
-    // protected $table = 'users';
-
-    // If necessary, define timestamps (created_at, updated_at) behavior
     public $timestamps = true;
+
+    /**
+     * Get the favorites for the user.
+     */
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class, 'user_id');
+    }
 }

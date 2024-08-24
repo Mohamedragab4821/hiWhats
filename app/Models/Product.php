@@ -9,10 +9,8 @@ class Product extends Model
 {
     use HasFactory;
 
-    // Define the table name if it's different from the plural form of the model name
-    protected $table = 'product';  // Assuming your table is named 'products'
+    protected $table = 'product';
 
-    // Define the fillable attributes for mass assignment
     protected $fillable = [
         'product_name',
         'category_id',
@@ -23,6 +21,13 @@ class Product extends Model
         'Product_img'
     ];
 
-    // Optionally, if you want to disable timestamps (created_at, updated_at):
     public $timestamps = false;
+
+    /**
+     * Get the favorites for the product.
+     */
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class, 'product_id');
+    }
 }

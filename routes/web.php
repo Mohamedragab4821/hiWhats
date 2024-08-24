@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\FavoritesController;
 
 
 
@@ -31,3 +32,12 @@ Route::delete('/profileSetting/productMangement/delete/{product_id}', [ProductCo
 Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
 Route::put('/settings/update', [SettingController::class, 'update'])->name('settings.update');
 Route::get('/messages', [MessagesController::class, 'index'])->name('messages.index');
+
+// routes/web.php
+Route::post('/favorites', [FavoritesController::class, 'store'])->name('favorites.store');
+// Route to display the user's favorites page
+Route::get('/favorites', [FavoritesController::class, 'index'])->name('favorites.index');
+
+Route::delete('/favorites/{id}', [FavoritesController::class, 'destroy'])->name('favorites.destroy');
+
+

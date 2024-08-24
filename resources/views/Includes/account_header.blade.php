@@ -49,7 +49,7 @@
                     <li><a class="dropdown-item" href="nft-account-my-items.html">Messages</a></li>
                     <li><a class="dropdown-item" href="{{route('settings.index')}}">Website Settings</a></li>
                     <li><a class="dropdown-item" href="nft-account-favorites.html">Favorites</a></li>
-                    <li><a class="dropdown-item" href="nft-account-notifications.html">Logout</a></li>
+                    <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
                   </ul>
                 </li>
                 @endif

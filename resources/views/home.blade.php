@@ -18,6 +18,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
     <link rel="manifest" href="{{ asset('site.webmanifest') }}">
     <link rel="mask-icon" color="#fe6a6a" href="{{ asset('safari-pinned-tab.svg') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
     <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
@@ -122,59 +123,6 @@
     <main class="page-wrapper">
       <!-- Navbar for NFT Marketplace demo-->
       <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
-      <header class="navbar d-block navbar-sticky navbar-expand-lg navbar-light position-absolute w-100">
-        <div class="container"><a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="index.html"><img src="img/logo-dark.png" width="142" alt="Cartzilla"></a><a class="navbar-brand d-sm-none me-2 order-lg-1" href="index.html"><img src="img/logo-icon.png" width="74" alt="Cartzilla"></a>
-          <div class="navbar-toolbar d-flex align-items-center order-lg-3">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool d-none d-lg-flex" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#searchBox" role="button" aria-expanded="false" aria-controls="searchBox"><span class="navbar-tool-tooltip">بحث</span>
-              <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-search"></i></div></a><a class="navbar-tool ms-lg-2" href="#signin-modal" data-bs-toggle="modal"><span class="navbar-tool-tooltip">تسجيل</span>
-              <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-user"></i></div></a>
-          </div>
-          <div class="collapse navbar-collapse me-auto order-lg-2" id="navbarCollapse">
-            <!-- Search (mobile)-->
-            <div class="d-lg-none py-3">
-              <div class="input-group"><i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-                <input class="form-control rounded-start" type="text" placeholder="What do you need?">
-              </div>
-            </div>
-            <!-- Primary menu-->
-            <ul class="navbar-nav">
-              <li class="nav-item active"><a class="nav-link" href="home-nft.html">الصفحه الرئيسه</a></li>
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">الاقسام</a>
-                <ul class="dropdown-menu">
-                    {{-- @foreach ($categorys as $category)
-                    <li><a class="dropdown-item" href="nft-catalog-v1.html">category->category_name</a></li>
-                    @endforeach --}}
-                  <li><a class="dropdown-item" href="nft-catalog-v1.html">Catalog v.1</a></li>
-
-                </ul>
-              </li>
-              <li class="nav-item "><a class="nav-link" href="home-nft.html">كل الخدمات</a></li>
-              <li class="nav-item "><a class="nav-link" href="home-nft.html">من نحن</a></li>
-              <li class="nav-item "><a class="nav-link" href="home-nft.html">رؤيتنا</a></li>
-
-
-              @if(Auth::user())
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">حسابي</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{{ route('profileSetting') }}">Profile Settings</a></li>
-                  <li><a class="dropdown-item" href="nft-account-my-items.html">Messages</a></li>
-                  <li><a class="dropdown-item" href="nft-account-favorites.html">Favorites</a></li>
-                  <li><a class="dropdown-item" href="nft-account-notifications.html">Logout</a></li>
-                </ul>
-              </li>
-              @endif
-            </ul>
-          </div>
-        </div>
-        <!-- Search collapse-->
-        <div class="search-box collapse" id="searchBox">
-          <div class="container py-2">
-            <div class="input-group"><i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-              <input class="form-control rounded-start" type="text" placeholder="What do you need?">
-            </div>
-          </div>
-        </div>
-      </header>
       @include('Includes.home_header')
 
       <!-- Hero-->
@@ -289,36 +237,44 @@
           
                   <!-- Product carousel -->
                   <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
-                      <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
-                          @foreach($products as $product)
-                          <!-- Product item -->
-                          <div class="col py-3">
-                              <article class="card h-100 border-0">
-                                  <div class="card-img-top position-relative overflow-hidden">
-                                      <a class="d-block" href="#">
-                                          <img class="avatar" src="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}" alt="Product image">
-                                      </a>
-                                      <button class="btn-wishlist btn-sm position-absolute top-0 end-0" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Favorites" style="margin: 12px;">
-                                          <i class="ci-heart"></i>
-                                      </button>
-                                  </div>
-                                  <div class="card-body">
-                                      <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="#">{{ $product->product_name }}</a></h3>
-                                      <span class="fs-sm text-muted">Current bid:</span>
-                                      <div class="d-flex align-items-center flex-wrap">
-                                          <h4 class="mt-1 mb-0 fs-base text-darker">{{ $product->product_salary }} ETH</h4>
-                                      </div>
-                                  </div>
-                                  <div class="card-footer mt-n1 py-0 border-0">
-                                      <div class="d-flex align-items-center position-relative mb-1 py-3 border-top">
-                                          <a class="nav-link-style fs-sm stretched-link" href="#">{{ '@'.$product->product_name }}</a>
-                                      </div>
-                                  </div>
-                              </article>
-                          </div>
-                          @endforeach
-                      </div>
-                  </div>
+                    <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
+                        @foreach($products as $product)
+                        <!-- Product item -->
+                        <div class="col py-3">
+                            <article class="card h-100 border-0">
+                                <div class="card-img-top position-relative overflow-hidden">
+                                    <a class="d-block" href="#">
+                                        <img class="avatar" src="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}" alt="Product image">
+                                    </a>
+                                    <button 
+                                        class="btn-wishlist btn-sm position-absolute top-0 end-0" 
+                                        type="button" 
+                                        data-bs-toggle="tooltip" 
+                                        data-bs-placement="left" 
+                                        title="Add to Favorites" 
+                                        style="margin: 12px;"
+                                        onclick="addToFavorites({{ $product->product_id }})"
+                                    >
+                                        <i class="ci-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="#">{{ $product->product_name }}</a></h3>
+                                    <span class="fs-sm text-muted">Current bid:</span>
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <h4 class="mt-1 mb-0 fs-base text-darker">{{ $product->product_salary }} ETH</h4>
+                                    </div>
+                                </div>
+                                <div class="card-footer mt-n1 py-0 border-0">
+                                    <div class="d-flex align-items-center position-relative mb-1 py-3 border-top">
+                                        <a class="nav-link-style fs-sm stretched-link" href="#">{{ '@'.$product->product_name }}</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
                   <div class="d-flex flex-sm-row flex-column justify-content-center pt-4">
                       <a class="btn btn-outline-accent" href="#">Browse marketplace</a>
                   </div>
@@ -595,6 +551,43 @@
     <script src="{{ asset('vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js') }}"></script>
     <!-- Main theme script-->
     <script src="{{ asset('js/theme.min.js') }}"></script>
+
+    <script>
+      function addToFavorites(productId) {
+    console.log('Adding product to favorites with ID:', productId);
+
+    $.ajax({
+        url: '{{ route('favorites.store') }}',
+        type: 'POST',
+        data: {
+            _token: '{{ csrf_token() }}',
+            product_id: productId
+        },
+        success: function(response) {
+            console.log('Success:', response);
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: response.message,
+                confirmButtonText: 'OK'
+            });
+        },
+        error: function(xhr) {
+            console.error('AJAX Error:', xhr);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Error adding to favorites: ' + xhr.responseText,
+                confirmButtonText: 'OK'
+            });
+        }
+    });
+}
+
+      </script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
 
   </body>
 
