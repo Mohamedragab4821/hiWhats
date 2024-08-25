@@ -69,7 +69,6 @@
                   <div class="password-toggle">
                     <input class="form-control" type="text" id="phone" name="phone" required>
                     <label class="password-toggle-btn">
-                      <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
                     </label>
                   </div>
                 </div>

@@ -184,8 +184,8 @@
                                     <div class="fs-sm"><span class="text-muted me-2">Duration:</span><span id="modal-duration"></span></div>
                                     <div class="fs-lg text-accent pt-2">Price: <span id="modal-product-salary"></span></div>
                                     <div class="mt-3">
-                                        <button type="button" class="btn btn-outline-primary">طلب الخدمه عبر الايميل</button>
-                                        <button type="button" class="btn btn-outline-success">طلب الخدمه عبر الواتساب</button>
+                                        <a href="{{ route('contacts.index') }}" class="btn btn-outline-primary">طلب الخدمه عبر الايميل</a>
+                                        <a a href="#" data-bs-toggle="modal" data-bs-target="#whatsappModal" class="btn btn-outline-success">طلب الخدمه عبر الواتساب</a>
                                     </div>
                                 </div>
                             </div>
