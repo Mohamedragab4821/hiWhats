@@ -115,10 +115,10 @@
                               @endforeach
                           </ul>
                         </li>
-          
+
                         <li class="nav-item "><a class="nav-link" href="{{route('services')}}">كل الخدمات</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{route('contacts.index')}}">طلب خدمه</a></li>
-                        <li class="nav-item"><a class="nav-link" href="home-nft.html">من نحن</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('whoAreWe') }}">من نحن</a></li>
                         <li class="nav-item"><a class="nav-link" href="home-nft.html">رؤيتنا</a></li>
                         @if(Auth::user())
                         <li class="nav-item dropdown">

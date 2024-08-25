@@ -55,7 +55,13 @@ class ContactsController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
-       
+
+    }
+
+    public function indexWhoAreWe(){
+        $settings = Settings::first();
+        $categories = Category::all();
+        return view('whoAreWe',['settings'=>$settings,'categories'=>$categories]);
     }
 
     /**
