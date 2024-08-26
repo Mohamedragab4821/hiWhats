@@ -77,36 +77,14 @@
 
         <div class="container pb-5 mb-2 mb-md-4">
             <!-- Toolbar-->
-            <div class="bg-light shadow-lg rounded-3 mt-n5 mb-4">
-                <div class="d-flex align-items-center ps-2">
-                    <!-- Search-->
-                    <form action="{{ route('category.search') }}" method="GET" class="d-flex align-items-center">
-                      <input type="text" name="search" placeholder="Search..." class="form-control me-2">
-                      <button type="submit" class="btn btn-primary">Search</button>
-                  </form>
-
-
-                    <!-- Sort-->
-                    <div class="d-flex align-items-center">
-                        <div class="dropdown py-4 border-start">
-                            <a class="nav-link-style fs-md fw-medium dropdown-toggle p-4" href="#" data-bs-toggle="dropdown">
-                                <span class="d-inline-block py-1"><i class="ci-thumb-up align-middle opacity-60 mt-n1 me-2"></i>Popular</span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="#"><i class="ci-flag me-2 opacity-60"></i>Newest</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="ci-rocket me-2 opacity-60"></i>Bestsellers</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="ci-loading me-2 opacity-60"></i>Updated</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="ci-arrow-down me-2 opacity-60"></i>Low Price</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="ci-arrow-up me-2 opacity-60"></i>High Price</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Pagination-->
-                    <div class="d-none d-md-flex align-items-center border-start ps-4">
-                        <span class="fs-md text-nowrap me-4">Pages&nbsp; 1 / 5</span>
-                        <a class="nav-link-style p-4 border-start" href="#"><span class="d-inline-block py-1"><i class="ci-arrow-left"></i></span></a>
-                        <a class="nav-link-style p-4 border-start" href="#"><span class="d-inline-block py-1"><i class="ci-arrow-right"></i></span></a>
+            <div class="row">
+                <div class=" shadow-lg  mt-n5 mb-4">
+                    <div class="d-flex align-items-center ps-2">
+                        <!-- Search-->
+                        <form action="{{ route('category.search') }}" method="GET" class="d-flex align-items-center">
+                            <input type="text" name="search" placeholder="Search..." class="form-control me-2">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </form>
                     </div>
                 </div>
             </div>

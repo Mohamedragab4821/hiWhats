@@ -119,7 +119,7 @@
                         <li class="nav-item "><a class="nav-link" href="{{route('services')}}">كل الخدمات</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{route('contacts.index')}}">طلب خدمه</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('whoAreWe') }}">من نحن</a></li>
-                        <li class="nav-item"><a class="nav-link" href="home-nft.html">رؤيتنا</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('ourVision') }}">رؤيتنا</a></li>
                         @if(Auth::user())
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">حسابي</a>

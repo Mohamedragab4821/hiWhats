@@ -167,6 +167,18 @@ public function search(Request $request)
     return view('CategoryServices', compact('settings', 'products', 'categories'));
 }
 
+public function servicesSearch(Request $request)
+{
+    $searchTerm = $request->input('search');
+    $settings = Settings::first();
+    $categories = Category::all();
+
+    $products = Product::where('product_name', 'like', '%' . $searchTerm . '%')
+        ->orWhere('category_name', 'like', '%' . $searchTerm . '%')
+        ->get();
+
+    return view('AllServices', compact('settings', 'products', 'categories'));
+}
    
     
 }

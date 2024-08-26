@@ -64,6 +64,13 @@ class ContactsController extends Controller
         return view('whoAreWe',['settings'=>$settings,'categories'=>$categories]);
     }
 
+    public function indexourVision(){
+        $settings = Settings::first();
+        $categories = Category::all();
+        return view('ourVision',['settings'=>$settings,'categories'=>$categories]);
+    }
+
+
     /**
      * Display the specified resource.
      */
