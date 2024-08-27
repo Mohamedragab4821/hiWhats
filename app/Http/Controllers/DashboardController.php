@@ -72,7 +72,7 @@ class DashboardController extends Controller
     {
         // Logic to store a new resource
         // Example: Dashboard::create($request->all());
-        
+
         return redirect()->route('dashboard.index')->with('success', 'Resource created successfully.');
     }
 
@@ -86,7 +86,7 @@ class DashboardController extends Controller
     {
         // Logic to display a specific resource
         // Example: $resource = Dashboard::findOrFail($id);
-        
+
         return view('dashboard.show', compact('resource'));
     }
 
@@ -100,7 +100,7 @@ class DashboardController extends Controller
     {
         // Logic to show the edit form for a specific resource
         // Example: $resource = Dashboard::findOrFail($id);
-        
+
         return view('dashboard.edit', compact('resource'));
     }
 
@@ -131,7 +131,7 @@ class DashboardController extends Controller
         $user->delete();
         return redirect()->route('userManagement')->with('success', 'User deleted successfully.');
     }
-    
+
 
 
     // public function updateAvatar(Request $request)
@@ -168,7 +168,7 @@ class DashboardController extends Controller
     ]);
 
     $user = Auth::user();
-    
+
     // Update user information
     $user->user_name = $request->input('user_name');
     $user->email = $request->input('email');
@@ -191,11 +191,11 @@ class DashboardController extends Controller
     return redirect()->back()->with('success', 'Profile updated successfully.');
 }
 
-    
+
 public function deleteAvatar(Request $request)
 {
     $user = User::findOrFail($request->input('user_id'));
-    
+
     // Delete the avatar image if it exists
     if ($user->image) {
         Storage::disk('public')->delete($user->image);
