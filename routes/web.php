@@ -9,6 +9,8 @@ use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\SectionsController;
 
 Route::get('/', [AuthController::class, 'home'])->name('home');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
