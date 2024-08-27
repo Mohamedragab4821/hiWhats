@@ -17,6 +17,11 @@
       };
     </script>
     
+    @if($errors->has('error'))
+    <div class="alert alert-danger">
+        {{ $errors->first('error') }}
+    </div>
+@endif
 
     <header class="navbar d-block navbar-sticky navbar-expand-lg navbar-light position-absolute w-100">
         <div class="container">
@@ -34,9 +39,9 @@
                     <span class="navbar-tool-tooltip">بحث</span>
                     <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-search"></i></div>
                 </a>
+                @if(!Auth::user())
                 <a class="navbar-tool ms-lg-2" href="#signin-modal" data-bs-toggle="modal">
                     <span class="navbar-tool-tooltip">تسجيل</span>
-                    @if(!Auth::user())
                         <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-user"></i></div>
                     </a>
                     @endif

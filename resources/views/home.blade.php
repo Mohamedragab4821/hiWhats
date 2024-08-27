@@ -185,7 +185,6 @@
                       <img src="{{ asset('storage/' . $category->category_img) }}" alt="Category Image">
                     </a>
                     <!-- Wishlist button-->
-                    <button class="btn-wishlist btn-sm position-absolute top-0 end-0" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Favorites" style="margin: 12px;">
                       <i class="ci-heart"></i>
                     </button>
                   </div>
@@ -229,49 +228,49 @@
                     </ul>
                 </div>
             </div>
-
+    
             <!-- Product carousel -->
             <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
-              <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
-                @foreach($products as $product)
-                <div class="col py-3">
-                    <a href="#signinnn-modal" data-bs-toggle="modal"
-                       data-product-name="{{ $product->product_name }}"
-                       data-product-img="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
-                       data-product-salary="{{ $product->product_salary }}"
-                       data-description="{{ $product->description }}"
-                       data-duration="{{ $product->Duration_of_righteousness }}"
-                       data-bs-target="#signinnn-modal">
-                        <article class="card h-100 border-0">
-                            <div class="card-img-top position-relative overflow-hidden" style="width: 285px;height: 285px;">
-                                <img class="avatar" src="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}" alt="Product image">
-                                <button
-                                    class="btn-wishlist btn-sm position-absolute top-0 end-0"
-                                    type="button"
-                                    data-bs-toggle="tooltip"
-                                    data-bs-placement="left"
-                                    title="Add to Favorites"
-                                    style="margin: 12px;"
-                                    onclick="addToFavorites({{ $product->product_id }})">
-                                    <i class="ci-heart"></i>
-                                </button>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="#">{{ $product->product_name }}</a></h3>
-                                <span class="fs-sm text-muted">Current bid:</span>
-                                <div class="d-flex align-items-center flex-wrap">
-                                    <h4 class="mt-1 mb-0 fs-base text-darker">{{ $product->product_salary }} ETH</h4>
+                <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
+                    @foreach($products as $product)
+                    <div class="col py-3">
+                        <a href="#signinnn-modal" data-bs-toggle="modal"
+                           data-product-name="{{ $product->product_name }}"
+                           data-product-img="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
+                           data-product-salary="{{ $product->product_salary }}"
+                           data-description="{{ $product->description }}"
+                           data-duration="{{ $product->Duration_of_righteousness }}"
+                           data-bs-target="#signinnn-modal">
+                            <article class="card h-100 border-0 shadow">
+                                <div class="card-img-top position-relative overflow-hidden">
+                                    <img class="avatar" src="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}" alt="Product image">
+                                    <button
+                                        class="btn-wishlist btn-sm position-absolute top-0 end-0"
+                                        type="button"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="left"
+                                        title="Add to Favorites"
+                                        style="margin: 12px;"
+                                        onclick="addToFavorites({{ $product->product_id }})">
+                                        <i class="ci-heart"></i>
+                                    </button>
                                 </div>
-                            </div>
-                        </article>
-                    </a>
+                                <div class="card-body">
+                                    <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="#">{{ $product->product_name }}</a></h3>
+                                    <span class="fs-sm text-muted">Current bid:</span>
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <h4 class="mt-1 mb-0 fs-base text-darker">{{ $product->product_salary }} ETH</h4>
+                                    </div>
+                                </div>
+                            </article>
+                        </a>
+                    </div>
+                @endforeach
                 </div>
-            @endforeach
-
-              </div>
-          </div>
+            </div>
         </div>
     </section>
+    
     <div class="modal fade" id="signinnn-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">

@@ -153,20 +153,24 @@ class CategoryController extends Controller
             return redirect()->back()->withErrors(['Error deleting category: ' . $e->getMessage()]);
         }
     }
-// Add this method to CategoryController
-public function search(Request $request)
-{
-    $searchTerm = $request->input('search');
-    $settings = Settings::first();
-    $categories = Category::all();
-
-    $products = Product::where('product_name', 'like', '%' . $searchTerm . '%')
-        ->orWhere('category_name', 'like', '%' . $searchTerm . '%')
-        ->get();
-
-    return view('CategoryServices', compact('settings', 'products', 'categories'));
-}
-
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('search');
+        $categoryId = $request->input('category_id'); // Assuming you pass the category ID with the request
+    
+        $settings = Settings::first();
+        $categories = Category::all();
+    
+        $products = Product::where('category_id', $categoryId) // Filter by selected category
+            ->where(function($query) use ($searchTerm) {
+                $query->where('product_name', 'like', '%' . $searchTerm . '%')
+                      ->orWhere('category_name', 'like', '%' . $searchTerm . '%');
+            })
+            ->get();
+    
+        return view('CategoryServices', compact('settings', 'products', 'categories'));
+    }
+    
 public function servicesSearch(Request $request)
 {
     $searchTerm = $request->input('search');
