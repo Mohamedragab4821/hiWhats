@@ -34,9 +34,9 @@
                     <span class="navbar-tool-tooltip">بحث</span>
                     <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-search"></i></div>
                 </a>
+                @if(!Auth::user())
                 <a class="navbar-tool ms-lg-2" href="#signin-modal" data-bs-toggle="modal">
                     <span class="navbar-tool-tooltip">تسجيل</span>
-                    @if(!Auth::user())
                         <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-user"></i></div>
                     </a>
                     @endif
@@ -79,6 +79,7 @@
                                 @if(Auth::user()->access=='admin')
                                 <li><a class="dropdown-item" href="{{route('messages.index')}}">Messages</a></li>
                                 <li><a class="dropdown-item" href="{{route('settings.index')}}">Website Settings</a></li>
+                                <li><a class="dropdown-item" href="{{route('ads.index')}}">Ads Settings</a></li>
                                 <li><a class="dropdown-item" href="{{route('productMangement')}}">Product Mangement</a></li>
                                 <li><a class="dropdown-item" href="{{route('categoryMangement')}}">Category Mangement</a></li>
                                 @endif

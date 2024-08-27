@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Users;
 use App\Models\Settings;
 use App\Models\Category;
+use App\Models\HomeAds;
+
 
 
 class DashboardController extends Controller
@@ -21,7 +23,16 @@ class DashboardController extends Controller
     {
         $settings = Settings::first();
         $categories = Category::all();
+
         return view('dashboard',['settings'=>$settings,'categories'=>$categories]);
+    }
+    public function index_home_ads()
+    {
+        $settings = Settings::first();
+        $categories = Category::all();
+        $home_ads = HomeAds::all();
+
+        return view('home_ads',['settings'=>$settings,'categories'=>$categories,'home_ads'=>$home_ads]);
     }
 
     public function indexEditUser($id)
