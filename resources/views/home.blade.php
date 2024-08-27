@@ -48,7 +48,9 @@
       <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
 
       @include('Includes.home_header')
-
+      
+      
+    
       <!-- Hero-->
       <section class="mb-lg-2 bg-faded-accent bg-size-cover" style="padding-top: 80px; background-image: url(img/nft/home/hero-bg.png);">
         <div class="container py-4">
@@ -56,7 +58,7 @@
             <div class="col-lg-5 col-md-8 col-sm-10">
               <h1 class="mb-4 pb-lg-2">نقدم حلول تسويق إلكتروني شاملة لتحقيق أهداف عملك الرقمية.</h1>
               <p class="mb-lg-5 mb-4 fs-lg">نساعدك على زيادة ظهورك الرقمي والوصول إلى جمهورك المستهدف من خلال استراتيجيات تسويقية فعّالة.</p>
-              <div class="d-lg-flex d-none flex-sm-row flex-column justify-content-lg-start justify-content-center"><a class="btn btn-lg btn-accent me-sm-3 mb-sm-3 mb-2" href="nft-catalog-v1.html">تصفح خدماتنا</a><a class="btn btn-lg btn-outline-dark mb-sm-3 mb-2" href="nft-create-item.html">انشئ حساب</a></div>
+              <div class="d-lg-flex d-none flex-sm-row flex-column justify-content-lg-start justify-content-center"><a class="btn btn-lg btn-accent me-sm-3 mb-sm-3 mb-2" href="{{route('services')}}">تصفح خدماتنا</a><a class="btn btn-lg btn-outline-dark mb-sm-3 mb-2 navbar-tool ms-lg-2"  data-bs-toggle="modal" href="#signin-modal">انشئ حساب</a></div>
             </div>
             <div class="col-lg-6 col-md-8 offset-lg-1 col-sm-10">
               <!-- Top auctions carousel-->
@@ -411,7 +413,7 @@
                                 <div class="fs-lg text-accent pt-2">Price: <span id="modal-product-salary"></span></div>
                                 <div class="mt-3">
                                   <a href="{{ route('contacts.index') }}" class="btn btn-outline-primary">طلب الخدمه عبر الايميل</a>
-                                  <a a href="#" data-bs-toggle="modal" data-bs-target="#whatsappModal" class="btn btn-outline-success">طلب الخدمه عبر الواتساب</a>
+                                  <a a href="https://api.whatsapp.com/send?phone=+201283370658&text=مرحبا"  class="btn btn-outline-success">طلب الخدمه عبر الواتساب</a>
                                   
                                 </div>
                             </div>
