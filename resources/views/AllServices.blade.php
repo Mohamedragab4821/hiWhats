@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
 <!-- Mirrored from cartzilla.createx.studio/marketplace-category.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Aug 2022 18:16:59 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
@@ -73,26 +73,15 @@
       </div>
       <div class="container pb-5 mb-2 mb-md-4">
         <!-- Toolbar-->
-        <div class="bg-light shadow-lg rounded-3 mt-n5 mb-4">
+        <div class="shadow-lg rounded-3 mt-n5 mb-4">
           <div class="d-flex align-items-center ps-2">
-            <!-- Search-->
-            <div class="input-group"><i class="ci-search position-absolute top-50 start-0 translate-middle-y fs-md ms-3"></i>
-              <input class="form-control border-0 shadow-none" type="text" placeholder="Search in this category...">
-            </div>
-            <!-- Sort-->
-            <div class="d-flex align-items-center">
-              <div class="dropdown py-4 border-start"><a class="nav-link-style fs-md fw-medium dropdown-toggle p-4" href="#" data-bs-toggle="dropdown"><span class="d-inline-block py-1"><i class="ci-thumb-up align-middle opacity-60 mt-n1 me-2"></i>Popular</span></a>
-                <ul class="dropdown-menu dropdown-menu-end">
-                  <li><a class="dropdown-item" href="#"><i class="ci-flag me-2 opacity-60"></i>Newest</a></li>
-                  <li><a class="dropdown-item" href="#"><i class="ci-rocket me-2 opacity-60"></i>Bestsellers</a></li>
-                  <li><a class="dropdown-item" href="#"><i class="ci-loading me-2 opacity-60"></i>Updated</a></li>
-                  <li><a class="dropdown-item" href="#"><i class="ci-arrow-down me-2 opacity-60"></i>Low Price</a></li>
-                  <li><a class="dropdown-item" href="#"><i class="ci-arrow-up me-2 opacity-60"></i>High Price</a></li>
-                </ul>
-              </div>
-            </div>
+              <!-- Search-->
+              <form action="{{ route('services.search') }}" method="GET" class="d-flex align-items-center">
+                  <input type="text" name="search" placeholder="Search..." class="form-control me-2">
+                  <button type="submit" class="btn btn-primary">Search</button>
+              </form>
+
             <!-- Pagination-->
-            <div class="d-none d-md-flex align-items-center border-start ps-4"><span class="fs-md text-nowrap me-4">Pages&nbsp; 1 / 5</span><a class="nav-link-style p-4 border-start" href="#"><span class="d-inline-block py-1"><i class="ci-arrow-left"></i></span></a><a class="nav-link-style p-4 border-start" href="#"><span class="d-inline-block py-1"><i class="ci-arrow-right"></i></span></a></div>
           </div>
         </div>
         <!-- Products grid-->
@@ -103,23 +92,58 @@
           <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-grid-gutter">
             <div class="card product-card-alt">
               <div class="product-thumb" style="height: 280px;width: 280px;" >
-                <button 
-                    class="btn-wishlist btn-sm position-absolute top-0 end-0" 
-                    type="button" 
-                    data-bs-toggle="tooltip" 
-                    data-bs-placement="left" 
-                    title="Add to Favorites" 
+                <button
+                    class="btn-wishlist btn-sm position-absolute top-0 end-0"
+                    type="button"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="left"
+                    title="Add to Favorites"
                     style="margin: 12px;"
                     onclick="addToFavorites({{ $product->product_id }})"
                 >
                     <i class="ci-heart"></i>
               </button>
-                <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow fs-base mx-2" href="marketplace-single.html"><i class="ci-eye"></i></a>
-                  <button class="btn btn-light btn-icon btn-shadow fs-base mx-2" type="button"><i class="ci-cart"></i></button>
-                </div><a class="product-thumb-overlay" href="marketplace-single.html"></a><img src="{{ asset('storage/'.$product->Product_img) }}" alt="Product">
+                <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow fs-base mx-2" href="#signinnn-modal" data-bs-toggle="modal"
+                    data-product-name="{{ $product->product_name }}"
+                       data-product-img="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
+                       data-product-salary="{{ $product->product_salary }}"
+                       data-description="{{ $product->description }}"
+                       data-duration="{{ $product->Duration_of_righteousness }}"
+                       data-bs-target="#signinnn-modal"><i class="ci-eye"></i></a>
+                  {{-- <button class="btn btn-light btn-icon btn-shadow fs-base mx-2" type="button"><i class="ci-cart"></i></button> --}}
+                </div><a class="product-thumb-overlay"></a><img src="{{ asset('storage/'.$product->Product_img) }}" alt="Product">
               </div>
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var productModal = document.getElementById('signinnn-modal');
+                    productModal.addEventListener('show.bs.modal', function(event) {
+                        var button = event.relatedTarget; // Button that triggered the modal
+
+                        // Get the product data from the button's data attributes
+                        var productName = button.getAttribute('data-product-name');
+                        var productImg = button.getAttribute('data-product-img');
+                        var productSalary = button.getAttribute('data-product-salary');
+                        var description = button.getAttribute('data-description');
+                        var duration = button.getAttribute('data-duration');
+
+                        // Find the modal elements
+                        var modalProductName = productModal.querySelector('#modal-product-name');
+                        var modalProductImg = productModal.querySelector('#modal-product-img');
+                        var modalProductSalary = productModal.querySelector('#modal-product-salary');
+                        var modalDescription = productModal.querySelector('#modal-description');
+                        var modalDuration = productModal.querySelector('#modal-duration');
+
+                        // Set the modal content
+                        modalProductName.textContent = productName;
+                        modalProductImg.src = productImg;
+                        modalProductSalary.textContent = productSalary;
+                        modalDescription.textContent = description;
+                        modalDuration.textContent = duration;
+                    });
+                });
+            </script>
               <div class="card-body">
-                
+
                 <h3 class="product-title fs-sm mb-2"><a href="marketplace-single.html">{{ $product->product_name }}</a></h3>
                 <div class="d-flex flex-wrap justify-content-between align-items-center">
                   <div class="fs-sm me-2"><i class="ci-download text-muted me-1"></i>{{ $product->category_name }}</div>
@@ -130,6 +154,65 @@
           </div>
           @endforeach
         </div>
+        <div class="modal fade" id="signinnn-modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-secondary">
+                        <h5 class="modal-title">Product Details</h5>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body pb-0">
+                        <div class="d-sm-flex justify-content-between mb-4 pb-3 pb-sm-2 border-bottom">
+                            <div class="d-sm-flex text-center text-sm-start">
+                                <a class="d-inline-block flex-shrink-0 mx-auto" style="width: 15rem;">
+                                    <img id="modal-product-img" src="" alt="Product" style="width: 100%; height: auto;">
+                                </a>
+                                <div class="ps-sm-4 pt-2">
+                                    <h3 id="modal-product-name" class="product-title fs-base mb-2"></h3>
+                                    <div class="fs-sm"><span class="text-muted me-2">Description:</span><span id="modal-description"></span></div>
+                                    <div class="fs-sm"><span class="text-muted me-2">Duration:</span><span id="modal-duration"></span></div>
+                                    <div class="fs-lg text-accent pt-2">Price: <span id="modal-product-salary"></span></div>
+                                    <div class="mt-3">
+                                        <a href="{{ route('contacts.index') }}" class="btn btn-outline-primary">طلب الخدمه عبر الايميل</a>
+                                        <a a href="#" data-bs-toggle="modal" data-bs-target="#whatsappModal" class="btn btn-outline-success">طلب الخدمه عبر الواتساب</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var productModal = document.getElementById('signinnn-modal');
+                productModal.addEventListener('show.bs.modal', function(event) {
+                    var button = event.relatedTarget; // Button that triggered the modal
+
+                    // Get the product data from the button's data attributes
+                    var productName = button.getAttribute('data-product-name');
+                    var productImg = button.getAttribute('data-product-img');
+                    var productSalary = button.getAttribute('data-product-salary');
+                    var description = button.getAttribute('data-description');
+                    var duration = button.getAttribute('data-duration');
+
+                    // Find the modal elements
+                    var modalProductName = productModal.querySelector('#modal-product-name');
+                    var modalProductImg = productModal.querySelector('#modal-product-img');
+                    var modalProductSalary = productModal.querySelector('#modal-product-salary');
+                    var modalDescription = productModal.querySelector('#modal-description');
+                    var modalDuration = productModal.querySelector('#modal-duration');
+
+                    // Set the modal content
+                    modalProductName.textContent = productName;
+                    modalProductImg.src = productImg;
+                    modalProductSalary.textContent = productSalary;
+                    modalDescription.textContent = description;
+                    modalDuration.textContent = duration;
+                });
+            });
+        </script>
         <hr class="my-3">
         <!-- Pagination-->
         <nav class="d-flex justify-content-between pt-2" aria-label="Page navigation">
@@ -264,7 +347,7 @@
 <script>
     function addToFavorites(productId) {
         console.log('Adding product to favorites with ID:', productId);
-    
+
         $.ajax({
             url: '{{ route('favorites.store') }}',
             type: 'POST',

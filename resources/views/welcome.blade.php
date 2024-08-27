@@ -10,8 +10,6 @@
     <meta name="description" content="Cartzilla - Bootstrap E-commerce Template">
     <meta name="keywords" content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap, html5, css3, js, gallery, slider, touch, creative, clean">
     <meta name="author" content="Createx Studio">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
@@ -27,11 +25,11 @@
     <link rel="stylesheet" media="screen" href="{{ asset('vendor/tiny-slider/dist/tiny-slider.css') }}"/>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="{{ asset('css/theme.min.css') }}">
-<style>
-    body{
-        overflow-x: hidden;
-    }
-</style>
+    <style>
+      body{
+          overflow-x: hidden;
+      }
+  </style>
     <!-- Google Tag Manager-->
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -55,8 +53,8 @@
       <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
       @include('Includes.home_header')
 <div style="margin-top: 100px"></div>
-      @include('Includes.navBar')
-<section>
+      {{-- @include('Includes.navBar') --}}
+<section >
       <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 gy-sm-4 gy-3 pt-sm-3">
         @foreach($products as $product)
   
@@ -67,24 +65,13 @@
                   <img src="{{ asset('storage/'.$product->Product_img) }}" alt="Product image">
               </a>
               <!-- Wishlist button-->
-              <button 
-                    class="btn-wishlist btn-sm position-absolute top-0 end-0" 
-                    type="button" 
-                    data-bs-toggle="tooltip" 
-                    data-bs-placement="left" 
-                    title="Add to Favorites" 
-                    style="margin: 12px;"
-                    onclick="addToFavorites({{ $product->product_id }})"
-                >
-                    <i class="ci-heart"></i>
-              </button>
-            </div>
+          </div>
           <div class="card-body">
               <h3 class="product-title mb-2 fs-base">
                   <a class="d-block text-truncate" href="">{{ $product->product_name }}</a>
               </h3>
               <div class="d-flex align-items-center flex-wrap">
-                  <h4 class="mt-1 mb-0 fs-base text-darker">{{ $product->product_name }} ETH</h4>
+                  <h4 class="mt-1 mb-0 fs-base text-darker">{{ $product->product_salary }} ETH</h4>
               </div>
           </div>
         </article>
@@ -111,52 +98,7 @@
     <script src="{{ asset('vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js') }}"></script>
     <!-- Main theme script-->
     <script src="{{ asset('js/theme.min.js') }}"></script>
-    <script>
-        function addToFavorites(productId) {
-            console.log('Adding product to favorites with ID:', productId);
-        
-            $.ajax({
-                url: '{{ route('favorites.store') }}',
-                type: 'POST',
-                data: {
-                    _token: $('meta[name="csrf-token"]').attr('content'),
-                    product_id: productId
-                },
-                success: function(response) {
-                    console.log('Success:', response);
-    
-                    // Check if the response indicates the product was already added
-                    if (response.status === 'already_added') {
-                        Swal.fire({
-                            icon: 'info',
-                            title: 'Already Added',
-                            text: 'This product is already in your favorites.',
-                            confirmButtonText: 'OK'
-                        });
-                    } else {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Success',
-                            text: response.message,
-                            confirmButtonText: 'OK'
-                        });
-                    }
-                },
-                error: function(xhr) {
-                    console.error('AJAX Error:', xhr);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'Error adding to favorites: ' + xhr.responseText,
-                        confirmButtonText: 'OK'
-                    });
-                }
-            });
-        }
-    </script>
-    
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
   </body>
 
 <!-- Mirrored from cartzilla.createx.studio/nft-account-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Aug 2022 18:19:25 GMT -->

@@ -80,11 +80,17 @@ class CategoryController extends Controller
     /**
      * Display the specified category.
      */
-    public function show($category_id)
-    {
-        $category = Category::findOrFail($category_id);
-        return view('categories.show', compact('category'));
-    }
+    // public function show($category_id)
+    // {
+    //     $category = Category::findOrFail($category_id);
+    //     return view('categories.show', compact('category'));
+    // }
+
+    public function show(Category $category)
+{
+    // Assuming you pass the category to the view
+    return view('CategoryServices', compact('category'));
+}
 
     /**
      * Show the form for editing the specified category.
@@ -147,4 +153,32 @@ class CategoryController extends Controller
             return redirect()->back()->withErrors(['Error deleting category: ' . $e->getMessage()]);
         }
     }
+// Add this method to CategoryController
+public function search(Request $request)
+{
+    $searchTerm = $request->input('search');
+    $settings = Settings::first();
+    $categories = Category::all();
+
+    $products = Product::where('product_name', 'like', '%' . $searchTerm . '%')
+        ->orWhere('category_name', 'like', '%' . $searchTerm . '%')
+        ->get();
+
+    return view('CategoryServices', compact('settings', 'products', 'categories'));
+}
+
+public function servicesSearch(Request $request)
+{
+    $searchTerm = $request->input('search');
+    $settings = Settings::first();
+    $categories = Category::all();
+
+    $products = Product::where('product_name', 'like', '%' . $searchTerm . '%')
+        ->orWhere('category_name', 'like', '%' . $searchTerm . '%')
+        ->get();
+
+    return view('AllServices', compact('settings', 'products', 'categories'));
+}
+   
+    
 }
