@@ -146,71 +146,31 @@
               <div class="tns-carousel tns-nav-enabled mb-4 mx-n2">
                 <div class="tns-carousel-inner" data-carousel-options="{&quot;controls&quot;: false}">
                   <!-- Carousel item-->
-                  <div class="px-2"><img class="rounded-3" src="img/nft/home/01.jpg" alt="Product">
+                  @foreach ($HomeAds as $item)
+                  <div class="px-2"><img class="rounded-3" src="{{ asset('storage/' . ($item->image ?? 'default_icon.jpg')) }}" alt="Product">
                     <div class="position-relative">
                       <div class="position-absolute start-0 bottom-0 w-100 p-md-5 p-sm-4 p-3">
                         <div class="pt-sm-0 pt-2 px-sm-4 px-2 bg-white rounded shadow">
                           <div class="row gx-5">
                             <div class="col-sm-4 col-6 position-relative py-sm-3 py-2">
-                              <h6 class="mb-1 fs-sm fw-normal text-muted">Current bid:</h6><span class="h6 mb-0">0.5 ETH</span>
+                              <h6 class="mb-1 fs-sm fw-normal text-muted">Description:</h6><span class="h6 mb-0">{{$item->description}}</span>
                             </div>
                             <div class="col-sm-4 col-6 position-relative py-sm-3 py-2">
                               <hr class="hr-vertical position-absolute start-0 top-0 ml-n4">
-                              <h6 class="mb-1 fs-sm fw-normal text-muted">Ends in:</h6><span class="h6 mb-0">18 hours</span>
+                              <h6 class="mb-1 fs-sm fw-normal text-muted">Ends in:</h6><span class="h6 mb-0">{{$item->end_date}}</span>
                             </div>
                             <div class="col-sm-4 position-relative py-sm-3 py-2">
                               <hr class="hr-vertical position-absolute start-0 top-0 ml-n4 d-sm-block d-none">
-                              <div class="d-flex align-items-center h-100"><a class="btn btn-sm btn-dark w-100" href="nft-single-auction-live.html">Start bid</a></div>
+                              <div class="d-flex align-items-center h-100"><a class="btn btn-sm btn-dark w-100" href="{{$item->button_url}}">Start bid</a></div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <!-- Carousel item-->
-                  <div class="px-2"><img class="rounded-3" src="img/nft/home/02.jpg" alt="Product">
-                    <div class="position-relative">
-                      <div class="position-absolute start-0 bottom-0 w-100 p-md-5 p-sm-4 p-3">
-                        <div class="pt-sm-0 pt-2 px-sm-4 px-2 bg-white rounded shadow">
-                          <div class="row gx-5">
-                            <div class="col-sm-4 col-6 position-relative py-sm-3 py-2">
-                              <h6 class="mb-1 fs-sm fw-normal text-muted">Current bid:</h6><span class="h6 mb-0">0.8 ETH</span>
-                            </div>
-                            <div class="col-sm-4 col-6 position-relative py-sm-3 py-2">
-                              <hr class="hr-vertical position-absolute start-0 top-0 ml-n4">
-                              <h6 class="mb-1 fs-sm fw-normal text-muted">Ends in:</h6><span class="h6 mb-0">4 hours</span>
-                            </div>
-                            <div class="col-sm-4 position-relative py-sm-3 py-2">
-                              <hr class="hr-vertical position-absolute start-0 top-0 ml-n4 d-sm-block d-none">
-                              <div class="d-flex align-items-center h-100"><a class="btn btn-sm btn-dark w-100" href="nft-single-auction-live.html">Start bid</a></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Carousel item-->
-                  <div class="px-2"><img class="rounded-3" src="img/nft/home/03.jpg" alt="Product">
-                    <div class="position-relative">
-                      <div class="position-absolute start-0 bottom-0 w-100 p-md-5 p-sm-4 p-3">
-                        <div class="pt-sm-0 pt-2 px-sm-4 px-2 bg-white rounded shadow">
-                          <div class="row gx-5">
-                            <div class="col-sm-4 col-6 position-relative py-sm-3 py-2">
-                              <h6 class="mb-1 fs-sm fw-normal text-muted">Current bid:</h6><span class="h6 mb-0">1.2 ETH</span>
-                            </div>
-                            <div class="col-sm-4 col-6 position-relative py-sm-3 py-2">
-                              <hr class="hr-vertical position-absolute start-0 top-0 ml-n4">
-                              <h6 class="mb-1 fs-sm fw-normal text-muted">Ends in:</h6><span class="h6 mb-0">10 hours</span>
-                            </div>
-                            <div class="col-sm-4 position-relative py-sm-3 py-2">
-                              <hr class="hr-vertical position-absolute start-0 top-0 ml-n4 d-sm-block d-none">
-                              <div class="d-flex align-items-center h-100"><a class="btn btn-sm btn-dark w-100" href="nft-single-auction-live.html">Start bid</a></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  @endforeach
+                  
+
                 </div>
               </div>
               <div class="d-lg-none d-flex flex-sm-row flex-column justify-content-lg-start justify-content-center"><a class="btn btn-lg btn-accent me-sm-3 mb-2" href="nft-catalog-v1.html">Explore marketplace</a><a class="btn btn-lg btn-outline-dark mb-2" href="nft-create-item.html">Create your NFT</a></div>

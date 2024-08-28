@@ -9,8 +9,7 @@ use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ItemsController;
-use App\Http\Controllers\SectionsController;
+use App\Http\Controllers\AdsController;
 
 Route::get('/', [AuthController::class, 'home'])->name('home');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -39,6 +38,11 @@ Route::post('/profileSetting/categoryMangement/update/{id}', [ProductController:
 Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
 Route::put('/settings/update', [SettingController::class, 'update'])->name('settings.update');
 Route::get('/messages', [MessagesController::class, 'index'])->name('messages.index');
+Route::get('/home_ads', [AdsController::class, 'index'])->name('ads.index');
+
+Route::post('/home_ads/store', [AdsController::class, 'store'])->name('ads.store');
+Route::delete('/home_ads/delete/{id}', [AdsController::class, 'destroy'])->name('ads.destroy');
+
 
 // routes/web.php
 Route::post('/favorites', [FavoritesController::class, 'store'])->name('favorites.store');

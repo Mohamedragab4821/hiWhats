@@ -10,6 +10,8 @@ use App\Models\Users;
 use App\Models\Settings;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\HomeAds;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
@@ -19,11 +21,14 @@ class AuthController extends Controller
     $products = Product::all(); // Fetch all products from the database
     $settings = Settings::first(); // Fetch the settings
     $categories=Category::all();
+    $HomeAds=HomeAds::all();
+
 
     return view('home', [
         'products' => $products,
         'settings' => $settings,
-        'categories'=>$categories
+        'categories'=>$categories,
+        'HomeAds'=>$HomeAds
     ]);
 }
 public function logout(Request $request)
