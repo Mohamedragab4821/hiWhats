@@ -28,13 +28,13 @@
       .card {
         height: 100%; /* Ensures the card fills the container height */
       }
-    
+
       .card-body {
         display: flex;
         flex-direction: column;
         justify-content: space-between; /* Distributes space between the card title and description */
       }
-      
+
       .card-footer {
         flex-shrink: 0; /* Prevents the footer from shrinking */
       }
@@ -54,7 +54,7 @@
     object-fit: cover; /* Cover the container, maintaining aspect ratio */
   }
     </style>
-    
+
     <!-- Google Tag Manager-->
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -78,9 +78,9 @@
       <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
 
       @include('Includes.home_header')
-      
-      
-    
+
+
+
       <!-- Hero-->
       <section class="mb-lg-2 bg-faded-accent bg-size-cover" style="padding-top: 80px; background-image: url(img/nft/home/hero-bg.png);">
         <div class="container py-4">
@@ -88,78 +88,89 @@
             <div class="col-lg-5 col-md-8 col-sm-10">
               <h1 class="mb-4 pb-lg-2">نقدم حلول تسويق إلكتروني شاملة لتحقيق أهداف عملك الرقمية.</h1>
               <p class="mb-lg-5 mb-4 fs-lg">نساعدك على زيادة ظهورك الرقمي والوصول إلى جمهورك المستهدف من خلال استراتيجيات تسويقية فعّالة.</p>
-              <div class="d-lg-flex d-none flex-sm-row flex-column justify-content-lg-start justify-content-center"><a class="btn btn-lg btn-accent me-sm-3 mb-sm-3 mb-2" href="{{route('services')}}">تصفح خدماتنا</a><a class="btn btn-lg btn-outline-dark mb-sm-3 mb-2" href="nft-create-item.html">انشئ حساب</a></div>
+              <div class="d-lg-flex d-none flex-sm-row flex-column justify-content-lg-start justify-content-center">
+                <a class="btn btn-lg btn-accent me-sm-3 mb-sm-3 mb-2" href="{{route('services')}}">تصفح خدماتنا</a>
+                @if (!Auth::user())
+                <a class="btn btn-lg btn-outline-dark mb-sm-3 mb-2" href="#signup-modal" data-bs-toggle="modal">انشئ حساب</a>
+                @endif
+            </div>
+            </div>
+            <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-secondary">
+                            <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link fw-medium" href="#signup-tab" role="tab" aria-selected="true">
+                                        <i class="ci-user me-2 mt-n1"></i>Sign up
+                                    </a>
+                                </li>
+                            </ul>
+                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body py-4">
+                            <form class="needs-validation" autocomplete="off" novalidate action="{{ route('Registeration') }}" method="POST">
+                                @csrf
+                                <div class="mb-3">
+                                    <label class="form-label" for="su-name">Full name</label>
+                                    <input class="form-control" type="text" id="userName" name="userName" placeholder="John Doe" required>
+                                    <div class="invalid-feedback">Please fill in your name.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="su-email">Email address</label>
+                                    <input class="form-control" type="email" id="email" name="email" placeholder="johndoe@example.com" required>
+                                    <div class="invalid-feedback">Please provide a valid email address.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="su-password">Password</label>
+                                    <div class="password-toggle">
+                                        <input class="form-control" type="password" id="password" name="password" required>
+                                        <label class="password-toggle-btn" aria-label="Show/hide password">
+                                            <input class="password-toggle-check" type="checkbox">
+                                            <span class="password-toggle-indicator"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="su-password-confirm">Phone Number</label>
+                                    <input class="form-control" type="text" id="phone" name="phone" required>
+                                </div>
+                                <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign up</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-6 col-md-8 offset-lg-1 col-sm-10">
               <!-- Top auctions carousel-->
               <div class="tns-carousel tns-nav-enabled mb-4 mx-n2">
                 <div class="tns-carousel-inner" data-carousel-options="{&quot;controls&quot;: false}">
                   <!-- Carousel item-->
-                  <div class="px-2"><img class="rounded-3" src="img/nft/home/01.jpg" alt="Product">
+                  @foreach ($HomeAds as $item)
+                  <div class="px-2"><img class="rounded-3" src="{{ asset('storage/' . ($item->image ?? 'default_icon.jpg')) }}" alt="Product">
                     <div class="position-relative">
                       <div class="position-absolute start-0 bottom-0 w-100 p-md-5 p-sm-4 p-3">
                         <div class="pt-sm-0 pt-2 px-sm-4 px-2 bg-white rounded shadow">
                           <div class="row gx-5">
                             <div class="col-sm-4 col-6 position-relative py-sm-3 py-2">
-                              <h6 class="mb-1 fs-sm fw-normal text-muted">Current bid:</h6><span class="h6 mb-0">0.5 ETH</span>
+                              <h6 class="mb-1 fs-sm fw-normal text-muted">Description:</h6><span class="h6 mb-0">{{$item->description}}</span>
                             </div>
                             <div class="col-sm-4 col-6 position-relative py-sm-3 py-2">
                               <hr class="hr-vertical position-absolute start-0 top-0 ml-n4">
-                              <h6 class="mb-1 fs-sm fw-normal text-muted">Ends in:</h6><span class="h6 mb-0">18 hours</span>
+                              <h6 class="mb-1 fs-sm fw-normal text-muted">Ends in:</h6><span class="h6 mb-0">{{$item->end_date}}</span>
                             </div>
                             <div class="col-sm-4 position-relative py-sm-3 py-2">
                               <hr class="hr-vertical position-absolute start-0 top-0 ml-n4 d-sm-block d-none">
-                              <div class="d-flex align-items-center h-100"><a class="btn btn-sm btn-dark w-100" href="nft-single-auction-live.html">Start bid</a></div>
+                              <div class="d-flex align-items-center h-100"><a class="btn btn-sm btn-dark w-100" href="{{$item->button_url}}">Start bid</a></div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <!-- Carousel item-->
-                  <div class="px-2"><img class="rounded-3" src="img/nft/home/02.jpg" alt="Product">
-                    <div class="position-relative">
-                      <div class="position-absolute start-0 bottom-0 w-100 p-md-5 p-sm-4 p-3">
-                        <div class="pt-sm-0 pt-2 px-sm-4 px-2 bg-white rounded shadow">
-                          <div class="row gx-5">
-                            <div class="col-sm-4 col-6 position-relative py-sm-3 py-2">
-                              <h6 class="mb-1 fs-sm fw-normal text-muted">Current bid:</h6><span class="h6 mb-0">0.8 ETH</span>
-                            </div>
-                            <div class="col-sm-4 col-6 position-relative py-sm-3 py-2">
-                              <hr class="hr-vertical position-absolute start-0 top-0 ml-n4">
-                              <h6 class="mb-1 fs-sm fw-normal text-muted">Ends in:</h6><span class="h6 mb-0">4 hours</span>
-                            </div>
-                            <div class="col-sm-4 position-relative py-sm-3 py-2">
-                              <hr class="hr-vertical position-absolute start-0 top-0 ml-n4 d-sm-block d-none">
-                              <div class="d-flex align-items-center h-100"><a class="btn btn-sm btn-dark w-100" href="nft-single-auction-live.html">Start bid</a></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Carousel item-->
-                  <div class="px-2"><img class="rounded-3" src="img/nft/home/03.jpg" alt="Product">
-                    <div class="position-relative">
-                      <div class="position-absolute start-0 bottom-0 w-100 p-md-5 p-sm-4 p-3">
-                        <div class="pt-sm-0 pt-2 px-sm-4 px-2 bg-white rounded shadow">
-                          <div class="row gx-5">
-                            <div class="col-sm-4 col-6 position-relative py-sm-3 py-2">
-                              <h6 class="mb-1 fs-sm fw-normal text-muted">Current bid:</h6><span class="h6 mb-0">1.2 ETH</span>
-                            </div>
-                            <div class="col-sm-4 col-6 position-relative py-sm-3 py-2">
-                              <hr class="hr-vertical position-absolute start-0 top-0 ml-n4">
-                              <h6 class="mb-1 fs-sm fw-normal text-muted">Ends in:</h6><span class="h6 mb-0">10 hours</span>
-                            </div>
-                            <div class="col-sm-4 position-relative py-sm-3 py-2">
-                              <hr class="hr-vertical position-absolute start-0 top-0 ml-n4 d-sm-block d-none">
-                              <div class="d-flex align-items-center h-100"><a class="btn btn-sm btn-dark w-100" href="nft-single-auction-live.html">Start bid</a></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  @endforeach
+                  
+
                 </div>
               </div>
               <div class="d-lg-none d-flex flex-sm-row flex-column justify-content-lg-start justify-content-center"><a class="btn btn-lg btn-accent me-sm-3 mb-2" href="nft-catalog-v1.html">Explore marketplace</a><a class="btn btn-lg btn-outline-dark mb-2" href="nft-create-item.html">Create your NFT</a></div>
@@ -176,7 +187,7 @@
         <!-- Product carousel-->
         <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
           <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;nav&quot;: false, &quot;gutter&quot;: 30}}}">
-            
+
             @foreach ($categories as $category)
               <div class="col py-3">
                 <article class="card h-100 border-0 shadow">
@@ -200,10 +211,10 @@
                 </article>
               </div>
             @endforeach
-        
+
           </div>
         </div>
-        
+
       </section>
 
       <section class="mb-4 py-5 bg-secondary">
@@ -215,17 +226,6 @@
                         <span class="dropdown-toggle-label">ابرز</span>
                     </a>
                     <input type="hidden" name="trending-category">
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">All categories</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Premium</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Art</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Photography</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Music</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Gaming</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Sports</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Collections</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span class="dropdown-item-label">Utility</span></a></li>
-                    </ul>
                 </div>
             </div>
     
@@ -255,6 +255,13 @@
                                         <i class="ci-heart"></i>
                                     </button>
                                 </div>
+                                <a href="#signinnn-modal" data-bs-toggle="modal"
+                                data-product-name="{{ $product->product_name }}"
+                                data-product-img="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
+                                data-product-salary="{{ $product->product_salary }}"
+                                data-description="{{ $product->description }}"
+                                data-duration="{{ $product->Duration_of_righteousness }}"
+                                data-bs-target="#signinnn-modal">
                                 <div class="card-body">
                                     <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="#">{{ $product->product_name }}</a></h3>
                                     <span class="fs-sm text-muted">Current bid:</span>
@@ -292,7 +299,7 @@
                                 <div class="mt-3">
                                   <a href="{{ route('contacts.index') }}" class="btn btn-outline-primary">طلب الخدمه عبر الايميل</a>
                                   <a a href="https://api.whatsapp.com/send?phone=+201283370658&text=مرحبا"  class="btn btn-outline-success">طلب الخدمه عبر الواتساب</a>
-                                  
+
                                 </div>
                             </div>
                         </div>

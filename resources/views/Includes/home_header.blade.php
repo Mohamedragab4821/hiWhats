@@ -84,6 +84,7 @@
                                 @if(Auth::user()->access=='admin')
                                 <li><a class="dropdown-item" href="{{route('messages.index')}}">Messages</a></li>
                                 <li><a class="dropdown-item" href="{{route('settings.index')}}">Website Settings</a></li>
+                                <li><a class="dropdown-item" href="{{route('ads.index')}}">Ads Settings</a></li>
                                 <li><a class="dropdown-item" href="{{route('productMangement')}}">Product Mangement</a></li>
                                 <li><a class="dropdown-item" href="{{route('categoryMangement')}}">Category Mangement</a></li>
                                 @endif

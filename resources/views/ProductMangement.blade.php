@@ -97,12 +97,6 @@
                                   <div class="invalid-feedback">Please provide a valid product name.</div>
                               </div>
 
-                              <!-- Category ID -->
-                              {{-- <div class="mb-3">
-                                  <label class="form-label" for="category_id">Category ID</label>
-                                  <input class="form-control" type="number" id="category_id" name="category_id" placeholder="Enter category ID" required>
-                                  <div class="invalid-feedback">Please provide a valid category ID.</div>
-                              </div> --}}
 
                               <!-- Category Name -->
                               <div class="mb-3">
