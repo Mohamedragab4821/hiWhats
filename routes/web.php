@@ -20,6 +20,7 @@ Route::get('/userManagement', [DashboardController::class,'indexUserManagement']
 Route::get('/logout', function () {Auth::logout();return redirect('/');})->name('logout');
 Route::post('/avatar/update', [DashboardController::class, 'updateAvatar'])->name('avatar.update');
 Route::post('/profile/update', [DashboardController::class, 'updateProfile'])->name('profile.update');
+Route::put('/profile/updateUser/{id}', [DashboardController::class, 'updateUser'])->name('updateUser');
 Route::delete('/avatar/delete', [DashboardController::class, 'deleteAvatar'])->name('deleteAvatar');
 Route::delete('/users/{user}', [DashboardController::class, 'destroy'])->name('users.destroy');
 

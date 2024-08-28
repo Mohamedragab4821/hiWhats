@@ -53,6 +53,17 @@
     height: 200px; /* Ensure the image fills the container */
     object-fit: cover; /* Cover the container, maintaining aspect ratio */
   }
+
+  .small-alert {
+        font-size: 0.875rem; /* Smaller font size */
+        padding: 0.5rem 1rem; /* Smaller padding */
+    }
+
+    /* Optional: Fade-out animation */
+    .fade-out {
+        transition: opacity 0.5s ease-in-out;
+        opacity: 0;
+    }
     </style>
 
     <!-- Google Tag Manager-->
@@ -79,8 +90,39 @@
 
       @include('Includes.home_header')
 
+      @if (session('success'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+                showConfirmButton: false,
+                timer: 3000 // 3 seconds
+            });
+        });
+    </script>
+@endif
 
+<!-- Check if there are any errors -->
+@if ($errors->any())
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let errorMessage = '';
+            @foreach ($errors->all() as $error)
+                errorMessage += '{{ $error }}\n';
+            @endforeach
 
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: errorMessage,
+                showConfirmButton: false,
+                timer: 3000 // 3 seconds
+            });
+        });
+    </script>
+@endif
       <!-- Hero-->
       <section class="mb-lg-2 bg-faded-accent bg-size-cover" style="padding-top: 80px; background-image: url(img/nft/home/hero-bg.png);">
         <div class="container py-4">
@@ -477,9 +519,28 @@
     });
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(function () {
+            let alert = document.querySelectorAll('.alert-dismissible');
+            alert.forEach(function (el) {
+                el.classList.add('fade-out');
+            });
+        }, 3000); // 3 seconds
+
+        // Completely remove the alert after the fade-out animation
+        setTimeout(function () {
+            let alert = document.querySelectorAll('.alert-dismissible');
+            alert.forEach(function (el) {
+                el.style.display = 'none';
+            });
+        }, 3500); // Wait 0.5 seconds more for the fade-out to complete
+    });
+    
+    
       </script>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
   </body>

@@ -95,7 +95,7 @@ class ProductController extends Controller
 {
     $validatedData = $request->validate([
         'product_name' => 'required|string|max:255',
-        'category_name' => 'required|string|max:255', // We'll use the category name to find the category ID
+        'category_id' => 'required|exists:categories,id', // Validate that the category ID exists in the categories table
         'product_salary' => 'required|numeric',
         'description' => 'required|string',
         'Duration_of_righteousness' => 'required|string|max:255',
@@ -107,18 +107,18 @@ class ProductController extends Controller
         $imagePath = $request->file('Product_img')->store('product_images', 'public');
     }
 
-    // Find the category by name and retrieve its ID
-    $category = Category::where('category_name', $validatedData['category_name'])->first();
+    // Find the category by ID
+    $category = Category::find($validatedData['category_id']);
 
     if (!$category) {
         // Handle the case where the category is not found
-        return redirect()->back()->withErrors(['category_name' => 'Category not found.']);
+        return redirect()->back()->withErrors(['category_id' => 'Category not found.']);
     }
 
     // Create a new product record in the database
     $product = new Product();
     $product->product_name = $validatedData['product_name'];
-    $product->category_id = $category->category_id; // Store the category ID
+    $product->category_id = $category->id; // Store the category ID
     $product->category_name = $category->category_name; // Optionally, you can store the category name too
     $product->product_salary = $validatedData['product_salary'];
     $product->description = $validatedData['description'];

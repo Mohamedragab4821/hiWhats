@@ -23,6 +23,46 @@
     <link rel="stylesheet" media="screen" href="{{ asset('vendor/tiny-slider/dist/tiny-slider.css') }}"/>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="{{ asset('css/theme.min.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <style>
+      .icon-button {
+          border: none;
+          background: none;
+          color: #dc3545; /* Red color for the delete button */
+          cursor: pointer;
+          font-size: 24px;
+          padding: 0;
+      }
+
+      .icon-button:hover {
+        color: #c82333;
+      }
+
+      .icon-container {
+          display: flex;
+          gap: 10px; /* Adjust the space between icons as needed */
+      }
+
+      .btn-small {
+          font-size: 18px; /* Smaller font size for the delete button */
+          padding: 0;
+          border: none;
+          background: none;
+          color: #dc3545; /* Red color for the delete button */
+      }
+
+      .btn-small:hover {
+          color: #c82333;
+      }
+
+      .avatar {
+          width: 50px; /* Adjust size as needed */
+          height: 50px;
+          border-radius: 50%;
+          margin-right: 10px;
+      }
+  </style>
 
     <!-- Google Tag Manager-->
     <script>
@@ -54,7 +94,31 @@
           <div class="row">
             <!-- Sidebar-->
             @include('Includes.leftSideMenue')
-
+            @if (session('success'))
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: '{{ session('success') }}',
+                        showConfirmButton: false,
+                        timer: 3000 // 3 seconds
+                    });
+                });
+            </script>
+        @elseif (session('error'))
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: '{{ session('error') }}',
+                        showConfirmButton: false,
+                        timer: 3000 // 3 seconds
+                    });
+                });
+            </script>
+        @endif
             <!-- Content-->
             <section class="col-lg-9 pt-lg-4 pb-4 mb-3">
               <div class="container-xl">
@@ -80,50 +144,50 @@
                                   </tr>
                               </thead>
                               <tbody>
-                                  @foreach($users as $user)
-                                      <tr>
-                                          <td>{{ $user->id }}</td>
-                                          <td>
-                                              @if($user->image)
-                                              <div class="d-flex align-items-center">
-                                                  <a href="#">
-                                                      <img src="{{ asset('storage/' . $user->image) }}" class="avatar" alt="Avatar">
-                                                  </a>
-                                                  <form action="{{ route('deleteAvatar') }}" method="POST">
+                                @foreach($users as $user)
+                                    <tr>
+                                        <td>{{ $user->id }}</td>
+                                        <td>
+                                            @if($user->image)
+                                            <div class="d-flex align-items-center">
+                                                <a href="#">
+                                                    <img src="{{ asset('storage/' . $user->image) }}" class="avatar" alt="Avatar">
+                                                </a>
+                                                <form action="{{ route('deleteAvatar') }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    
                                                     <input type="hidden" name="user_id" value="{{ $user->id }}">
-                                                    
-                                                    <button type="submit" class="btn btn-danger">Delete Avatar</button>
-                                                </form>                                                
-                                              </div>
-                                              @else
-                                              <span>No Image</span>
-                                              @endif
-                                          </td>
-                                          <td>{{ $user->user_name }}</td>
-                                          <td>{{ $user->email }}</td>
-                                          <td>{{ $user->phone }}</td>
-                                          <td>{{ $user->created_at->format('d/m/Y') }}</td>
-                                          <td class="action-buttons">
-                                              <!-- Settings Button -->
-                                              <a href="{{ route('editUser', ['id' => $user->id]) }}" class="btn-link settings" title="Settings" data-toggle="tooltip">
-                                                  <i class="material-icons">&#xE8B8;</i>
-                                              </a>
-                                              
-                                              <!-- Delete Button -->
-                                              <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;" class="delete-form">
-                                                  @csrf
-                                                  @method('DELETE')
-                                                  <button type="submit" class="btn-link" title="Delete" data-toggle="tooltip">
-                                                      <i class="material-icons">&#xE5C9;</i>
-                                                  </button>
-                                              </form>
-                                          </td>
-                                      </tr>
-                                  @endforeach
-                              </tbody>
+                                                    <button type="submit" class="btn-small" title="Delete Image">
+                                                        <i class="material-icons">delete</i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                            @else
+                                            <span>No Image</span>
+                                            @endif
+                                        </td>
+                                        <td>{{ $user->user_name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->phone }}</td>
+                                        <td>{{ $user->created_at->format('d/m/Y') }}</td>
+                                        <td class="action-buttons icon-container">
+                                            <!-- Settings Button -->
+                                            <a href="{{ route('editUser', ['id' => $user->id]) }}" class="icon-button" title="Settings" data-toggle="tooltip">
+                                                <i class="material-icons">settings</i>
+                                            </a>
+                                            
+                                            <!-- Delete Button -->
+                                            <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;" class="delete-form">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="icon-button" title="Delete" data-toggle="tooltip">
+                                                    <i class="material-icons">delete</i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                           </table>
                           
                           <!-- Pagination would be here if needed -->

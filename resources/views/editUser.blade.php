@@ -113,148 +113,85 @@
       </div>
     </div>
     <main class="page-wrapper">
-      <!-- Navbar for NFT Marketplace demo-->
-      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
-      {{-- <header class="navbar d-block navbar-sticky navbar-expand-lg navbar-light bg-light">
-        <div class="container"><a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="index.html"><img src="img/logo-dark.png" width="142" alt="Cartzilla"></a><a class="navbar-brand d-sm-none me-2 order-lg-1" href="index.html"><img src="img/logo-icon.png" width="74" alt="Cartzilla"></a>
-          <div class="navbar-toolbar d-flex align-items-center order-lg-3">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool d-none d-lg-flex" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#searchBox" role="button" aria-expanded="false" aria-controls="searchBox"><span class="navbar-tool-tooltip">Search</span>
-              <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-search"></i></div></a>
-            <div class="navbar-tool dropdown ms-lg-3 ms-2"><a class="navbar-tool-icon-box d-inline-block w-auto h-auto dropdown-toggle mt-n1" href="nft-account-settings.html"><img src="img/nft/vendor/avatar-sm.png" width="36" alt="user"></a>
-              <div class="dropdown-menu dropdown-menu-end">
-                <div style="min-width: 14rem;">
-                  <h6 class="dropdown-header">@foxnet_creator</h6><a class="dropdown-item d-flex align-items-center" href="nft-account-settings.html"><i class="ci-settings opacity-60 me-2"></i>Profile Settings</a><a class="dropdown-item d-flex align-items-center" href="nft-account-my-items.html"><i class="ci-image opacity-60 me-2"></i>My Items<span class="fs-xs text-muted ms-auto">5</span></a><a class="dropdown-item d-flex align-items-center" href="nft-account-my-collections.html"><i class="ci-view-list opacity-60 me-2"></i>My Collections<span class="fs-xs text-muted ms-auto">2</span></a><a class="dropdown-item d-flex align-items-center" href="nft-account-favorites.html"><i class="ci-heart opacity-60 me-2"></i>Favorites<span class="fs-xs text-muted ms-auto">3</span></a><a class="dropdown-item d-flex align-items-center" href="nft-account-notifications.html"><i class="ci-bell opacity-60 me-2"></i>Notifications</a>
-                </div>
-              </div>
-            </div><a class="btn btn-sm btn-accent rounded-1 ms-lg-4 ms-3" href="nft-create-item.html">Create</a>
-          </div>
-          <div class="collapse navbar-collapse me-auto order-lg-2" id="navbarCollapse">
-            <!-- Search (mobile)-->
-            <div class="d-lg-none py-3">
-              <div class="input-group"><i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-                <input class="form-control rounded-start" type="text" placeholder="What do you need?">
-              </div>
-            </div>
-            <!-- Primary menu-->
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown"><a class="nav-link" href="home-nft.html">Home</a></li>
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Catalog</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="nft-catalog-v1.html">Catalog v.1</a></li>
-                  <li><a class="dropdown-item" href="nft-catalog-v2.html">Catalog v.2</a></li>
-                  <li><a class="dropdown-item" href="nft-single-auction-live.html">Single Item - Auction Live</a></li>
-                  <li><a class="dropdown-item" href="nft-single-auction-ended.html">Single Item - Auction Ended</a></li>
-                  <li><a class="dropdown-item" href="nft-single-buy.html">Single Item - Buy Now</a></li>
-                  <li><a class="dropdown-item" href="nft-vendor.html">Vendor Page</a></li>
-                  <li><a class="dropdown-item" href="nft-connect-wallet.html">Connect Wallet</a></li>
-                  <li><a class="dropdown-item" href="nft-create-item.html">Create New Item</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown active"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Account</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="nft-account-settings.html">Profile Settings</a></li>
-                  <li><a class="dropdown-item" href="nft-account-my-items.html">My Items</a></li>
-                  <li><a class="dropdown-item" href="nft-account-my-collections.html">My Collections</a></li>
-                  <li><a class="dropdown-item" href="nft-account-favorites.html">Favorites</a></li>
-                  <li><a class="dropdown-item" href="nft-account-notifications.html">Notifications</a></li>
-                  <li><a class="dropdown-item" href="nft-account-notifications.html">User Management</a></li>
-                </ul>
-              </li>
-              <li class="nav-item"><a class="nav-link" href="index.html">Back to main demo</a></li>
-            </ul>
-          </div>
-        </div>
-        <!-- Search collapse-->
-        <div class="search-box collapse" id="searchBox">
-          <div class="container py-2">
-            <div class="input-group"><i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-              <input class="form-control rounded-start" type="text" placeholder="What do you need?">
-            </div>
-          </div>
-        </div>
-      </header> --}}
 
       @include('Includes.account_header')
 
-      <div class="page-title-overlap bg-accent pt-4">
-        <div class="container d-flex flex-wrap flex-sm-nowrap justify-content-center justify-content-sm-between align-items-center mb-2 pt-2">
-          <div class="d-flex align-items-center">
-            <div class="img-thumbnail rounded-circle position-relative flex-shrink-0" style="width: 6.375rem;"><img class="rounded-circle" src="img/nft/vendor/avatar.png" alt="@foxnet_creator"></div>
-            <div class="ps-3">
-              <h3 class="h5 mb-2 text-light">@foxnet_creator</h3><span class="d-block text-light fs-sm opacity-60">Joined July 2021</span>
-            </div>
-          </div>
-          <div class="my-sm-0 my-3 text-sm-end pt-1">
-            <div class="d-flex align-items-center text-nowrap fs-sm">
-              <div class="mb-2 me-sm-3 me-2 text-muted"><span class='fw-medium text-light'>766</span> <span class='text-white opacity-70'>followers</span></div>
-              <div class="mb-2 ps-sm-3 ps-2 border-start border-light text-muted"><span class='fw-medium text-light'>2K</span> <span class='text-white opacity-70'>following</span></div>
-            </div><a class="text-light" href="#">0x1dDB2C08s97...9Ecd<i class="ci-copy ms-2 fs-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy"></i></a>
-          </div>
-        </div>
-      </div>
+      @include('Includes.navBar')
+
       <div class="container mb-5 pb-3">
         <div class="bg-light shadow-lg rounded-3 overflow-hidden">
           <div class="row">
             <!-- Sidebar-->
-            <aside class="col-lg-3 pe-xl-5">
-              <!-- Account menu toggler (hidden on screens larger 992px)-->
-              <div class="d-block d-lg-none p-4"><a class="btn btn-outline-accent d-block" href="#account-menu" data-bs-toggle="collapse"><i class="ci-menu me-2"></i>Account menu</a></div>
-              <!-- Actual menu-->
-              <div class="h-100 border-end mb-2">
-                <div class="d-lg-block collapse" id="account-menu">
-                  <ul class="list-unstyled mb-0">
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="nft-account-settings.html"><i class="ci-settings opacity-60 me-2"></i>Profile Settings</a></li>
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="nft-account-my-items.html"><i class="ci-image opacity-60 me-2"></i>My Items<span class="fs-sm text-muted ms-auto">5</span></a></li>
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="nft-account-my-collections.html"><i class="ci-view-list opacity-60 me-2"></i>My Collections<span class="fs-sm text-muted ms-auto">2</span></a></li>
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="nft-account-favorites.html"><i class="ci-heart opacity-60 me-2"></i>Favorites<span class="fs-sm text-muted ms-auto">3</span></a></li>
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="nft-account-notifications.html"><i class="ci-bell opacity-60 me-2"></i>Notifications</a></li>
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('userManagement')}}"><i class="ci-bell opacity-60 me-2"></i>User Management</a></li>
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="nft-account-notifications.html"><i class="ci-bell opacity-60 me-2"></i>Messages</a></li>
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('settings.index')}}"><i class="ci-sign-out opacity-60 me-2"></i>Settings</a></li>
+            @include('Includes.leftSideMenue')
 
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-signin.html"><i class="ci-sign-out opacity-60 me-2"></i>Sign out</a></li>
-                  </ul>
-                </div>
-              </div>
-            </aside>
             <!-- Content-->
             <section class="col-lg-9 pt-lg-4 pb-4 mb-3">
-                <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
-                    <h1 class="h3 mb-4 pt-2 text-center text-sm-start">Profile Settings</h1>
-                    <div class="bg-secondary rounded-3 p-4 mb-4 text-center text-sm-start">
-                        <div class="d-flex flex-sm-row flex-column align-items-sm-start align-items-center">
-                            <!-- Display the user's profile image -->
-                            <img class="rounded mb-sm-0 mb-3" src="{{ $user->image ? asset('storage/' . $user->image) : asset('img/nft/vendor/avatar-square.jpg') }}" width="90" alt="Image">
-                        </div>
-                    </div>
-                    <!-- Form for updating user data, including avatar -->
-                    <form method="POST" action="{{ route('profile.update', $user->id) }}" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
-                        <div class="row gy-3 mb-4 pb-md-3 mb-2">
-                            <div class="col-sm-6">
-                                <label class="form-label" for="profile-name">Full name</label>
-                                <input class="form-control" id="profile-name" type="text" value="{{ $user->user_name }}" name="user_name">
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="form-label" for="profile-phone">Phone</label>
-                                <input class="form-control" id="profile-phone" type="text" value="{{ $user->phone }}" name="phone">
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="form-label" for="profile-email">Email</label>
-                                <input class="form-control" id="profile-email" type="email" value="{{ $user->email }}" name="email">
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="form-label" for="profile-avatar">Avatar</label>
-                                <input class="form-control" id="profile-avatar" type="file" name="image">
-                            </div>
-                        </div>
-                        <div class="d-flex flex-sm-row flex-column">
-                            <button class="btn btn-accent" type="submit">Update profile</button>
-                        </div>
-                    </form>
-                </div>
-            </section>
+              <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
+                  <h1 class="h3 mb-4 pt-2 text-center text-sm-start">Profile Settings</h1>
+          
+                  <!-- Success and error messages using SweetAlert2 -->
+                  @if (session('success'))
+                      <script>
+                          document.addEventListener('DOMContentLoaded', function () {
+                              Swal.fire({
+                                  icon: 'success',
+                                  title: 'Success',
+                                  text: '{{ session('success') }}',
+                                  showConfirmButton: false,
+                                  timer: 3000 // 3 seconds
+                              });
+                          });
+                      </script>
+                  @elseif (session('error'))
+                      <script>
+                          document.addEventListener('DOMContentLoaded', function () {
+                              Swal.fire({
+                                  icon: 'error',
+                                  title: 'Error',
+                                  text: '{{ session('error') }}',
+                                  showConfirmButton: false,
+                                  timer: 3000 // 3 seconds
+                              });
+                          });
+                      </script>
+                  @endif
+          
+                  <div class="bg-secondary rounded-3 p-4 mb-4 text-center text-sm-start">
+                      <div class="d-flex flex-sm-row flex-column align-items-sm-start align-items-center">
+                          <!-- Display the user's profile image -->
+                          <img class="rounded mb-sm-0 mb-3" src="{{ $user->image ? asset('storage/' . $user->image) : asset('img/nft/vendor/avatar-square.jpg') }}" width="90" alt="Image">
+                      </div>
+                  </div>
+                  <!-- Form for updating user data, including avatar -->
+                  <form method="POST" action="{{ route('updateUser',['id'=>$user->id] ) }}" enctype="multipart/form-data">
+                      @csrf
+                      @method('PUT')
+                      <div class="row gy-3 mb-4 pb-md-3 mb-2">
+                          <div class="col-sm-6">
+                              <label class="form-label" for="profile-name">Full name</label>
+                              <input class="form-control" id="profile-name" type="text" value="{{ $user->user_name }}" name="user_name">
+                          </div>
+                          <div class="col-sm-6">
+                              <label class="form-label" for="profile-phone">Phone</label>
+                              <input class="form-control" id="profile-phone" type="text" value="{{ $user->phone }}" name="phone">
+                          </div>
+                          <div class="col-sm-6">
+                              <label class="form-label" for="profile-email">Email</label>
+                              <input class="form-control" id="profile-email" type="email" value="{{ $user->email }}" name="email">
+                          </div>
+                          <div class="col-sm-6">
+                              <label class="form-label" for="profile-avatar">Avatar</label>
+                              <input class="form-control" id="profile-avatar" type="file" name="image">
+                          </div>
+                      </div>
+                      <div class="d-flex flex-sm-row flex-column">
+                          <button class="btn btn-accent" type="submit">Update profile</button>
+                      </div>
+                  </form>
+              </div>
+          </section>
+          
+          
             
           
           
@@ -348,8 +285,8 @@
     <script src="{{ asset('vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js') }}"></script>
     <!-- Main theme script-->
     <script src="{{ asset('js/theme.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   </body>
 
-<!-- Mirrored from cartzilla.createx.studio/nft-account-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Aug 2022 18:19:25 GMT -->
 </html>

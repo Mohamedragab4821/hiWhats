@@ -44,7 +44,7 @@ public function logout(Request $request)
     // Redirect to the login page or any other page
     return redirect()->route('home');
 }
-    public function login(Request $request)
+public function login(Request $request)
 {
     $validatedData = $request->validate([
         'email' => 'required|string|email|max:255',
@@ -56,12 +56,14 @@ public function logout(Request $request)
         'password' => $validatedData['password']
     ])) {
         $user = Auth::user();
-        // احصل على المستخدم بعد تسجيل الدخول بنجاح
-        return redirect()->route('home', ['user' => $user])->with('success', 'Login successful');
+        // After successful login, redirect to home with a success message
+        return redirect()->route('home')->with('success', 'Login successful');
     } else {
+        // Redirect back with an error message if login fails
         return redirect()->back()->withErrors(['email' => 'Invalid credentials'])->withInput();
     }
 }
+
 
 
 public function Registeration(Request $request)

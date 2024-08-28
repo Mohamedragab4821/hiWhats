@@ -192,9 +192,53 @@ class DashboardController extends Controller
 }
 
 
+
+public function updateUser(Request $request, $id)
+{
+    // Validate the request
+    $request->validate([
+        'user_name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255',
+        'phone' => 'required|string|max:255',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
+
+    // Find the user by ID
+    $user = Users::find($id);
+
+    if (!$user) {
+        return redirect()->back()->withErrors('User not found.');
+    }
+
+    // Update user information
+    $user->user_name = $request->input('user_name');
+    $user->email = $request->input('email');
+    $user->phone = $request->input('phone');
+
+    // Handle the image upload if provided
+    if ($request->hasFile('image')) {
+        // Delete old image if exists
+        if ($user->image) {
+            Storage::disk('public')->delete($user->image);
+        }
+
+        // Store new image
+        $imagePath = $request->file('image')->store('profile_images', 'public');
+        $user->image = $imagePath;
+    }
+
+    // Save the updated user
+    $user->save();
+
+    return redirect()->back()->with('success', 'Profile updated successfully.');
+}
+
+
+
+
 public function deleteAvatar(Request $request)
 {
-    $user = User::findOrFail($request->input('user_id'));
+    $user = Users::findOrFail($request->input('user_id'));
 
     // Delete the avatar image if it exists
     if ($user->image) {

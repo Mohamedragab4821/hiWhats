@@ -177,19 +177,19 @@
                       <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
                           <!-- Edit Button -->
                           <button 
-    class="btn btn-outline-primary btn-sm" 
-    type="button" 
-    data-bs-toggle="modal" 
-    data-bs-target="#product-modal" 
-    data-product-id="{{ $product->product_id }}" 
-    data-product-name="{{ $product->product_name }}" 
-    data-category-name="{{ $product->category_name }}" 
-    data-product-salary="{{ $product->product_salary }}" 
-    data-description="{{ $product->description }}" 
-    data-duration="{{ $product->Duration_of_righteousness }}" 
-    data-product-img="{{ $product->Product_img }}">
-    <i class="ci-edit me-2"></i>Edit
-</button>
+                                class="btn btn-outline-primary btn-sm" 
+                                type="button" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#product-modal" 
+                                data-product-id="{{ $product->product_id }}" 
+                                data-product-name="{{ $product->product_name }}" 
+                                data-category-name="{{ $product->category_name }}" 
+                                data-product-salary="{{ $product->product_salary }}" 
+                                data-description="{{ $product->description }}" 
+                                data-duration="{{ $product->Duration_of_righteousness }}" 
+                                data-product-img="{{ $product->Product_img }}">
+                                <i class="ci-edit me-2"></i>Edit
+                            </button>
 
                       </div>
                       <script>

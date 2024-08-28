@@ -115,42 +115,64 @@
 
           <div class="col-lg-12 px-8 px-xl-10 py-10 border-top">
             <h2 class="h4 mb-4">Drop us a line</h2>
+        
             @if (session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: '{{ session('success') }}',
+                            showConfirmButton: false,
+                            timer: 3000 // 3 seconds
+                        });
+                    });
+                </script>
             @elseif (session('error'))
-                <div class="alert alert-danger">{{ session('error') }}</div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: '{{ session('error') }}',
+                            showConfirmButton: false,
+                            timer: 3000 // 3 seconds
+                        });
+                    });
+                </script>
             @endif
-            <form class="needs-validation mb-3" novalidate action="{{route('contacts.store')}}" method="POST">
-              @csrf
-              <div class="row g-3">
-                <div class="col-sm-6">
-                  <label class="form-label" for="cf-name">الاسم:&nbsp;<span class="text-danger">*</span></label>
-                  <input class="form-control" type="text" id="cf-name" placeholder="John Doe" required name="name">
-                  <div class="invalid-feedback">Please fill in you name!</div>
+        
+            <form class="needs-validation mb-3" novalidate action="{{ route('contacts.store') }}" method="POST">
+                @csrf
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <label class="form-label" for="cf-name">الاسم:&nbsp;<span class="text-danger">*</span></label>
+                        <input class="form-control" type="text" id="cf-name" placeholder="John Doe" required name="name">
+                        <div class="invalid-feedback">Please fill in your name!</div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label" for="cf-email">الايميل:&nbsp;<span class="text-danger">*</span></label>
+                        <input class="form-control" type="email" id="cf-email" placeholder="johndoe@email.com" required name="email">
+                        <div class="invalid-feedback">Please provide a valid email address!</div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label" for="cf-phone">الهاتف:&nbsp;<span class="text-danger">*</span></label>
+                        <input class="form-control" type="text" id="cf-phone" placeholder="+1 (212) 00 000 000" required name="phone">
+                        <div class="invalid-feedback">Please provide a valid phone number!</div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label" for="cf-subject">الخدمه:</label>
+                        <input class="form-control" type="text" id="cf-subject" name="product">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label" for="cf-message">ارساله:&nbsp;<span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="cf-message" rows="6" placeholder="Please describe in detail your request" required name="message"></textarea>
+                        <div class="invalid-feedback">Please write a message!</div>
+                        <button class="btn btn-primary mt-4" type="submit">Send message</button>
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                  <label class="form-label" for="cf-email">الايميل:&nbsp;<span class="text-danger">*</span></label>
-                  <input class="form-control" type="email" id="cf-email" placeholder="johndoe@email.com" required name="email">
-                  <div class="invalid-feedback">Please provide valid email address!</div>
-                </div>
-                <div class="col-sm-6">
-                  <label class="form-label" for="cf-phone">الهاتف:&nbsp;<span class="text-danger">*</span></label>
-                  <input class="form-control" type="text" id="cf-phone" placeholder="+1 (212) 00 000 000" required name="phone">
-                  <div class="invalid-feedback">Please provide valid phone number!</div>
-                </div>
-                <div class="col-sm-6">
-                  <label class="form-label" for="cf-subject">الخدمه:</label>
-                  <input class="form-control" type="text" id="cf-subject" name="product">
-                </div>
-                <div class="col-12">
-                  <label class="form-label" for="cf-message">ارساله:&nbsp;<span class="text-danger">*</span></label>
-                  <textarea class="form-control" id="cf-message" rows="6" placeholder="Please describe in detail your request" required name="message"></textarea>
-                  <div class="invalid-feedback">Please write a message!</div>
-                  <button class="btn btn-primary mt-4" type="submit">Send message</button>
-                </div>
-              </div>
             </form>
-          </div>
+        </div>
         </div>
       </div>
     </main>
@@ -169,6 +191,7 @@
     <script src="{{ asset('vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js') }}"></script>
     <!-- Main theme script-->
     <script src="{{ asset('js/theme.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   </body>
 
