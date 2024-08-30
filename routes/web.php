@@ -10,6 +10,7 @@ use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdsController;
+use App\Http\Controllers\PagesController;
 
 Route::get('/', [AuthController::class, 'home'])->name('home');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -68,5 +69,6 @@ Route::get('/category/search', [CategoryController::class, 'search'])->name('cat
 Route::get('/services/search', [CategoryController::class, 'servicesSearch'])->name('services.search');
 Route::get('/Who_Are_We', [ContactsController::class, 'indexWhoAreWe'])->name('whoAreWe');
 Route::get('/ourVision', [ContactsController::class, 'indexourVision'])->name('ourVision');
+Route::get('/addPage', [PagesController::class, 'index'])->name('page.index');
 
 
