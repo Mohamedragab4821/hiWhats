@@ -15,7 +15,7 @@
             /* align-items: center; */
             padding: 1rem;
             background-color: #f8f9fa; /* Example background color */
-           
+
         }
         .navbar-content {
           width: 80%;
@@ -41,8 +41,8 @@
         <div class="navbar-content">
             <div class="d-flex align-items-center">
                 <div class="img-thumbnail rounded-circle flex-shrink-0">
-                    <img class="rounded-circle" 
-                         src="{{ Auth::user()->image ? asset('storage/' . Auth::user()->image) : asset('img/nft/vendor/avatar.png') }}" 
+                    <img class="rounded-circle"
+                         src="{{ Auth::user()->image ? asset('storage/' . Auth::user()->image) : asset('img/nft/vendor/avatar.png') }}"
                          alt="{{ Auth::user()->user_name }}">
                 </div>
                 <div class="ps-3">

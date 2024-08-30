@@ -78,6 +78,10 @@
               <div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
                 <h6 class="fs-base text-light mb-0">List of items you added to wishlist:</h6><a class="btn btn-primary btn-sm" href="#productt-modal" data-bs-toggle="modal">Add Product</a>
               </div>
+              <form action="{{ route('Product.search') }}" method="GET" class="d-flex align-items-center">
+                <input type="text" name="search" placeholder="Search..." class="form-control me-2">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
               <div class="modal fade" id="productt-modal" tabindex="-1" role="dialog">
                   <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -324,6 +328,28 @@ Array.from(categorySelect.options).forEach(function(option) {
               <!-- Item-->
 
             </section>
+            <hr>
+             <!-- Pagination-->
+             <nav class="d-flex justify-content-between pt-2 mb-4" aria-label="Page navigation">
+                <ul class="pagination">
+                    <li class="page-item {{ $products->onFirstPage() ? 'disabled' : '' }}">
+                        <a class="page-link" href="{{ $products->previousPageUrl() }}"><i class="ci-arrow-left me-2"></i>Prev</a>
+                    </li>
+                </ul>
+                <ul class="pagination">
+                    @for ($i = 1; $i <= $products->lastPage(); $i++)
+                        <li class="page-item {{ $products->currentPage() == $i ? 'active' : '' }}">
+                            <a class="page-link" href="{{ $products->url($i) }}">{{ $i }}</a>
+                        </li>
+                    @endfor
+                </ul>
+                <ul class="pagination">
+                    <li class="page-item {{ $products->hasMorePages() ? '' : 'disabled' }}">
+                        <a class="page-link" href="{{ $products->nextPageUrl() }}">Next<i class="ci-arrow-right ms-2"></i></a>
+                    </li>
+                </ul>
+            </nav>
+
           </div>
         </div>
       </div>

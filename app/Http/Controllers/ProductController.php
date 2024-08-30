@@ -71,8 +71,8 @@ class ProductController extends Controller
 
     public function indexcategoryMangement()
     {
-        $category = Category::all();
-        $categories = Category::all();
+        $category = Category::paginate(5);
+        $categories = Category::paginate(5);
         $settings = Settings::first();
 
         return view('CategoryMangement',['category'=>$category,'settings'=>$settings,'categories'=>$categories]);
@@ -80,7 +80,7 @@ class ProductController extends Controller
 
     public function indexproductMangement()
     {
-        $products = Product::all();
+        $products = Product::paginate(5);
         $settings = Settings::first();
         $category = Category::all();
         // $category1 = Category::all();
@@ -295,6 +295,40 @@ public function updateCategory(Request $request, $category_id)
     $category->save();
 
     return redirect()->route('categoryMangement')->with('success', 'Category updated successfully!');
+}
+
+public function ProductSearch(Request $request)
+{
+    // dd('www');
+    $searchTerm = $request->input('search');
+    $settings = Settings::first();
+    $categories = Category::all();
+    $category1 = Category::all();
+
+    $products = Product::where('product_name', 'like', '%' . $searchTerm . '%')
+        ->orWhere('category_name', 'like', '%' . $searchTerm . '%')
+        ->paginate(5);
+
+    return view('ProductMangement', compact('settings', 'products', 'categories','category1'));
+}
+public function CategorySearch(Request $request)
+{
+    // dd('www');
+    $searchTerm = $request->input('search');
+    $settings = Settings::first();
+    // $categories = Category::all();
+    // $category1 = Category::all();
+
+
+    $categories = Category::where('category_name', 'like', '%' . $searchTerm . '%')
+        // ->orWhere('category_name', 'like', '%' . $searchTerm . '%')
+        ->paginate(5);
+
+    $category = Category::where('category_name', 'like', '%' . $searchTerm . '%')
+        // ->orWhere('category_name', 'like', '%' . $searchTerm . '%')
+        ->paginate(5);
+
+    return view('CategoryMangement', compact('settings', 'categories','category'));
 }
 
 
