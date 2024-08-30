@@ -27,38 +27,53 @@
                     <div class="subscription-status"></div>
                   </form>
                 </div>
-                <div><a class="btn-social bs-light bs-twitter me-2 mb-2" href="#"><i class="ci-twitter"></i></a><a class="btn-social bs-light bs-facebook me-2 mb-2" href="#"><i class="ci-facebook"></i></a><a class="btn-social bs-light bs-instagram me-2 mb-2" href="#"><i class="ci-instagram"></i></a><a class="btn-social bs-light bs-pinterest me-2 mb-2" href="#"><i class="ci-pinterest"></i></a><a class="btn-social bs-light bs-youtube me-2 mb-2" href="#"><i class="ci-youtube"></i></a></div>
+                <div><a class="btn-social bs-light bs-twitter me-2 mb-2" href="{{ $settings->twitter_url }}"><i class="ci-twitter"></i></a>
+                    <a class="btn-social bs-light bs-facebook me-2 mb-2" href="{{ $settings->facebook_url }}"><i class="ci-facebook"></i></a>
+                    <a class="btn-social bs-light bs-instagram me-2 mb-2" href="{{ $settings->insta_url }}"><i class="ci-instagram"></i></a>
+                    {{-- <a class="btn-social bs-light bs-pinterest me-2 mb-2" href="#"><i class="ci-pinterest"></i></a> --}}
+                    <a class="btn-social bs-light bs-youtube me-2 mb-2" href="{{ $settings->youtube_url }}"><i class="ci-youtube"></i></a></div>
               </div>
               <div class="col-lg-6 offset-lg-1">
                 <div class="d-flex flex-sm-row flex-column justify-content-sm-between mt-n4 mx-lg-n3">
                   <div class="widget widget-links widget-light mt-4 px-lg-3 px-sm-n2">
                     <h3 class="widget-title text-light">Company</h3>
                     <ul class="widget-list">
-                      <li class="widget-list-item"><a class="widget-list-link" href="#">About Us</a></li>
-                      <li class="widget-list-item"><a class="widget-list-link" href="#">How It Works</a></li>
-                      <li class="widget-list-item"><a class="widget-list-link" href="#">Create an NFT With Us</a></li>
-                      <li class="widget-list-item"><a class="widget-list-link" href="#">Support</a></li>
-                      <li class="widget-list-item"><a class="widget-list-link" href="#">Blog</a></li>
-                      <li class="widget-list-item"><a class="widget-list-link" href="#">My Account</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="{{ route('ourVision') }}">About Us</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="{{ route('whoAreWe') }}">How It Works</a></li>
+                      {{-- <li class="widget-list-item"><a class="widget-list-link" href="#">Create an NFT With Us</a></li> --}}
+                      <li class="widget-list-item"><a class="widget-list-link" href="{{ route('contacts.index') }}">Support</a></li>
+                      {{-- <li class="widget-list-item"><a class="widget-list-link" href="#">Blog</a></li> --}}
+                      <li class="widget-list-item">
+                        <a class="widget-list-link"
+                           @if (Auth::check())
+                               href="{{ route('editUser', ['id' => Auth::user()->id]) }}"
+                           @else
+                               href="#signin-modal" data-bs-toggle="modal"
+                           @endif>
+                           My Account
+                        </a>
+                    </li>
+
                     </ul>
                   </div>
                   <div class="widget widget-links widget-light mt-4 px-lg-3 px-sm-n2">
-                    <h3 class="widget-title text-light">Marketplace</h3>
+                    <h3 class="widget-title text-light">Contact With Us</h3>
                     <ul class="widget-list">
-                      <li class="widget-list-item"><a class="widget-list-link" href="#">All NFTs</a></li>
-                      <li class="widget-list-item"><a class="widget-list-link" href="#">New</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="https://api.whatsapp.com/send?phone=+201283370658&text=مرحبا">Whats</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="{{ route('contacts.index') }}">Twiter</a></li>
+                      {{-- <li class="widget-list-item"><a class="widget-list-link" href="#">New</a></li>
                       <li class="widget-list-item"><a class="widget-list-link" href="#">Art</a></li>
                       <li class="widget-list-item"><a class="widget-list-link" href="#">Music</a></li>
                       <li class="widget-list-item"><a class="widget-list-link" href="#">Photography</a></li>
-                      <li class="widget-list-item"><a class="widget-list-link" href="#">Utility</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">Utility</a></li> --}}
                     </ul>
                   </div>
                   <div class="widget widget-links widget-light mt-4 px-lg-3 px-sm-n2">
-                    <h3 class="widget-title text-light">Help</h3>
+                    {{-- <h3 class="widget-title text-light">Marketplace</h3> --}}
                     <ul class="widget-list">
-                      <li class="widget-list-item"><a class="widget-list-link" href="#">Terms and Conditions</a></li>
+                      {{-- <li class="widget-list-item"><a class="widget-list-link" href="#">Terms and Conditions</a></li>
                       <li class="widget-list-item"><a class="widget-list-link" href="#">Privacy Policy</a></li>
-                      <li class="widget-list-item"><a class="widget-list-link" href="#">FAQ</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="#">FAQ</a></li> --}}
                     </ul>
                   </div>
                 </div>
@@ -76,6 +91,6 @@
           </div>
         </div>
       </footer>
-    
+
 </body>
 </html>

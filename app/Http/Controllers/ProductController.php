@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Settings;
+use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -93,15 +94,16 @@ class ProductController extends Controller
 
     public function storeProduct(Request $request)
 {
+
     $validatedData = $request->validate([
         'product_name' => 'required|string|max:255',
-        'category_id' => 'required|exists:categories,id', // Validate that the category ID exists in the categories table
+        'category_id' => 'required|numeric', // Validate that the category ID exists in the categories table
         'product_salary' => 'required|numeric',
         'description' => 'required|string',
         'Duration_of_righteousness' => 'required|string|max:255',
         'Product_img' => 'required|image|mimes:jpg,jpeg,png|max:2048', // Ensure the image is valid
     ]);
-
+    // dd('sss');
     // Handle the image upload
     if ($request->hasFile('Product_img')) {
         $imagePath = $request->file('Product_img')->store('product_images', 'public');
@@ -131,22 +133,24 @@ class ProductController extends Controller
 }
 
 
-    public function deleteProduct($product_id){
-        $product = Product::where('product_id',$product_id);
-        if (!$product) {
-            return response()->json(['message' => 'Product not found'], 404);
-        }
+public function deleteProduct($id)
+{
+    $product = Product::findOrFail($id); // Find the product by ID
+// dd($product->Product_img); // This will stop execution and print the value of Product_img
 
-        // Delete the image file
-        // if ($product->Product_img && Storage::exists('public/' . $product->Product_img)) {
-        //     Storage::delete('public/' . $product->Product_img);
-        // }
-
-        // Delete the product record
-        $product->delete();
-
-        return redirect()->route('productMangement')->with('success', 'Product delete successfully!');
+    // Check if the product has an image and if it exists in the storage
+    if ($product->Product_img && Storage::disk('public')->exists('/' . $product->Product_img)) {
+        // dd('here');
+        Storage::disk('public')->delete('/' . $product->Product_img); // Delete the image
     }
+
+    // Now delete the product
+    $product->delete();
+
+    // Redirect back with success message
+    return redirect()->route('productMangement')->with('success', 'Product and image deleted successfully!');
+}
+
 
 
     public function updateProduct(Request $request, $product_id)
@@ -236,15 +240,23 @@ class ProductController extends Controller
 
 public function destroyCategory($id)
 {
-    // Find the product by ID
-    $Category = Category::findOrFail($id);
+    // Find the category by ID
+    $category = Category::findOrFail($id);
 
-    // Delete the product
-    $Category->delete();
+    // Check if the category has an image and if it exists in the storage
+    if ($category->category_img && Storage::disk('public')->exists('/' . $category->category_img)) {
+        // Delete the image from storage
+        // dd('here');
+        Storage::disk('public')->delete('/' . $category->category_img);
+    }
+
+    // Delete the category
+    $category->delete();
 
     // Redirect back with success message
-    return redirect()->route('categoryMangement')->with('success', 'Category deleted successfully!');
+    return redirect()->route('categoryMangement')->with('success', 'Category and image deleted successfully!');
 }
+
 
 
 public function updateCategory(Request $request, $category_id)

@@ -211,7 +211,7 @@
                     </div>
                   </div>
                   @endforeach
-                  
+
 
                 </div>
               </div>
@@ -270,7 +270,7 @@
                     <input type="hidden" name="trending-category">
                 </div>
             </div>
-    
+
             <!-- Product carousel -->
             <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
                 <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
@@ -319,7 +319,7 @@
             </div>
         </div>
     </section>
-    
+
     <div class="modal fade" id="signinnn-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -340,7 +340,7 @@
                                 <div class="fs-lg text-accent pt-2">Price: <span id="modal-product-salary"></span></div>
                                 <div class="mt-3">
                                   <a href="{{ route('contacts.index') }}" class="btn btn-outline-primary">طلب الخدمه عبر الايميل</a>
-                                  <a a href="https://api.whatsapp.com/send?phone=+201283370658&text=مرحبا"  class="btn btn-outline-success">طلب الخدمه عبر الواتساب</a>
+                                  <a href="https://api.whatsapp.com/send?phone=+201283370658&text=مرحبا"  class="btn btn-outline-success">طلب الخدمه عبر الواتساب</a>
 
                                 </div>
                             </div>
@@ -535,8 +535,8 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }, 3500); // Wait 0.5 seconds more for the fade-out to complete
     });
-    
-    
+
+
       </script>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
