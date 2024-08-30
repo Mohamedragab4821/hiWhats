@@ -15,18 +15,17 @@ class CategoryController extends Controller
     public function index($id)
 {
     $settings = Settings::first();
-    $categories=Category::all();
+    $categories = Category::all();
 
     // If an ID is provided, fetch products belonging to that category
     if ($id) {
         $category = Category::findOrFail($id);
         $products = Product::where('category_id', $id)->get();
-        return view('CategoryServices', compact('settings', 'category', 'products','categories','id'));
+        return view('CategoryServices', compact('settings', 'category', 'products', 'categories', 'id'));
     }
 
-    // If no ID is provided, just return all categories
-    // $categories = Category::all();
-    // return view('CategoryServices', compact('settings', 'categories'));
+    // Handle the case where no ID is provided (optional)
+    return view('CategoryServices', compact('settings', 'categories','id'));
 }
 
 
@@ -153,20 +152,27 @@ class CategoryController extends Controller
             return redirect()->back()->withErrors(['Error deleting category: ' . $e->getMessage()]);
         }
     }
-// Add this method to CategoryController
-public function search(Request $request)
-{
-    $searchTerm = $request->input('search');
-    $settings = Settings::first();
-    $categories = Category::all();
-
-    $products = Product::where('product_name', 'like', '%' . $searchTerm . '%')
-        ->orWhere('category_name', 'like', '%' . $searchTerm . '%')
-        ->get();
-
-    return view('CategoryServices', compact('settings', 'products', 'categories'));
-}
-
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('search');
+        $categoryId = $request->input('category_id');
+        $id=$request->input('category_id');
+        // dd($searchTerm, $categoryId); // This should show the search term and the category ID
+    
+        $settings = Settings::first();
+        $categories = Category::all();
+    
+        $products = Product::where('category_id', $categoryId) // Filter by selected category
+            ->where(function($query) use ($searchTerm) {
+                $query->where('product_name', 'like', '%' . $searchTerm . '%')
+                      ->orWhere('category_name', 'like', '%' . $searchTerm . '%');
+            })
+            ->get();
+    
+        return view('CategoryServices', compact('settings', 'products', 'categories','id'));
+    }
+    
+    
 public function servicesSearch(Request $request)
 {
     $searchTerm = $request->input('search');

@@ -11,6 +11,7 @@ use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdsController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\PasswordController;
 
 Route::get('/', [AuthController::class, 'home'])->name('home');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -21,6 +22,7 @@ Route::get('/userManagement', [DashboardController::class,'indexUserManagement']
 Route::get('/logout', function () {Auth::logout();return redirect('/');})->name('logout');
 Route::post('/avatar/update', [DashboardController::class, 'updateAvatar'])->name('avatar.update');
 Route::post('/profile/update', [DashboardController::class, 'updateProfile'])->name('profile.update');
+Route::put('/profile/updateUser/{id}', [DashboardController::class, 'updateUser'])->name('updateUser');
 Route::delete('/avatar/delete', [DashboardController::class, 'deleteAvatar'])->name('deleteAvatar');
 Route::delete('/users/{user}', [DashboardController::class, 'destroy'])->name('users.destroy');
 
@@ -70,5 +72,14 @@ Route::get('/services/search', [CategoryController::class, 'servicesSearch'])->n
 Route::get('/Who_Are_We', [ContactsController::class, 'indexWhoAreWe'])->name('whoAreWe');
 Route::get('/ourVision', [ContactsController::class, 'indexourVision'])->name('ourVision');
 Route::get('/addPage', [PagesController::class, 'index'])->name('page.index');
+
+
+//forget password
+
+// Password Reset Routes
+Route::get('password/reset', [PasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('password/email', [PasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('password/reset/{token}', [PasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('password/reset', [PasswordController::class, 'reset'])->name('password.update');
 
 

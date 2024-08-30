@@ -50,6 +50,7 @@
       @include('Includes.navBar')
 
       <div class="container mb-5 pb-3">
+
         <div class="bg-light shadow-lg rounded-3 overflow-hidden">
           <div class="row">
             @if ($errors->any())
@@ -101,14 +102,14 @@
                               <!-- Category Name -->
                               <div class="mb-3">
                                 <label class="form-label" for="category_name">Category Name</label>
-                                <select class="form-control" id="category_name" name="category_name" required>
+                                <select class="form-control" id="category_id" name="category_id" required>
                                     <option value="" disabled selected>Select a category</option>
                                     @foreach($category1 as $category)
-                                        <option value="{{ $category->category_name }}">{{ $category->category_name }}</option>
+                                        <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
                                     @endforeach
                                 </select>
-                                
-                                                                
+
+
                                 <div class="invalid-feedback">Please select a valid category name.</div>
                             </div>
                               <!-- Product Salary -->
@@ -176,24 +177,24 @@
                       </form>
                       <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
                           <!-- Edit Button -->
-                          <button 
-    class="btn btn-outline-primary btn-sm" 
-    type="button" 
-    data-bs-toggle="modal" 
-    data-bs-target="#product-modal" 
-    data-product-id="{{ $product->product_id }}" 
-    data-product-name="{{ $product->product_name }}" 
-    data-category-name="{{ $product->category_name }}" 
-    data-product-salary="{{ $product->product_salary }}" 
-    data-description="{{ $product->description }}" 
-    data-duration="{{ $product->Duration_of_righteousness }}" 
-    data-product-img="{{ $product->Product_img }}">
-    <i class="ci-edit me-2"></i>Edit
-</button>
+                          <button
+                                class="btn btn-outline-primary btn-sm"
+                                type="button"
+                                data-bs-toggle="modal"
+                                data-bs-target="#product-modal"
+                                data-product-id="{{ $product->product_id }}"
+                                data-product-name="{{ $product->product_name }}"
+                                data-category-name="{{ $product->category_name }}"
+                                data-product-salary="{{ $product->product_salary }}"
+                                data-description="{{ $product->description }}"
+                                data-duration="{{ $product->Duration_of_righteousness }}"
+                                data-product-img="{{ $product->Product_img }}">
+                                <i class="ci-edit me-2"></i>Edit
+                            </button>
 
                       </div>
                       <script>
-                      
+
                       document.addEventListener('DOMContentLoaded', function () {
     var productModal = document.getElementById('product-modal');
     productModal.addEventListener('show.bs.modal', function (event) {
@@ -234,8 +235,8 @@ Array.from(categorySelect.options).forEach(function(option) {
             imgElement.src = "/storage/" + productImg;
         }
     });
-                                
-                              
+
+
 });
 
                     </script>
@@ -272,10 +273,10 @@ Array.from(categorySelect.options).forEach(function(option) {
                                   <!-- Category Name -->
                                   <div class="mb-3">
                                     <label class="form-label" for="category_name">Category Name</label>
-                                    <select class="form-control" id="category_name" name="category_name" required>
+                                    <select class="form-control" id="category_id" name="category_id" required>
                                         <option value="" disabled selected>Select a category</option>
                                         @foreach($category1 as $category)
-                                            <option value="{{ $category->category_name }}">{{ $category->category_name }}</option>
+                                            <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback">Please select a valid category name.</div>

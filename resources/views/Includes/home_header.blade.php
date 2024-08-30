@@ -17,6 +17,11 @@
       };
     </script>
     
+    @if($errors->has('error'))
+    <div class="alert alert-danger">
+        {{ $errors->first('error') }}
+    </div>
+@endif
 
     <header class="navbar d-block navbar-sticky navbar-expand-lg navbar-light position-absolute w-100">
         <div class="container">

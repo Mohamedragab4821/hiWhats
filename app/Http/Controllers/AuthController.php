@@ -44,7 +44,7 @@ public function logout(Request $request)
     // Redirect to the login page or any other page
     return redirect()->route('home');
 }
-    public function login(Request $request)
+public function login(Request $request)
 {
     $validatedData = $request->validate([
         'email' => 'required|string|email|max:255',
@@ -56,12 +56,14 @@ public function logout(Request $request)
         'password' => $validatedData['password']
     ])) {
         $user = Auth::user();
-        // احصل على المستخدم بعد تسجيل الدخول بنجاح
-        return redirect()->route('home', ['user' => $user])->with('success', 'Login successful');
+        // After successful login, redirect to home with a success message
+        return redirect()->route('home')->with('success', 'Login successful');
     } else {
+        // Redirect back with an error message if login fails
         return redirect()->back()->withErrors(['email' => 'Invalid credentials'])->withInput();
     }
 }
+
 
 
 public function Registeration(Request $request)
@@ -75,6 +77,7 @@ public function Registeration(Request $request)
         'password' => 'required|string|min:8',
         'phone' => 'required|string|max:255',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Image validation
+        // 'access' => 'nullable|string|max:255', // Remove this if you don't need user to provide 'access'
     ]);
 
     // Handle the image upload if provided
@@ -83,17 +86,19 @@ public function Registeration(Request $request)
         $imagePath = $request->file('image')->store('profile_images', 'public');
     }
 
-    // Create a new user with the validated data and a fixed role value
+    // Create a new user with the validated data and default access as "User"
     $user = Users::create([
         'user_name' => $validatedData['userName'],
         'email' => $validatedData['email'],
         'password' => Hash::make($validatedData['password']),
         'phone' => $validatedData['phone'],
         'image' => $imagePath, // Store the image path in the database
+        'access' => 'User', // Set the default access level to "User"
     ]);
 
     return redirect()->route('home', ['user' => $user])->with('success', 'Registration successful');
 }
+
 
     public function indexProfileSetting()
     {

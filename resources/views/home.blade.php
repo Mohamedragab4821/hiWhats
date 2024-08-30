@@ -53,6 +53,17 @@
     height: 200px; /* Ensure the image fills the container */
     object-fit: cover; /* Cover the container, maintaining aspect ratio */
   }
+
+  .small-alert {
+        font-size: 0.875rem; /* Smaller font size */
+        padding: 0.5rem 1rem; /* Smaller padding */
+    }
+
+    /* Optional: Fade-out animation */
+    .fade-out {
+        transition: opacity 0.5s ease-in-out;
+        opacity: 0;
+    }
     </style>
 
     <!-- Google Tag Manager-->
@@ -79,8 +90,39 @@
 
       @include('Includes.home_header')
 
+      @if (session('success'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+                showConfirmButton: false,
+                timer: 3000 // 3 seconds
+            });
+        });
+    </script>
+@endif
 
+<!-- Check if there are any errors -->
+@if ($errors->any())
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let errorMessage = '';
+            @foreach ($errors->all() as $error)
+                errorMessage += '{{ $error }}\n';
+            @endforeach
 
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: errorMessage,
+                showConfirmButton: false,
+                timer: 3000 // 3 seconds
+            });
+        });
+    </script>
+@endif
       <!-- Hero-->
       <section class="mb-lg-2 bg-faded-accent bg-size-cover" style="padding-top: 80px; background-image: url(img/nft/home/hero-bg.png);">
         <div class="container py-4">
@@ -169,7 +211,7 @@
                     </div>
                   </div>
                   @endforeach
-                  
+
 
                 </div>
               </div>
@@ -196,7 +238,6 @@
                       <img src="{{ asset('storage/' . $category->category_img) }}" alt="Category Image">
                     </a>
                     <!-- Wishlist button-->
-                    <button class="btn-wishlist btn-sm position-absolute top-0 end-0" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Favorites" style="margin: 12px;">
                       <i class="ci-heart"></i>
                     </button>
                   </div>
@@ -232,47 +273,53 @@
 
             <!-- Product carousel -->
             <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
-              <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
-                @foreach($products as $product)
-                <div class="col py-3">
-
-                        <article class="card h-100 border-0">
-                            <div class="card-img-top position-relative overflow-hidden" style="width: 285px;height: 285px;">
-                                <img class="avatar" src="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}" alt="Product image">
-                                <button
-                                    class="btn-wishlist btn-sm position-absolute top-0 end-0"
-                                    type="button"
-                                    data-bs-toggle="tooltip"
-                                    data-bs-placement="left"
-                                    title="Add to Favorites"
-                                    style="margin: 12px;"
-                                    onclick="addToFavorites({{ $product->product_id }})">
-                                    <i class="ci-heart"></i>
-                                </button>
-                            </div>
-                            <a href="#signinnn-modal" data-bs-toggle="modal"
-                                    data-product-name="{{ $product->product_name }}"
-                                    data-product-img="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
-                                    data-product-salary="{{ $product->product_salary }}"
-                                    data-description="{{ $product->description }}"
-                                    data-duration="{{ $product->Duration_of_righteousness }}"
-                                    data-bs-target="#signinnn-modal">
-                            <div class="card-body">
-                                <h3 class="product-title mb-2 fs-base">{{ $product->product_name }}</h3>
-                                <span class="fs-sm text-muted">Current bid:</span>
-                                <div class="d-flex align-items-center flex-wrap">
-                                    <h4 class="mt-1 mb-0 fs-base text-darker">{{ $product->product_salary }} ETH</h4>
+                <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
+                    @foreach($products as $product)
+                    <div class="col py-3">
+                        <a href="#signinnn-modal" data-bs-toggle="modal"
+                           data-product-name="{{ $product->product_name }}"
+                           data-product-img="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
+                           data-product-salary="{{ $product->product_salary }}"
+                           data-description="{{ $product->description }}"
+                           data-duration="{{ $product->Duration_of_righteousness }}"
+                           data-bs-target="#signinnn-modal">
+                            <article class="card h-100 border-0 shadow">
+                                <div class="card-img-top position-relative overflow-hidden">
+                                    <img class="avatar" src="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}" alt="Product image">
+                                    <button
+                                        class="btn-wishlist btn-sm position-absolute top-0 end-0"
+                                        type="button"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="left"
+                                        title="Add to Favorites"
+                                        style="margin: 12px;"
+                                        onclick="addToFavorites({{ $product->product_id }})">
+                                        <i class="ci-heart"></i>
+                                    </button>
                                 </div>
-                            </div>
-                        </article>
-                    </a>
+                                <a href="#signinnn-modal" data-bs-toggle="modal"
+                                data-product-name="{{ $product->product_name }}"
+                                data-product-img="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
+                                data-product-salary="{{ $product->product_salary }}"
+                                data-description="{{ $product->description }}"
+                                data-duration="{{ $product->Duration_of_righteousness }}"
+                                data-bs-target="#signinnn-modal">
+                                <div class="card-body">
+                                    <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="#">{{ $product->product_name }}</a></h3>
+                                    <span class="fs-sm text-muted">Current bid:</span>
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <h4 class="mt-1 mb-0 fs-base text-darker">{{ $product->product_salary }} ETH</h4>
+                                    </div>
+                                </div>
+                            </article>
+                        </a>
+                    </div>
+                @endforeach
                 </div>
-            @endforeach
-
-              </div>
-          </div>
+            </div>
         </div>
     </section>
+
     <div class="modal fade" id="signinnn-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -293,7 +340,7 @@
                                 <div class="fs-lg text-accent pt-2">Price: <span id="modal-product-salary"></span></div>
                                 <div class="mt-3">
                                   <a href="{{ route('contacts.index') }}" class="btn btn-outline-primary">طلب الخدمه عبر الايميل</a>
-                                  <a a href="https://api.whatsapp.com/send?phone=+201283370658&text=مرحبا"  class="btn btn-outline-success">طلب الخدمه عبر الواتساب</a>
+                                  <a href="https://api.whatsapp.com/send?phone=+201283370658&text=مرحبا"  class="btn btn-outline-success">طلب الخدمه عبر الواتساب</a>
 
                                 </div>
                             </div>
@@ -472,9 +519,28 @@
     });
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(function () {
+            let alert = document.querySelectorAll('.alert-dismissible');
+            alert.forEach(function (el) {
+                el.classList.add('fade-out');
+            });
+        }, 3000); // 3 seconds
+
+        // Completely remove the alert after the fade-out animation
+        setTimeout(function () {
+            let alert = document.querySelectorAll('.alert-dismissible');
+            alert.forEach(function (el) {
+                el.style.display = 'none';
+            });
+        }, 3500); // Wait 0.5 seconds more for the fade-out to complete
+    });
+
+
       </script>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
   </body>
