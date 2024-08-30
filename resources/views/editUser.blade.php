@@ -183,6 +183,13 @@
                               <label class="form-label" for="profile-avatar">Avatar</label>
                               <input class="form-control" id="profile-avatar" type="file" name="image">
                           </div>
+                          <div class="col-sm-6">
+                            <label class="form-label" for="profile-access">Access Level</label>
+                            <select class="form-control" id="profile-access" name="access">
+                                <option value="User" {{ old('access', $user->access) == 'User' ? 'selected' : '' }}>User</option>
+                                <option value="Admin" {{ old('access', $user->access) == 'Admin' ? 'selected' : '' }}>Admin</option>
+                            </select>
+                          </div>                                                               
                       </div>
                       <div class="d-flex flex-sm-row flex-column">
                           <button class="btn btn-accent" type="submit">Update profile</button>

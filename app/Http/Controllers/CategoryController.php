@@ -15,18 +15,17 @@ class CategoryController extends Controller
     public function index($id)
 {
     $settings = Settings::first();
-    $categories=Category::all();
+    $categories = Category::all();
 
     // If an ID is provided, fetch products belonging to that category
     if ($id) {
         $category = Category::findOrFail($id);
         $products = Product::where('category_id', $id)->get();
-        return view('CategoryServices', compact('settings', 'category', 'products','categories','id'));
+        return view('CategoryServices', compact('settings', 'category', 'products', 'categories', 'id'));
     }
 
-    // If no ID is provided, just return all categories
-    // $categories = Category::all();
-    // return view('CategoryServices', compact('settings', 'categories'));
+    // Handle the case where no ID is provided (optional)
+    return view('CategoryServices', compact('settings', 'categories','id'));
 }
 
 
@@ -156,7 +155,9 @@ class CategoryController extends Controller
     public function search(Request $request)
     {
         $searchTerm = $request->input('search');
-        $categoryId = $request->input('category_id'); // Assuming you pass the category ID with the request
+        $categoryId = $request->input('category_id');
+        $id=$request->input('category_id');
+        // dd($searchTerm, $categoryId); // This should show the search term and the category ID
     
         $settings = Settings::first();
         $categories = Category::all();
@@ -168,8 +169,9 @@ class CategoryController extends Controller
             })
             ->get();
     
-        return view('CategoryServices', compact('settings', 'products', 'categories'));
+        return view('CategoryServices', compact('settings', 'products', 'categories','id'));
     }
+    
     
 public function servicesSearch(Request $request)
 {

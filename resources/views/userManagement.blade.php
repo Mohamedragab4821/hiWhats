@@ -42,6 +42,7 @@
       .icon-container {
           display: flex;
           gap: 10px; /* Adjust the space between icons as needed */
+          margin-top: 15px
       }
 
       .btn-small {
@@ -139,6 +140,7 @@
                                       <th>Name</th>
                                       <th>Email</th>
                                       <th>Phone</th>
+                                      <th>Access</th>
                                       <th>Date Created</th>
                                       <th>Action</th>
                                   </tr>
@@ -169,6 +171,7 @@
                                         <td>{{ $user->user_name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->phone }}</td>
+                                        <td>{{ $user->access }}</td>
                                         <td>{{ $user->created_at->format('d/m/Y') }}</td>
                                         <td class="action-buttons icon-container">
                                             <!-- Settings Button -->

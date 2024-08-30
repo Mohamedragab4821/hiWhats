@@ -59,8 +59,8 @@
                   <div class="widget widget-links widget-light mt-4 px-lg-3 px-sm-n2">
                     <h3 class="widget-title text-light">Contact With Us</h3>
                     <ul class="widget-list">
-                      <li class="widget-list-item"><a class="widget-list-link" href="https://api.whatsapp.com/send?phone=+201283370658&text=مرحبا">Whats</a></li>
-                      <li class="widget-list-item"><a class="widget-list-link" href="{{ route('contacts.index') }}">Twiter</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="https://api.whatsapp.com/send?phone=+201283370658&text=مرحبا">WhatsApp</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="{{ route('contacts.index') }}">Twitter</a></li>
                       {{-- <li class="widget-list-item"><a class="widget-list-link" href="#">New</a></li>
                       <li class="widget-list-item"><a class="widget-list-link" href="#">Art</a></li>
                       <li class="widget-list-item"><a class="widget-list-link" href="#">Music</a></li>
@@ -83,10 +83,8 @@
         </div>
         <div class="container my-lg-4 my-3 py-2">
           <div class="d-flex flex-md-row flex-column-reverse align-items-center justify-content-md-between">
-            <div class="fs-xs text-light opacity-50">&copy; All rights reserved. Made by <a class="text-light" href="https://createx.studio/" target="_blank" rel="noopener">Createx Studio</a></div>
+            <div class="fs-xs text-light opacity-50">&copy; All rights reserved. Made by <a class="text-light" href="#" target="_blank" rel="noopener">Fekra</a></div>
             <div class="d-flex align-items-start mb-md-0 mb-3 mx-n1">
-              <div class="px-1"><a class="btn-market btn-apple bg-dark" href="#"><span class="btn-market-subtitle">Download on the</span><span class="btn-market-title">App Store</span></a></div>
-              <div class="px-1"><a class="btn-market btn-google bg-dark" href="#"><span class="btn-market-subtitle">Download on the</span><span class="btn-market-title">Google Play</span></a></div>
             </div>
           </div>
         </div>

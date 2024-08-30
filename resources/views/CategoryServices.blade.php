@@ -69,7 +69,7 @@
                         </nav>
                     </div>
                     <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
-                        <h1 class="h3 text-light mb-0">Marketplace category</h1>
+                        <h1 class="h3 text-light mb-0">Fekra category</h1>
                     </div>
                 </div>
             </div>
@@ -78,13 +78,14 @@
         <div class="container pb-5 mb-2 mb-md-4">
             <!-- Toolbar-->
             <div class="row">
-                <div class=" shadow-lg  mt-n5 mb-4">
+                <div class="shadow-lg mt-n5 mb-4">
                     <div class="d-flex align-items-center ps-2">
-                        <!-- Search-->
+                        <!-- Search -->
                         <form action="{{ route('category.search') }}" method="GET" class="d-flex align-items-center">
                             <input type="text" name="search" placeholder="Search..." class="form-control me-2">
+                            <input type="hidden" name="category_id" value="{{ isset($id) ? $id : '' }}">
                             <button type="submit" class="btn btn-primary">Search</button>
-                        </form>
+                        </form>                                               
                     </div>
                 </div>
             </div>

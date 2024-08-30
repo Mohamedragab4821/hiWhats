@@ -192,7 +192,6 @@ class DashboardController extends Controller
 }
 
 
-
 public function updateUser(Request $request, $id)
 {
     // Validate the request
@@ -201,6 +200,7 @@ public function updateUser(Request $request, $id)
         'email' => 'required|string|email|max:255',
         'phone' => 'required|string|max:255',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'access' => 'required|string|in:User,Admin',
     ]);
 
     // Find the user by ID
@@ -214,6 +214,7 @@ public function updateUser(Request $request, $id)
     $user->user_name = $request->input('user_name');
     $user->email = $request->input('email');
     $user->phone = $request->input('phone');
+    $user->access = $request->input('access'); // Update access level
 
     // Handle the image upload if provided
     if ($request->hasFile('image')) {
