@@ -286,6 +286,12 @@ public function updateCategory(Request $request, $category_id)
 
     // Find the category by ID
     $category = Category::find($category_id);
+    
+    if ($category->category_img && Storage::disk('public')->exists('/' . $category->category_img)) {
+        // Delete the image from storage
+        // dd('here');
+        Storage::disk('public')->delete('/' . $category->category_img);
+    }
 
     if (!$category) {
         return response()->json(['message' => 'Category not found'], 404);
