@@ -47,13 +47,14 @@ class FavoritesController extends Controller
 {
     $settings = Settings::first();
     $user = Auth::user();
+    $pages = Page::all();
     $categories = Category::all();
     $favorites = Favorite::where('user_id', $user->id)
                          ->with('product') // Eager load the product
                          ->get();
     // Debug the data to ensure it's fetched correctly
     // dd($favorites);
-    return view('favorites', compact('favorites', 'settings', 'categories'));
+    return view('favorites', compact('favorites', 'settings', 'categories','pages'));
 }
 
 

@@ -63,6 +63,12 @@
           border-radius: 50%;
           margin-right: 10px;
       }
+      .btn-close {
+        position: absolute;
+        top: 3rem; /* المسافة من الأعلى */
+        left: 2rem; /* المسافة من اليسار */
+        z-index: 1050; /* التأكد من بقاء الزر فوق المحتوى */
+    }
   </style>
 
     <!-- Google Tag Manager-->

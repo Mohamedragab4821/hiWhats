@@ -82,18 +82,19 @@ class ProductController extends Controller
     }
 
     public function indexproductMangement()
-    {
-        $products = Product::paginate(5);
-        $settings = Settings::first();
-        $category = Category::all();
-        $pages = Page::all();
+{
+    $products = Product::with('category')->paginate(5);
+    $settings = Settings::first();
+    $categories = Category::all();
+    $pages = Page::all();
 
-        // $category1 = Category::all();
-
-        $categories = Category::all();
-
-        return view('ProductMangement', ['products' => $products,'settings'=>$settings,'category'=>$category,'category1'=>$category,'categories'=>$categories,'pages'=>$pages]);
-    }
+    return view('ProductMangement', [
+        'products' => $products,
+        'settings' => $settings,
+        'categories' => $categories,
+        'pages' => $pages
+    ]);
+}
 
 
 
@@ -160,11 +161,12 @@ public function deleteProduct($id)
 
     public function updateProduct(Request $request, $product_id)
     {
+        // dd($request);
         // Validate the request
         $categories = Category::all();
         $validatedData = $request->validate([
             'product_name' => 'required|string|max:255',
-            'category_id' => 'required|max:255', // Validate category_name (category_id is derived)
+            'category_id' => 'required|max:255',
             'product_salary' => 'required|numeric',
             'description' => 'required|string|max:1000',
             'Duration_of_righteousness' => 'required|string|max:255',

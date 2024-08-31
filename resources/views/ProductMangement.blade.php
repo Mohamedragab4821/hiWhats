@@ -13,7 +13,7 @@
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . ($settings->icon))}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . ($settings->logo))}}">
     <link rel="manifest" href="{{ asset('site.webmanifest') }}">
     <link rel="mask-icon" color="#fe6a6a" href="{{ asset('safari-pinned-tab.svg') }}">
     <meta name="msapplication-TileColor" content="#ffffff">
@@ -27,8 +27,8 @@
     <style>
         .btn-close {
         position: absolute;
-        top: 1rem; /* المسافة من الأعلى */
-        left: 1rem; /* المسافة من اليسار */
+        top: 2rem; /* المسافة من الأعلى */
+        left: 2rem; /* المسافة من اليسار */
         z-index: 1050; /* التأكد من بقاء الزر فوق المحتوى */
     }
     </style>
@@ -87,7 +87,7 @@
                 <h6 class="fs-base text-light mb-0">List of items you added to wishlist:</h6><a class="btn btn-primary btn-sm" href="#productt-modal" data-bs-toggle="modal">إضافة منتج</a>
               </div>
               <form action="{{ route('Product.search') }}" method="GET" class="d-flex align-items-center">
-                <input type="text" name="search" placeholder="Search..." class="form-control me-2">
+                <input type="text" name="search" placeholder="ابحث..." class="form-control me-2">
                 <button type="submit" class="btn btn-primary">بحث</button>
             </form>
               <div class="modal fade" id="productt-modal" tabindex="-1" role="dialog">
@@ -103,58 +103,57 @@
                       <div class="modal-body tab-content py-4">
                         <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="product-form" action="{{ route('storeProduct') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            
-                            
                             <!-- اسم المنتج -->
                             <div class="mb-3">
                                 <label class="form-label" for="product_name">اسم المنتج</label>
                                 <input class="form-control" type="text" id="product_name" name="product_name" placeholder="أدخل اسم المنتج" required>
-                                <div class="invalid-feedback">يرجى إدخال اسم منتج صحيح.</div>
+                                <div class="invalid-feedback">يرجى تقديم اسم منتج صالح.</div>
                             </div>
                         
-                            <!-- اسم الفئة -->
+                            <!-- اسم التصنيف -->
                             <div class="mb-3">
-                                <label class="form-label" for="category_id">اسم الفئة</label>
+                                <label class="form-label" for="category_name">اسم التصنيف</label>
                                 <select class="form-control" id="category_id" name="category_id" required>
-                                    <option value="" disabled selected>اختر فئة</option>
-                                    @foreach($category1 as $category)
+                                    <option value="" disabled selected>اختر تصنيفًا</option>
+                                    @foreach($categories as $category)
                                         <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
                                     @endforeach
                                 </select>
-                                <div class="invalid-feedback">يرجى اختيار فئة صحيحة.</div>
+                                <div class="invalid-feedback">يرجى اختيار تصنيف صالح.</div>
                             </div>
                         
-                            <!-- راتب المنتج -->
+                            <!-- سعر المنتج -->
                             <div class="mb-3">
                                 <label class="form-label" for="product_salary">سعر المنتج</label>
-                                <input class="form-control" type="number" id="product_salary" name="product_salary" placeholder="أدخل راتب المنتج" required>
-                                <div class="invalid-feedback">يرجى إدخال راتب المنتج بشكل صحيح.</div>
+                                <input class="form-control" type="number" id="product_salary" name="product_salary" placeholder="أدخل سعر المنتج" required>
+                                <div class="invalid-feedback">يرجى تقديم سعر منتج صالح.</div>
                             </div>
                         
                             <!-- الوصف -->
                             <div class="mb-3">
                                 <label class="form-label" for="description">الوصف</label>
                                 <textarea class="form-control" id="description" name="description" rows="3" placeholder="أدخل وصف المنتج" required></textarea>
-                                <div class="invalid-feedback">يرجى إدخال وصف صحيح.</div>
+                                <div class="invalid-feedback">يرجى تقديم وصف صالح.</div>
                             </div>
                         
                             <!-- مدة الصلاحية -->
                             <div class="mb-3">
                                 <label class="form-label" for="Duration_of_righteousness">مدة الصلاحية</label>
                                 <input class="form-control" type="text" id="Duration_of_righteousness" name="Duration_of_righteousness" placeholder="أدخل مدة الصلاحية" required>
-                                <div class="invalid-feedback">يرجى إدخال مدة صلاحية صحيحة.</div>
+                                <div class="invalid-feedback">يرجى تقديم مدة صلاحية صالحة.</div>
                             </div>
                         
                             <!-- صورة المنتج -->
                             <div class="mb-3">
                                 <label class="form-label" for="Product_img">صورة المنتج</label>
                                 <input class="form-control" type="file" id="Product_img" name="Product_img" required>
-                                <div class="invalid-feedback">يرجى رفع صورة للمنتج.</div>
+                                <div class="invalid-feedback">يرجى تحميل صورة المنتج.</div>
                             </div>
                         
-                            <!-- زر الإرسال -->
+                            <!-- زر الإضافة -->
                             <button class="btn btn-primary btn-shadow d-block w-100" type="submit">إضافة المنتج</button>
                         </form>
+                        
 
                       </div>
                     </div>
@@ -162,15 +161,16 @@
               </div>
               <!-- Wishlist-->
               <!-- Item-->
+
               @foreach ($products as $product)
               <div class="d-sm-flex justify-content-between mt-lg-4 mb-4 pb-3 pb-sm-2 border-bottom">
                   <div class="d-block d-sm-flex align-items-start text-center text-sm-start">
-                      <a class="d-block flex-shrink-0 mx-auto me-sm-4"  style="width: 10rem;">
+                      <a class="d-block flex-shrink-0 mx-auto me-sm-4" href="shop-single-v1.html" style="width: 10rem;">
                           <img src="{{ asset('storage/' . $product->Product_img) }}" alt="Product">
                       </a>
                       <div class="pt-2">
                           <h3 class="product-title fs-base mb-2">
-                              <a>{{ $product->product_name }}</a>
+                              <a href="shop-single-v1.html">{{ $product->product_name }}</a>
                           </h3>
                           <div class="fs-sm">
                               <span class="text-muted me-2"> وصــف : </span> {{ $product->description }}
@@ -185,145 +185,146 @@
                       <form action="{{ route('deleteProduct', ['product_id' => $product->product_id]) }}" method="POST" style="display: inline;">
                           @csrf
                           @method('DELETE')
-                          <button class="btn btn-outline-danger btn-sm" type="submit"><i class="ci-trash me-2"></i>مسح</button>
+                          <button class="btn btn-outline-danger btn-sm" type="submit"><i class="ci-trash me-2"></i>إزالة</button>
                       </form>
                           <!-- Edit Button -->
                           <button
-                                class="btn btn-outline-primary btn-sm"
-                                type="button"
-                                data-bs-toggle="modal"
-                                data-bs-target="#product-modal"
-                                data-product-id="{{ $product->product_id }}"
-                                data-product-name="{{ $product->product_name }}"
-                                data-category-name="{{ $product->category_name }}"
-                                data-product-salary="{{ $product->product_salary }}"
-                                data-description="{{ $product->description }}"
-                                data-duration="{{ $product->Duration_of_righteousness }}"
-                                data-product-img="{{ $product->Product_img }}">
-                                <i class="ci-edit me-2"></i>تعديل
-                            </button>
-
-                      <script>
-
-                      document.addEventListener('DOMContentLoaded', function () {
-                                    var productModal = document.getElementById('product-modal');
-                                    productModal.addEventListener('show.bs.modal', function (event) {
-                                        var button = event.relatedTarget; // Button that triggered the modal
-
-                                        // Extract data attributes from the button
-                                        var productId = button.getAttribute('data-product-id');
-                                        var productName = button.getAttribute('data-product-name');
-                                        var categoryName = button.getAttribute('data-category-id'); // Assuming this is the category ID
-                                        var productSalary = button.getAttribute('data-product-salary');
-                                        var description = button.getAttribute('data-description');
-                                        var duration = button.getAttribute('data-duration');
-                                        var productImg = button.getAttribute('data-product-img');
-
-                                        // Update the form inputs in the modal
-                                        var modalForm = productModal.querySelector('form');
-                                        modalForm.action = "/profileSetting/productMangement/edit-product/" + productId; // Set form action with the product ID
-
-                                        modalForm.querySelector('#product_name').value = productName;
-                                        modalForm.querySelector('#product_salary').value = productSalary;
-
-                                        modalForm.querySelector('#description').value = description;
-                                        modalForm.querySelector('#Duration_of_righteousness').value = duration;
-
-                                        // Set the selected category
-                                        var categorySelect = modalForm.querySelector('#category_name');
-
-                                // Loop through options to find the one that matches the categoryName
-                                Array.from(categorySelect.options).forEach(function(option) {
-                                    if (option.value === categoryName) {
-                                        option.selected = true; // Set the matching option as selected
-                                    }
-                                });
-
-                                        // If you want to display the image in the form, set the src attribute
-                                        var imgElement = modalForm.querySelector('#Product_img_display');
-                                        if (imgElement) {
-                                            imgElement.src = "/storage/" + productImg;
-                                        }
-                                    });
+    class="btn btn-outline-primary btn-sm"
+    type="button"
+    data-bs-toggle="modal"
+    data-bs-target="#product-modal"
+    data-product-id="{{ $product->product_id }}"
+    data-product-name="{{ $product->product_name }}"
+    data-category-id="{{ $product->category_id }}"
+    data-product-salary="{{ $product->product_salary }}"
+    data-description="{{ $product->description }}"
+    data-duration="{{ $product->Duration_of_righteousness }}"
+    data-product-img="{{ $product->Product_img }}">
+    <i class="ci-edit me-2"></i>تعديل
+</button>
 
 
-                                });
-
-                    </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var productModal = document.getElementById('product-modal');
+    
+        productModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget; // Button that triggered the modal
+    
+            // Extract data attributes from the button
+            var productId = button.getAttribute('data-product-id');
+            var productName = button.getAttribute('data-product-name');
+            var categoryId = button.getAttribute('data-category-id'); // This should be the category ID
+            var productSalary = button.getAttribute('data-product-salary');
+            var description = button.getAttribute('data-description');
+            var duration = button.getAttribute('data-duration');
+            var productImg = button.getAttribute('data-product-img');
+    
+            // Update the form inputs in the modal
+            var modalForm = productModal.querySelector('form');
+            modalForm.action = "/profileSetting/productMangement/edit-product/" + productId; // Set form action with the product ID
+    
+            modalForm.querySelector('#product_name').value = productName;
+            modalForm.querySelector('#product_salary').value = productSalary;
+            modalForm.querySelector('#description').value = description;
+            modalForm.querySelector('#Duration_of_righteousness').value = duration;
+    
+            // Set the selected category
+            var categorySelect = modalForm.querySelector('#category_id');
+    
+            // Loop through options to find the one that matches the categoryId
+            Array.from(categorySelect.options).forEach(function(option) {
+                if (option.value === categoryId) {
+                    option.selected = true; // Set the matching option as selected
+                }
+            });
+    
+            // If you want to display the image in the form, you can use an <img> tag with an ID
+            var imgElement = modalForm.querySelector('#Product_img_display');
+            if (imgElement) {
+                imgElement.src = "/storage/" + productImg;
+            }
+        });
+    });
+    </script>
+    
 
 
                   </div>
 
               </div>
-              <div class="modal fade" id="product-modal" tabindex="-1" role="dialog">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                          <div class="modal-header bg-secondary">
-                              <h5 class="modal-title">تعديل المنتج</h5>
-                              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <form class="needs-validation" autocomplete="off" novalidate id="product-form" action="{{ route('editProduct', ['product_id' => $product->product_id]) }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                @method('PUT') <!-- استخدم PUT لتحديث المنتج -->
-                                
-                                <!-- اسم المنتج -->
-                                <div class="mb-3">
-                                    <label class="form-label" for="product_name">اسم المنتج</label>
-                                    <input class="form-control" type="text" id="product_name" name="product_name" value="{{ old('product_name', $product->product_name) }}" required>
-                                    <div class="invalid-feedback">يرجى إدخال اسم المنتج بشكل صحيح.</div>
-                                </div>
-                            
-                                <!-- اسم الفئة -->
-                                <div class="mb-3">
-                                    <label class="form-label" for="category_id">اسم الفئة</label>
-                                    <select class="form-control" id="category_id" name="category_id" required>
-                                        <option value="" disabled selected>اختر فئة</option>
-                                        @foreach($category1 as $category)
-                                            <option value="{{ $category->category_id }}" {{ $product->category_id == $category->category_id ? 'selected' : '' }}>
-                                                {{ $category->category_name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    <div class="invalid-feedback">يرجى اختيار فئة صحيحة.</div>
-                                </div>
-                            
-                                <!-- راتب المنتج -->
-                                <div class="mb-3">
-                                    <label class="form-label" for="product_salary">راتب المنتج</label>
-                                    <input class="form-control" type="number" id="product_salary" name="product_salary" value="{{ old('product_salary', $product->product_salary) }}" required>
-                                    <div class="invalid-feedback">يرجى إدخال راتب المنتج بشكل صحيح.</div>
-                                </div>
-                            
-                                <!-- الوصف -->
-                                <div class="mb-3">
-                                    <label class="form-label" for="description">الوصف</label>
-                                    <textarea class="form-control" id="description" name="description" rows="3" required>{{ old('description', $product->description) }}</textarea>
-                                    <div class="invalid-feedback">يرجى إدخال وصف صحيح.</div>
-                                </div>
-                            
-                                <!-- مدة الصلاحية -->
-                                <div class="mb-3">
-                                    <label class="form-label" for="Duration_of_righteousness">مدة الصلاحية</label>
-                                    <input class="form-control" type="text" id="Duration_of_righteousness" name="Duration_of_righteousness" value="{{ old('Duration_of_righteousness', $product->Duration_of_righteousness) }}" required>
-                                    <div class="invalid-feedback">يرجى إدخال مدة صلاحية صحيحة.</div>
-                                </div>
-                            
-                                <!-- صورة المنتج -->
-                                <div class="mb-3">
-                                    <label class="form-label" for="Product_img">صورة المنتج</label>
-                                    <input class="form-control" type="file" id="Product_img" name="Product_img">
-                                    <div class="invalid-feedback">يرجى رفع صورة للمنتج.</div>
-                                </div>
-                            
-                                <!-- زر الإرسال -->
-                                <button class="btn btn-primary btn-shadow d-block w-100" type="submit">تحديث المنتج</button>
-                            </form>
-                            
-                          </div>
-                      </div>
-                  </div>
-              </div>
+              <!-- Modal for editing product -->
+<div class="modal fade" id="product-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-secondary">
+                <h5 class="modal-title">تعديل المنتج</h5>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="إغلاق"></button>
+            </div>
+            <div class="modal-body">
+                <form class="needs-validation" autocomplete="off" novalidate id="product-form" action="{{ route('editProduct', ['product_id' => $product->product_id]) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('POST')
+                    <!-- اسم المنتج -->
+                    <div class="mb-3">
+                        <label class="form-label" for="product_name">اسم المنتج</label>
+                        <input class="form-control" type="text" id="product_name" name="product_name" value="{{ old('product_name', $product->product_name) }}" required>
+                        <div class="invalid-feedback">يرجى تقديم اسم منتج صالح.</div>
+                    </div>
+
+                    <!-- اسم التصنيف -->
+                    <div class="mb-3">
+                        <label class="form-label" for="category_id">اسم التصنيف</label>
+                        <select class="form-control" id="category_id" name="category_id" required>
+                            <option value="" disabled>اختر تصنيفًا</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->category_id }}" 
+                                    {{ $category->category_id == $product->category_id ? 'selected' : '' }}>
+                                    {{ $category->category_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <div class="invalid-feedback">يرجى اختيار تصنيف صالح.</div>
+                    </div>
+
+                    <!-- سعر المنتج -->
+                    <div class="mb-3">
+                        <label class="form-label" for="product_salary">سعر المنتج</label>
+                        <input class="form-control" type="number" id="product_salary" name="product_salary" value="{{ old('product_salary', $product->product_salary) }}" required>
+                        <div class="invalid-feedback">يرجى تقديم سعر منتج صالح.</div>
+                    </div>
+
+                    <!-- الوصف -->
+                    <div class="mb-3">
+                        <label class="form-label" for="description">الوصف</label>
+                        <textarea class="form-control" id="description" name="description" rows="3" required>{{ old('description', $product->description) }}</textarea>
+                        <div class="invalid-feedback">يرجى تقديم وصف صالح.</div>
+                    </div>
+
+                    <!-- مدة الصلاحية -->
+                    <div class="mb-3">
+                        <label class="form-label" for="Duration_of_righteousness">مدة الصلاحية</label>
+                        <input class="form-control" type="text" id="Duration_of_righteousness" name="Duration_of_righteousness" value="{{ old('Duration_of_righteousness', $product->Duration_of_righteousness) }}" required>
+                        <div class="invalid-feedback">يرجى تقديم مدة صلاحية صالحة.</div>
+                    </div>
+
+                    <!-- صورة المنتج -->
+                    <div class="mb-3">
+                        <label class="form-label" for="Product_img">صورة المنتج</label>
+                        <input class="form-control" type="file" id="Product_img" name="Product_img">
+                        <div class="invalid-feedback">يرجى تحميل صورة المنتج.</div>
+                    </div>
+
+                    <!-- زر التحديث -->
+                    <button class="btn btn-primary btn-shadow d-block w-100" type="submit">تحديث المنتج</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+            
+            
 
           @endforeach
 
@@ -333,10 +334,12 @@
             </section>
             <hr>
              <!-- Pagination-->
-             <nav class="d-flex justify-content-between pt-2 mb-4" aria-label="Page navigation">
+             <nav class="d-flex justify-content-center pt-2 mb-4" aria-label="Page navigation">
                 <ul class="pagination">
                     <li class="page-item {{ $products->onFirstPage() ? 'disabled' : '' }}">
-                        <a class="page-link" href="{{ $products->previousPageUrl() }}"><i class="ci-arrow-left me-2"></i>السابق</a>
+                        <a class="page-link" href="{{ $products->previousPageUrl() }}">
+                            <i class="ci-arrow-right me-2"></i>السابق
+                        </a>
                     </li>
                 </ul>
                 <ul class="pagination">
@@ -348,10 +351,13 @@
                 </ul>
                 <ul class="pagination">
                     <li class="page-item {{ $products->hasMorePages() ? '' : 'disabled' }}">
-                        <a class="page-link" href="{{ $products->nextPageUrl() }}">التالي<i class="ci-arrow-right ms-2"></i></a>
+                        <a class="page-link" href="{{ $products->nextPageUrl() }}">
+                            التالي<i class="ci-arrow-left ms-2"></i>
+                        </a>
                     </li>
                 </ul>
             </nav>
+            
 
           </div>
         </div>

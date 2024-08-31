@@ -100,9 +100,17 @@
                                               <div class="col-md-4 col-lg-3 py-3">
                                                   <article class="card h-100 border-0 custom-card">
                                                       <div class="card-img-top position-relative overflow-hidden">
-                                                          <a class="d-block" href="#">
-                                                              <img class="avatar img-fluid" src="{{ $favorite->product->Product_img ? asset('storage/' . $favorite->product->Product_img) : asset('img/default-product-image.jpg') }}" alt="صورة المنتج">
-                                                          </a>
+                                                        @php
+                                                        $imagePath = $favorite->product->Product_img ?? null;
+                                                        $imageUrl = isset($imagePath) && Storage::exists('public/' . $imagePath) 
+                                                            ? asset('storage/' . $imagePath) 
+                                                            : asset('img/default-product-image.jpg');
+                                                    @endphp
+                                                    
+                                                    <a class="d-block" href="#">
+                                                        <img class="avatar img-fluid" src="{{ $imageUrl }}" alt="صورة المنتج">
+                                                    </a>
+                                                    
                                                           <button 
                                                               class="btn-delete btn-sm position-absolute top-0 end-0" 
                                                               type="button" 

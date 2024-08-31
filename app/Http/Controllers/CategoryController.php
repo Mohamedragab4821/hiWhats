@@ -16,7 +16,6 @@ class CategoryController extends Controller
     public function index($id)
 {
     $settings = Settings::first();
-    $categories = Category::paginate(4);
     $categories = Category::all();
     $pages = Page::all();
 
@@ -36,8 +35,7 @@ class CategoryController extends Controller
 
     public function indexServices()
     {
-        // $products = Product::all();
-        $products = Product::paginate(4);
+        $products = Product::all();
         $settings = Settings::first();
         $categories=Category::all();
         $pages = Page::all();
