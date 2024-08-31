@@ -141,21 +141,25 @@ class ProductController extends Controller
 
 public function deleteProduct($id)
 {
-    $product = Product::findOrFail($id); // Find the product by ID
-// dd($product->Product_img); // This will stop execution and print the value of Product_img
+    // Find the product by ID
+    $product = Product::findOrFail($id);
 
     // Check if the product has an image and if it exists in the storage
-    if ($product->Product_img && Storage::disk('public')->exists('/' . $product->Product_img)) {
-        // dd('here');
-        Storage::disk('public')->delete('/' . $product->Product_img); // Delete the image
+    if ($product->Product_img && Storage::disk('public')->exists($product->Product_img)) {
+        // Delete the image
+        Storage::disk('public')->delete($product->Product_img);
     }
 
-    // Now delete the product
+    // Delete all favorites associated with the product
+    $product->favorites()->delete(); // Assuming there's a relationship named 'favorites'
+
+    // Delete the product
     $product->delete();
 
     // Redirect back with success message
-    return redirect()->route('productMangement')->with('success', 'Product and image deleted successfully!');
+    return redirect()->route('productMangement')->with('success', 'Product and its associated favorites have been deleted successfully!');
 }
+
 
 
 

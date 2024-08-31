@@ -34,10 +34,10 @@ class SettingController extends Controller
             // Validate the incoming request
             $validatedData = $request->validate([
                 'website_name' => 'required|string|max:255',
-                'whatsapp' => 'required|string|max:255',
+                'whatsapp' => 'nullable|string|max:255',
                 'website_description' => 'nullable|string|max:1000',
-                'phone' => 'required|string|max:255',
-                'email' => 'required|string|max:255',
+                'phone' => 'nullable|string|max:255',
+                'email' => 'nullable|string|max:255',
                 'home_meta_k' => 'nullable|string|max:1000',
                 'home_meta_d' => 'nullable|string|max:1000',
                 'home_description1' => 'nullable|string|max:1000',

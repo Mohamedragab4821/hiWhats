@@ -149,21 +149,30 @@ class CategoryController extends Controller
      * Remove the specified category from storage.
      */
     public function destroy($category_id)
-    {
-        try {
-            $category = Category::findOrFail($category_id);
+{
+    try {
+        // Find the category by ID or throw an exception
+        $category = Category::findOrFail($category_id);
 
-            if ($category->category_img && \Storage::exists('public/' . $category->category_img)) {
-                \Storage::delete('public/' . $category->category_img);
-            }
+        // Delete all products associated with this category
+        $category->products()->delete(); // Delete related products
 
-            $category->delete();
-
-            return redirect()->route('categories.index')->with('success', 'Category deleted successfully!');
-        } catch (\Exception $e) {
-            return redirect()->back()->withErrors(['Error deleting category: ' . $e->getMessage()]);
+        // Check if the category has an image and if it exists in storage
+        if ($category->category_img && \Storage::exists('public/' . $category->category_img)) {
+            \Storage::delete('public/' . $category->category_img);
         }
+
+        // Delete the category
+        $category->delete();
+
+        // Redirect with success message
+        return redirect()->route('categories.index')->with('success', 'Category and its associated products deleted successfully!');
+    } catch (\Exception $e) {
+        // Redirect back with error message
+        return redirect()->back()->withErrors(['Error deleting category: ' . $e->getMessage()]);
     }
+}
+
     public function search(Request $request)
     {
         $searchTerm = $request->input('search');
