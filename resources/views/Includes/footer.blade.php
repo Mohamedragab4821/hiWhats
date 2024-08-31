@@ -40,9 +40,7 @@
                     <ul class="widget-list">
                       <li class="widget-list-item"><a class="widget-list-link" href="{{ route('ourVision') }}">About Us</a></li>
                       <li class="widget-list-item"><a class="widget-list-link" href="{{ route('whoAreWe') }}">How It Works</a></li>
-                      {{-- <li class="widget-list-item"><a class="widget-list-link" href="#">Create an NFT With Us</a></li> --}}
                       <li class="widget-list-item"><a class="widget-list-link" href="{{ route('contacts.index') }}">Support</a></li>
-                      {{-- <li class="widget-list-item"><a class="widget-list-link" href="#">Blog</a></li> --}}
                       <li class="widget-list-item">
                         <a class="widget-list-link"
                            @if (Auth::check())
@@ -53,6 +51,11 @@
                            My Account
                         </a>
                     </li>
+                    @foreach($pages as $page)
+                    @if($page->add_to=='footer')
+                    <li class="nav-item"><a class="nav-link" href="{{ route('page.show',['slug'=>$page->slug]) }}">{{$page->title}}</a></li>
+                    @endif
+                    @endforeach
 
                     </ul>
                   </div>

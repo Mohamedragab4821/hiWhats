@@ -11,6 +11,7 @@ use App\Models\Settings;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\HomeAds;
+use App\Models\Page;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -22,13 +23,15 @@ class AuthController extends Controller
     $settings = Settings::first(); // Fetch the settings
     $categories=Category::all();
     $HomeAds=HomeAds::all();
+    $pages = Page::all();
 
 
     return view('home', [
         'products' => $products,
         'settings' => $settings,
         'categories'=>$categories,
-        'HomeAds'=>$HomeAds
+        'HomeAds'=>$HomeAds,
+        'pages'=>$pages
     ]);
 }
 public function logout(Request $request)
@@ -104,9 +107,10 @@ public function Registeration(Request $request)
     {
         $settings = Settings::first();
         $categories = Category::all();
+        $pages = Page::all();
 
 
-        return view('dashboard',['settings'=>$settings,'categories'=>$categories]);
+        return view('dashboard',['settings'=>$settings,'categories'=>$categories,'pages'=>$pages]);
     }
 
 
