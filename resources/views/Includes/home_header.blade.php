@@ -48,11 +48,6 @@
                 </div>
                 <div class="collapse navbar-collapse me-auto order-lg-2" id="navbarCollapse">
                     <!-- Search (mobile)-->
-                    <div class="d-lg-none py-3">
-                        <div class="input-group"><i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-                            <input class="form-control rounded-start" type="text" placeholder="What do you need?">
-                        </div>
-                    </div>
                     <!-- Primary menu-->
                     <ul class="navbar-nav">
                         <li class="nav-item active"><a class="nav-link" href="{{route('home')}}">الصفحه الرئيسه</a></li>

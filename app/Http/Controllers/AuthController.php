@@ -79,7 +79,7 @@ public function Registeration(Request $request)
         'email' => 'required|string|email|max:255|unique:users',
         'password' => 'required|string|min:8',
         'phone' => 'required|string|max:255',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Image validation
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10000', // Image validation
         // 'access' => 'nullable|string|max:255', // Remove this if you don't need user to provide 'access'
     ]);
 

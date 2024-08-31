@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 
 <!-- Mirrored from cartzilla.createx.studio/nft-account-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Aug 2022 18:19:25 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
@@ -7,8 +7,8 @@
     <meta charset="utf-8">
     <title>{{$settings->website_name}} </title>
     <!-- SEO Meta Tags-->
-    <meta name="description" content="Cartzilla - Bootstrap E-commerce Template">
-    <meta name="keywords" content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap, html5, css3, js, gallery, slider, touch, creative, clean">
+    <meta name="description" content="Cartzilla - قالب التجارة الإلكترونية Bootstrap">
+    <meta name="keywords" content="bootstrap, متجر, التجارة الإلكترونية, السوق, حديث, استجابة, عمل, موبايل, bootstrap, html5, css3, js, معرض, شريط التمرير, لمسة, إبداعي, نظيف">
     <meta name="author" content="Createx Studio">
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -100,7 +100,7 @@
                 document.addEventListener('DOMContentLoaded', function () {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Success',
+                        title: 'نجاح',
                         text: '{{ session('success') }}',
                         showConfirmButton: false,
                         timer: 3000 // 3 seconds
@@ -112,7 +112,7 @@
                 document.addEventListener('DOMContentLoaded', function () {
                     Swal.fire({
                         icon: 'error',
-                        title: 'Error',
+                        title: 'خطأ',
                         text: '{{ session('error') }}',
                         showConfirmButton: false,
                         timer: 3000 // 3 seconds
@@ -128,7 +128,7 @@
                           <div class="table-title">
                               <div class="row">
                                   <div class="col-sm-5">
-                                      <h2>User <b>Management</b></h2>
+                                      <h2>إدارة <b>المستخدمين</b></h2>
                                   </div>
                               </div>
                           </div>
@@ -136,13 +136,13 @@
                               <thead>
                                   <tr>
                                       <th>#</th>
-                                      <th>Image</th>
-                                      <th>Name</th>
-                                      <th>Email</th>
-                                      <th>Phone</th>
-                                      <th>Access</th>
-                                      <th>Date Created</th>
-                                      <th>Action</th>
+                                      <th>الصورة</th>
+                                      <th>الاسم</th>
+                                      <th>البريد الإلكتروني</th>
+                                      <th>الهاتف</th>
+                                      <th>الوصول</th>
+                                      <th>تاريخ الإنشاء</th>
+                                      <th>الإجراء</th>
                                   </tr>
                               </thead>
                               <tbody>
@@ -151,21 +151,19 @@
                                         <td>{{ $user->id }}</td>
                                         <td>
                                             @if($user->image)
-                                            <div class="d-flex align-items-center">
-                                                <a href="#">
-                                                    <img src="{{ asset('storage/' . $user->image) }}" class="avatar" alt="Avatar">
-                                                </a>
+                                            <div style="margin-left: 20px" class="d-flex align-items-center ">
+                                                    <img src="{{ asset('storage/' . $user->image) }}" class="avatar" alt="الصورة الشخصية">
                                                 <form action="{{ route('deleteAvatar') }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <input type="hidden" name="user_id" value="{{ $user->id }}">
-                                                    <button type="submit" class="btn-small" title="Delete Image">
+                                                    <button type="submit" class="btn-small" title="حذف الصورة">
                                                         <i class="material-icons">delete</i>
                                                     </button>
                                                 </form>
                                             </div>
                                             @else
-                                            <span>No Image</span>
+                                            <span>لا توجد صورة</span>
                                             @endif
                                         </td>
                                         <td>{{ $user->user_name }}</td>
@@ -175,7 +173,7 @@
                                         <td>{{ $user->created_at->format('d/m/Y') }}</td>
                                         <td class="action-buttons icon-container">
                                             <!-- Settings Button -->
-                                            <a href="{{ route('editUser', ['id' => $user->id]) }}" class="icon-button" title="Settings" data-toggle="tooltip">
+                                            <a href="{{ route('editUser', ['id' => $user->id]) }}" class="icon-button" title="الإعدادات" data-toggle="tooltip">
                                                 <i class="material-icons">settings</i>
                                             </a>
                                             
@@ -183,7 +181,7 @@
                                             <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;" class="delete-form">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="icon-button" title="Delete" data-toggle="tooltip">
+                                                <button type="submit" class="icon-button" title="حذف" data-toggle="tooltip">
                                                     <i class="material-icons">delete</i>
                                                 </button>
                                             </form>
@@ -209,19 +207,21 @@
 
     <!-- Toolbar for handheld devices (NFT Marketplace)-->
     <div class="handheld-toolbar">
-      <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="nft-account-settings.html" data-bs-toggle="modal"><span class="handheld-toolbar-icon"><i class="ci-user"></i></span><span class="handheld-toolbar-label">Account</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">Menu</span></a><a class="d-table-cell handheld-toolbar-item" href="nft-create-item.html"><span class="handheld-toolbar-icon"><i class="ci-add"></i></span><span class="handheld-toolbar-label">Create item</span></a>
-      </div>
+      <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="nft-account-settings.html" data-bs-toggle="modal"><span class="handheld-toolbar-icon"><i class="ci-user"></i></span><span class="handheld-toolbar-label">الحساب</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">القائمة</span></a></div>
     </div>
-    <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
-    <!-- Vendor scrits: js libraries and plugins-->
+    
+    <!-- Back to Top Button-->
+    <a class="btn-scroll-top" href="javascript:void(0)" data-scroll-to="#top">
+      <i class="ci-arrow-up"></i>
+    </a>
+    <!-- Vendor Scripts-->
+    <script src="{{ asset('vendor/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('vendor/simplebar/dist/simplebar.min.js') }}"></script>
     <script src="{{ asset('vendor/tiny-slider/dist/min/tiny-slider.js') }}"></script>
-    <script src="{{ asset('vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js') }}"></script>
-    <!-- Main theme script-->
+    <!-- Main Theme Script-->
     <script src="{{ asset('js/theme.min.js') }}"></script>
-
+    <!-- SweetAlert2 -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
-
-<!-- Mirrored from cartzilla.createx.studio/nft-account-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Aug 2022 18:19:25 GMT -->
 </html>

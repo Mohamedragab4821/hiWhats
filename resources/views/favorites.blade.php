@@ -27,6 +27,25 @@
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="{{ asset('css/theme.min.css') }}">
 
+    <style>
+      .custom-card {
+        /* Increase card size */
+        width: 100%;
+        height: 100%;
+        max-width: 300px; /* Adjust this value as needed */
+    }
+
+    .custom-card .card-img-top img {
+        /* Ensure image fills the card properly */
+        width: 100%;
+        height: 200px; /* Adjust height as needed */
+        object-fit: cover;
+    }
+
+    .custom-card .card-body {
+        padding: 1.5rem; /* Increase padding inside the card */
+    }
+    </style>
     <!-- Google Tag Manager-->
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -62,44 +81,59 @@
                     <div class="d-flex flex-wrap mb-3">
                       <div class="dropdown d-inline-block">
                         <a class="h3 text-primary" href="#" data-bs-toggle="dropdown">
-                          <span class="dropdown-toggle-label">Your Favorites</span>
+                          <span class="dropdown-toggle-label">مفضلاتك</span>
                         </a>
                       </div>
                     </div>
                 
                     <!-- Product carousel -->
                     <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
-                      <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
-                        @foreach($favorites as $favorite)
-                        <div class="col py-3">
-                          <article class="card h-100 border-0">
-                            <div class="card-img-top position-relative overflow-hidden">
-                              <a class="d-block" href="#">
-                                <img class="avatar" src="{{ $favorite->product->Product_img ? asset('storage/' . $favorite->product->Product_img) : asset('img/default-product-image.jpg') }}" alt="Product image">
-                              </a>
-                              </button>
-                              <button 
-    class="btn-delete btn-sm position-absolute top-0 end-0" 
-    type="button" 
-    data-bs-toggle="tooltip" 
-    data-bs-placement="left" 
-    title="Remove from Favorites" 
-    style="margin: 12px;border: none"
-    onclick="removeFromFavorites({{ $favorite->id }})"
->
-    <i class="ci-trash"></i>
-</button>
-
-
-                            </div>
-                            <div class="card-body">
-                              <h5 class="card-title mb-2 fs-base"><a class="d-block text-truncate" href="#">{{ $favorite->product->product_name }}</a></h5>
-                              <p class="card-text">{{ $favorite->product->product_salary }} ETH</p>
-                            </div>
-                          </article>
-                        </div>
-                        @endforeach
+                      <div class="container mb-5 pb-3">
+                          <div class="bg-light shadow-lg rounded-3 overflow-hidden">
+                              <div class="row">
+                                  <!-- Content -->
+                                  <section class="col-lg-12 pt-lg-4 pb-4 mb-3">
+                                      <div class="container py-lg-4">
+                                          <!-- Product grid -->
+                                          <div class="row">
+                                              @foreach($favorites as $favorite)
+                                              <div class="col-md-4 col-lg-3 py-3">
+                                                  <article class="card h-100 border-0 custom-card">
+                                                      <div class="card-img-top position-relative overflow-hidden">
+                                                          <a class="d-block" href="#">
+                                                              <img class="avatar img-fluid" src="{{ $favorite->product->Product_img ? asset('storage/' . $favorite->product->Product_img) : asset('img/default-product-image.jpg') }}" alt="صورة المنتج">
+                                                          </a>
+                                                          <button 
+                                                              class="btn-delete btn-sm position-absolute top-0 end-0" 
+                                                              type="button" 
+                                                              data-bs-toggle="tooltip" 
+                                                              data-bs-placement="left" 
+                                                              title="إزالة من المفضلات" 
+                                                              style="margin: 12px; border: none;"
+                                                              onclick="removeFromFavorites({{ $favorite->id }})"
+                                                          >
+                                                              <i class="ci-trash"></i>
+                                                          </button>
+                                                      </div>
+                                                      <div class="card-body">
+                                                          <h5 class="card-title mb-2 fs-base">
+                                                              <a class="d-block text-truncate" href="#">
+                                                                  {{ $favorite->product->product_name }}
+                                                              </a>
+                                                          </h5>
+                                                          <p class="card-text">{{ $favorite->product->product_salary }} ETH</p>
+                                                      </div>
+                                                  </article>
+                                              </div>
+                                              @endforeach
+                                          </div>
+                                      </div>
+                                  </section>
+                              </div>
+                          </div>
                       </div>
+                  </div>
+                    
                   </div>
             </section>
                 

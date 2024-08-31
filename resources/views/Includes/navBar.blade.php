@@ -37,10 +37,10 @@
     </style>
 </head>
 <body>
-    <nav class="navbar bg-accent">
+    <nav style="margin-bottom: 20px" class="navbar bg-accent">
         <div class="navbar-content">
             <div class="d-flex align-items-center">
-                <div class="img-thumbnail rounded-circle flex-shrink-0">
+                <div class="img-thumbnail rounded-circle flex-shrink-0 ms-3">
                     <img class="rounded-circle"
                          src="{{ Auth::user()->image ? asset('storage/' . Auth::user()->image) : asset('img/nft/vendor/avatar.png') }}"
                          alt="{{ Auth::user()->user_name }}">

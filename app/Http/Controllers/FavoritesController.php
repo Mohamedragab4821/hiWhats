@@ -44,18 +44,18 @@ class FavoritesController extends Controller
      * Display the user's favorites.
      */
     public function index()
-    {
-        $settings = Settings::first();
-        $pages = Page::all();
+{
+    $settings = Settings::first();
+    $user = Auth::user();
+    $categories = Category::all();
+    $favorites = Favorite::where('user_id', $user->id)
+                         ->with('product') // Eager load the product
+                         ->get();
+    // Debug the data to ensure it's fetched correctly
+    // dd($favorites);
+    return view('favorites', compact('favorites', 'settings', 'categories'));
+}
 
-        $user = Auth::user();
-        $categories = Category::all();
-        $favorites = Favorite::where('user_id', $user->id)
-                             ->with('product')
-                             ->get();
-
-        return view('favorites', compact('favorites','settings','categories','pages'));
-    }
 
     public function destroy($id)
 {

@@ -25,7 +25,37 @@
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="{{ asset('css/theme.min.css') }}">
     <style>
-     
+      body{
+        display: block;
+      }
+      .card {
+        height: 100%; /* Ensures the card fills the container height */
+      }
+
+      .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Distributes space between the card title and description */
+      }
+
+      .card-footer {
+        flex-shrink: 0; /* Prevents the footer from shrinking */
+      }
+      .card-img-top {
+    width: 100%; /* Full width of the card */
+    height: 200px; /* Fixed height for the image container */
+    overflow: hidden; /* Hide any overflowed content */
+    display: flex;
+    align-items: center; /* Center the image vertically */
+    justify-content: center; /* Center the image horizontally */
+    position: relative; /* Ensure proper positioning of overlay elements */
+  }
+
+  .card-img-top img {
+    width: 100%;
+    height: 200px; /* Ensure the image fills the container */
+    object-fit: cover; /* Cover the container, maintaining aspect ratio */
+  }
 
     </style>
 
@@ -77,7 +107,7 @@
                     <p class="fs-sm pb-3 text-muted" style="direction: rtl; text-align: right;">
                         خدماتنا متاحة في جميع أنحاء العالم، مما يضمن تسليمًا سريعًا ودعمًا موثوقًا بغض النظر عن مكان عملك. مع حزم قابلة للتخصيص والتزام بالجودة، نساعدك على البقاء متصلاً بجمهورك بطريقة فعالة وشخصية.
                     </p>
-                    <a a href="#" data-bs-toggle="modal" data-bs-target="#wa_widget-content" class="btn btn-accent btn-shadow">طلب الخدمه عبر الواتساب</a>
+                    <a href="https://api.whatsapp.com/send?phone={{$settings->whatsapp}}&text=مرحبا" class="btn btn-accent btn-shadow">طلب الخدمه عبر الواتساب</a>
                 </div>
             </div>
         </section>
