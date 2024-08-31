@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Settings;
 use Illuminate\Http\Request;
+use App\Models\Page;
 
 class CategoryController extends Controller
 {
@@ -16,16 +17,19 @@ class CategoryController extends Controller
 {
     $settings = Settings::first();
     $categories = Category::all();
+    $pages = Page::all();
 
     // If an ID is provided, fetch products belonging to that category
     if ($id) {
         $category = Category::findOrFail($id);
         $products = Product::where('category_id', $id)->get();
-        return view('CategoryServices', compact('settings', 'category', 'products', 'categories', 'id'));
+        $pages = Page::all();
+
+        return view('CategoryServices', compact('settings', 'category', 'products', 'categories', 'id','pages'));
     }
 
     // Handle the case where no ID is provided (optional)
-    return view('CategoryServices', compact('settings', 'categories','id'));
+    return view('CategoryServices', compact('settings', 'categories','id','pages'));
 }
 
 
@@ -34,7 +38,9 @@ class CategoryController extends Controller
         $products = Product::all();
         $settings = Settings::first();
         $categories=Category::all();
-        return view('AllServices', compact('products','settings','categories'));
+        $pages = Page::all();
+
+        return view('AllServices', compact('products','settings','categories','pages'));
     }
 
     /**
@@ -42,7 +48,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('categories.create');
+        $pages = Page::all();
+
+        return view('categories.create',['pages'=>$pages]);
     }
 
     /**
@@ -87,8 +95,10 @@ class CategoryController extends Controller
 
     public function show(Category $category)
 {
+    $pages = Page::all();
+
     // Assuming you pass the category to the view
-    return view('CategoryServices', compact('category'));
+    return view('CategoryServices', compact('category','pages'));
 }
 
     /**
@@ -97,7 +107,9 @@ class CategoryController extends Controller
     public function edit($category_id)
     {
         $category = Category::findOrFail($category_id);
-        return view('categories.edit', compact('category'));
+        $pages = Page::all();
+
+        return view('categories.edit', compact('category','pages'));
     }
 
     /**
@@ -161,7 +173,8 @@ class CategoryController extends Controller
     
         $settings = Settings::first();
         $categories = Category::all();
-    
+        $pages = Page::all();
+
         $products = Product::where('category_id', $categoryId) // Filter by selected category
             ->where(function($query) use ($searchTerm) {
                 $query->where('product_name', 'like', '%' . $searchTerm . '%')
@@ -169,7 +182,7 @@ class CategoryController extends Controller
             })
             ->get();
     
-        return view('CategoryServices', compact('settings', 'products', 'categories','id'));
+        return view('CategoryServices', compact('settings', 'products', 'categories','id','pages'));
     }
     
     
@@ -178,12 +191,14 @@ public function servicesSearch(Request $request)
     $searchTerm = $request->input('search');
     $settings = Settings::first();
     $categories = Category::all();
+    $pages = Page::all();
+
 
     $products = Product::where('product_name', 'like', '%' . $searchTerm . '%')
         ->orWhere('category_name', 'like', '%' . $searchTerm . '%')
         ->get();
 
-    return view('AllServices', compact('settings', 'products', 'categories'));
+    return view('AllServices', compact('settings', 'products', 'categories','pages'));
 }
    
     

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Settings;
 use App\Models\Contacts;
 use App\Models\Category;
+use App\Models\Page;
 
 
 class MessagesController extends Controller
@@ -16,6 +17,8 @@ class MessagesController extends Controller
     public function index(Request $request)
     {
         $settings = Settings::first();
+        $pages = Page::all();
+
         
         // Search query
         $query = $request->input('search');
@@ -30,7 +33,7 @@ class MessagesController extends Controller
                             ->orWhere('product', 'LIKE', "%{$query}%")
                             ->paginate(10); // 10 items per page
     
-        return view('messages', ['settings' => $settings, 'contacts' => $contacts,'categories'=>$categories]);
+        return view('messages', ['settings' => $settings,'pages'=>$pages, 'contacts' => $contacts,'categories'=>$categories]);
     }
     
 

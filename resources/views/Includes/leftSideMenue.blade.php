@@ -27,7 +27,7 @@
                   </li>
       
                   <!-- Check if the user has admin access -->
-                  @if(Auth::user()->access == 'Admin')
+                  @if(Auth::user()->access == 'admin')
                       <li class="border-bottom mb-0">
                           <a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{ route('userManagement') }}">
                               <i class="ci-settings opacity-60 me-2"></i>User Management
@@ -43,6 +43,11 @@
                               <i class="ci-sign-out opacity-60 me-2"></i>Ads Home Settings
                           </a>
                       </li>
+                      <li class="border-bottom mb-0">
+                        <a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('pages.index')}}">
+                            <i class="ci-sign-out opacity-60 me-2"></i>Pages Settings
+                        </a>
+                    </li>
                       <li class="border-bottom mb-0">
                           <a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{ route('productMangement') }}">
                               <i class="ci-bell opacity-60 me-2"></i>Product Mangement

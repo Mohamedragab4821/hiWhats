@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Settings;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Page;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -74,8 +75,10 @@ class ProductController extends Controller
         $category = Category::all();
         $categories = Category::all();
         $settings = Settings::first();
+        $pages = Page::all();
 
-        return view('CategoryMangement',['category'=>$category,'settings'=>$settings,'categories'=>$categories]);
+
+        return view('CategoryMangement',['category'=>$category,'settings'=>$settings,'categories'=>$categories,'pages'=>$pages]);
     }
 
     public function indexproductMangement()
@@ -83,11 +86,13 @@ class ProductController extends Controller
         $products = Product::all();
         $settings = Settings::first();
         $category = Category::all();
+        $pages = Page::all();
+
         // $category1 = Category::all();
 
         $categories = Category::all();
 
-        return view('ProductMangement', ['products' => $products,'settings'=>$settings,'category'=>$category,'category1'=>$category,'categories'=>$categories]);
+        return view('ProductMangement', ['products' => $products,'settings'=>$settings,'category'=>$category,'category1'=>$category,'categories'=>$categories,'pages'=>$pages]);
     }
 
 

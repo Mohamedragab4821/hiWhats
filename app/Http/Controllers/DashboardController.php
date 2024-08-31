@@ -9,6 +9,7 @@ use App\Models\Users;
 use App\Models\Settings;
 use App\Models\Category;
 use App\Models\HomeAds;
+use App\Models\Page;
 
 
 
@@ -21,34 +22,41 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $settings = Settings::first();
+        $settings = Settings::first(); 
+            $pages = Page::all();
+
         $categories = Category::all();
 
-        return view('dashboard',['settings'=>$settings,'categories'=>$categories]);
+        return view('dashboard',['settings'=>$settings,'pages'=>$pages,'categories'=>$categories]);
     }
     public function index_home_ads()
     {
-        $settings = Settings::first();
+        $settings = Settings::first(); 
+            $pages = Page::all();
         $categories = Category::all();
         $home_ads = HomeAds::all();
 
-        return view('home_ads',['settings'=>$settings,'categories'=>$categories,'home_ads'=>$home_ads]);
+        return view('home_ads',['settings'=>$settings,'pages'=>$pages,'categories'=>$categories,'home_ads'=>$home_ads]);
     }
 
     public function indexEditUser($id)
     {
         $user = Users::findOrFail($id);
-        $settings = Settings::first();
+        $settings = Settings::first(); 
+            $pages = Page::all();
+
         $categories = Category::all();
-        return view('editUser',['user'=>$user,'categories'=>$categories,'settings'=>$settings]);
+        return view('editUser',['user'=>$user,'categories'=>$categories,'settings'=>$settings,'pages'=>$pages]);
     }
 
     public function indexUserManagement()
     {
         $users = Users::all();
-        $settings = Settings::first();
+        $settings = Settings::first(); 
+            $pages = Page::all();
+
         $categories = Category::all();
-        return view('userManagement',['users'=>$users,'categories'=>$categories,'settings'=>$settings]);
+        return view('userManagement',['users'=>$users,'categories'=>$categories,'settings'=>$settings,'pages'=>$pages]);
     }
 
     /**
