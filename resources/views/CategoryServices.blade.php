@@ -55,21 +55,19 @@
         @include('Includes.account_header')
 
         <!-- Category Heading -->
-        <div class="bg-accent pt-4 pb-5">
+        <div class="bg-accent pt-4 pb-5" style="background-color: #f6f9fc !important">
             <div class="container pt-2 pb-3 pt-lg-3 pb-lg-4">
                 <div class="d-lg-flex justify-content-between pb-3">
                     <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
-                                <li class="breadcrumb-item"><a class="text-nowrap" href="{{ route('home') }}"><i class="ci-home"></i>Home</a></li>
-                                {{-- <li class="breadcrumb-item text-nowrap"><a href="home-marketplace.html">Market</a> --}}
+                                <li class="breadcrumb-item"><a style="color:black" class="text-nowrap" href="{{ route('home') }}"><i class="ci-home"></i>الصفحه الرئيسيه</a></li>
                                 </li>
-                                <li class="breadcrumb-item text-nowrap active" aria-current="page">Category</li>
                             </ol>
                         </nav>
                     </div>
                     <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
-                        <h1 class="h3 text-light mb-0">Fekra category</h1>
+                        <h1 class="h3 text-dark mb-0"> اقسام {{$settings->website_name}}</h1>
                     </div>
                 </div>
             </div>
@@ -97,9 +95,6 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-grid-gutter">
                     <div class="card product-card-alt">
                         <div class="product-thumb" style="height: 280px;width: 280px;">
-                            <button class="btn-wishlist btn-sm position-absolute top-0 end-0" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Favorites" style="margin: 12px;" onclick="addToFavorites({{ $product->product_id }})">
-                                <i class="ci-heart"></i>
-                            </button>
                             <div class="product-card-actions">
                                 <a class="btn btn-light btn-icon btn-shadow fs-base mx-2"
                                     href="#signinn-modal"

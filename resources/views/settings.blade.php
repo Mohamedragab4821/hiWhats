@@ -103,9 +103,18 @@
                             </div>
 
                             <div class="col-sm-6">
-                                <label class="form-label" for="whatsapp">Whatsapp Number</label>
+                                <label class="form-label" for="whatsapp">رقم الواتساب</label>
                                 <input class="form-control" id="whatsapp" name="whatsapp" type="text" placeholder="Enter whatsapp" value="{{ old('whatsapp', $settings->whatsapp ?? '') }}">
                             </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="phone">رقم الاتصال</label>
+                                <input class="form-control" id="phone" name="phone" type="text" placeholder="Enter phone" value="{{ old('phone', $settings->phone ?? '') }}">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="email">ايميل</label>
+                                <input class="form-control" id="email" name="email" type="text" placeholder="Enter email" value="{{ old('email', $settings->email ?? '') }}">
+                            </div>
+                            
                             <div class="col-sm-6">
                               <label class="form-label" for="home_description1">وصف الصفحة الرئيسية 1</label>
                               <input class="form-control" id="home_description1" name="home_description1" type="text" placeholder="أدخل الوصف" value="{{ old('home_description1', $settings->home_description1 ?? '') }}">
@@ -139,6 +148,23 @@
                             <div class="col-12">
                                 <label class="form-label" for="category_meta_d">وصف ميتا للفئات</label>
                                 <textarea class="form-control" id="category_meta_d" name="category_meta_d" rows="4" placeholder="مثال: وصف مختصر">{{ old('category_meta_d', $settings->category_meta_d ?? '') }}</textarea>
+                            </div>
+                            <h6>Social Media Links</h6>
+                            <div class="col-12">
+                                <label class="form-label" for="facebook_url">Facebook URL</label>
+                                <input class="form-control" id="facebook_url" name="facebook_url" type="text" value="{{ old('facebook_url', $settings->facebook_url ?? '') }}">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="twitter_url">Twitter URL</label>
+                                <input class="form-control" id="twitter_url" name="twitter_url" type="text" value="{{ old('twitter_url', $settings->twitter_url ?? '') }}">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="insta_url">Instagram URL</label>
+                                <input class="form-control" id="insta_url" name="insta_url" type="text" value="{{ old('insta_url', $settings->insta_url ?? '') }}">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="youtube_url">YouTube URL</label>
+                                <input class="form-control" id="youtube_url" name="youtube_url" type="text" value="{{ old('youtube_url', $settings->youtube_url ?? '') }}">
                             </div>
                         </div>
                         <div class="text-center text-sm-start">

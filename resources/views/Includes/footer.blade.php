@@ -19,7 +19,6 @@
               <div class="col-lg-4 mb-lg-0 mb-4">
                 <div class="widget pb-3 mb-lg-4">
                   <h3 class="widget-title text-light pb-1">ابق على اطلاع</h3>
-                  <h3 class="widget-title text-light pb-1">ابق على اطلاع</h3>
                   <form class="subscription-form validate" action="https://studio.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;amp;id=29ca296126" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
                     <div class="input-group flex-nowrap"><i class="ci-mail position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
                       <input style="padding: 10px" class="form-control rounded-start" type="email" name="EMAIL" placeholder="     بريدك الالكتروني" required>

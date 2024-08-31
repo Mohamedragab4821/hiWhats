@@ -52,21 +52,19 @@
       @include('Includes.account_header')
 
       <!-- Used for marketplace templates with filters on top-->
-      <div class="bg-accent pt-4 pb-5">
+      <div class="bg-accent pt-4 pb-5" style="background-color: #f6f9fc !important">
         <div class="container pt-2 pb-3 pt-lg-3 pb-lg-4">
           <div class="d-lg-flex justify-content-between pb-3">
             <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
-                  <li class="breadcrumb-item"><a class="text-nowrap" href="{{ route('home') }}"><i class="ci-home"></i>Home</a></li>
-                  {{-- <li class="breadcrumb-item text-nowrap"><a href="home-marketplace.html">Market</a> --}}
+                  <li class="breadcrumb-item"><a style="color:black" class="text-nowrap" href="{{ route('home') }}"><i class="ci-home"></i>الصفحه الرئيسيه</a></li>
                   </li>
-                  <li class="breadcrumb-item text-nowrap active" aria-current="page">All Services</li>
                 </ol>
               </nav>
             </div>
             <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
-              <h1 class="h3 text-light mb-0">Marketplace category</h1>
+              <h1 class="h3 text-dark mb-0">خدمات {{$settings->website_name}}</h1>
             </div>
           </div>
         </div>
@@ -146,7 +144,7 @@
 
                 <h3 class="product-title fs-sm mb-2"><a href="marketplace-single.html">{{ $product->product_name }}</a></h3>
                 <div class="d-flex flex-wrap justify-content-between align-items-center">
-                  <div class="fs-sm me-2"><i class="ci-download text-muted me-1"></i>{{ $product->category_name }}</div>
+                  <div class="fs-sm me-2">{{ $product->category_name }}</div>
                   <div class="bg-faded-accent text-accent rounded-1 py-1 px-2">{{ $product->product_name }}</div>
                 </div>
               </div>

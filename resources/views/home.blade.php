@@ -82,7 +82,7 @@
     </script>
   </head>
   <!-- Body-->
-  <body class="handheld-toolbar-enabled">
+  <body class="handheld-toolbar-enabled" style="background-color: white">
     <!-- Google Tag Manager (noscript)-->
     <noscript>
       <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
@@ -228,9 +228,9 @@
       </section>
             <!-- Product carousel (Trending in)-->
       <!-- Product carousel (Recent Drops)-->
-      <section class="container mb-2 py-lg-5 py-4"  style="direction: rtl; text-align: right;">
-        <div class="d-flex align-items-center justify-content-between mb-sm-3 mb-2">
-          <h2 class="h3 mb-0">ابرز الأقسام</h2><a class="btn btn-outline-accent ms-3" href="nft-catalog-v1.html">اكتشف المزيد<i class="ci-arrow-right ms-2"></i></a>
+      <section class="container mb-2 py-lg-5 py-4">
+        <div class="d-flex align-items-center justify-content-between mb-sm-3 mb-2"  style="direction: rtl; text-align: right;">
+          <h2 class="h3 mb-0"  style="direction: rtl; text-align: right;">ابرز الأقسام</h2><a class="btn btn-outline-accent ms-3" href="{{ route('services') }}">اكتشف المزيد<i class="ci-arrow-right ms-2"></i></a>
         </div>
         <!-- Product carousel-->
         <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
@@ -240,7 +240,7 @@
               <div class="col py-3">
                 <article class="card h-100 border-0 shadow">
                   <div class="card-img-top position-relative overflow-hidden">
-                    <a href="{{ route('categories', $category->category_id) }}" class="d-block" href="nft-single-buy.html">
+                    <a href="{{ route('categories', $category->category_id) }}" class="d-block">
                       <img src="{{ asset('storage/' . $category->category_img) }}" alt="Category Image">
                     </a>
                     <!-- Wishlist button-->
@@ -248,7 +248,7 @@
                   </div>
                   <div class="card-body">
                     <h3 class="product-title mb-2 fs-base">
-                      <a class="d-block text-truncate" href="nft-single-buy.html">{{ $category->category_name }}</a>
+                      <a class="d-block text-truncate" href="{{ route('categories', $category->category_id) }}">{{ $category->category_name }}</a>
                     </h3>
                     <span class="fs-sm text-muted">Description:</span>
                     <p class="fs-sm text-muted">{{ $category->category_description }}</p>
@@ -264,16 +264,11 @@
 
       </section>
 
-      <section class="mb-4 py-5 bg-secondary"  style="direction: rtl; text-align: right;">
+      <section class="mb-4 py-5 bg-secondary">
         <div class="container py-lg-4">
-            <div class="d-flex flex-wrap mb-3">
-                <h2 class="h3 mb-0">الخدمات&nbsp;</h2>
-                <div class="dropdown d-inline-block" data-bs-toggle="select">
-                    <a class="h3 text-primary" href="#" data-bs-toggle="dropdown">
-                        <span class="dropdown-toggle-label">ابرز</span>
-                    </a>
-                    <input type="hidden" name="trending-category">
-                </div>
+            <div class="d-flex flex-wrap mb-3" style="direction: rtl; text-align: right;">
+                <h2 class="h3 mb-0" style="direction: rtl; text-align: right;">ابرز الخدمات</h2>
+
             </div>
 
             <!-- Product carousel -->

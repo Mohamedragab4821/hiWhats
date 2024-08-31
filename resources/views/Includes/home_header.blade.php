@@ -25,7 +25,7 @@
 
     <header class="navbar d-block navbar-sticky navbar-expand-lg navbar-light position-absolute w-100" style="direction: rtl; text-align: right;">
         <div class="container">
-            <a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="{{route('home')}}l">
+            <a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="{{route('home')}}">
                 <img src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="142" alt="Cartzilla">
             </a>
             <a class="navbar-brand d-sm-none me-2 order-lg-1" href="index.html">
@@ -35,10 +35,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-tool d-none d-lg-flex" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#searchBox" role="button" aria-expanded="false" aria-controls="searchBox">
-                    <span class="navbar-tool-tooltip">بحث</span>
-                    <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-search"></i></div>
-                </a>
+
                 @if(!Auth::user())
                 <a class="navbar-tool ms-lg-2" href="#signin-modal" data-bs-toggle="modal">
                     <span class="navbar-tool-tooltip">تسجيل</span>
