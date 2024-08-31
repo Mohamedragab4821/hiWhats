@@ -188,17 +188,23 @@
             <hr class="my-3">
 
             <!-- Pagination-->
-            <nav class="d-flex justify-content-between pt-2" aria-label="Page navigation">
+            <nav class="d-flex justify-content-between pt-2 mb-4" aria-label="Page navigation">
                 <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#"><i class="ci-arrow-left me-2"></i>Prev</a></li>
+                    <li class="page-item {{ $categories->onFirstPage() ? 'disabled' : '' }}">
+                        <a class="page-link" href="{{ $categories->previousPageUrl() }}"><i class="ci-arrow-left me-2"></i>السابق</a>
+                    </li>
                 </ul>
                 <ul class="pagination">
-                    <li class="page-item active"><span class="page-link">1</span></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    @for ($i = 1; $i <= $categories->lastPage(); $i++)
+                        <li class="page-item {{ $categories->currentPage() == $i ? 'active' : '' }}">
+                            <a class="page-link" href="{{ $categories->url($i) }}">{{ $i }}</a>
+                        </li>
+                    @endfor
                 </ul>
                 <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Next<i class="ci-arrow-right ms-2"></i></a></li>
+                    <li class="page-item {{ $categories->hasMorePages() ? '' : 'disabled' }}">
+                        <a class="page-link" href="{{ $categories->nextPageUrl() }}">التالي<i class="ci-arrow-right ms-2"></i></a>
+                    </li>
                 </ul>
             </nav>
         </div>
