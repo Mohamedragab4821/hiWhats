@@ -11,7 +11,10 @@
 <body>
   <script async src='https://d2mpatx37cqexb.cloudfront.net/delightchat-whatsapp-widget/embeds/embed.min.js'></script>
   <script>
-    var wa_btnSetting = {"btnColor":"#16BE45","ctaText":"WhatsApp Us","cornerRadius":40,"marginBottom":100,"marginLeft":20,"marginRight":20,"btnPosition":"right","whatsAppNumber":"+201283370658","welcomeMessage":"Hello","zIndex":999999,"btnColorScheme":"light"};
+    var whatsappNumber = @json($settings->whatsapp);
+  </script>
+  <script>
+    var wa_btnSetting = {"btnColor":"#16BE45","ctaText":"WhatsApp Us","cornerRadius":40,"marginBottom":100,"marginLeft":20,"marginRight":20,"btnPosition":"right","whatsAppNumber":whatsappNumber,"welcomeMessage":"Hello","zIndex":999999,"btnColorScheme":"light"};
     var wa_widgetSetting = {"title":"فكره","subTitle":"Typically replies in a day","headerBackgroundColor":"#FBFFC8","headerColorScheme":"dark","greetingText":"Hi there! \nHow can I help you?","ctaText":"Start Chat","btnColor":"#1A1A1A","cornerRadius":40,"welcomeMessage":"Hello","btnColorScheme":"light","brandImage":"https://uploads-ssl.webflow.com/5f68a65cd5188c058e27c898/6204c4267b92625c9770f687_whatsapp-chat-widget-dummy-logo.png","darkHeaderColorScheme":{"title":"#333333","subTitle":"#4F4F4F"}};  
     window.onload = () => {
       _waEmbed(wa_btnSetting, wa_widgetSetting);
@@ -20,7 +23,7 @@
 
     
 <body>
-    <header class="navbar d-block navbar-sticky navbar-expand-lg navbar-light bg-light">
+    <header class="navbar d-block navbar-sticky navbar-expand-lg navbar-light bg-light" style="direction: rtl; text-align: right;">
         <div class="container"><a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="{{route('home')}}"><img src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="142" alt="Cartzilla"></a><a class="navbar-brand d-sm-none me-2 order-lg-1" href="index.html"><img src="img/logo-icon.png" width="74" alt="Cartzilla"></a>
           <div class="navbar-toolbar d-flex align-items-center order-lg-3">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool d-none d-lg-flex" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#searchBox" role="button" aria-expanded="false" aria-controls="searchBox"><span class="navbar-tool-tooltip">Search</span>
@@ -60,7 +63,7 @@
                 <li class="nav-item "><a class="nav-link" href="{{ route('whoAreWe') }}">من نحن</a></li>
                 <li class="nav-item "><a class="nav-link" href="{{ route('ourVision') }}">رؤيتنا</a></li>
                 @foreach($pages as $page)
-                @if($page->add_to=='header')
+                @if($page->add_to=='header'&&$page->status=='published')
                 <li class="nav-item"><a class="nav-link" href="{{ route('page.show',['slug'=>$page->slug]) }}">{{$page->title}}</a></li>
                 @endif
                 @endforeach

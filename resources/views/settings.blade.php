@@ -13,7 +13,7 @@
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . ($settings->logo))}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . ($settings->icon))}}">
     <link rel="manifest" href="{{ asset('site.webmanifest') }}">
     <link rel="mask-icon" color="#fe6a6a" href="{{ asset('safari-pinned-tab.svg') }}">
     <meta name="msapplication-TileColor" content="#ffffff">
@@ -100,6 +100,10 @@
                             <div class="col-sm-6">
                                 <label class="form-label" for="website_description">Website Description</label>
                                 <input class="form-control" id="website_description" name="website_description" type="text" placeholder="Enter description" value="{{ old('website_description', $settings->website_description ?? '') }}">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="whatsapp">Whatsapp Number</label>
+                                <input class="form-control" id="whatsapp" name="whatsapp" type="text" placeholder="Enter whatsapp" value="{{ old('whatsapp', $settings->whatsapp ?? '') }}">
                             </div>
                             <div class="col-sm-6">
                               <label class="form-label" for="website_name">Home Description 1</label>

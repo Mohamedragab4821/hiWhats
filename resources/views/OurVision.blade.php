@@ -11,7 +11,7 @@
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . ($settings->logo))}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . ($settings->icon))}}">
     <link rel="manifest" href="{{ asset('site.webmanifest') }}">
     <link rel="mask-icon" color="#fe6a6a" href="{{ asset('safari-pinned-tab.svg') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
@@ -63,7 +63,7 @@
     </script>
   </head>
 
-  <body class="handheld-toolbar-enabled">
+  <body class="handheld-toolbar-enabled"  style="display: block;direction: rtl; text-align: right;">
     <!-- Google Tag Manager (noscript)-->
     <noscript>
       <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>

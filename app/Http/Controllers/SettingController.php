@@ -34,6 +34,7 @@ class SettingController extends Controller
             // Validate the incoming request
             $validatedData = $request->validate([
                 'website_name' => 'required|string|max:255',
+                'whatsapp' => 'required|string|max:255',
                 'website_description' => 'nullable|string|max:1000',
                 'home_meta_k' => 'nullable|string|max:1000',
                 'home_meta_d' => 'nullable|string|max:1000',
@@ -56,6 +57,7 @@ class SettingController extends Controller
 
             // Update the settings model with validated data
             $settings->website_name = $validatedData['website_name'];
+            $settings->whatsapp = $validatedData['whatsapp'];
             $settings->website_description = $validatedData['website_description'];
             $settings->home_meta_k = $validatedData['home_meta_k'];
             $settings->home_meta_d = $validatedData['home_meta_d'];

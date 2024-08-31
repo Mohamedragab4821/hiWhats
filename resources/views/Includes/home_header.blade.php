@@ -23,7 +23,7 @@
     </div>
 @endif
 
-    <header class="navbar d-block navbar-sticky navbar-expand-lg navbar-light position-absolute w-100">
+    <header class="navbar d-block navbar-sticky navbar-expand-lg navbar-light position-absolute w-100" style="direction: rtl; text-align: right;">
         <div class="container">
             <a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="{{route('home')}}l">
                 <img src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="142" alt="Cartzilla">
@@ -76,7 +76,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('whoAreWe') }}">من نحن</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('ourVision') }}">رؤيتنا</a></li>
                         @foreach($pages as $page)
-                        @if($page->add_to=='header')
+                        @if($page->add_to=='header'&&$page->status=='published')
                         <li class="nav-item"><a class="nav-link" href="{{ route('page.show',['slug'=>$page->slug]) }}">{{$page->title}}</a></li>
                         @endif
                         @endforeach

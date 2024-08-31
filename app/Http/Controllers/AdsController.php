@@ -93,21 +93,22 @@ class AdsController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy($id)
-{
-    try {
-        $home_ads = HomeAds::findOrFail($id);
-
-        // حذف الصورة من التخزين إذا كانت موجودة
-        if ($home_ads->image) {
-            Storage::disk('public')->delete($home_ads->image);
+    {
+        try {
+            $home_ads = HomeAds::findOrFail($id);
+    
+            // حذف الصورة من التخزين إذا كانت موجودة
+            if ($home_ads->image) {
+                Storage::disk('public')->delete($home_ads->image);
+            }
+    
+            // حذف السجل من قاعدة البيانات
+            $home_ads->delete();
+    
+            return redirect()->route('ads.index')->with('success', 'Ads deleted successfully!');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['Error deleting Ads: ' . $e->getMessage()]);
         }
-
-        // حذف السجل من قاعدة البيانات
-        $home_ads->delete();
-
-        return redirect()->route('ads.index')->with('success', 'Ads Deleted successfully!');
-    } catch (\Exception $e) {
-        return redirect()->back()->withErrors(['Error deleting Ads: ' . $e->getMessage()]);
     }
-}
+    
 }

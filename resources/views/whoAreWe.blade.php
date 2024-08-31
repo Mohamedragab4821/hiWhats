@@ -13,7 +13,7 @@
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . ($settings->logo))}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . ($settings->icon))}}">
     <link rel="manifest" href="{{ asset('site.webmanifest') }}">
     <link rel="mask-icon" color="#fe6a6a" href="{{ asset('safari-pinned-tab.svg') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
@@ -25,34 +25,7 @@
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="{{ asset('css/theme.min.css') }}">
     <style>
-      .card {
-        height: 100%; /* Ensures the card fills the container height */
-      }
-
-      .card-body {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between; /* Distributes space between the card title and description */
-      }
-
-      .card-footer {
-        flex-shrink: 0; /* Prevents the footer from shrinking */
-      }
-      .card-img-top {
-    width: 100%; /* Full width of the card */
-    height: 200px; /* Fixed height for the image container */
-    overflow: hidden; /* Hide any overflowed content */
-    display: flex;
-    align-items: center; /* Center the image vertically */
-    justify-content: center; /* Center the image horizontally */
-    position: relative; /* Ensure proper positioning of overlay elements */
-  }
-
-  .card-img-top img {
-    width: 100%;
-    height: 200px; /* Ensure the image fills the container */
-    object-fit: cover; /* Cover the container, maintaining aspect ratio */
-  }
+     
 
     </style>
 
@@ -66,7 +39,7 @@
     </script>
   </head>
 
-  <body class="handheld-toolbar-enabled">
+  <body class="handheld-toolbar-enabled" style="display: block">
     <!-- Google Tag Manager (noscript)-->
     <noscript>
       <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
@@ -85,9 +58,9 @@
             <div class="col-md-6 bg-position-center bg-size-cover bg-secondary" style="min-height: 15rem; background-image: url(img/about/01.jpg);"></div>
             <div class="col-md-6 px-3 px-md-5 py-5">
                 <div class="mx-auto py-lg-5" style="max-width: 35rem;">
-                    <h2 class="h3 pb-3">حلول رسائل واتساب بسهولة</h2>
-                    <p class="fs-sm pb-3 text-muted">
-                        في [اسم شركتك]، نحن متخصصون في تقديم حلول رسائل واتساب المميزة والخدمات ذات الصلة. منصتنا تتيح لك اختيار وتخصيص وشراء الحزم التي تناسب احتياجات عملك بكل سهولة. سواء كنت تتواصل مع العملاء أو تروج لعروض جديدة، فإننا نوفر لك طريقة بسيطة وفعالة.
+                    <h2 class="h3 pb-3" style="direction: rtl; text-align: right;">حلول رسائل واتساب بسهولة</h2>
+                    <p class="fs-sm pb-3 text-muted" style="direction: rtl; text-align: right;">
+                        في فكره، نحن متخصصون في تقديم حلول رسائل واتساب المميزة والخدمات ذات الصلة. منصتنا تتيح لك اختيار وتخصيص وشراء الحزم التي تناسب احتياجات عملك بكل سهولة. سواء كنت تتواصل مع العملاء أو تروج لعروض جديدة، فإننا نوفر لك طريقة بسيطة وفعالة.
                     </p>
                     <a class="btn btn-primary btn-shadow" href="{{ route('services') }}">استكشاف العروض</a>
                 </div>
@@ -100,11 +73,11 @@
             <div class="col-md-6 bg-position-center bg-size-cover bg-secondary order-md-2" style="min-height: 15rem; background-image: url(img/about/02.jpg);"></div>
             <div class="col-md-6 px-3 px-md-5 py-5 order-md-1">
                 <div class="mx-auto py-lg-5" style="max-width: 35rem;">
-                    <h2 class="h3 pb-3">وصول عالمي وتسليم سريع</h2>
-                    <p class="fs-sm pb-3 text-muted">
+                    <h2 class="h3 pb-3" style="direction: rtl; text-align: right;">وصول عالمي وتسليم سريع</h2>
+                    <p class="fs-sm pb-3 text-muted" style="direction: rtl; text-align: right;">
                         خدماتنا متاحة في جميع أنحاء العالم، مما يضمن تسليمًا سريعًا ودعمًا موثوقًا بغض النظر عن مكان عملك. مع حزم قابلة للتخصيص والتزام بالجودة، نساعدك على البقاء متصلاً بجمهورك بطريقة فعالة وشخصية.
                     </p>
-                    <a a href="#" data-bs-toggle="modal" data-bs-target="#whatsappModal" class="btn btn-accent btn-shadow">طلب الخدمه عبر الواتساب</a>
+                    <a a href="#" data-bs-toggle="modal" data-bs-target="#wa_widget-content" class="btn btn-accent btn-shadow">طلب الخدمه عبر الواتساب</a>
                 </div>
             </div>
         </section>
@@ -112,7 +85,7 @@
         {{-- Content --}}
 
 
-      @include('Includes.footer')
+        @include('Includes.footer')
 
       <!-- Toolbar for handheld devices (NFT Marketplace)-->
       <div class="handheld-toolbar">
@@ -128,37 +101,6 @@
       <!-- Main theme script-->
       <script src="{{ asset('js/theme.min.js') }}"></script>
 
-      <script>
-        function addToFavorites(productId) {
-      console.log('Adding product to favorites with ID:', productId);
-
-      $.ajax({
-          url: '{{ route('favorites.store') }}',
-          type: 'POST',
-          data: {
-              _token: '{{ csrf_token() }}',
-              product_id: productId
-          },
-          success: function(response) {
-              console.log('Success:', response);
-              Swal.fire({
-                  icon: 'success',
-                  title: 'Success',
-                  text: response.message,
-                  confirmButtonText: 'OK'
-              });
-          },
-          error: function(xhr) {
-              console.error('AJAX Error:', xhr);
-              Swal.fire({
-                  icon: 'error',
-                  title: 'Error',
-                  text: 'Error adding to favorites: ' + xhr.responseText,
-                  confirmButtonText: 'OK'
-              });
-          }
-      });
-  }
 
         </script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
