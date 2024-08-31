@@ -104,7 +104,7 @@
                     <p class="fs-sm pb-3 text-muted">
                         خدماتنا متاحة في جميع أنحاء العالم، مما يضمن تسليمًا سريعًا ودعمًا موثوقًا بغض النظر عن مكان عملك. مع حزم قابلة للتخصيص والتزام بالجودة، نساعدك على البقاء متصلاً بجمهورك بطريقة فعالة وشخصية.
                     </p>
-                    <a a href="#" data-bs-toggle="modal" data-bs-target="#whatsappModal" class="btn btn-accent btn-shadow">طلب الخدمه عبر الواتساب</a>
+                    <a href="https://api.whatsapp.com/send?phone=+201283370658&text=مرحبا" class="btn btn-accent btn-shadow">طلب الخدمه عبر الواتساب</a>
                 </div>
             </div>
         </section>

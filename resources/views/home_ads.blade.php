@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
 <!-- Mirrored from cartzilla.createx.studio/nft-account-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Aug 2022 18:19:25 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
@@ -60,7 +60,7 @@
             <section class="col-lg-9 pt-lg-4 pb-4 mb-3">
                 <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
                     <h1 class="h3 mb-4 pt-2 text-center text-sm-start">Website Settings</h1>
-            
+
                     <!-- Display success or error messages -->
                     @if (session('success'))
                         <div class="alert alert-success">
@@ -76,7 +76,7 @@
                         </ul>
                     </div>
                      @endif
-            
+
                     <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
@@ -100,47 +100,47 @@
                                             </div>
                                         </div>
                                     </div>
-      
-      
-                               
+
+
+
                                     <!-- Product Salary -->
                                     <div class="mb-3">
                                         <label class="form-label" for="product_salary">الوصف</label>
                                         <input class="form-control" type="text" id="product_salary" name="description" placeholder="Enter product salary" required>
                                     </div>
-      
+
                                     <!-- Description -->
                                     <div class="mb-3">
                                         <label class="form-label" for="description">تاريخ الانتهاء</label>
                                         <input type="date" class="form-control" id="description" name="end_date"  required></input>
                                         <div class="invalid-feedback">Please provide a valid description.</div>
                                     </div>
-      
+
                                     <!-- Duration of Righteousness -->
                                     <div class="mb-3">
                                         <label class="form-label" for="Duration_of_righteousness">لينك الزر</label>
                                         <input class="form-control" type="text" id="Duration_of_righteousness" name="button_url" required>
                                     </div>
-      
+
                                     <!-- Product Image -->
-                                    
-      
+
+
                                     <!-- Submit Button -->
                                     <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Add</button>
                                 </form>
-      
+
                             </div>
                           </div>
                         </div>
                     </div>
-                    
+
 
                     <br>
                     <a class="btn btn-primary btn-sm" href="#signup-modal" data-bs-toggle="modal">اضف اعلان</a></div>
                     <br><br><br>
                     <table class="table table-bordered">
                         <thead>
-                                
+
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Description</th>
@@ -154,11 +154,11 @@
                         <tbody>
                           <tr>
                             @php
-                               $i=0; 
+                               $i=0;
                             @endphp
                             @foreach ($home_ads as $item)
                             @php
-                               $i++; 
+                               $i++;
                             @endphp
                             <th scope="row">{{$i}}</th>
                             <td>{{$item->description}}</td>
@@ -170,15 +170,15 @@
                                 @method('DELETE')
                                 <button class="btn btn-outline-danger btn-sm" type="submit"><i class="ci-trash me-2"></i>delete</button>
                             </form></td>
-                            
+
                             @endforeach
                           </tr>
                         </tbody>
                       </table>
                 </div>
             </section>
-            
-            
+
+
           </div>
         </div>
       </div>
