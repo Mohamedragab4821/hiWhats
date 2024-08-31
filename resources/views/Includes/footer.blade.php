@@ -12,12 +12,13 @@
     </style>
 </head>
 <body>
-    <footer class="footer bg-darker">
+    <footer class="footer bg-darker" style="direction: rtl; text-align: right;">
         <div class="bg-dark">
           <div class="container py-5">
             <div class="row py-lg-4">
               <div class="col-lg-4 mb-lg-0 mb-4">
                 <div class="widget pb-3 mb-lg-4">
+                  <h3 class="widget-title text-light pb-1">ابق على اطلاع</h3>
                   <h3 class="widget-title text-light pb-1">ابق على اطلاع</h3>
                   <form class="subscription-form validate" action="https://studio.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;amp;id=29ca296126" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
                     <div class="input-group flex-nowrap"><i class="ci-mail position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
@@ -66,7 +67,7 @@
                   <div class="widget widget-links widget-light mt-4 px-lg-3 px-sm-n2">
                     <h3 class="widget-title text-light">تواصل معنا</h3>
                     <ul class="widget-list">
-                      <li class="widget-list-item"><a class="widget-list-link" href="https://api.whatsapp.com/send?phone=+201283370658&text=مرحبا">واتساب</a></li>
+                      <li class="widget-list-item"><a class="widget-list-link" href="https://api.whatsapp.com/send?phone={{$settings->whatsapp}}&text=مرحبا">واتساب</a></li>
                       <li class="widget-list-item"><a class="widget-list-link" href="{{ route('contacts.index') }}">تويتر</a></li>
                     </ul>
                   </div>

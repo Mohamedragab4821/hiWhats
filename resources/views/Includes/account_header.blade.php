@@ -41,7 +41,10 @@
 <body>
     <script async src='https://d2mpatx37cqexb.cloudfront.net/delightchat-whatsapp-widget/embeds/embed.min.js'></script>
     <script>
-        var wa_btnSetting = {"btnColor":"#16BE45","ctaText":"تواصل معنا عبر واتساب","cornerRadius":40,"marginBottom":100,"marginLeft":20,"marginRight":20,"btnPosition":"left","whatsAppNumber":"+201283370658","welcomeMessage":"مرحبًا","zIndex":999999,"btnColorScheme":"light"};
+        var whatsappNumber = @json($settings->whatsapp);
+  </script>
+  <script>
+    var wa_btnSetting = {"btnColor":"#16BE45","ctaText":"تواصل معنا عبر واتساب","cornerRadius":40,"marginBottom":100,"marginLeft":20,"marginRight":20,"btnPosition":"left","whatsAppNumber":whatsappNumber,"welcomeMessage":"مرحبًا","zIndex":999999,"btnColorScheme":"light"};
         var wa_widgetSetting = {"title":"فكره","subTitle":"عادةً ما يرد في غضون يوم","headerBackgroundColor":"#FBFFC8","headerColorScheme":"dark","greetingText":"مرحبًا! \nكيف يمكنني مساعدتك؟","ctaText":"ابدأ الدردشة","btnColor":"#1A1A1A","cornerRadius":40,"welcomeMessage":"مرحبًا","btnColorScheme":"light","brandImage":"https://uploads-ssl.webflow.com/5f68a65cd5188c058e27c898/6204c4267b92625c9770f687_whatsapp-chat-widget-dummy-logo.png","darkHeaderColorScheme":{"title":"#333333","subTitle":"#4F4F4F"}};  
         window.onload = () => {
             _waEmbed(wa_btnSetting, wa_widgetSetting);

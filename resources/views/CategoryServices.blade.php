@@ -12,7 +12,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . ($settings->logo))}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . ($settings->icon))}}">
 <link rel="manifest" href="{{ asset('site.webmanifest') }}">
 <link rel="mask-icon" color="#fe6a6a" href="{{ asset('safari-pinned-tab.svg') }}">
 <meta name="msapplication-TileColor" content="#ffffff">
@@ -119,8 +119,8 @@
                         <div class="card-body">
                             <h3 class="product-title fs-sm mb-2"><a>{{ $product->product_name }}</a></h3>
                             <div class="d-flex flex-wrap justify-content-between align-items-center">
-                                <div class="fs-sm me-2"><i class="ci-download text-muted me-1"></i>{{ $product->category_name }}</div>
-                                <div class="bg-faded-accent text-accent rounded-1 py-1 px-2">{{ $product->product_name }}</div>
+                                <div class="fs-sm me-2">{{$product->product_salary}}</div>
+                                <div class="bg-faded-accent text-accent rounded-1 py-1 px-2">{{ $product->category_name }}</div>
                             </div>
                         </div>
                     </div>
@@ -146,8 +146,9 @@
                                     <div class="fs-sm"><span class="text-muted me-2">Duration:</span><span id="modal-duration"></span></div>
                                     <div class="fs-lg text-accent pt-2">Price: <span id="modal-product-salary"></span></div>
                                     <div class="mt-3">
-                                        <a href="{{ route('contacts.index') }}" class="btn btn-outline-primary">طلب الخدمه عبر الايميل</a>
-                                        <a a href="#" data-bs-toggle="modal" data-bs-target="#whatsappModal" class="btn btn-outline-success">طلب الخدمه عبر الواتساب</a>
+                                      <a href="{{ route('contacts.index') }}" class="btn btn-outline-primary">طلب الخدمه عبر الايميل</a>
+                                      <a href="https://api.whatsapp.com/send?phone={{$settings->whatsapp}}&text=مرحبا"  class="btn btn-outline-success">طلب الخدمه عبر الواتساب</a>
+    
                                     </div>
                                 </div>
                             </div>

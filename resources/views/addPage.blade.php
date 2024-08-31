@@ -13,7 +13,7 @@
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . ($settings->logo))}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . ($settings->icon))}}">
     <link rel="manifest" href="{{ asset('site.webmanifest') }}">
     <link rel="mask-icon" color="#fe6a6a" href="{{ asset('safari-pinned-tab.svg') }}">
     <meta name="msapplication-TileColor" content="#ffffff">
@@ -104,9 +104,9 @@
                                   </div>
                           
                                   <div class="form-group">
-                                    <label for="content">Content:</label>
-                                    <textarea class="form-control" id="content" name="content" rows="10" placeholder="Enter page content"></textarea>
-                                </div>
+                                    <label for="editor2">Content:</label>
+                                    <textarea name="content" id="editor2"></textarea>
+                                  </div>
                           
                                   <div class="form-group">
                                       <label for="meta_description">Meta Description:</label>
@@ -181,7 +181,7 @@
                                 </div>
                         
                                 <div class="form-group">
-                                  <label for="content1">Content:</label>
+                                  <label for="editor1">Content:</label>
                                   <textarea name="content" id="editor1"></textarea>
                                 </div>
                         
@@ -245,11 +245,11 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            @php
-                               $i=0; 
-                            @endphp
-                            @foreach ($pages as $item)
+                          @php
+                          $i=0; 
+                          @endphp
+                          @foreach ($pages as $item)
+                          <tr> 
                             @php
                                $i++; 
                             @endphp
@@ -280,10 +280,8 @@
                                 @method('DELETE')
                                 <button class="btn btn-outline-danger btn-sm" type="submit"><i class="ci-trash me-2"></i>delete</button>
                             </form></td>
-
-                            
-                            @endforeach
                           </tr>
+                          @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -310,8 +308,12 @@
     <script src="{{ asset('vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js') }}"></script>
     <!-- Main theme script-->
     <script src="{{ asset('js/theme.min.js') }}"></script>
-  <script>
-      CKEDITOR.replace('content');
+
+
+    <script>
+      $(document).ready(function() {
+          $('#editor2').summernote();
+      });
   </script>
 
 <script>

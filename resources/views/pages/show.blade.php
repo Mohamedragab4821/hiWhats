@@ -7,13 +7,13 @@
     <meta charset="utf-8">
     <title>{{$settings->website_name}} | {{$page->title}}</title>
     <!-- SEO Meta Tags-->
-    <meta name="description" content="Cartzilla - Bootstrap E-commerce Template">
-    <meta name="keywords" content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap, html5, css3, js, gallery, slider, touch, creative, clean">
+    <meta name="description" content="{{$page->meta_description}}">
+    <meta name="keywords" content="{{$page->meta_keywords}}">
     <meta name="author" content="Createx Studio">
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . ($settings->logo))}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . ($settings->icon))}}">
     <link rel="manifest" href="{{ asset('site.webmanifest') }}">
     <link rel="mask-icon" color="#fe6a6a" href="{{ asset('safari-pinned-tab.svg') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">

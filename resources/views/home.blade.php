@@ -64,6 +64,12 @@
         transition: opacity 0.5s ease-in-out;
         opacity: 0;
     }
+    .btn-close {
+        position: absolute;
+        top: 3rem; /* المسافة من الأعلى */
+        left: 2rem; /* المسافة من اليسار */
+        z-index: 1050; /* التأكد من بقاء الزر فوق المحتوى */
+    }
     </style>
 
     <!-- Google Tag Manager-->
@@ -124,16 +130,16 @@
     </script>
 @endif
       <!-- Hero-->
-      <section class="mb-lg-2 bg-faded-accent bg-size-cover" style="padding-top: 80px; background-image: url(img/nft/home/hero-bg.png);">
+      <section class="mb-lg-2 bg-faded-accent bg-size-cover" style="padding-top: 80px; background-image: url(img/nft/home/hero-bg.png);direction: rtl; text-align: right;">
         <div class="container py-4">
           <div class="row align-items-center justify-content-center gy-3 py-3 text-lg-start text-center">
             <div class="col-lg-5 col-md-8 col-sm-10">
-              <h1 class="mb-4 pb-lg-2">نقدم حلول تسويق إلكتروني شاملة لتحقيق أهداف عملك الرقمية.</h1>
-              <p class="mb-lg-5 mb-4 fs-lg">نساعدك على زيادة ظهورك الرقمي والوصول إلى جمهورك المستهدف من خلال استراتيجيات تسويقية فعّالة.</p>
+              <h1 class="mb-4 pb-lg-2" style="direction: rtl; text-align: right;">نقدم حلول تسويق إلكتروني شاملة لتحقيق أهداف عملك الرقمية.</h1>
+              <p class="mb-lg-5 mb-4 fs-lg" style="direction: rtl; text-align: right;">نساعدك على زيادة ظهورك الرقمي والوصول إلى جمهورك المستهدف من خلال استراتيجيات تسويقية فعّالة.</p>
               <div class="d-lg-flex d-none flex-sm-row flex-column justify-content-lg-start justify-content-center">
-                <a class="btn btn-lg btn-accent me-sm-3 mb-sm-3 mb-2" href="{{route('services')}}">تصفح خدماتنا</a>
+                <a class="btn btn-lg btn-accent me-sm-3 mb-sm-3 mb-2" href="{{route('services')}}" style="direction: rtl; text-align: right;">تصفح خدماتنا</a>
                 @if (!Auth::user())
-                <a class="btn btn-lg btn-outline-dark mb-sm-3 mb-2" href="#signup-modal" data-bs-toggle="modal">انشئ حساب</a>
+                <a class="btn btn-lg btn-outline-dark mb-sm-3 mb-2" href="#signup-modal" data-bs-toggle="modal" style="direction: rtl; text-align: right;">انشئ حساب</a>
                 @endif
             </div>
             </div>
@@ -222,7 +228,7 @@
       </section>
             <!-- Product carousel (Trending in)-->
       <!-- Product carousel (Recent Drops)-->
-      <section class="container mb-2 py-lg-5 py-4">
+      <section class="container mb-2 py-lg-5 py-4"  style="direction: rtl; text-align: right;">
         <div class="d-flex align-items-center justify-content-between mb-sm-3 mb-2">
           <h2 class="h3 mb-0">ابرز الأقسام</h2><a class="btn btn-outline-accent ms-3" href="nft-catalog-v1.html">اكتشف المزيد<i class="ci-arrow-right ms-2"></i></a>
         </div>
@@ -258,7 +264,7 @@
 
       </section>
 
-      <section class="mb-4 py-5 bg-secondary">
+      <section class="mb-4 py-5 bg-secondary"  style="direction: rtl; text-align: right;">
         <div class="container py-lg-4">
             <div class="d-flex flex-wrap mb-3">
                 <h2 class="h3 mb-0">الخدمات&nbsp;</h2>
@@ -272,48 +278,55 @@
 
             <!-- Product carousel -->
             <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
-                <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
-                    @foreach($products as $product)
-                    <div class="col py-3">
-                            <article class="card h-100 border-0 shadow">
-                                <div class="card-img-top position-relative overflow-hidden">
-                                    <img class="avatar" src="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}" alt="Product image">
-                                    <button
-                                        class="btn-wishlist btn-sm position-absolute top-0 end-0"
-                                        type="button"
-                                        data-bs-toggle="tooltip"
-                                        data-bs-placement="left"
-                                        title="Add to Favorites"
-                                        style="margin: 12px;"
-                                        onclick="addToFavorites({{ $product->product_id }})">
-                                        <i class="ci-heart"></i>
-                                    </button>
-                                </div>
+              <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
+                  @foreach($products as $product)
+                  <div class="col py-3">
+                      {{-- <a href="#signinnn-modal" data-bs-toggle="modal"
+                         data-product-name="{{ $product->product_name }}"
+                         data-product-img="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
+                         data-product-salary="{{ $product->product_salary }}"
+                         data-description="{{ $product->description }}"
+                         data-duration="{{ $product->Duration_of_righteousness }}"
+                         data-bs-target="#signinnn-modal"> --}}
+                          <article class="card h-100 border-0 shadow">
+                              <div class="card-img-top position-relative overflow-hidden">
+                                  <img class="avatar" src="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}" alt="Product image">
+                                  <button
+                                      class="btn-wishlist btn-sm position-absolute top-0 end-0"
+                                      type="button"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="left"
+                                      title="Add to Favorites"
+                                      style="margin: 12px;"
+                                      onclick="addToFavorites({{ $product->product_id }})">
+                                      <i class="ci-heart"></i>
+                                  </button>
+                              </div>
 
-                                <div class="card-body">
-                                    <a href="#signinnn-modal" data-bs-toggle="modal"
-                                data-product-name="{{ $product->product_name }}"
-                                data-product-img="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
-                                data-product-salary="{{ $product->product_salary }}"
-                                data-description="{{ $product->description }}"
-                                data-duration="{{ $product->Duration_of_righteousness }}"
-                                data-bs-target="#signinnn-modal">
-                                    <h3 class="product-title mb-2 fs-base">{{ $product->product_name }}</h3>
-                                    <span class="fs-sm text-muted">Current bid:</span>
-                                    <div class="d-flex align-items-center flex-wrap">
-                                        <h4 class="mt-1 mb-0 fs-base text-darker">{{ $product->product_salary }} ETH</h4>
-                                    </div>
-                                </div>
-                            </article>
-                        </a>
-                    </div>
-                @endforeach
-                </div>
-            </div>
+                              <div class="card-body">
+                                  <a href="#signinnn-modal" data-bs-toggle="modal"
+                              data-product-name="{{ $product->product_name }}"
+                              data-product-img="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
+                              data-product-salary="{{ $product->product_salary }}"
+                              data-description="{{ $product->description }}"
+                              data-duration="{{ $product->Duration_of_righteousness }}"
+                              data-bs-target="#signinnn-modal">
+                                  <h3 class="product-title mb-2 fs-base">{{ $product->product_name }}</h3>
+                                  <span class="fs-sm text-muted">السعر:</span>
+                                  <div class="d-flex align-items-center flex-wrap">
+                                      <h4 class="mt-1 mb-0 fs-base text-darker">{{ $product->product_salary }} SAR</h4>
+                                  </div>
+                              </div>
+                          </article>
+                      </a>
+                  </div>
+                   @endforeach
+              </div>
+          </div>
         </div>
     </section>
 
-    <div class="modal fade" id="signinnn-modal" tabindex="-1" role="dialog">
+    <div class="modal fade" id="signinnn-modal" tabindex="-1" role="dialog"  style="direction: rtl; text-align: right;">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-secondary">
@@ -333,7 +346,7 @@
                                 <div class="fs-lg text-accent pt-2">Price: <span id="modal-product-salary"></span></div>
                                 <div class="mt-3">
                                   <a href="{{ route('contacts.index') }}" class="btn btn-outline-primary">طلب الخدمه عبر الايميل</a>
-                                  <a href="https://api.whatsapp.com/send?phone=+201283370658&text=مرحبا"  class="btn btn-outline-success">طلب الخدمه عبر الواتساب</a>
+                                  <a href="https://api.whatsapp.com/send?phone={{$settings->whatsapp}}&text=مرحبا"  class="btn btn-outline-success">طلب الخدمه عبر الواتساب</a>
 
                                 </div>
                             </div>
@@ -407,27 +420,27 @@
 
     <!-- Features-->
     <section class="container py-lg-5 py-4">
-    <h2 class="mb-4 pb-md-3 pb-2">ابدأ رحلتك في التسويق الإلكتروني معنا!</h2>
+    <h2 class="mb-4 pb-md-3 pb-2" style="direction: rtl; text-align: right;">ابدأ رحلتك في التسويق الإلكتروني معنا!</h2>
     <!-- Features carousel-->
     <div class="tns-carousel mb-4">
       <div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;gutter&quot;: 30, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true}}}">
         <!-- Carousel item-->
-        <div><img class="mb-4" src="img/nft/features/wallet.svg" width="60" alt="Icon">
+        <div style="direction: rtl; text-align: right;"><img class="mb-4" src="img/nft/features/wallet.svg" width="60" alt="Icon">
           <h4 class="mb-2 fs-lg text-body">حدد استراتيجيتك التسويقية</h4>
           <p class="mb-0 fs-sm text-muted">ابدأ بوضع استراتيجية تسويقية فعّالة لتحقيق أهدافك والوصول إلى جمهورك المستهدف.</p>
         </div>
         <!-- Carousel item-->
-        <div><img class="mb-4" src="img/nft/features/add.svg" width="60" alt="Icon">
+        <div style="direction: rtl; text-align: right;"> <img class="mb-4" src="img/nft/features/add.svg" width="60" alt="Icon">
           <h4 class="mb-2 fs-lg text-body">أنشئ حملاتك الإعلانية</h4>
           <p class="mb-0 fs-sm text-muted">صمم حملات إعلانية جذابة على مختلف المنصات لتحقيق نتائج متميزة.</p>
         </div>
         <!-- Carousel item-->
-        <div><img class="mb-4" src="img/nft/features/image.svg" width="60" alt="Icon">
+        <div style="direction: rtl; text-align: right;"><img class="mb-4" src="img/nft/features/image.svg" width="60" alt="Icon">
           <h4 class="mb-2 fs-lg text-body">إدارة محتوى وسائل التواصل الاجتماعي</h4>
           <p class="mb-0 fs-sm text-muted">قم بإدارة حساباتك على وسائل التواصل الاجتماعي وزيادة التفاعل مع جمهورك.</p>
         </div>
         <!-- Carousel item-->
-        <div><img class="mb-4" src="img/nft/features/shopping-cart.svg" width="60" alt="Icon">
+        <div style="direction: rtl; text-align: right;"><img class="mb-4" src="img/nft/features/shopping-cart.svg" width="60" alt="Icon">
           <h4 class="mb-2 fs-lg text-body">تتبع وتحليل النتائج</h4>
           <p class="mb-0 fs-sm text-muted">قم بتحليل أداء حملاتك وتحسينها باستمرار لتحقيق أفضل النتائج الممكنة.</p>
         </div>
@@ -439,29 +452,7 @@
     <!-- Bg shape-->
     <div class="pt-4 bg-secondary">
 
-      <!-- Mail subscription-->
-      <section class="container">
-        <div class="card py-5 border-0 shadow">
-          <div class="card-body py-md-4 py-3 px-4 text-center">
-            <h3 class="mb-3">Never miss a drop!</h3>
-            <p class="mb-4 pb-2">Subscribe to our ultra-exclusive drop list and be the first to know about upcoming drops.</p>
-            <div class="widget mx-auto" style="max-width: 500px;">
-              <form class="subscription-form validate" action="https://studio.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;amp;id=29ca296126" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
-                <div class="input-group flex-nowrap"><i class="ci-mail position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
-                  <input class="form-control rounded-start" type="email" name="EMAIL" placeholder="Your email" required>
-                  <button class="btn btn-accent" type="submit" name="subscribe">Subscribe*</button>
-                </div>
-                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                  <input class="subscription-form-antispam" type="text" name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1">
-                </div>
-                <div class="form-text mt-3">*Receive early discount offers, updates and new products info.</div>
-                <div class="subscription-status"></div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
+
     </div>
     <!-- Footer-->
     @include('Includes.footer')

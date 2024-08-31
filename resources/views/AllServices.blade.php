@@ -14,8 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . ($settings->logo))}}">
-    <link rel="manifest" href="{{ asset('site.webmanifest') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . ($settings->icon))}}">
+<link rel="manifest" href="{{ asset('site.webmanifest') }}">
 
     <link rel="mask-icon" color="#fe6a6a" href="{{ asset('safari-pinned-tab.svg') }}">
     <meta name="msapplication-TileColor" content="#ffffff">
@@ -114,6 +114,67 @@
           </div>
           @endforeach
         </div>
+        <div class="modal fade" id="signinnn-modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-secondary">
+                        <h5 class="modal-title">Product Details</h5>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body pb-0">
+                      <div class="d-sm-flex justify-content-between mb-4 pb-3 pb-sm-2 border-bottom">
+                          <div class="d-sm-flex text-center text-sm-start">
+                              <a class="d-inline-block flex-shrink-0 mx-auto" style="width: 15rem;">
+                                  <img id="modal-product-img" src="" alt="Product" style="width: 100%; height: auto;">
+                              </a>
+                              <div class="ps-sm-4 pt-2">
+                                  <h3 id="modal-product-name" class="product-title fs-base mb-2"></h3>
+                                  <div class="fs-sm"><span class="text-muted me-2">Description:</span><span id="modal-description"></span></div>
+                                  <div class="fs-sm"><span class="text-muted me-2">Duration:</span><span id="modal-duration"></span></div>
+                                  <div class="fs-lg text-accent pt-2">Price: <span id="modal-product-salary"></span></div>
+                                  <div class="mt-3">
+                                    <a href="{{ route('contacts.index') }}" class="btn btn-outline-primary">طلب الخدمه عبر الايميل</a>
+                                    <a href="https://api.whatsapp.com/send?phone={{$settings->whatsapp}}&text=مرحبا"  class="btn btn-outline-success">طلب الخدمه عبر الواتساب</a>
+  
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var productModal = document.getElementById('signinnn-modal');
+                productModal.addEventListener('show.bs.modal', function(event) {
+                    var button = event.relatedTarget; // Button that triggered the modal
+
+                    // Get the product data from the button's data attributes
+                    var productName = button.getAttribute('data-product-name');
+                    var productImg = button.getAttribute('data-product-img');
+                    var productSalary = button.getAttribute('data-product-salary');
+                    var description = button.getAttribute('data-description');
+                    var duration = button.getAttribute('data-duration');
+
+                    // Find the modal elements
+                    var modalProductName = productModal.querySelector('#modal-product-name');
+                    var modalProductImg = productModal.querySelector('#modal-product-img');
+                    var modalProductSalary = productModal.querySelector('#modal-product-salary');
+                    var modalDescription = productModal.querySelector('#modal-description');
+                    var modalDuration = productModal.querySelector('#modal-duration');
+
+                    // Set the modal content
+                    modalProductName.textContent = productName;
+                    modalProductImg.src = productImg;
+                    modalProductSalary.textContent = productSalary;
+                    modalDescription.textContent = description;
+                    modalDuration.textContent = duration;
+                });
+            });
+        </script>
+        <hr class="my-3">
         <!-- Pagination-->
         <nav class="d-flex justify-content-between pt-2 mb-4" aria-label="Page navigation">
             <ul class="pagination">
@@ -137,31 +198,14 @@
       </div>
     </main>
     <!-- Footer-->
-    <footer class="footer bg-dark pt-5">
-      <div class="container pt-2 pb-3">
-        <div class="row">
-          <div class="col-md-6 text-center text-md-start mb-4">
-            <div class="text-nowrap mb-3"><a class="d-inline-block align-middle mt-n2 me-2" href="#"><img class="d-block" src="img/footer-logo-light.png" width="117" alt="Cartzilla"></a><span class="d-inline-block align-middle h5 fw-light text-white mb-0">Marketplace</span></div>
-            <p class="fs-sm text-white opacity-70 pb-1">High quality items created by our global community.</p>
-            <h6 class="d-inline-block pe-3 me-3 border-end border-light"><span class="text-primary">65,478 </span><span class="fw-normal text-white">Products</span></h6>
-            <h6 class="d-inline-block pe-3 me-3 border-end border-light"><span class="text-primary">2,521 </span><span class="fw-normal text-white">Members</span></h6>
-            <h6 class="d-inline-block pe-3 me-3 border-end border-light"><span class="text-primary">472 </span><span class="fw-normal text-white">Companies</span></h6>
-          </div>
-          <div class="col-md-6 text-center text-md-end">
-            <ul class="nav nav-sm nav-light justify-content-center justify-content-md-end">
-              <li class="nav-item"><a class="nav-link" href="#">Privacy Policy</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Terms of Service</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Help & FAQ</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- Back to top button-->
-    <a class="btn btn-primary btn-icon btn-scroll-to-top" href="javascript:void(0)" data-scroll-to="#page-top">
-        <i class="ci-arrow-up"></i>
-    </a>
-    <!-- Vendor Scripts-->
+    @include('Includes.footer')
+
+    <!-- Toolbar for handheld devices (Marketplace)-->
+    <div class="handheld-toolbar">
+      <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="dashboard-favorites.html"><span class="handheld-toolbar-icon"><i class="ci-heart"></i></span><span class="handheld-toolbar-label">Favorites</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">Menu</span></a><a class="d-table-cell handheld-toolbar-item" href="marketplace-cart.html"><span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1">3</span></span><span class="handheld-toolbar-label">$56.00</span></a></div>
+    </div>
+    <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
+    <!-- Vendor scrits: js libraries and plugins-->
     <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('vendor/simplebar/dist/simplebar.min.js') }}"></script>
     <script src="{{ asset('vendor/tiny-slider/dist/tiny-slider.js') }}"></script>
