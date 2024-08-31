@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from cartzilla.createx.studio/marketplace-category.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Aug 2022 18:16:59 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     <meta charset="utf-8">
     <title>{{$settings->website_name}} | Products</title>
@@ -19,14 +17,14 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . ($settings->icon))}}">
 <link rel="manifest" href="{{ asset('site.webmanifest') }}">
 
-<link rel="mask-icon" color="#fe6a6a" href="{{ asset('safari-pinned-tab.svg') }}">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="theme-color" content="#ffffff">
-<!-- Vendor Styles including: Font Icons, Plugins, etc.-->
-<link rel="stylesheet" media="screen" href="{{ asset('vendor/simplebar/dist/simplebar.min.css') }}">
-<link rel="stylesheet" media="screen" href="{{ asset('vendor/tiny-slider/dist/tiny-slider.css') }}">
-<!-- Main Theme Styles + Bootstrap-->
-<link rel="stylesheet" media="screen" href="{{ asset('css/theme.min.css') }}">
+    <link rel="mask-icon" color="#fe6a6a" href="{{ asset('safari-pinned-tab.svg') }}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
+    <link rel="stylesheet" media="screen" href="{{ asset('vendor/simplebar/dist/simplebar.min.css') }}">
+    <link rel="stylesheet" media="screen" href="{{ asset('vendor/tiny-slider/dist/tiny-slider.css') }}">
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="{{ asset('css/theme.min.css') }}">
 
     <!-- Google Tag Manager-->
     <script>
@@ -36,9 +34,8 @@
       '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-WKV3GT5');
     </script>
-  </head>
-  <!-- Body-->
-  <body class="handheld-toolbar-enabled">
+</head>
+<body class="handheld-toolbar-enabled">
     <!-- Google Tag Manager (noscript)-->
     <noscript>
       <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
@@ -48,7 +45,6 @@
 
     <main class="page-wrapper">
       <!-- Navbar Marketplace-->
-      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
       @include('Includes.account_header')
 
       <!-- Used for marketplace templates with filters on top-->
@@ -58,8 +54,13 @@
             <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
+<<<<<<< HEAD
                   <li class="breadcrumb-item"><a style="color:black" class="text-nowrap" href="{{ route('home') }}"><i class="ci-home"></i>الصفحه الرئيسيه</a></li>
                   </li>
+=======
+                  <li class="breadcrumb-item"><a class="text-nowrap" href="{{ route('home') }}"><i class="ci-home"></i>Home</a></li>
+                  <li class="breadcrumb-item text-nowrap active" aria-current="page">All Services</li>
+>>>>>>> 20a5ff532693e35e512280448ee50eba19925ca2
                 </ol>
               </nav>
             </div>
@@ -78,15 +79,12 @@
                   <input type="text" name="search" placeholder="Search..." class="form-control me-2">
                   <button type="submit" class="btn btn-primary">Search</button>
               </form>
-
-            <!-- Pagination-->
           </div>
         </div>
         <!-- Products grid-->
         <div class="row pt-3 mx-n2">
           <!-- Product-->
           @foreach($products as $product)
-
           <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-grid-gutter">
             <div class="card product-card-alt">
               <div class="product-thumb" style="height: 280px;width: 280px;" >
@@ -100,7 +98,7 @@
                     onclick="addToFavorites({{ $product->product_id }})"
                 >
                     <i class="ci-heart"></i>
-              </button>
+                </button>
                 <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow fs-base mx-2" href="#signinnn-modal" data-bs-toggle="modal"
                     data-product-name="{{ $product->product_name }}"
                        data-product-img="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
@@ -108,40 +106,9 @@
                        data-description="{{ $product->description }}"
                        data-duration="{{ $product->Duration_of_righteousness }}"
                        data-bs-target="#signinnn-modal"><i class="ci-eye"></i></a>
-                  {{-- <button class="btn btn-light btn-icon btn-shadow fs-base mx-2" type="button"><i class="ci-cart"></i></button> --}}
                 </div><a class="product-thumb-overlay"></a><img src="{{ asset('storage/'.$product->Product_img) }}" alt="Product">
               </div>
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    var productModal = document.getElementById('signinnn-modal');
-                    productModal.addEventListener('show.bs.modal', function(event) {
-                        var button = event.relatedTarget; // Button that triggered the modal
-
-                        // Get the product data from the button's data attributes
-                        var productName = button.getAttribute('data-product-name');
-                        var productImg = button.getAttribute('data-product-img');
-                        var productSalary = button.getAttribute('data-product-salary');
-                        var description = button.getAttribute('data-description');
-                        var duration = button.getAttribute('data-duration');
-
-                        // Find the modal elements
-                        var modalProductName = productModal.querySelector('#modal-product-name');
-                        var modalProductImg = productModal.querySelector('#modal-product-img');
-                        var modalProductSalary = productModal.querySelector('#modal-product-salary');
-                        var modalDescription = productModal.querySelector('#modal-description');
-                        var modalDuration = productModal.querySelector('#modal-duration');
-
-                        // Set the modal content
-                        modalProductName.textContent = productName;
-                        modalProductImg.src = productImg;
-                        modalProductSalary.textContent = productSalary;
-                        modalDescription.textContent = description;
-                        modalDuration.textContent = duration;
-                    });
-                });
-            </script>
               <div class="card-body">
-
                 <h3 class="product-title fs-sm mb-2"><a href="marketplace-single.html">{{ $product->product_name }}</a></h3>
                 <div class="d-flex flex-wrap justify-content-between align-items-center">
                   <div class="fs-sm me-2">{{ $product->category_name }}</div>
@@ -214,21 +181,24 @@
         </script>
         <hr class="my-3">
         <!-- Pagination-->
-        <nav class="d-flex justify-content-between pt-2" aria-label="Page navigation">
-          <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#"><i class="ci-arrow-left me-2"></i>Prev</a></li>
-          </ul>
-          <ul class="pagination">
-            <li class="page-item d-sm-none"><span class="page-link page-link-static">1 / 5</span></li>
-            <li class="page-item active d-none d-sm-block" aria-current="page"><span class="page-link">1<span class="visually-hidden">(current)</span></span></li>
-            <li class="page-item d-none d-sm-block"><a class="page-link" href="#">2</a></li>
-            <li class="page-item d-none d-sm-block"><a class="page-link" href="#">3</a></li>
-            <li class="page-item d-none d-sm-block"><a class="page-link" href="#">4</a></li>
-            <li class="page-item d-none d-sm-block"><a class="page-link" href="#">5</a></li>
-          </ul>
-          <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#" aria-label="Next">Next<i class="ci-arrow-right ms-2"></i></a></li>
-          </ul>
+        <nav class="d-flex justify-content-between pt-2 mb-4" aria-label="Page navigation">
+            <ul class="pagination">
+                <li class="page-item {{ $products->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $products->previousPageUrl() }}"><i class="ci-arrow-left me-2"></i>السابق</a>
+                </li>
+            </ul>
+            <ul class="pagination">
+                @for ($i = 1; $i <= $products->lastPage(); $i++)
+                    <li class="page-item {{ $products->currentPage() == $i ? 'active' : '' }}">
+                        <a class="page-link" href="{{ $products->url($i) }}">{{ $i }}</a>
+                    </li>
+                @endfor
+            </ul>
+            <ul class="pagination">
+                <li class="page-item {{ $products->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $products->nextPageUrl() }}">التالي<i class="ci-arrow-right ms-2"></i></a>
+                </li>
+            </ul>
         </nav>
       </div>
     </main>
@@ -242,59 +212,17 @@
     <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
     <!-- Vendor scrits: js libraries and plugins-->
     <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('vendor/simplebar/dist/simplebar.min.js') }}"></script>
-<script src="{{ asset('vendor/tiny-slider/dist/min/tiny-slider.js') }}"></script>
-<script src="{{ asset('vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js') }}"></script>
-<!-- Main theme script-->
-<script src="{{ asset('js/theme.min.js') }}"></script>
-<script>
-    function addToFavorites(productId) {
-        console.log('Adding product to favorites with ID:', productId);
-
-        $.ajax({
-            url: '{{ route('favorites.store') }}',
-            type: 'POST',
-            data: {
-                _token: $('meta[name="csrf-token"]').attr('content'),
-                product_id: productId
-            },
-            success: function(response) {
-                console.log('Success:', response);
-
-                // Check if the response indicates the product was already added
-                if (response.status === 'already_added') {
-                    Swal.fire({
-                        icon: 'info',
-                        title: 'Already Added',
-                        text: 'This product is already in your favorites.',
-                        confirmButtonText: 'OK'
-                    });
-                } else {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Success',
-                        text: response.message,
-                        confirmButtonText: 'OK'
-                    });
-                }
-            },
-            error: function(xhr) {
-                console.error('AJAX Error:', xhr);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Error adding to favorites: ' + xhr.responseText,
-                    confirmButtonText: 'OK'
-                });
-            }
-        });
-    }
-</script>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-
-  </body>
-
-<!-- Mirrored from cartzilla.createx.studio/marketplace-category.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Aug 2022 18:16:59 GMT -->
+    <script src="{{ asset('vendor/simplebar/dist/simplebar.min.js') }}"></script>
+    <script src="{{ asset('vendor/tiny-slider/dist/tiny-slider.js') }}"></script>
+    <script src="{{ asset('vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js') }}"></script>
+    <!-- Main Theme Script-->
+    <script src="{{ asset('js/theme.min.js') }}"></script>
+    <!-- Custom JS for pagination and other features-->
+    <script>
+      function addToFavorites(productId) {
+          // Implement your favorite logic here
+          alert('Product ' + productId + ' added to favorites!');
+      }
+    </script>
+</body>
 </html>
