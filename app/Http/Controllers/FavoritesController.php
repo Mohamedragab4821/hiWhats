@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Favorite;
 use App\Models\Settings;
 use App\Models\Category;
+use App\Models\Page;
 
 class FavoritesController extends Controller
 {
@@ -43,6 +44,7 @@ class FavoritesController extends Controller
      * Display the user's favorites.
      */
     public function index()
+<<<<<<< HEAD
 {
     $settings = Settings::first();
     $user = Auth::user();
@@ -55,6 +57,20 @@ class FavoritesController extends Controller
     return view('favorites', compact('favorites', 'settings', 'categories'));
 }
 
+=======
+    {
+        $settings = Settings::first();
+        $pages = Page::all();
+
+        $user = Auth::user();
+        $categories = Category::all();
+        $favorites = Favorite::where('user_id', $user->id)
+                             ->with('product')
+                             ->get();
+
+        return view('favorites', compact('favorites','settings','categories','pages'));
+    }
+>>>>>>> 9ef8eb1c4cfc64cd0b8a3c3dd7d3441bd191475e
 
     public function destroy($id)
 {

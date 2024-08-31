@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Settings;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Page;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -74,8 +75,10 @@ class ProductController extends Controller
         $category = Category::paginate(5);
         $categories = Category::paginate(5);
         $settings = Settings::first();
+        $pages = Page::all();
 
-        return view('CategoryMangement',['category'=>$category,'settings'=>$settings,'categories'=>$categories]);
+
+        return view('CategoryMangement',['category'=>$category,'settings'=>$settings,'categories'=>$categories,'pages'=>$pages]);
     }
 
     public function indexproductMangement()
@@ -83,11 +86,13 @@ class ProductController extends Controller
         $products = Product::paginate(5);
         $settings = Settings::first();
         $category = Category::all();
+        $pages = Page::all();
+
         // $category1 = Category::all();
 
         $categories = Category::all();
 
-        return view('ProductMangement', ['products' => $products,'settings'=>$settings,'category'=>$category,'category1'=>$category,'categories'=>$categories]);
+        return view('ProductMangement', ['products' => $products,'settings'=>$settings,'category'=>$category,'category1'=>$category,'categories'=>$categories,'pages'=>$pages]);
     }
 
 
@@ -159,7 +164,7 @@ public function deleteProduct($id)
         $categories = Category::all();
         $validatedData = $request->validate([
             'product_name' => 'required|string|max:255',
-            'category_name' => 'required|string|max:255', // Validate category_name (category_id is derived)
+            'category_id' => 'required|max:255', // Validate category_name (category_id is derived)
             'product_salary' => 'required|numeric',
             'description' => 'required|string|max:1000',
             'Duration_of_righteousness' => 'required|string|max:255',
@@ -168,12 +173,22 @@ public function deleteProduct($id)
         // Find the product by ID
         $product = Product::where('product_id', $product_id)->first();
 
+        if ($product->Product_img && Storage::disk('public')->exists('/' . $product->Product_img)) {
+            // dd('here');
+            Storage::disk('public')->delete('/' . $product->Product_img); // Delete the image
+        }
+
+        if ($request->hasFile('Product_img')) {
+            $imagePath = $request->file('Product_img')->store('product_images', 'public');
+        }
+
         if (!$product) {
             return redirect()->back()->withErrors(['Product not found.']);
         }
 
+
         // Find the category by name and retrieve its ID
-        $category = Category::where('category_name', $validatedData['category_name'])->first();
+        $category = Category::where('category_id', $validatedData['category_id'])->first();
 
         if (!$category) {
             // Handle the case where the category is not found
@@ -181,15 +196,15 @@ public function deleteProduct($id)
         }
 
         // Check if a new image is uploaded
-        if ($request->hasFile('Product_img')) {
-            // Handle the new image upload
-            $file = $request->file('Product_img');
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = $file->storeAs('products', $fileName, 'public');
+        // if ($request->hasFile('Product_img')) {
+        //     // Handle the new image upload
+        //     $file = $request->file('Product_img');
+        //     $fileName = time() . '_' . $file->getClientOriginalName();
+        //     $filePath = $file->storeAs('products', $fileName, 'public');
 
-            // Update the product image path in the database
-            $product->Product_img = $filePath;
-        }
+        //     // Update the product image path in the database
+        //     $product->Product_img = $filePath;
+        // }
 
         // Update other product fields
         $product->product_name = $validatedData['product_name'];
@@ -198,7 +213,7 @@ public function deleteProduct($id)
         $product->product_salary = $validatedData['product_salary'];
         $product->description = $validatedData['description'];
         $product->Duration_of_righteousness = $validatedData['Duration_of_righteousness'];
-
+        $product->Product_img = $imagePath ?? null;
         // Save the updated product
         $product->save();
 
@@ -271,6 +286,12 @@ public function updateCategory(Request $request, $category_id)
 
     // Find the category by ID
     $category = Category::find($category_id);
+    
+    if ($category->category_img && Storage::disk('public')->exists('/' . $category->category_img)) {
+        // Delete the image from storage
+        // dd('here');
+        Storage::disk('public')->delete('/' . $category->category_img);
+    }
 
     if (!$category) {
         return response()->json(['message' => 'Category not found'], 404);

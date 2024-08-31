@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Settings;
 use App\Models\Contacts;
 use App\Models\Category;
+use App\Models\Page;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -20,8 +21,10 @@ class ContactsController extends Controller
         $settings = Settings::first();
 
         $categories = Category::all();
+        $pages = Page::all();
 
-        return view('contacts',['settings'=>$settings,'categories'=>$categories]);
+
+        return view('contacts',['settings'=>$settings,'categories'=>$categories,'pages'=>$pages]);
 
     }
 
@@ -61,13 +64,17 @@ class ContactsController extends Controller
     public function indexWhoAreWe(){
         $settings = Settings::first();
         $categories = Category::all();
-        return view('whoAreWe',['settings'=>$settings,'categories'=>$categories]);
+        $pages = Page::all();
+
+        return view('whoAreWe',['settings'=>$settings,'categories'=>$categories,'pages'=>$pages]);
     }
 
     public function indexourVision(){
         $settings = Settings::first();
         $categories = Category::all();
-        return view('ourVision',['settings'=>$settings,'categories'=>$categories]);
+        $pages = Page::all();
+
+        return view('ourVision',['settings'=>$settings,'categories'=>$categories,'pages'=>$pages]);
     }
 
 

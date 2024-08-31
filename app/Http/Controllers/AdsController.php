@@ -7,6 +7,8 @@ use App\Models\Users;
 use App\Models\Settings;
 use App\Models\Category;
 use App\Models\HomeAds;
+use App\Models\Page;
+
 class AdsController extends Controller
 {
     /**
@@ -17,8 +19,9 @@ class AdsController extends Controller
         $settings = Settings::first();
         $categories = Category::all();
         $home_ads = HomeAds::all();
+        $pages = Page::all();
 
-        return view('home_ads',['settings'=>$settings,'categories'=>$categories,'home_ads'=>$home_ads]);
+        return view('home_ads',['settings'=>$settings,'categories'=>$categories,'home_ads'=>$home_ads,'pages'=>$pages]);
     }
 
     /**
@@ -89,15 +92,22 @@ class AdsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy( $id)
-    {
-        try {
-            $home_ads = HomeAds::findOrFail($id);
-            $home_ads->delete();
+    public function destroy($id)
+{
+    try {
+        $home_ads = HomeAds::findOrFail($id);
 
-            return redirect()->route('ads.index')->with('success', 'Ads Deleted successfully!');
-        } catch (\Exception $e) {
-            return redirect()->back()->withErrors(['Error deleting Ads: ' . $e->getMessage()]);
+        // حذف الصورة من التخزين إذا كانت موجودة
+        if ($home_ads->image) {
+            Storage::disk('public')->delete($home_ads->image);
         }
+
+        // حذف السجل من قاعدة البيانات
+        $home_ads->delete();
+
+        return redirect()->route('ads.index')->with('success', 'Ads Deleted successfully!');
+    } catch (\Exception $e) {
+        return redirect()->back()->withErrors(['Error deleting Ads: ' . $e->getMessage()]);
     }
+}
 }

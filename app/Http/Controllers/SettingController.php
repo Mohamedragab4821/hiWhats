@@ -7,6 +7,7 @@ use App\Models\Settings;
 use App\Models\Category;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
+use App\Models\Page;
 
 class SettingController extends Controller
 {
@@ -18,8 +19,10 @@ class SettingController extends Controller
         // Retrieve the first record from the settings table, or null if no record exists
         $settings = Settings::first();
         $categories = Category::all();
+        $pages = Page::all();
+
         // Pass the settings to the view
-        return view('settings', ['settings' => $settings,'categories'=>$categories]);
+        return view('settings', ['settings' => $settings,'categories'=>$categories,'pages'=>$pages]);
     }
 
     /**

@@ -50,6 +50,12 @@
                            حسابي
                         </a>
                     </li>
+                    @foreach($pages as $page)
+                    @if($page->add_to=='footer')
+                    <li class="nav-item"><a class="nav-link" href="{{ route('page.show',['slug'=>$page->slug]) }}">{{$page->title}}</a></li>
+                    @endif
+                    @endforeach
+
                     </ul>
                   </div>
                   <div class="widget widget-links widget-light mt-4 px-lg-3 px-sm-n2">

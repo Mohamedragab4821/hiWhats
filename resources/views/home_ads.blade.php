@@ -69,7 +69,7 @@
                         </ul>
                     </div>
                      @endif
-            
+
                     <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
@@ -119,7 +119,7 @@
                           </div>
                         </div>
                     </div>
-                    
+
 
                     <br>
                     <a class="btn btn-lg btn-outline-dark mb-sm-3 mb-2" href="#signup-modal" data-bs-toggle="modal">أضف إعلان</a></div>
