@@ -17,14 +17,16 @@ class Settings extends Model
         'product_meta_k',
         'product_meta_d',
         'category_meta_k',
-        'category_meta_c',
+        'category_meta_d',
         'facebook_url',
         'twitter_url',
         'insta_url',
         'youtube_url',
         'home_description1',
         'home_description1',
-        'whatsapp'
+        'whatsapp',
+        'phone',
+        'email'
     ];
 
     // Optionally, define other properties or methods

@@ -36,6 +36,8 @@ class SettingController extends Controller
                 'website_name' => 'required|string|max:255',
                 'whatsapp' => 'required|string|max:255',
                 'website_description' => 'nullable|string|max:1000',
+                'phone' => 'required|string|max:255',
+                'email' => 'required|string|max:255',
                 'home_meta_k' => 'nullable|string|max:1000',
                 'home_meta_d' => 'nullable|string|max:1000',
                 'home_description1' => 'nullable|string|max:1000',
@@ -43,7 +45,7 @@ class SettingController extends Controller
                 'product_meta_k' => 'nullable|string|max:1000',
                 'product_meta_d' => 'nullable|string|max:1000',
                 'category_meta_k' => 'nullable|string|max:1000',
-                'category_meta_c' => 'nullable|string|max:1000',
+                'category_meta_d' => 'nullable|string|max:1000',
                 'facebook_url' => 'nullable|string|max:1000',
                 'twitter_url' => 'nullable|string|max:1000',
                 'insta_url' => 'nullable|string|max:1000',
@@ -58,6 +60,8 @@ class SettingController extends Controller
             // Update the settings model with validated data
             $settings->website_name = $validatedData['website_name'];
             $settings->whatsapp = $validatedData['whatsapp'];
+            $settings->phone = $validatedData['phone'];
+            $settings->email = $validatedData['email'];
             $settings->website_description = $validatedData['website_description'];
             $settings->home_meta_k = $validatedData['home_meta_k'];
             $settings->home_meta_d = $validatedData['home_meta_d'];
@@ -66,7 +70,7 @@ class SettingController extends Controller
             $settings->home_description2 = $validatedData['home_description2'];
             $settings->product_meta_d = $validatedData['product_meta_d'];
             $settings->category_meta_k = $validatedData['category_meta_k'];
-            $settings->category_meta_c = $validatedData['category_meta_c'];
+            $settings->category_meta_d = $validatedData['category_meta_d'];
             $settings->facebook_url = $validatedData['facebook_url'];
             $settings->twitter_url = $validatedData['twitter_url'];
             $settings->insta_url = $validatedData['insta_url'];

@@ -22,8 +22,7 @@
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="{{ asset('css/theme.min.css') }}">
     <!-- Material Icons for delete button -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
         .icon-button {
             border: none;
@@ -133,11 +132,7 @@
 											</ul>
 		
 											<!-- Pagination -->
-											<div class="card mt-4">
-												<div class="card-body text-center">
-													{{ $contacts->appends(request()->input())->links() }}
-												</div>
-											</div>
+											
 										</div>
 									</div>
 								</div>

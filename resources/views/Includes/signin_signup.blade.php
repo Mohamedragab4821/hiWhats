@@ -20,7 +20,7 @@
         }
     </style>
 </head>
-<body>
+<body style="direction: rtl; text-align: right;">
     <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -28,17 +28,17 @@
                     <ul class="nav nav-tabs card-header-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true">
-                                <i class="ci-unlocked me-2 mt-n1"></i>Sign in
+                                <i class="ci-unlocked me-2 mt-n1"></i>تسجيل دخول
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link fw-medium" href="#signup-tab" data-bs-toggle="tab" role="tab" aria-selected="false">
-                                <i class="ci-user me-2 mt-n1"></i>Sign up
+                                <i class="ci-user me-2 mt-n1"></i>تسجيل جديد
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link fw-medium" href="#forgot-password-tab" data-bs-toggle="tab" role="tab" aria-selected="false">
-                                <i class="ci-lock me-2 mt-n1"></i>Forgot Password
+                                <i class="ci-lock me-2 mt-n1"></i>نسيت كلمة المرور
                             </a>
                         </li>
                     </ul>
@@ -49,12 +49,12 @@
                     <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab" action="{{ route('signin') }}" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <label class="form-label" for="si-email">Email address</label>
+                            <label class="form-label" for="si-email">ايميل</label>
                             <input class="form-control" type="email" id="si-email" placeholder="johndoe@example.com" required name="email">
                             <div class="invalid-feedback">Please provide a valid email address.</div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="si-password">Password</label>
+                            <label class="form-label" for="si-password">كلمة المرور</label>
                             <div class="password-toggle">
                                 <input class="form-control" type="password" id="si-password" required name="password">
                                 <label class="password-toggle-btn" aria-label="Show/hide password">
@@ -67,37 +67,37 @@
                                 {{-- <input class="form-check-input" type="checkbox" id="si-remember">
                                 <label class="form-check-label" for="si-remember">Remember me</label> --}}
                             </div>
-                            <a class="fs-sm" href="#" id="forgot-password-link">Forgot password?</a>
+                            <a class="fs-sm" href="#" id="forgot-password-link">نسيت كلمة المرور</a>
                         </div>
-                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign in</button>
+                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">تسجيل</button>
                     </form>
 
                     <!-- Forgot Password Form -->
                     <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="forgot-password-tab" action="{{ route('password.email') }}" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <label class="form-label" for="fp-email">Email address</label>
+                            <label class="form-label" for="fp-email">ايميل</label>
                             <input class="form-control" type="email" id="fp-email" name="email" placeholder="johndoe@example.com" required>
                             <div class="invalid-feedback">Please provide a valid email address.</div>
                         </div>
-                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Send Password Reset Link</button>
+                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">ارسال لينك تغيير كلمة المرور</button>
                     </form>
 
                     <!-- Sign Up Form -->
                     <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab" action="{{ route('Registeration') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
-                            <label class="form-label" for="su-name">Full name</label>
+                            <label class="form-label" for="su-name">الاسم بالكامل</label>
                             <input class="form-control" type="text" id="userName" name="userName" placeholder="John Doe" required>
                             <div class="invalid-feedback">Please fill in your name.</div>
                         </div>
                         <div class="mb-3">
-                            <label for="su-email">Email address</label>
+                            <label for="su-email">ايميل</label>
                             <input class="form-control" type="email" id="email" name="email" placeholder="johndoe@example.com" required>
                             <div class="invalid-feedback">Please provide a valid email address.</div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="su-password">Password</label>
+                            <label class="form-label" for="su-password">كلمة المرور</label>
                             <div class="password-toggle">
                                 <input class="form-control" type="password" id="password" name="password" required>
                                 <label class="password-toggle-btn" aria-label="Show/hide password">
@@ -106,7 +106,7 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="su-phone">Phone Number</label>
+                            <label class="form-label" for="su-phone">الهاتف</label>
                             <div class="password-toggle">
                                 <input class="form-control" type="text" id="phone" name="phone" required>
                                 <label class="password-toggle-btn"></label>
@@ -114,7 +114,7 @@
                         </div>
                         <!-- Image Selection Input -->
                         <div class="mb-3">
-                            <label class="form-label" for="su-image">Profile Image</label>
+                            <label class="form-label" for="su-image">صورة شخصيه</label>
                             <input class="form-control" type="file" id="image" name="image" accept="image/*">
                             <div class="invalid-feedback">Please select an image file.</div>
                         </div>

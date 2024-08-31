@@ -38,7 +38,7 @@
         }
     </style>
 </head>
-<body>
+<body >
     <script async src='https://d2mpatx37cqexb.cloudfront.net/delightchat-whatsapp-widget/embeds/embed.min.js'></script>
     <script>
         var whatsappNumber = @json($settings->whatsapp);
@@ -51,7 +51,7 @@
         };
     </script>
 
-    <header class="navbar navbar-sticky navbar-expand-lg navbar-light bg-light">
+    <header class="navbar navbar-sticky navbar-expand-lg navbar-light bg-light" style="padding-right: 10%;padding-left: 10%">
         <div class="container-fluid">
             <a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="{{route('home')}}">
                 <img src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="142" alt="Cartzilla">
@@ -61,10 +61,7 @@
             </a>
             <div class="navbar-toolbar d-flex align-items-center order-lg-3">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button>
-                <a class="navbar-tool d-none d-lg-flex" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#searchBox" role="button" aria-expanded="false" aria-controls="searchBox">
-                    <span class="navbar-tool-tooltip">بحث</span>
-                    <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-search"></i></div>
-                </a>
+
                 <div class="dropdown-menu dropdown-menu-end">
                     <div style="min-width: 14rem;">
                         <h6 class="dropdown-header">@foxnet_creator</h6>
@@ -104,6 +101,11 @@
                     <li class="nav-item"><a class="nav-link" href="{{route('contacts.index')}}">طلب خدمة</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('whoAreWe') }}">من نحن</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('ourVision') }}">رؤيتنا</a></li>
+                    @foreach($pages as $page)
+                    @if($page->add_to=='header'&&$page->status=='published')
+                    <li class="nav-item"><a class="nav-link" href="{{ route('page.show',['slug'=>$page->slug]) }}">{{$page->title}}</a></li>
+                    @endif
+                    @endforeach
 
                     @if(Auth::user())
                     <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">حسابي</a>

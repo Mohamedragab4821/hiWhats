@@ -49,6 +49,7 @@ Route::middleware(['checklogin'])->group(function () {
     Route::post('/favorites', [FavoritesController::class, 'store'])->name('favorites.store');
     Route::get('/favorites', [FavoritesController::class, 'index'])->name('favorites.index');
     Route::delete('/favorites/{id}', [FavoritesController::class, 'destroy'])->name('favorites.destroy');
+    Route::get('/{slug}', [PagesController::class, 'show'])->name('page.show');
 
     Route::middleware(['CheckAdminAccess'])->group(function () {
 
@@ -71,7 +72,6 @@ Route::middleware(['checklogin'])->group(function () {
         Route::post('/pages', [PagesController::class, 'store'])->name('pages.store');
         Route::put('/pages/update/{id}', [PagesController::class, 'update'])->name('pages.update');
         Route::delete('/pages/delete/{id}', [PagesController::class, 'destroy'])->name('pages.destroy');
-        Route::get('/{slug}', [PagesController::class, 'show'])->name('page.show');
 
     });
 });
