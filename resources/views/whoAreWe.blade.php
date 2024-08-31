@@ -25,6 +25,9 @@
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="{{ asset('css/theme.min.css') }}">
     <style>
+      body{
+        display: block;
+      }
       .card {
         height: 100%; /* Ensures the card fills the container height */
       }

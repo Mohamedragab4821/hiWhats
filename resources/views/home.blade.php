@@ -238,7 +238,6 @@
                       <img src="{{ asset('storage/' . $category->category_img) }}" alt="Category Image">
                     </a>
                     <!-- Wishlist button-->
-                      <i class="ci-heart"></i>
                     </button>
                   </div>
                   <div class="card-body">
