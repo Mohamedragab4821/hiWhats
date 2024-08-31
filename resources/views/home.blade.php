@@ -275,13 +275,6 @@
                 <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
                     @foreach($products as $product)
                     <div class="col py-3">
-                        {{-- <a href="#signinnn-modal" data-bs-toggle="modal"
-                           data-product-name="{{ $product->product_name }}"
-                           data-product-img="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
-                           data-product-salary="{{ $product->product_salary }}"
-                           data-description="{{ $product->description }}"
-                           data-duration="{{ $product->Duration_of_righteousness }}"
-                           data-bs-target="#signinnn-modal"> --}}
                             <article class="card h-100 border-0 shadow">
                                 <div class="card-img-top position-relative overflow-hidden">
                                     <img class="avatar" src="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}" alt="Product image">

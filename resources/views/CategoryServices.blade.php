@@ -61,10 +61,10 @@
                     <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
-                                <li class="breadcrumb-item"><a class="text-nowrap" href="index.html"><i class="ci-home"></i>Home</a></li>
-                                <li class="breadcrumb-item text-nowrap"><a href="home-marketplace.html">Market</a>
+                                <li class="breadcrumb-item"><a class="text-nowrap" href="{{ route('home') }}"><i class="ci-home"></i>Home</a></li>
+                                {{-- <li class="breadcrumb-item text-nowrap"><a href="home-marketplace.html">Market</a> --}}
                                 </li>
-                                <li class="breadcrumb-item text-nowrap active" aria-current="page">Inside category</li>
+                                <li class="breadcrumb-item text-nowrap active" aria-current="page">Category</li>
                             </ol>
                         </nav>
                     </div>
@@ -85,7 +85,7 @@
                             <input type="text" name="search" placeholder="Search..." class="form-control me-2">
                             <input type="hidden" name="category_id" value="{{ isset($id) ? $id : '' }}">
                             <button type="submit" class="btn btn-primary">Search</button>
-                        </form>                                               
+                        </form>
                     </div>
                 </div>
             </div>
