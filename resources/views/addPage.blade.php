@@ -223,7 +223,10 @@
                     
 
                     <br>
-                    <a class="btn btn-lg btn-outline-dark mb-sm-3 mb-2" href="#addPage-modal" data-bs-toggle="modal">اضف اعلان</a></div>
+                    <a class="btn btn-primary btn-sm" href="#addPage-modal" data-bs-toggle="modal">اضف صفحه</a></div>
+                    <br><br><br>
+
+                    
                     <table class="table table-bordered">
                         <thead>
                                 

@@ -16,7 +16,7 @@ class CheckAdminAccess
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->access !== 'admin') {
+        if (!(Auth::check()) && (Auth::user()->access !== 'admin')) {
             return redirect()->route('home')->with('error', 'You must be an Admin to access this page.');
         }
 

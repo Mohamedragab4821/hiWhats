@@ -60,7 +60,7 @@
                         <div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
                             <h6 class="fs-base text-light mb-0">List of items you added to wishlist:</h6>
                             <a class="btn btn-primary btn-sm" href="#category-modal" data-bs-toggle="modal">
-                                <i class="ci-add me-2"></i>Add Categories
+                                Add Categories
                             </a>
                         </div>
                         <form action="{{ route('Category.search') }}" method="GET" class="d-flex align-items-center">

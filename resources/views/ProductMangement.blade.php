@@ -200,38 +200,38 @@
                       <script>
 
                       document.addEventListener('DOMContentLoaded', function () {
-    var productModal = document.getElementById('product-modal');
-    productModal.addEventListener('show.bs.modal', function (event) {
-        var button = event.relatedTarget; // Button that triggered the modal
+                        var productModal = document.getElementById('product-modal');
+                        productModal.addEventListener('show.bs.modal', function (event) {
+                            var button = event.relatedTarget; // Button that triggered the modal
 
-        // Extract data attributes from the button
-        var productId = button.getAttribute('data-product-id');
-        var productName = button.getAttribute('data-product-name');
-        var categoryName = button.getAttribute('data-category-id'); // Assuming this is the category ID
-        var productSalary = button.getAttribute('data-product-salary');
-        var description = button.getAttribute('data-description');
-        var duration = button.getAttribute('data-duration');
-        var productImg = button.getAttribute('data-product-img');
+                            // Extract data attributes from the button
+                            var productId = button.getAttribute('data-product-id');
+                            var productName = button.getAttribute('data-product-name');
+                            var categoryName = button.getAttribute('data-category-id'); // Assuming this is the category ID
+                            var productSalary = button.getAttribute('data-product-salary');
+                            var description = button.getAttribute('data-description');
+                            var duration = button.getAttribute('data-duration');
+                            var productImg = button.getAttribute('data-product-img');
 
-        // Update the form inputs in the modal
-        var modalForm = productModal.querySelector('form');
-        modalForm.action = "/profileSetting/productMangement/edit-product/" + productId; // Set form action with the product ID
+                            // Update the form inputs in the modal
+                            var modalForm = productModal.querySelector('form');
+                            modalForm.action = "/profileSetting/productMangement/edit-product/" + productId; // Set form action with the product ID
 
-        modalForm.querySelector('#product_name').value = productName;
-        modalForm.querySelector('#product_salary').value = productSalary;
+                            modalForm.querySelector('#product_name').value = productName;
+                            modalForm.querySelector('#product_salary').value = productSalary;
 
-        modalForm.querySelector('#description').value = description;
-        modalForm.querySelector('#Duration_of_righteousness').value = duration;
+                            modalForm.querySelector('#description').value = description;
+                            modalForm.querySelector('#Duration_of_righteousness').value = duration;
 
-        // Set the selected category
-        var categorySelect = modalForm.querySelector('#category_name');
+                            // Set the selected category
+                            var categorySelect = modalForm.querySelector('#category_name');
 
-// Loop through options to find the one that matches the categoryName
-Array.from(categorySelect.options).forEach(function(option) {
-    if (option.value === categoryName) {
-        option.selected = true; // Set the matching option as selected
-    }
-});
+                    // Loop through options to find the one that matches the categoryName
+                    Array.from(categorySelect.options).forEach(function(option) {
+                        if (option.value === categoryName) {
+                            option.selected = true; // Set the matching option as selected
+                        }
+                    });
 
         // If you want to display the image in the form, set the src attribute
         var imgElement = modalForm.querySelector('#Product_img_display');

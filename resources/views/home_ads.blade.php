@@ -82,7 +82,7 @@
                           <div class="modal-content">
                             <div class="modal-header bg-secondary">
                               <ul class="nav nav-tabs card-header-tabs" role="tablist">
-                                <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true">Add Product</a></li>
+                                <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true">Add Ads</a></li>
                               </ul>
                               <img src="" alt="">
                               <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -136,7 +136,8 @@
                     
 
                     <br>
-                    <a class="btn btn-lg btn-outline-dark mb-sm-3 mb-2" href="#signup-modal" data-bs-toggle="modal">اضف اعلان</a></div>
+                    <a class="btn btn-primary btn-sm" href="#signup-modal" data-bs-toggle="modal">اضف اعلان</a></div>
+                    <br><br><br>
                     <table class="table table-bordered">
                         <thead>
                                 
