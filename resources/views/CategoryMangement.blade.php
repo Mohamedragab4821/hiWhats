@@ -122,11 +122,11 @@
                                 <form action="{{ route('destroyCategory', $cat->category_id) }}" method="POST" onsubmit="return confirm('هل أنت متأكد أنك تريد حذف هذه الفئة؟');">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-outline-danger btn-sm" type="submit"><i class="ci-trash me-2"></i>إزالة</button>
+                                    <button class="btn btn-outline-danger btn-sm w-100" type="submit"><i class="ci-trash me-2"></i>إزالة</button>
                                 </form>
 
                                 <!-- Edit Button -->
-                                <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#categoryy-modal"
+                                <button class="btn btn-outline-primary btn-sm w-100" type="button" data-bs-toggle="modal" data-bs-target="#categoryy-modal"
                                     data-category-id="{{ $cat->category_id }}"
                                     data-category-name="{{ $cat->category_name }}"
                                     data-category-description="{{ $cat->category_description }}"
@@ -213,6 +213,8 @@
     <script src="{{ asset('vendor/tiny-slider/dist/min/tiny-slider.js') }}"></script>
     <!-- Main Theme Script -->
     <script src="{{ asset('js/theme.min.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Custom Scripts -->
     <script>
         // Handle the data for the edit modal

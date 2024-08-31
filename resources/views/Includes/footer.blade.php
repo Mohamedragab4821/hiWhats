@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>الوثيقة</title>
+    <style>
+      i{
+        padding: 5px
+      }
+    </style>
 </head>
 <body>
     <footer class="footer bg-darker">
@@ -16,8 +21,8 @@
                   <h3 class="widget-title text-light pb-1">ابق على اطلاع</h3>
                   <form class="subscription-form validate" action="https://studio.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;amp;id=29ca296126" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
                     <div class="input-group flex-nowrap"><i class="ci-mail position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
-                      <input class="form-control rounded-start" type="email" name="EMAIL" placeholder="بريدك الإلكتروني" required>
-                      <button class="btn btn-accent" type="submit" name="subscribe">اشترك*</button>
+                      <input style="padding: 10px" class="form-control rounded-start" type="email" name="EMAIL" placeholder="     بريدك الالكتروني" required>
+                      <a href="{{route('contacts.index')}}" class="btn btn-accent" type="submit" name="subscribe">اشترك*</a> 
                     </div>
                     <!-- لا ينبغي للأشخاص الحقيقيين ملء هذا وانتظار أشياء جيدة - لا تقم بإزالة هذا أو المخاطرة بتسجيل الروبوتات-->
                     <div style="position: absolute; left: -5000px;" aria-hidden="true">

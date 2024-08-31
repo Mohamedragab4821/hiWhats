@@ -22,53 +22,53 @@
                 <ul class="list-unstyled mb-0">
                     <li class="border-bottom mb-0">
                         <a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{ route('profileSetting') }}">
-                            <i class="fas fa-user-cog opacity-60 me-3"></i>إعدادات الحساب
+                            <i style="padding: 5px" class="fas fa-user-cog opacity-60 me-3"></i>إعدادات الحساب
                         </a>
                     </li>
                     <li class="border-bottom mb-0">
                         <a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{ route('favorites.index') }}">
-                            <i class="fas fa-heart opacity-60 me-3"></i>المفضلة
+                            <i style="padding: 5px" class="fas fa-heart opacity-60 me-3"></i>المفضلة
                             <span class="fs-sm text-muted ms-auto"></span>
                         </a>
                     </li>
         
                     <!-- التحقق من وصول المستخدم كمدير -->
-                    @if(Auth::user()->access == 'Admin')
+                    @if(Auth::user()->access == 'admin')
                         <li class="border-bottom mb-0">
                             <a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{ route('userManagement') }}">
-                                <i class="fas fa-users-cog opacity-60 me-3"></i>إدارة المستخدمين
+                                <i style="padding: 5px" class="fas fa-users-cog opacity-60 me-3"></i>إدارة المستخدمين
                             </a>
                         </li>
                         <li class="border-bottom mb-0">
                             <a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{ route('settings.index') }}">
-                                <i class="fas fa-cogs opacity-60 me-3"></i>إعدادات الموقع
+                                <i style="padding: 5px" class="fas fa-cogs opacity-60 me-3"></i>إعدادات الموقع
                             </a>
                         </li>
                         <li class="border-bottom mb-0">
                             <a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{ route('ads.index') }}">
-                                <i class="fas fa-ad opacity-60 me-3"></i>إعدادات الإعلانات
+                                <i style="padding: 5px" class="fas fa-ad opacity-60 me-3"></i>إعدادات الإعلانات
                             </a>
                         </li>
                         <li class="border-bottom mb-0">
                             <a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{ route('productMangement') }}">
-                                <i class="fas fa-box opacity-60 me-3"></i>إدارة المنتجات
+                                <i style="padding: 5px" class="fas fa-box opacity-60 me-3"></i>إدارة المنتجات
                             </a>
                         </li>
                         <li class="border-bottom mb-0">
                             <a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{ route('categoryMangement') }}">
-                                <i class="fas fa-tags opacity-60 me-3"></i>إدارة الفئات
+                                <i style="padding: 5px" class="fas fa-tags opacity-60 me-3"></i>إدارة الفئات
                             </a>
                         </li>
                         <li class="border-bottom mb-0">
                             <a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{ route('messages.index') }}">
-                                <i class="fas fa-envelope opacity-60 me-3"></i>الرسائل
+                                <i style="padding: 5px" class="fas fa-envelope opacity-60 me-3"></i>الرسائل
                             </a>
                         </li>
                     @endif
         
                     <li class="border-bottom mb-0">
                         <a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{ route('logout') }}">
-                            <i class="fas fa-sign-out-alt opacity-60 me-3"></i>تسجيل الخروج
+                            <i style="padding: 5px" class="fas fa-sign-out-alt opacity-60 me-3"></i>تسجيل الخروج
                         </a>
                     </li>
                 </ul>

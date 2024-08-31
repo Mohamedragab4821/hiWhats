@@ -106,7 +106,7 @@ class ProductController extends Controller
         'product_salary' => 'required|numeric',
         'description' => 'required|string',
         'Duration_of_righteousness' => 'required|string|max:255',
-        'Product_img' => 'required|image|mimes:jpg,jpeg,png|max:2048', // Ensure the image is valid
+        'Product_img' => 'required|image|mimes:jpg,jpeg,png|max:10000', // Ensure the image is valid
     ]);
     // dd('sss');
     // Handle the image upload

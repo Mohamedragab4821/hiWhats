@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>وثيقة</title>
+    <title>Document</title>
+    
 </head>
 <body>
     <script async src='https://d2mpatx37cqexb.cloudfront.net/delightchat-whatsapp-widget/embeds/embed.min.js'></script>
     <script>
-      var wa_btnSetting = {"btnColor":"#16BE45","ctaText":"اتصل بنا عبر واتساب","cornerRadius":40,"marginBottom":100,"marginLeft":20,"marginRight":20,"btnPosition":"right","whatsAppNumber":"+201283370658","welcomeMessage":"مرحبًا","zIndex":999999,"btnColorScheme":"light"};
-      var wa_widgetSetting = {"title":"فكرة","subTitle":"عادةً ما يرد خلال يوم","headerBackgroundColor":"#FBFFC8","headerColorScheme":"dark","greetingText":"مرحبًا! \nكيف يمكنني مساعدتك؟","ctaText":"ابدأ المحادثة","btnColor":"#1A1A1A","cornerRadius":40,"welcomeMessage":"مرحبًا","btnColorScheme":"light","brandImage":"https://uploads-ssl.webflow.com/5f68a65cd5188c058e27c898/6204c4267b92625c9770f687_whatsapp-chat-widget-dummy-logo.png","darkHeaderColorScheme":{"title":"#333333","subTitle":"#4F4F4F"}};  
+      var wa_btnSetting = {"btnColor":"#16BE45","ctaText":"WhatsApp Us","cornerRadius":40,"marginBottom":100,"marginLeft":20,"marginRight":20,"btnPosition":"right","whatsAppNumber":"+201283370658","welcomeMessage":"Hello","zIndex":999999,"btnColorScheme":"light"};
+      var wa_widgetSetting = {"title":"فكره","subTitle":"Typically replies in a day","headerBackgroundColor":"#FBFFC8","headerColorScheme":"dark","greetingText":"Hi there! \nHow can I help you?","ctaText":"Start Chat","btnColor":"#1A1A1A","cornerRadius":40,"welcomeMessage":"Hello","btnColorScheme":"light","brandImage":"https://uploads-ssl.webflow.com/5f68a65cd5188c058e27c898/6204c4267b92625c9770f687_whatsapp-chat-widget-dummy-logo.png","darkHeaderColorScheme":{"title":"#333333","subTitle":"#4F4F4F"}};  
       window.onload = () => {
         _waEmbed(wa_btnSetting, wa_widgetSetting);
       };
@@ -20,11 +21,11 @@
     <div class="alert alert-danger">
         {{ $errors->first('error') }}
     </div>
-    @endif
+@endif
 
-    <header class="navbar d-block navbar-sticky navbar-expand-lg navbar-light position-absolute w-100">
+    <header class="navbar d-block navbar-sticky navbar-expand-lg navbar-light position-absolute w-100" style="direction: rtl; text-align: right;">
         <div class="container">
-            <a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="{{route('home')}}">
+            <a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="{{route('home')}}l">
                 <img src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="142" alt="Cartzilla">
             </a>
             <a class="navbar-brand d-sm-none me-2 order-lg-1" href="index.html">
@@ -40,17 +41,13 @@
                 </a>
                 @if(!Auth::user())
                 <a class="navbar-tool ms-lg-2" href="#signin-modal" data-bs-toggle="modal">
-                    <span class="navbar-tool-tooltip">تسجيل الدخول</span>
-                    <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-user"></i></div>
-                </a>
-                @endif
-            </div>
-            <div class="collapse navbar-collapse me-auto order-lg-2" id="navbarCollapse">
-                <!-- البحث (للهواتف)-->
-                <div class="d-lg-none py-3">
-                    <div class="input-group"><i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-                        <input class="form-control rounded-start" type="text" placeholder="ما الذي تحتاجه؟">
-                    </div>
+                    <span class="navbar-tool-tooltip">تسجيل</span>
+                        <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-user"></i></div>
+                    </a>
+                    @endif
+                </div>
+                <div class="collapse navbar-collapse me-auto order-lg-2" id="navbarCollapse">
+                    <!-- Search (mobile)-->
                     <!-- Primary menu-->
                     <ul class="navbar-nav">
                         <li class="nav-item active"><a class="nav-link" href="{{route('home')}}">الصفحه الرئيسه</a></li>
@@ -74,7 +71,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('whoAreWe') }}">من نحن</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('ourVision') }}">رؤيتنا</a></li>
                         @foreach($pages as $page)
-                        @if($page->add_to=='header')
+                        @if($page->add_to=='header'&&$page->status=='published')
                         <li class="nav-item"><a class="nav-link" href="{{ route('page.show',['slug'=>$page->slug]) }}">{{$page->title}}</a></li>
                         @endif
                         @endforeach

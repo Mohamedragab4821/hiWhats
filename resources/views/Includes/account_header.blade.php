@@ -121,13 +121,6 @@
             </div>
         </div>
         <!-- انهيار البحث-->
-        <div class="search-box collapse" id="searchBox">
-            <div class="container py-2">
-                <div class="input-group"><i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-                    <input class="form-control rounded-start" type="text" placeholder="ماذا تحتاج؟">
-                </div>
-            </div>
-        </div>
     </header>
 
     <!-- Input المخفي -->

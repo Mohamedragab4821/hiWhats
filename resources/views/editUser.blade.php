@@ -117,8 +117,8 @@
                                 <div class="col-sm-6">
                                     <label class="form-label" for="profile-access">مستوى الوصول</label>
                                     <select class="form-control" id="profile-access" name="access">
-                                        <option value="User" {{ old('access', $user->access) == 'User' ? 'selected' : '' }}>مستخدم</option>
-                                        <option value="Admin" {{ old('access', $user->access) == 'Admin' ? 'selected' : '' }}>مدير</option>
+                                        <option value="user" {{ old('access', $user->access) == 'user' ? 'selected' : '' }}>مستخدم</option>
+                                        <option value="admin" {{ old('access', $user->access) == 'admin' ? 'selected' : '' }}>مدير</option>
                                     </select>
                                 </div>                                                               
                             </div>

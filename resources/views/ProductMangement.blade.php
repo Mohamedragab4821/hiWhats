@@ -126,7 +126,7 @@
                         
                             <!-- راتب المنتج -->
                             <div class="mb-3">
-                                <label class="form-label" for="product_salary">راتب المنتج</label>
+                                <label class="form-label" for="product_salary">سعر المنتج</label>
                                 <input class="form-control" type="number" id="product_salary" name="product_salary" placeholder="أدخل راتب المنتج" required>
                                 <div class="invalid-feedback">يرجى إدخال راتب المنتج بشكل صحيح.</div>
                             </div>
@@ -165,12 +165,12 @@
               @foreach ($products as $product)
               <div class="d-sm-flex justify-content-between mt-lg-4 mb-4 pb-3 pb-sm-2 border-bottom">
                   <div class="d-block d-sm-flex align-items-start text-center text-sm-start">
-                      <a class="d-block flex-shrink-0 mx-auto me-sm-4" href="shop-single-v1.html" style="width: 10rem;">
+                      <a class="d-block flex-shrink-0 mx-auto me-sm-4"  style="width: 10rem;">
                           <img src="{{ asset('storage/' . $product->Product_img) }}" alt="Product">
                       </a>
                       <div class="pt-2">
                           <h3 class="product-title fs-base mb-2">
-                              <a href="shop-single-v1.html">{{ $product->product_name }}</a>
+                              <a>{{ $product->product_name }}</a>
                           </h3>
                           <div class="fs-sm">
                               <span class="text-muted me-2"> وصــف : </span> {{ $product->description }}
@@ -187,7 +187,6 @@
                           @method('DELETE')
                           <button class="btn btn-outline-danger btn-sm" type="submit"><i class="ci-trash me-2"></i>مسح</button>
                       </form>
-                      <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
                           <!-- Edit Button -->
                           <button
                                 class="btn btn-outline-primary btn-sm"
@@ -204,7 +203,6 @@
                                 <i class="ci-edit me-2"></i>تعديل
                             </button>
 
-                      </div>
                       <script>
 
                       document.addEventListener('DOMContentLoaded', function () {
