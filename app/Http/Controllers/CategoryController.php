@@ -16,7 +16,8 @@ class CategoryController extends Controller
     public function index($id)
 {
     $settings = Settings::first();
-    $categories = Category::all();
+    // $categories = Category::all();
+    $categories = Category::paginate(5);
     $pages = Page::all();
 
     // If an ID is provided, fetch products belonging to that category
@@ -35,7 +36,7 @@ class CategoryController extends Controller
 
     public function indexServices()
     {
-        $products = Product::all();
+        $products = Product::paginate(8);
         $settings = Settings::first();
         $categories=Category::all();
         $pages = Page::all();

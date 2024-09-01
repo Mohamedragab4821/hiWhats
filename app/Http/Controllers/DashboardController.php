@@ -196,21 +196,22 @@ class DashboardController extends Controller
 
     $user->save();
 
-    return redirect()->back()->with('success', 'Profile updated successfully.');
+    return redirect()->route('userManagement')->with('success', 'Profile updated successfully.');
 }
 
 
 public function updateUser(Request $request, $id)
 {
+// dd($request);
+
     // Validate the request
     $request->validate([
         'user_name' => 'required|string|max:255',
         'email' => 'required|string|email|max:255',
         'phone' => 'required|string|max:255',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        'access' => 'required|string|in:User,Admin',
+        'access' => 'required|string|in:user,admin',
     ]);
-
     // Find the user by ID
     $user = Users::find($id);
 

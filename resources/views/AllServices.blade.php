@@ -54,13 +54,8 @@
             <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
-<<<<<<< HEAD
                   <li class="breadcrumb-item"><a style="color:black" class="text-nowrap" href="{{ route('home') }}"><i class="ci-home"></i>الصفحه الرئيسيه</a></li>
                   </li>
-=======
-                  <li class="breadcrumb-item"><a class="text-nowrap" href="{{ route('home') }}"><i class="ci-home"></i>Home</a></li>
-                  <li class="breadcrumb-item text-nowrap active" aria-current="page">All Services</li>
->>>>>>> 20a5ff532693e35e512280448ee50eba19925ca2
                 </ol>
               </nav>
             </div>

@@ -34,7 +34,7 @@
     </script>
   </head>
   <!-- Body-->
-  <body class="handheld-toolbar-enabled">
+  <body class="handheld-toolbar-enabled" style="display: block">
     <!-- Google Tag Manager (noscript)-->
     <noscript>
       <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>

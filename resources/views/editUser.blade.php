@@ -69,7 +69,14 @@
                     @include('Includes.leftSideMenue')
 
                     <!-- Content-->
+                      <!-- Display success or error messages -->
+                      
                     <section class="col-lg-9 pt-lg-4 pb-4 mb-3">
+                        @if (session('success'))
+                      <div class="alert alert-success">{{ session('success') }}</div>
+                  @elseif (session('error'))
+                      <div class="alert alert-danger">{{ session('error') }}</div>
+                  @endif
                         <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
                             <h1 class="h3 mb-4 pt-2 text-center text-sm-end">إعدادات الملف الشخصي</h1>
                             <div class="bg-secondary rounded-3 p-4 mb-4 text-center text-sm-start">

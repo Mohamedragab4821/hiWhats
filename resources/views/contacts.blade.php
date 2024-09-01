@@ -18,6 +18,8 @@
     <link rel="mask-icon" color="#fe6a6a" href="{{ asset('safari-pinned-tab.svg') }}">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
+
+    <style></style>
     <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
     <link rel="stylesheet" media="screen" href="{{ asset('vendor/simplebar/dist/simplebar.min.css') }}"/>
     <link rel="stylesheet" media="screen" href="{{ asset('vendor/tiny-slider/dist/tiny-slider.css') }}"/>
@@ -34,7 +36,7 @@
     </script>
   </head>
   <!-- Body-->
-  <body class="handheld-toolbar-enabled" style="background-color: white">
+  <body class="handheld-toolbar-enabled" style="background-color: white; overflow-x: hidden">
     <!-- Google Tag Manager (noscript)-->
     <noscript>
       <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
@@ -44,8 +46,8 @@
 
     <main class="page-wrapper">
       <!-- Navbar 3 Level (Light)-->
-      @include('Includes.home_header')
-      <br><br><br><br>
+      @include('Includes.account_header')
+      
       <!-- Page Title (Light)-->
       <div class="bg-secondary py-4">
         <div class="container d-lg-flex justify-content-between py-2 py-lg-3"  style="direction: rtl; text-align: right;">
