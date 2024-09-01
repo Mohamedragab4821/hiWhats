@@ -28,7 +28,7 @@
                     <ul class="nav nav-tabs card-header-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true">
-                                <i class="ci-unlocked me-2 mt-n1"></i>تسجيل دخول
+                                <i class="ci-unlocked me-2 mt-n1 ms-4"></i>تسجيل دخول
                             </a>
                         </li>
                         <li class="nav-item">
@@ -42,7 +42,7 @@
                             </a>
                         </li>
                     </ul>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button class="btn-close " type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body tab-content py-4">
                     <!-- Sign In Form -->

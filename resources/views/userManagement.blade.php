@@ -182,7 +182,7 @@
                                             <a href="{{ route('editUser', ['id' => $user->id]) }}" class="icon-button" title="الإعدادات" data-toggle="tooltip">
                                                 <i class="material-icons">settings</i>
                                             </a>
-                                            
+
                                             <!-- Delete Button -->
                                             <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;" class="delete-form">
                                                 @csrf
@@ -196,14 +196,14 @@
                                 @endforeach
                             </tbody>
                           </table>
-                          
+
                           <!-- Pagination would be here if needed -->
                       </div>
                   </div>
               </div>
           </section>
-          
-          
+
+
           </div>
         </div>
       </div>
@@ -212,10 +212,9 @@
     @include('Includes.footer')
 
     <!-- Toolbar for handheld devices (NFT Marketplace)-->
-    <div class="handheld-toolbar">
-      <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="nft-account-settings.html" data-bs-toggle="modal"><span class="handheld-toolbar-icon"><i class="ci-user"></i></span><span class="handheld-toolbar-label">الحساب</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">القائمة</span></a></div>
-    </div>
-    
+    @include('includes.toolbar')
+
+
     <!-- Back to Top Button-->
     <a class="btn-scroll-top" href="javascript:void(0)" data-scroll-to="#top">
       <i class="ci-arrow-up"></i>

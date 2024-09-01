@@ -93,24 +93,24 @@
                                                 <input class="form-control" type="text" id="category_name" name="category_name" placeholder="أدخل اسم التصنيف" required>
                                                 <div class="invalid-feedback">يرجى تقديم اسم تصنيف صالح.</div>
                                             </div>
-                                        
+
                                             <!-- وصف التصنيف -->
                                             <div class="mb-3">
                                                 <label class="form-label" for="category_description">وصف التصنيف</label>
                                                 <textarea class="form-control" id="category_description" name="category_description" rows="3" placeholder="أدخل وصف التصنيف" required></textarea>
                                                 <div class="invalid-feedback">يرجى تقديم وصف صالح.</div>
                                             </div>
-                                        
+
                                             <!-- صورة التصنيف -->
                                             <div class="mb-3">
                                                 <label class="form-label" for="category_img">صورة التصنيف</label>
                                                 <input class="form-control" type="file" id="category_img" name="category_img">
                                             </div>
-                                        
+
                                             <!-- زر الإضافة -->
                                             <button class="btn btn-primary btn-shadow d-block w-100" type="submit">إضافة التصنيف</button>
                                         </form>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -245,10 +245,8 @@
     @include('Includes.footer')
 
     <!-- Toolbar for handheld devices (NFT Marketplace)-->
-    <div class="handheld-toolbar">
-      <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" data-bs-toggle="modal"><span class="handheld-toolbar-icon"><i class="ci-user"></i></span><span class="handheld-toolbar-label">Account</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">Menu</span></a><a class="d-table-cell handheld-toolbar-item"><span class="handheld-toolbar-icon"><i class="ci-add"></i></span><span class="handheld-toolbar-label">Create item</span></a>
-      </div>
-    </div>
+    @include('includes.toolbar')
+
     <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
     <!-- Vendor scrits: js libraries and plugins-->
     <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>

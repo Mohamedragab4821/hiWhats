@@ -109,7 +109,7 @@
                                 <input class="form-control" type="text" id="product_name" name="product_name" placeholder="أدخل اسم المنتج" required>
                                 <div class="invalid-feedback">يرجى تقديم اسم منتج صالح.</div>
                             </div>
-                        
+
                             <!-- اسم التصنيف -->
                             <div class="mb-3">
                                 <label class="form-label" for="category_name">اسم التصنيف</label>
@@ -121,39 +121,39 @@
                                 </select>
                                 <div class="invalid-feedback">يرجى اختيار تصنيف صالح.</div>
                             </div>
-                        
+
                             <!-- سعر المنتج -->
                             <div class="mb-3">
                                 <label class="form-label" for="product_salary">سعر المنتج</label>
                                 <input class="form-control" type="number" id="product_salary" name="product_salary" placeholder="أدخل سعر المنتج" required>
                                 <div class="invalid-feedback">يرجى تقديم سعر منتج صالح.</div>
                             </div>
-                        
+
                             <!-- الوصف -->
                             <div class="mb-3">
                                 <label class="form-label" for="description">الوصف</label>
                                 <textarea class="form-control" id="description" name="description" rows="3" placeholder="أدخل وصف المنتج" required></textarea>
                                 <div class="invalid-feedback">يرجى تقديم وصف صالح.</div>
                             </div>
-                        
+
                             <!-- مدة الصلاحية -->
                             <div class="mb-3">
                                 <label class="form-label" for="Duration_of_righteousness">مدة الصلاحية</label>
                                 <input class="form-control" type="text" id="Duration_of_righteousness" name="Duration_of_righteousness" placeholder="أدخل مدة الصلاحية" required>
                                 <div class="invalid-feedback">يرجى تقديم مدة صلاحية صالحة.</div>
                             </div>
-                        
+
                             <!-- صورة المنتج -->
                             <div class="mb-3">
                                 <label class="form-label" for="Product_img">صورة المنتج</label>
                                 <input class="form-control" type="file" id="Product_img" name="Product_img" required>
                                 <div class="invalid-feedback">يرجى تحميل صورة المنتج.</div>
                             </div>
-                        
+
                             <!-- زر الإضافة -->
                             <button class="btn btn-primary btn-shadow d-block w-100" type="submit">إضافة المنتج</button>
                         </form>
-                        
+
 
                       </div>
                     </div>
@@ -207,10 +207,10 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var productModal = document.getElementById('product-modal');
-    
+
         productModal.addEventListener('show.bs.modal', function (event) {
             var button = event.relatedTarget; // Button that triggered the modal
-    
+
             // Extract data attributes from the button
             var productId = button.getAttribute('data-product-id');
             var productName = button.getAttribute('data-product-name');
@@ -219,26 +219,26 @@
             var description = button.getAttribute('data-description');
             var duration = button.getAttribute('data-duration');
             var productImg = button.getAttribute('data-product-img');
-    
+
             // Update the form inputs in the modal
             var modalForm = productModal.querySelector('form');
             modalForm.action = "/profileSetting/productMangement/edit-product/" + productId; // Set form action with the product ID
-    
+
             modalForm.querySelector('#product_name').value = productName;
             modalForm.querySelector('#product_salary').value = productSalary;
             modalForm.querySelector('#description').value = description;
             modalForm.querySelector('#Duration_of_righteousness').value = duration;
-    
+
             // Set the selected category
             var categorySelect = modalForm.querySelector('#category_id');
-    
+
             // Loop through options to find the one that matches the categoryId
             Array.from(categorySelect.options).forEach(function(option) {
                 if (option.value === categoryId) {
                     option.selected = true; // Set the matching option as selected
                 }
             });
-    
+
             // If you want to display the image in the form, you can use an <img> tag with an ID
             var imgElement = modalForm.querySelector('#Product_img_display');
             if (imgElement) {
@@ -247,7 +247,7 @@
         });
     });
     </script>
-    
+
 
 
                   </div>
@@ -278,7 +278,7 @@
                         <select class="form-control" id="category_id" name="category_id" required>
                             <option value="" disabled>اختر تصنيفًا</option>
                             @foreach($categories as $category)
-                                <option value="{{ $category->category_id }}" 
+                                <option value="{{ $category->category_id }}"
                                     {{ $category->category_id == $product->category_id ? 'selected' : '' }}>
                                     {{ $category->category_name }}
                                 </option>
@@ -323,8 +323,8 @@
     </div>
 </div>
 
-            
-            
+
+
 
           @endforeach
 
@@ -357,7 +357,7 @@
                     </li>
                 </ul>
             </nav>
-            
+
 
           </div>
         </div>
@@ -367,10 +367,8 @@
     @include('Includes.footer')
 
     <!-- Toolbar for handheld devices (NFT Marketplace)-->
-    <div class="handheld-toolbar">
-      <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="nft-account-settings.html" data-bs-toggle="modal"><span class="handheld-toolbar-icon"><i class="ci-user"></i></span><span class="handheld-toolbar-label">Account</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">Menu</span></a><a class="d-table-cell handheld-toolbar-item" ><span class="handheld-toolbar-icon"><i class="ci-add"></i></span><span class="handheld-toolbar-label">Create item</span></a>
-      </div>
-    </div>
+    @include('includes.toolbar')
+
     <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
     <!-- Vendor scrits: js libraries and plugins-->
     <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>

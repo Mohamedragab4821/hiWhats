@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
 <!-- Mirrored from cartzilla.createx.studio/contacts.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Aug 2022 18:19:56 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
@@ -47,7 +47,7 @@
     <main class="page-wrapper">
       <!-- Navbar 3 Level (Light)-->
       @include('Includes.account_header')
-      
+
       <!-- Page Title (Light)-->
       <div class="bg-secondary py-4">
         <div class="container d-lg-flex justify-content-between py-2 py-lg-3"  style="direction: rtl; text-align: right;">
@@ -95,11 +95,11 @@
       <div class="container-fluid px-0" id="map">
         <div class="row g-0">
           <!-- Display success or error messages -->
-          
+
 
           <div class="col-lg-12 px-8 px-xl-10 py-10 border-top">
             <h2 class="h4 mb-4" style="direction: rtl; text-align: right;">تواصل معنا</h2>
-        
+
             @if (session('success'))
                 <script>
                     document.addEventListener('DOMContentLoaded', function () {
@@ -125,7 +125,7 @@
                     });
                 </script>
             @endif
-        
+
             <form class="needs-validation mb-3" novalidate action="{{ route('contacts.store') }}" method="POST" style="direction: rtl; text-align: right;">
                 @csrf
                 <div class="row g-3">
@@ -164,9 +164,8 @@
     @include('Includes.footer')
 
     <!-- Toolbar for handheld devices (Default)-->
-    <div class="handheld-toolbar">
-      <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="account-wishlist.html"><span class="handheld-toolbar-icon"><i class="ci-heart"></i></span><span class="handheld-toolbar-label">Wishlist</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">Menu</span></a><a class="d-table-cell handheld-toolbar-item" href="shop-cart.html"><span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1">4</span></span><span class="handheld-toolbar-label">$265.00</span></a></div>
-    </div>
+    @include('includes.toolbar')
+
     <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
     <!-- Vendor scrits: js libraries and plugins-->
     <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
