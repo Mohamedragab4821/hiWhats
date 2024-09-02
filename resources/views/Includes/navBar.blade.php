@@ -52,6 +52,5 @@
         </div>
     </nav>
     <!-- Include your JS files here -->
-    <script src="path/to/your/js/scripts.js"></script> <!-- Example path -->
 </body>
 </html>

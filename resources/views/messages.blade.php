@@ -12,7 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . ($settings->icon))}}">
-    <link rel="manifest" href="{{ asset('site.webmanifest') }}">
     <link rel="mask-icon" color="#fe6a6a" href="{{ asset('safari-pinned-tab.svg') }}">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
@@ -112,9 +111,7 @@
 												@foreach ($contacts as $contact)
 													<li class="list-group-item">
 														<div class="media d-flex align-items-start justify-content-center">
-															<div class="me-3">
-																<img src="assets/images/xs/avatar1.jpg" class="rounded-circle" alt="" width="50">
-															</div>
+															=
 															<div class="media-body text-center">
 																<h5 class="mt-0">{{ $contact->name }}</h5>
 																<span class="badge bg-primary">{{ $contact->product }}</span>

@@ -102,26 +102,28 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('whoAreWe') }}">من نحن</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('ourVision') }}">رؤيتنا</a></li>
                     @foreach($pages as $page)
-                    @if($page->add_to=='header'&&$page->status=='published')
-                    <li class="nav-item"><a class="nav-link" href="{{ route('page.show',['slug'=>$page->slug]) }}">{{$page->title}}</a></li>
-                    @endif
-                    @endforeach
-
-                    @if(Auth::user())
-                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">حسابي</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{route('profileSetting')}}">إعدادات الحساب</a></li>
-                            <li><a class="dropdown-item" href="{{route('favorites.index')}}">المفضلة</a></li>
-                            @if(Auth::user()->access=='admin')
-                            <li><a class="dropdown-item" href="{{route('messages.index')}}">الرسائل</a></li>
-                            <li><a class="dropdown-item" href="{{route('settings.index')}}">إعدادات الموقع</a></li>
-                            <li><a class="dropdown-item" href="{{route('productMangement')}}">إدارة المنتجات</a></li>
-                            <li><a class="dropdown-item" href="{{route('categoryMangement')}}">إدارة الأقسام</a></li>
-                            @endif
-                            <li><a class="dropdown-item" href="{{route('logout')}}">تسجيل الخروج</a></li>
-                        </ul>
-                    </li>
-                    @endif
+                        @if($page->add_to=='header'&&$page->status=='published')
+                        <li class="nav-item"><a class="nav-link" href="{{ route('page.show',['slug'=>$page->slug]) }}">{{$page->title}}</a></li>
+                        @endif
+                        @endforeach
+                        @if(Auth::user())
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">حسابي</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{route('profileSetting')}}">Profile Settings</a></li>
+                                <li><a class="dropdown-item" href="{{route('favorites.index')}}">Favorites</a></li>
+                                @if(Auth::user()->access=='admin')
+                                <li><a class="dropdown-item" href="{{route('messages.index')}}">Messages</a></li>
+                                <li><a class="dropdown-item" href="{{route('settings.index')}}">Website Settings</a></li>
+                                <li><a class="dropdown-item" href="{{route('ads.index')}}">Ads Settings</a></li>
+                                <li><a class="dropdown-item" href="{{route('pages.index')}}">Pades Settings</a></li>
+                                <li><a class="dropdown-item" href="{{route('productMangement')}}">Product Mangement</a></li>
+                                <li><a class="dropdown-item" href="{{route('categoryMangement')}}">Category Mangement</a></li>
+                                @endif
+                                <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
+                            </ul>
+                        </li>
+                        @endif
                 </ul>
             </div>
         </div>

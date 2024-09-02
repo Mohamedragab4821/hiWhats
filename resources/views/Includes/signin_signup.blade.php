@@ -87,18 +87,18 @@
                         @csrf
                         <div class="mb-3">
                             <label class="form-label" for="su-name">الاسم بالكامل</label>
-                            <input class="form-control" type="text" id="userName" name="userName" placeholder="John Doe" required>
+                            <input class="form-control" type="text" id="su-name" name="userName" placeholder="John Doe" required>
                             <div class="invalid-feedback">Please fill in your name.</div>
                         </div>
                         <div class="mb-3">
                             <label for="su-email">ايميل</label>
-                            <input class="form-control" type="email" id="email" name="email" placeholder="johndoe@example.com" required>
+                            <input class="form-control" type="email" id="su-email" name="email" placeholder="johndoe@example.com" required>
                             <div class="invalid-feedback">Please provide a valid email address.</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="su-password">كلمة المرور</label>
                             <div class="password-toggle">
-                                <input class="form-control" type="password" id="password" name="password" required>
+                                <input class="form-control" type="password" id="su-password" name="password" required>
                                 <label class="password-toggle-btn" aria-label="Show/hide password">
                                     <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
                                 </label>
@@ -107,7 +107,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="su-phone">الهاتف</label>
                             <div class="password-toggle">
-                                <input class="form-control" type="text" id="phone" name="phone" required>
+                                <input class="form-control" type="text" id="su-phone" name="phone" required>
                                 <label class="password-toggle-btn"></label>
                             </div>
                         </div>
