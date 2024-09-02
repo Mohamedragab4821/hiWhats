@@ -26,10 +26,10 @@
     <header class="navbar d-block navbar-sticky navbar-expand-lg navbar-light position-absolute w-100" style="direction: rtl; text-align: right;">
         <div class="container">
             <a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="{{route('home')}}">
-                <img src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="142" alt="Cartzilla">
+                <img  src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="142" height="10" alt="فكرة">
             </a>
             <a class="navbar-brand d-sm-none me-2 order-lg-1" href="index.html">
-                <img src="img/logo-icon.png" width="74" alt="Cartzilla">
+                <img src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="74" alt="فكرة">
             </a>
             <div class="navbar-toolbar d-flex align-items-center order-lg-3">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">

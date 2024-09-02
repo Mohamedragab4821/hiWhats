@@ -85,7 +85,7 @@
                         </a>
                       </div>
                     </div>
-                
+
                     <!-- Product carousel -->
                     <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
                       <div class="container mb-5 pb-3">
@@ -100,15 +100,23 @@
                                               <div class="col-md-4 col-lg-3 py-3">
                                                   <article class="card h-100 border-0 custom-card">
                                                       <div class="card-img-top position-relative overflow-hidden">
-                                                          <a class="d-block" href="#">
-                                                              <img class="avatar img-fluid" src="{{ $favorite->product->Product_img ? asset('storage/' . $favorite->product->Product_img) : asset('img/default-product-image.jpg') }}" alt="صورة المنتج">
-                                                          </a>
-                                                          <button 
-                                                              class="btn-delete btn-sm position-absolute top-0 end-0" 
-                                                              type="button" 
-                                                              data-bs-toggle="tooltip" 
-                                                              data-bs-placement="left" 
-                                                              title="إزالة من المفضلات" 
+                                                        @php
+                                                        $imagePath = $favorite->product->Product_img ?? null;
+                                                        $imageUrl = isset($imagePath) && Storage::exists('public/' . $imagePath)
+                                                            ? asset('storage/' . $imagePath)
+                                                            : asset('img/default-product-image.jpg');
+                                                    @endphp
+
+                                                    <a class="d-block" href="#">
+                                                        <img class="avatar img-fluid" src="{{ $imageUrl }}" alt="صورة المنتج">
+                                                    </a>
+
+                                                          <button
+                                                              class="btn-delete btn-sm position-absolute top-0 end-0"
+                                                              type="button"
+                                                              data-bs-toggle="tooltip"
+                                                              data-bs-placement="left"
+                                                              title="إزالة من المفضلات"
                                                               style="margin: 12px; border: none;"
                                                               onclick="removeFromFavorites({{ $favorite->id }})"
                                                           >
@@ -133,18 +141,18 @@
                           </div>
                       </div>
                   </div>
-                    
+
                   </div>
             </section>
-                
+
               </section>
-              
-          
-          
-          
-          
-          
-          
+
+
+
+
+
+
+
           </div>
         </div>
       </div>
@@ -153,10 +161,8 @@
     @include('Includes.footer')
 
     <!-- Toolbar for handheld devices (NFT Marketplace)-->
-    <div class="handheld-toolbar">
-      <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="nft-account-settings.html" data-bs-toggle="modal"><span class="handheld-toolbar-icon"><i class="ci-user"></i></span><span class="handheld-toolbar-label">Account</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">Menu</span></a><a class="d-table-cell handheld-toolbar-item" href="nft-create-item.html"><span class="handheld-toolbar-icon"><i class="ci-add"></i></span><span class="handheld-toolbar-label">Create item</span></a>
-      </div>
-    </div>
+    @include('includes.toolbar')
+
     <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
     <!-- Vendor scrits: js libraries and plugins-->
     <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
@@ -216,7 +222,7 @@
 }
 
     </script>
-      
+
   </body>
 
 <!-- Mirrored from cartzilla.createx.studio/nft-account-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Aug 2022 18:19:25 GMT -->

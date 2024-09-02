@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
 <!-- Mirrored from cartzilla.createx.studio/nft-account-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Aug 2022 18:19:25 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
@@ -67,7 +67,7 @@
             <section class="col-lg-9 pt-lg-4 pb-4 mb-3">
                 <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
                     <h1 class="h3 mb-4 pt-2 text-center text-sm-start">Website Settings</h1>
-            
+
                     <!-- Display success or error messages -->
                     @if (session('success'))
                         <div class="alert alert-success">
@@ -83,7 +83,7 @@
                         </ul>
                     </div>
                      @endif
-            
+
                     <div class="modal fade" id="addPage-modal" tabindex="-1" role="dialog">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
@@ -104,27 +104,27 @@
                                       <label for="title">Page Title:</label>
                                       <input type="text" class="form-control" id="title" name="title" placeholder="Enter page title" required>
                                   </div>
-                          
+
                                   <div class="form-group">
                                       <label for="slug">Slug:</label>
                                       <input type="text" class="form-control" id="slug" name="slug" placeholder="Enter slug (e.g., about-us)" required>
                                   </div>
-                          
+
                                   <div class="form-group">
                                     <label for="editor2">Content:</label>
                                     <textarea name="content" id="editor2"></textarea>
                                   </div>
-                          
+
                                   <div class="form-group">
                                       <label for="meta_description">Meta Description:</label>
                                       <textarea class="form-control" id="meta_description" name="meta_description" rows="3" placeholder="Enter meta description for SEO"></textarea>
                                   </div>
-                          
+
                                   <div class="form-group">
                                       <label for="meta_keywords">Meta Keywords:</label>
                                       <input type="text" class="form-control" id="meta_keywords" name="meta_keywords" placeholder="Enter meta keywords (comma-separated)">
                                   </div>
-                          
+
                                   <div class="form-group">
                                       <label for="status">Status:</label>
                                       <select class="form-control" id="status" name="status">
@@ -139,13 +139,13 @@
                                         <option value="footer">Footer</option>
                                     </select>
                                 </div>
-      
+
                                   <br><br>
-      
+
                                     <!-- Submit Button -->
                                     <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Add</button>
                                 </form>
-      
+
                             </div>
                           </div>
                         </div>
@@ -172,7 +172,7 @@
                                       <img src="{{ asset('storage/' . session('image')) }}" alt="Uploaded Image">
                                   @endif
                                   @endif
-                                  
+
                                   @if (session('error'))
                                       <p>{{ session('error') }}</p>
                                   @endif
@@ -181,27 +181,27 @@
                                     <label for="title">Page Title:</label>
                                     <input type="text" class="form-control" id="title" name="title" placeholder="Enter page title" required>
                                 </div>
-                        
+
                                 <div class="form-group">
                                     <label for="slug">Slug:</label>
                                     <input type="text" class="form-control" id="slug" name="slug" placeholder="Enter slug (e.g., about-us)" required>
                                 </div>
-                        
+
                                 <div class="form-group">
                                   <label for="editor1">Content:</label>
                                   <textarea name="content" id="editor1"></textarea>
                                 </div>
-                        
+
                                 <div class="form-group">
                                     <label for="meta_description">Meta Description:</label>
                                     <textarea class="form-control" id="meta_description" name="meta_description" rows="3" placeholder="Enter meta description for SEO"></textarea>
                                 </div>
-                        
+
                                 <div class="form-group">
                                     <label for="meta_keywords">Meta Keywords:</label>
                                     <input type="text" class="form-control" id="meta_keywords" name="meta_keywords" placeholder="Enter meta keywords (comma-separated)">
                                 </div>
-                        
+
                                 <div class="form-group">
                                     <label for="status">Status:</label>
                                     <select class="form-control" id="status" name="status">
@@ -216,27 +216,27 @@
                                       <option value="footer">Footer</option>
                                   </select>
                               </div>
-    
+
                                 <br><br>
-    
+
                                   <!-- Submit Button -->
                                   <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Update</button>
                               </form>
-    
+
                           </div>
                         </div>
                       </div>
                   </div>
-                    
+
 
                     <br>
                     <a class="btn btn-primary btn-sm" href="#addPage-modal" data-bs-toggle="modal">اضف صفحه</a></div>
                     <br><br><br>
 
-                    
+
                     <table class="table table-bordered">
                         <thead>
-                                
+
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Page Name</th>
@@ -253,12 +253,12 @@
                         </thead>
                         <tbody>
                           @php
-                          $i=0; 
+                          $i=0;
                           @endphp
                           @foreach ($pages as $item)
-                          <tr> 
+                          <tr>
                             @php
-                               $i++; 
+                               $i++;
                             @endphp
                             <th scope="row">{{$i}}</th>
                             <td>{{$item->title}}</td>
@@ -269,7 +269,7 @@
                             <td>{{$item->add_to}}</td>
 
                             <td>
-                              <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#updatePage-modal" 
+                              <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#updatePage-modal"
                                   data-id="{{ $item->id}}"
                                   data-title="{{ $item->title }}"
                                   data-slug="{{ $item->slug }}"
@@ -277,7 +277,7 @@
                                   data-meta_keywords="{{ $item->meta_keywords }}"
                                   data-status="{{ $item->status }}"
                                   data-add_to="{{ $item->add_to }}"
-                                  data-content="{{ $item->content }}"                                  
+                                  data-content="{{ $item->content }}"
                                   >
                                   Edit
                               </button>
@@ -293,8 +293,8 @@
                     </table>
                 </div>
             </section>
-            
-            
+
+
           </div>
         </div>
       </div>
@@ -303,10 +303,8 @@
     @include('Includes.footer')
 
     <!-- Toolbar for handheld devices (NFT Marketplace)-->
-    <div class="handheld-toolbar">
-      <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="nft-account-settings.html" data-bs-toggle="modal"><span class="handheld-toolbar-icon"><i class="ci-user"></i></span><span class="handheld-toolbar-label">Account</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">Menu</span></a><a class="d-table-cell handheld-toolbar-item" href="nft-create-item.html"><span class="handheld-toolbar-icon"><i class="ci-add"></i></span><span class="handheld-toolbar-label">Create item</span></a>
-      </div>
-    </div>
+    @include('includes.toolbar')
+
     <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
     <!-- Vendor scrits: js libraries and plugins-->
     <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>

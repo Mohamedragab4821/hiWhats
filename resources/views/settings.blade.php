@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-  
+
 <!-- Mirrored from cartzilla.createx.studio/nft-account-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Aug 2022 18:19:25 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
@@ -34,7 +34,7 @@
     </script>
   </head>
   <!-- Body-->
-  <body class="handheld-toolbar-enabled">
+  <body class="handheld-toolbar-enabled" style="display: block">
     <!-- Google Tag Manager (noscript)-->
     <noscript>
       <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
@@ -60,16 +60,16 @@
             <section class="col-lg-9 pt-lg-4 pb-4 mb-3">
                 <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
                     <h1 class="h3 mb-4 pt-2 text-center text-sm-end">إعدادات الموقع</h1>
-            
+
                     <!-- Display success or error messages -->
                     @if (session('success'))
                         <div class="alert alert-success">{{ session('success') }}</div>
                     @elseif (session('error'))
                         <div class="alert alert-danger">{{ session('error') }}</div>
                     @endif
-            
-                    
-            
+
+
+
                     <form action="{{ route('settings.update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
@@ -82,7 +82,7 @@
                                 </div>
                             </div>
                         </div>
-                
+
                         <div class="bg-secondary rounded-3 p-4 mb-4 text-center text-sm-start">
                             <div class="d-flex flex-sm-row flex-column align-items-sm-start align-items-center">
                                 <img class="rounded mb-sm-0 mb-3" src="{{ asset('storage/' . ($settings->icon ?? 'default_icon.jpg')) }}" width="90" alt="الرمز">
@@ -114,7 +114,7 @@
                                 <label class="form-label" for="email">ايميل</label>
                                 <input class="form-control" id="email" name="email" type="text" placeholder="Enter email" value="{{ old('email', $settings->email ?? '') }}">
                             </div>
-                            
+
                             <div class="col-sm-6">
                               <label class="form-label" for="home_description1">وصف الصفحة الرئيسية 1</label>
                               <input class="form-control" id="home_description1" name="home_description1" type="text" placeholder="أدخل الوصف" value="{{ old('home_description1', $settings->home_description1 ?? '') }}">
@@ -123,7 +123,7 @@
                               <label class="form-label" for="home_description2">وصف الصفحة الرئيسية 2</label>
                               <input class="form-control" id="home_description2" name="home_description2" type="text" placeholder="أدخل الوصف" value="{{ old('home_description2', $settings->home_description2 ?? '') }}">
                           </div>
-            
+
                             <h6>إعدادات SEO</h6>
                             <div class="col-12">
                                 <label class="form-label" for="home_meta_k">الكلمات الرئيسية لصفحة المنزل</label>
@@ -180,7 +180,8 @@
       <!-- Footer-->
       @include('Includes.footer')
     </main>
-    
+    @include('includes.toolbar')
+
     <!-- Vendor Scripts-->
     <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('vendor/simplebar/dist/simplebar.min.js') }}"></script>

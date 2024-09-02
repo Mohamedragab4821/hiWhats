@@ -126,22 +126,8 @@
     @include('Includes.footer')
 
     <!-- Toolbar for handheld devices (NFT Marketplace)-->
-    <div class="handheld-toolbar">
-        <div class="d-table table-layout-fixed w-100">
-            <a class="d-table-cell handheld-toolbar-item" href="nft-account-settings.html" data-bs-toggle="modal">
-                <span class="handheld-toolbar-icon"><i class="ci-user"></i></span>
-                <span class="handheld-toolbar-label">الحساب</span>
-            </a>
-            <a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)">
-                <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
-                <span class="handheld-toolbar-label">القائمة</span>
-            </a>
-            <a class="d-table-cell handheld-toolbar-item" href="nft-create-item.html">
-                <span class="handheld-toolbar-icon"><i class="ci-add"></i></span>
-                <span class="handheld-toolbar-label">إنشاء عنصر</span>
-            </a>
-        </div>
-    </div>
+    @include('includes.toolbar')
+
     <!-- Back To Top Button-->
     <a class="btn-scroll-top" href="#top" data-scroll>
         <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">أعلى</span>

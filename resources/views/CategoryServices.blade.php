@@ -143,7 +143,7 @@
                                     <div class="mt-3">
                                       <a href="{{ route('contacts.index') }}" class="btn btn-outline-primary">طلب الخدمه عبر الايميل</a>
                                       <a href="https://api.whatsapp.com/send?phone={{$settings->whatsapp}}&text=مرحبا"  class="btn btn-outline-success">طلب الخدمه عبر الواتساب</a>
-    
+
                                     </div>
                                 </div>
                             </div>
@@ -210,13 +210,8 @@
     @include('Includes.footer')
 
     <!-- Toolbar for handheld devices-->
-    <div class="handheld-toolbar">
-        <div class="d-table table-layout-fixed w-100">
-            <a class="d-table-cell handheld-toolbar-item" href="#"><span class="handheld-toolbar-icon"><i class="ci-home"></i></span><span class="handheld-toolbar-label">Home</span></a>
-            <a class="d-table-cell handheld-toolbar-item" href="#"><span class="handheld-toolbar-icon"><i class="ci-cart"></i></span><span class="handheld-toolbar-label">Cart</span></a>
-            <a class="d-table-cell handheld-toolbar-item" href="#"><span class="handheld-toolbar-icon"><i class="ci-heart"></i></span><span class="handheld-toolbar-label">Favorites</span></a>
-        </div>
-    </div>
+    @include('includes.toolbar')
+
 
     <!-- Back to top button-->
     <a class="btn-scroll-top" href="#top" data-scroll=""><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up"></i></a>

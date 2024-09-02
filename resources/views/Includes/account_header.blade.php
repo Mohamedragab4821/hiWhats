@@ -54,10 +54,10 @@
     <header class="navbar navbar-sticky navbar-expand-lg navbar-light bg-light" style="padding-right: 10%;padding-left: 10%">
         <div class="container-fluid">
             <a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="{{route('home')}}">
-                <img src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="142" alt="Cartzilla">
+                <img src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="142" alt="فكرة">
             </a>
             <a class="navbar-brand d-sm-none me-2 order-lg-1" href="{{route('home')}}">
-                <img src="img/logo-icon.png" width="74" alt="Cartzilla">
+                <img src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="74" alt="فكرة">
             </a>
             <div class="navbar-toolbar d-flex align-items-center order-lg-3">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button>

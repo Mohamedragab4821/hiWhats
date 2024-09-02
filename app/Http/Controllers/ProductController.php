@@ -82,18 +82,19 @@ class ProductController extends Controller
     }
 
     public function indexproductMangement()
-    {
-        $products = Product::paginate(5);
-        $settings = Settings::first();
-        $category = Category::all();
-        $pages = Page::all();
+{
+    $products = Product::with('category')->paginate(5);
+    $settings = Settings::first();
+    $categories = Category::all();
+    $pages = Page::all();
 
-        // $category1 = Category::all();
-
-        $categories = Category::all();
-
-        return view('ProductMangement', ['products' => $products,'settings'=>$settings,'category'=>$category,'category1'=>$category,'categories'=>$categories,'pages'=>$pages]);
-    }
+    return view('ProductMangement', [
+        'products' => $products,
+        'settings' => $settings,
+        'categories' => $categories,
+        'pages' => $pages
+    ]);
+}
 
 
 
@@ -140,31 +141,36 @@ class ProductController extends Controller
 
 public function deleteProduct($id)
 {
-    $product = Product::findOrFail($id); // Find the product by ID
-// dd($product->Product_img); // This will stop execution and print the value of Product_img
+    // Find the product by ID
+    $product = Product::findOrFail($id);
 
     // Check if the product has an image and if it exists in the storage
-    if ($product->Product_img && Storage::disk('public')->exists('/' . $product->Product_img)) {
-        // dd('here');
-        Storage::disk('public')->delete('/' . $product->Product_img); // Delete the image
+    if ($product->Product_img && Storage::disk('public')->exists($product->Product_img)) {
+        // Delete the image
+        Storage::disk('public')->delete($product->Product_img);
     }
 
-    // Now delete the product
+    // Delete all favorites associated with the product
+    $product->favorites()->delete(); // Assuming there's a relationship named 'favorites'
+
+    // Delete the product
     $product->delete();
 
     // Redirect back with success message
-    return redirect()->route('productMangement')->with('success', 'Product and image deleted successfully!');
+    return redirect()->route('productMangement')->with('success', 'Product and its associated favorites have been deleted successfully!');
 }
+
 
 
 
     public function updateProduct(Request $request, $product_id)
     {
+        // dd($request);
         // Validate the request
         $categories = Category::all();
         $validatedData = $request->validate([
             'product_name' => 'required|string|max:255',
-            'category_id' => 'required|max:255', // Validate category_name (category_id is derived)
+            'category_id' => 'required|max:255',
             'product_salary' => 'required|numeric',
             'description' => 'required|string|max:1000',
             'Duration_of_righteousness' => 'required|string|max:255',

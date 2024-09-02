@@ -53,7 +53,7 @@
             <section class="col-lg-9 pt-lg-4 pb-4 mb-3">
                 <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
                     <h1 class="h3 mb-4 pt-2 text-center text-sm-end">إعدادات الموقع</h1>
-            
+
                     <!-- Display success or error messages -->
                     @if (session('success'))
                         <div class="alert alert-success">
@@ -92,26 +92,26 @@
                                             </div>
                                         </div>
                                     </div>
-      
+
                                     <!-- Product Description -->
                                     <div class="mb-3">
                                         <label class="form-label" for="product_salary">الوصف</label>
                                         <input class="form-control" type="text" id="product_salary" name="description" placeholder="أدخل الوصف" required>
                                     </div>
-      
+
                                     <!-- End Date -->
                                     <div class="mb-3">
                                         <label class="form-label" for="description">تاريخ الانتهاء</label>
                                         <input type="date" class="form-control" id="description" name="end_date" required>
                                         <div class="invalid-feedback">يرجى تقديم تاريخ انتهاء صحيح.</div>
                                     </div>
-      
+
                                     <!-- Button URL -->
                                     <div class="mb-3">
                                         <label class="form-label" for="Duration_of_righteousness">رابط الزر</label>
                                         <input class="form-control" type="text" id="Duration_of_righteousness" name="button_url" required>
                                     </div>
-      
+
                                     <!-- Submit Button -->
                                     <button class="btn btn-primary btn-shadow d-block w-100" type="submit">إضافة</button>
                                 </form>
@@ -136,11 +136,11 @@
                         </thead>
                         <tbody>
                           @php
-                             $i=0; 
+                             $i=0;
                           @endphp
                           @foreach ($home_ads as $item)
                           @php
-                             $i++; 
+                             $i++;
                           @endphp
                           <tr>
                             <th scope="row">{{$i}}</th>
@@ -169,13 +169,8 @@
     @include('Includes.footer')
 
     <!-- Toolbar for handheld devices-->
-    <div class="handheld-toolbar">
-      <div class="d-table table-layout-fixed w-100">
-        <a class="d-table-cell handheld-toolbar-item" href="nft-account-settings.html" data-bs-toggle="modal"><span class="handheld-toolbar-icon"><i class="ci-user"></i></span><span class="handheld-toolbar-label">الحساب</span></a>
-        <a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">القائمة</span></a>
-        <a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#searchModal"><span class="handheld-toolbar-icon"><i class="ci-search"></i></span><span class="handheld-toolbar-label">بحث</span></a>
-      </div>
-    </div>
+    @include('includes.toolbar')
+
     <!-- Vendor Scripts-->
     <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('vendor/simplebar/dist/simplebar.min.js') }}"></script>

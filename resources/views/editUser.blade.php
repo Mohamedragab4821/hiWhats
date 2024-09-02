@@ -69,7 +69,14 @@
                     @include('Includes.leftSideMenue')
 
                     <!-- Content-->
+                      <!-- Display success or error messages -->
+
                     <section class="col-lg-9 pt-lg-4 pb-4 mb-3">
+                        @if (session('success'))
+                      <div class="alert alert-success">{{ session('success') }}</div>
+                  @elseif (session('error'))
+                      <div class="alert alert-danger">{{ session('error') }}</div>
+                  @endif
                         <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
                             <h1 class="h3 mb-4 pt-2 text-center text-sm-end">إعدادات الملف الشخصي</h1>
                             <div class="bg-secondary rounded-3 p-4 mb-4 text-center text-sm-start">
@@ -77,7 +84,7 @@
                                 <!-- عرض صورة الملف الشخصي للمستخدم -->
                                 <div class="d-flex align-items-center">
                                     <img class="rounded mb-sm-0 mb-3" src="{{ $user->image ? asset('storage/' . $user->image) : asset('img/nft/vendor/avatar-square.jpg') }}" width="90" alt="الصورة">
-                            
+
                                     <!-- Delete button for profile image -->
                                     @if($user->image)
                                         <form action="{{ route('deleteAvatar') }}" method="POST" class="ms-3">
@@ -91,7 +98,7 @@
                                     @endif
                                 </div>
                             </div>
-                            
+
                             </div>
                           <!-- Form for updating user data, including avatar -->
                           <form method="POST" action="{{ route('updateUser', ['id' => $user->id]) }}" enctype="multipart/form-data">
@@ -120,13 +127,13 @@
                                         <option value="user" {{ old('access', $user->access) == 'user' ? 'selected' : '' }}>مستخدم</option>
                                         <option value="admin" {{ old('access', $user->access) == 'admin' ? 'selected' : '' }}>مدير</option>
                                     </select>
-                                </div>                                                               
+                                </div>
                             </div>
                             <div class="d-flex flex-sm-row flex-column">
                                 <button class="btn btn-accent" type="submit">تحديث الملف الشخصي</button>
                             </div>
                         </form>
-                        
+
                         </div>
                     </section>
                 </div>
@@ -137,22 +144,8 @@
     @include('Includes.footer')
 
     <!-- Toolbar for handheld devices (NFT Marketplace)-->
-    <div class="handheld-toolbar">
-        <div class="d-table table-layout-fixed w-100">
-            <a class="d-table-cell handheld-toolbar-item" href="nft-account-settings.html" data-bs-toggle="modal">
-                <span class="handheld-toolbar-icon"><i class="ci-user"></i></span>
-                <span class="handheld-toolbar-label">الحساب</span>
-            </a>
-            <a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)">
-                <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
-                <span class="handheld-toolbar-label">القائمة</span>
-            </a>
-            <a class="d-table-cell handheld-toolbar-item" href="nft-create-item.html">
-                <span class="handheld-toolbar-icon"><i class="ci-add"></i></span>
-                <span class="handheld-toolbar-label">إنشاء عنصر</span>
-            </a>
-        </div>
-    </div>
+    @include('includes.toolbar')
+
     <!-- Back To Top Button-->
     <a class="btn-scroll-top" href="#top" data-scroll>
         <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">أعلى</span>
