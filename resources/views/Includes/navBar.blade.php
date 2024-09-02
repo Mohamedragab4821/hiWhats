@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>User Profile</title>
     <!-- Include your CSS files here -->
-    <link rel="stylesheet" href="path/to/your/css/styles.css"> <!-- Example path -->
     <style>
         /* Add inline CSS for centering */
         .navbar {

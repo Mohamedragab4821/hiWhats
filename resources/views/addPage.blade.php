@@ -23,6 +23,7 @@
     <link rel="stylesheet" media="screen" href="{{ asset('vendor/tiny-slider/dist/tiny-slider.css') }}"/>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="{{ asset('css/theme.min.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
 
     <!-- Google Tag Manager-->
     <script>
@@ -32,6 +33,12 @@
       '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-WKV3GT5');
     </script>
+    <style>
+      i {
+        padding: 15 !important;
+        float: left !important;
+      }
+    </style>
   </head>
   <!-- Body-->
   <body class="handheld-toolbar-enabled">
@@ -312,37 +319,29 @@
 
     <script>
       $(document).ready(function() {
-          $('#editor2').summernote();
+          $('#editor2').summernote({
+            height: 300,
+                height: 300,
+                placeholder: 'Type your text here...',
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear', 'fontname', 'fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']], // Enable table button
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ],
+                fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Merriweather'], // Custom font options
+                fontSizes: ['8', '9', '10', '11', '12', '14', '18', '24', '36', '48', '64'], // Font sizes
+                styleTags: ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']
+          });
       });
   </script>
 
 <script>
   // Initialize Summernote on document ready
-  $(document).ready(function() {
-            $('#summernote').summernote({
-                height: 300, // Set the height of the editor
-                callbacks: {
-                    onImageUpload: function(files) {
-                        var formData = new FormData();
-                        formData.append('image', files[0]);
-
-                        $.ajax({
-                            url: '/api/upload-image', // Update to your image upload URL
-                            method: 'POST',
-                            data: formData,
-                            processData: false,
-                            contentType: false,
-                            success: function(response) {
-                                $('#summernote').summernote('insertImage', response.location);
-                            },
-                            error: function() {
-                                alert('Failed to upload image');
-                            }
-                        });
-                    }
-                }
-            });
-    });
+  
 
   // Handle modal show event to set the form data
   document.addEventListener('DOMContentLoaded', function() {
@@ -368,7 +367,27 @@
           modal.querySelector('#add_to').value = add_to;
 
           // Set the content in Summernote
-          $('#editor1').summernote('code', content);
+          $(document).ready(function() {
+    $('#editor1').summernote({
+        height: 300,
+        placeholder: 'Type your text here...',
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'italic', 'underline', 'clear', 'fontname', 'fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']], // Enable table button
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ],
+        fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Merriweather'], // Custom font options
+        fontSizes: ['8', '9', '10', '11', '12', '14', '18', '24', '36', '48', '64'], // Font sizes
+        styleTags: ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']
+    });
+
+
+    $('#editor1').summernote('code', content);
+});
 
           // Update form action if editing
           var form = modal.querySelector('#update-form');
@@ -379,10 +398,13 @@
   });
 </script>
 
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
+<!-- Summernote JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
 
 
   </body>
