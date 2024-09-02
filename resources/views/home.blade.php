@@ -75,7 +75,7 @@
 
   </head>
   <!-- Body-->
-  <body class="handheld-toolbar-enabled" style="background-color: white">
+  <body class="handheld-toolbar-enabled" style="background-color: white;">
     <!-- Google Tag Manager (noscript)-->
 
     <!-- Sign in / sign up modal-->
@@ -195,13 +195,13 @@
                               <h6 class="mb-1 fs-sm fw-normal text-muted">Description:</h6><span class="h6 mb-0">{{$item->description}}</span>
                             </div>
                             <div class="col-sm-4 col-6 position-relative py-sm-3 py-2">
-                              <hr class="hr-vertical position-absolute start-0 top-0 ml-n4">
+                              {{-- <hr class="hr-vertical position-absolute start-0 top-0 ml-n4"> --}}
                               <h6 class="mb-1 fs-sm fw-normal text-muted">Ends in:</h6><span class="h6 mb-0">{{$item->end_date}}</span>
                             </div>
-                            <div class="col-sm-4 position-relative py-sm-3 py-2">
-                              <hr class="hr-vertical position-absolute start-0 top-0 ml-n4 d-sm-block d-none">
-                              <div class="d-flex align-items-center h-100"><a class="btn btn-sm btn-dark w-100" href="{{$item->button_url}}">Start bid</a></div>
-                            </div>
+                            {{-- <div class="col-sm-4 position-relative py-sm-3 py-2"> --}}
+                              
+                              {{-- <div class="d-flex align-items-center h-100"><a class="btn btn-sm btn-dark w-100" href="{{$item->button_url}}">Start bid</a></div> --}}
+                            {{-- </div> --}}
                           </div>
                         </div>
                       </div>
