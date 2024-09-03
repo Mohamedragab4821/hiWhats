@@ -182,7 +182,7 @@ class CategoryController extends Controller
         // dd($searchTerm, $categoryId); // This should show the search term and the category ID
     
         $settings = Settings::first();
-        $categories = Category::all();
+        $categories = Category::paginate(5);
         $pages = Page::all();
 
         $products = Product::where('category_id', $categoryId) // Filter by selected category
@@ -200,7 +200,7 @@ public function servicesSearch(Request $request)
 {
     $searchTerm = $request->input('search');
     $settings = Settings::first();
-    $categories = Category::all();
+    $categories = Category::paginate(8);
     $pages = Page::all();
 
 

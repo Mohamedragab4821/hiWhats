@@ -69,6 +69,11 @@
         left: 2rem; /* المسافة من اليسار */
         z-index: 1050; /* التأكد من بقاء الزر فوق المحتوى */
     }
+    @media (max-width: 768px) {
+      .bg-size-cover{
+        margin-top: 100px
+      }
+    }
     </style>
 
     <!-- Google Tag Manager-->
