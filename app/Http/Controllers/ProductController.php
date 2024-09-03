@@ -331,12 +331,14 @@ public function ProductSearch(Request $request)
     $settings = Settings::first();
     $categories = Category::all();
     $category1 = Category::all();
+    $pages = Page::all();
+
 
     $products = Product::where('product_name', 'like', '%' . $searchTerm . '%')
         ->orWhere('category_name', 'like', '%' . $searchTerm . '%')
         ->paginate(5);
 
-    return view('ProductMangement', compact('settings', 'products', 'categories','category1'));
+    return view('ProductMangement', compact('settings', 'products', 'categories','category1','pages'));
 }
 public function CategorySearch(Request $request)
 {
@@ -345,6 +347,7 @@ public function CategorySearch(Request $request)
     $settings = Settings::first();
     // $categories = Category::all();
     // $category1 = Category::all();
+    $pages = Page::all();
 
 
     $categories = Category::where('category_name', 'like', '%' . $searchTerm . '%')
@@ -355,7 +358,7 @@ public function CategorySearch(Request $request)
         // ->orWhere('category_name', 'like', '%' . $searchTerm . '%')
         ->paginate(5);
 
-    return view('CategoryMangement', compact('settings', 'categories','category'));
+    return view('CategoryMangement', compact('settings', 'categories','category','pages'));
 }
 
 
