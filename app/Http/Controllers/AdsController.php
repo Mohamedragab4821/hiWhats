@@ -8,6 +8,8 @@ use App\Models\Settings;
 use App\Models\Category;
 use App\Models\HomeAds;
 use App\Models\Page;
+use Illuminate\Support\Facades\Storage;
+
 
 class AdsController extends Controller
 {
