@@ -90,14 +90,14 @@
                                             <!-- وصف التصنيف -->
                                             <div class="mb-3">
                                                 <label class="form-label" for="category_description">وصف التصنيف</label>
-                                                <textarea class="form-control" id="category_description" name="category_description" rows="3" placeholder="أدخل وصف التصنيف" required></textarea>
+                                                <textarea class="form-control" id="category1_description" name="category_description" rows="3" placeholder="أدخل وصف التصنيف" required></textarea>
                                                 <div class="invalid-feedback">يرجى تقديم وصف صالح.</div>
                                             </div>
 
                                             <!-- صورة التصنيف -->
                                             <div class="mb-3">
                                                 <label class="form-label" for="category_img">صورة التصنيف</label>
-                                                <input class="form-control" type="file" id="category_img" name="category_img">
+                                                <input class="form-control" type="file" id="category1_img" name="category_img">
                                             </div>
 
                                             <!-- زر الإضافة -->
@@ -160,7 +160,7 @@
                                             <!-- Category Name -->
                                             <div class="mb-3">
                                                 <label class="form-label" for="category_name">اسم الفئة</label>
-                                                <input class="form-control" type="text" id="category_name" name="category_name" required>
+                                                <input class="form-control" type="text" id="category1_name" name="category_name" required>
                                                 <div class="invalid-feedback">Please provide a valid category name.</div>
                                             </div>
 
@@ -229,7 +229,7 @@
             var modalForm = categoryModal.querySelector('form');
             modalForm.action = "/profileSetting/categoryMangement/update/" + categoryId;
 
-            modalForm.querySelector('#category_name').value = categoryName;
+            modalForm.querySelector('#category1_name').value = categoryName;
             modalForm.querySelector('#category_description').value = categoryDescription;
         });
     </script>
@@ -238,7 +238,7 @@
     @include('Includes.footer')
 
     <!-- Toolbar for handheld devices (NFT Marketplace)-->
-    @include('includes.toolbar')
+    @include('Includes.toolbar')
 
     <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
     <!-- Vendor scrits: js libraries and plugins-->

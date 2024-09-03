@@ -62,7 +62,7 @@
             <div class="navbar-toolbar d-flex align-items-center order-lg-3">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button>
 
-                <div class="dropdown-menu dropdown-menu-end">
+                {{-- <div class="dropdown-menu dropdown-menu-end">
                     <div style="min-width: 14rem;">
                         <h6 class="dropdown-header">@foxnet_creator</h6>
                         <a class="dropdown-item d-flex align-items-center" href="nft-account-settings.html"><i class="ci-settings opacity-60 me-2"></i>إعدادات الموقع</a>
@@ -71,7 +71,7 @@
                         <a class="dropdown-item d-flex align-items-center" href="nft-account-favorites.html"><i class="ci-heart opacity-60 me-2"></i>المفضلة<span class="fs-xs text-muted ms-auto">3</span></a>
                         <a class="dropdown-item d-flex align-items-center" href="nft-account-notifications.html"><i class="ci-bell opacity-60 me-2"></i>الإشعارات</a>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="collapse navbar-collapse me-auto order-lg-2" id="navbarCollapse">
                 <!-- بحث (موبايل)-->
@@ -116,7 +116,7 @@
                                 <li><a class="dropdown-item" href="{{route('messages.index')}}">Messages</a></li>
                                 <li><a class="dropdown-item" href="{{route('settings.index')}}">Website Settings</a></li>
                                 <li><a class="dropdown-item" href="{{route('ads.index')}}">Ads Settings</a></li>
-                                <li><a class="dropdown-item" href="{{route('pages.index')}}">Pades Settings</a></li>
+                                <li><a class="dropdown-item" href="{{route('pages.index')}}">Pages Settings</a></li>
                                 <li><a class="dropdown-item" href="{{route('productMangement')}}">Product Mangement</a></li>
                                 <li><a class="dropdown-item" href="{{route('categoryMangement')}}">Category Mangement</a></li>
                                 @endif
