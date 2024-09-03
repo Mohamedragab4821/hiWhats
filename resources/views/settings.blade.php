@@ -173,7 +173,7 @@
       <!-- Footer-->
       @include('Includes.footer')
     </main>
-    @include('includes.toolbar')
+    @include('Includes.toolbar')
 
     <!-- Vendor Scripts-->
     <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>

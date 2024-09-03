@@ -15,6 +15,7 @@
     <!-- Favicon and Touch Icons-->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . ($settings->icon))}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
     <link rel="mask-icon" color="#fe6a6a" href="{{ asset('safari-pinned-tab.svg') }}">
     <meta name="msapplication-TileColor" content="#ffffff">
@@ -194,7 +195,7 @@
     @include('Includes.footer')
 
     <!-- Toolbar for handheld devices (Marketplace)-->
-    @include('includes.toolbar')
+    @include('Includes.toolbar')
 
     <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
     <!-- Vendor scrits: js libraries and plugins-->
@@ -206,9 +207,55 @@
     <!-- Custom JS for pagination and other features-->
     <script>
       function addToFavorites(productId) {
-          // Implement your favorite logic here
-          alert('Product ' + productId + ' added to favorites!');
-      }
+    console.log('Adding product to favorites with ID:', productId);
+
+    $.ajax({
+        url: '{{ route('favorites.store') }}',
+        type: 'POST',
+        data: {
+            _token: '{{ csrf_token() }}',
+            product_id: productId
+        },
+        success: function(response) {
+            console.log('Success:', response);
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: response.message,
+                confirmButtonText: 'OK'
+            });
+        },
+        error: function(xhr) {
+            console.error('AJAX Error:', xhr);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Error adding to favorites: ' + xhr.responseText,
+                confirmButtonText: 'OK'
+            });
+        }
+    });
+}
+     document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(function () {
+            let alert = document.querySelectorAll('.alert-dismissible');
+            alert.forEach(function (el) {
+                el.classList.add('fade-out');
+            });
+        }, 3000); // 3 seconds
+
+        // Completely remove the alert after the fade-out animation
+        setTimeout(function () {
+            let alert = document.querySelectorAll('.alert-dismissible');
+            alert.forEach(function (el) {
+                el.style.display = 'none';
+            });
+        }, 3500); // Wait 0.5 seconds more for the fade-out to complete
+    });
+
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

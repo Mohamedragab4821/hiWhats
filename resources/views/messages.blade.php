@@ -147,7 +147,7 @@
     @include('Includes.footer')
 
     <!-- Toolbar for handheld devices (NFT Marketplace)-->
-    @include('includes.toolbar')
+    @include('Includes.toolbar')
 
 
     <!-- Back To Top Button-->

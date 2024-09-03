@@ -194,7 +194,7 @@
     @include('Includes.footer')
 
     <!-- Toolbar for handheld devices-->
-    @include('includes.toolbar')
+    @include('Includes.toolbar')
 
 
     <!-- Back to top button-->
