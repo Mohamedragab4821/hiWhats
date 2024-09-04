@@ -204,7 +204,7 @@
                               <h6 class="mb-1 fs-sm fw-normal text-muted">Ends in:</h6><span class="h6 mb-0">{{$item->end_date}}</span>
                             </div>
                             {{-- <div class="col-sm-4 position-relative py-sm-3 py-2"> --}}
-                              
+
                               {{-- <div class="d-flex align-items-center h-100"><a class="btn btn-sm btn-dark w-100" href="{{$item->button_url}}">Start bid</a></div> --}}
                             {{-- </div> --}}
                           </div>
