@@ -143,7 +143,7 @@
     @include('Includes.footer')
 
     <!-- Toolbar for handheld devices (NFT Marketplace)-->
-    @include('includes.toolbar')
+    @include('Includes.toolbar')
 
     <!-- Back To Top Button-->
     <a class="btn-scroll-top" href="#top" data-scroll>
