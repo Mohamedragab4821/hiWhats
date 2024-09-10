@@ -5,7 +5,7 @@
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     <meta charset="utf-8">
-    <title>{{$settings->website_name}} | Home</title>
+    <title>{{$settings->website_name}} | الصفحة الرئيسية</title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="{{$settings->home_meta_d}}">
     <meta name="keywords" content="{{$settings->home_meta_k}}">
@@ -13,7 +13,7 @@
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . ($settings->icon))}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('public/storage/' . ($settings->icon))}}">
     <link rel="mask-icon" color="#fe6a6a" href="{{ asset('safari-pinned-tab.svg') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <meta name="msapplication-TileColor" content="#ffffff">
@@ -23,6 +23,19 @@
     <link rel="stylesheet" media="screen" href="{{ asset('vendor/tiny-slider/dist/tiny-slider.css') }}"/>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="{{ asset('css/theme.min.css') }}">
+
+
+
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/font-awesome-pro.min.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/flaticon_webency.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/odometer.min.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/sal.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/swiper.min.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/meanmenu.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
+
     <style>
       .card {
         height: 100%; /* Ensures the card fills the container height */
@@ -69,11 +82,79 @@
         left: 2rem; /* المسافة من اليسار */
         z-index: 1050; /* التأكد من بقاء الزر فوق المحتوى */
     }
+   .responsive-img {
+  width: 100%;
+    max-height: 80vh; /* Ensure the maximum height is also 85% of the viewport height */
+  object-fit: cover; /* Maintain aspect ratio and cover the area */
+}
+.bg-opacity {
+            background-color: rgba(0, 0, 0, 0.5); /* Default background color with opacity */
+            transition: background-color 0.3s ease; /* Smooth transition effect */
+        }
+
+        .bg-opacity:hover {
+            background-color: rgba(0, 0, 0, 0.8); /* Background color with higher opacity on hover */
+        }
+        .text-end {
+    text-align: right;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.justify-content-end {
+    justify-content: flex-end;
+}
+
+.product-title, .fs-base {
+    /* Ensures the font size is consistent */
+    font-size: 1.25rem; /* Example size; adjust as needed */
+}
+
+.fs-sm {
+    font-size: 0.875rem; /* Example size; adjust as needed */
+}
+
+.text-muted {
+    color: #6c757d; /* Example muted color; adjust as needed */
+}
+
+.text-darker {
+    color: #343a40; /* Example darker color; adjust as needed */
+}
+
+.btn-outline-primary{
+    margin-bottom: 30px;
+}
+
+
+/* Optional: Adjust max-width for different screen sizes */
+@media (max-width: 576px) { /* For extra small devices */
+  .responsive-img {
+    max-width: 100%;
+  }
+
+  .pt-sm-0{
+      /*height:20vh;*/
+  }
+}
     @media (max-width: 768px) {
       .bg-size-cover{
         margin-top: 100px
       }
     }
+    @media (max-width:305px){
+        .img-container{
+      height:45vh;
+  }
+    }
+
+
     </style>
 
     <!-- Google Tag Manager-->
@@ -126,201 +207,189 @@
     </script>
 @endif
       <!-- Hero-->
-      <section class="mb-lg-2 bg-faded-accent bg-size-cover" style="padding-top: 80px; background-image: url(img/nft/home/hero-bg.png);direction: rtl; text-align: right;">
-        <div class="container py-4">
-          <div class="row align-items-center justify-content-center gy-3 py-3 text-lg-start text-center">
-            <div class="col-lg-5 col-md-8 col-sm-10">
-              <h1 class="mb-4 pb-lg-2" style="direction: rtl; text-align: right;">نقدم حلول تسويق إلكتروني شاملة لتحقيق أهداف عملك الرقمية.</h1>
-              <p class="mb-lg-5 mb-4 fs-lg" style="direction: rtl; text-align: right;">نساعدك على زيادة ظهورك الرقمي والوصول إلى جمهورك المستهدف من خلال استراتيجيات تسويقية فعّالة.</p>
-              <div class="d-lg-flex d-none flex-sm-row flex-column justify-content-lg-start justify-content-center">
-                <a class="btn btn-lg btn-accent me-sm-3 mb-sm-3 mb-2 m-2" href="{{route('services')}}" style="direction: rtl; text-align: right;">تصفح خدماتنا</a>
-                @if (!Auth::user())
-                <a class="btn btn-lg btn-outline-dark mb-sm-3 mb-2 m-2" href="#signup-modal" data-bs-toggle="modal" style="direction: rtl; text-align: right;">انشئ حساب</a>
-                @endif
-            </div>
-            </div>
-            <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header bg-secondary">
-                            <ul class="nav nav-tabs card-header-tabs" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link fw-medium" href="#signup-tab" role="tab" aria-selected="true">
-                                        <i class="ci-user me-2 mt-n1"></i>Sign up
-                                    </a>
-                                </li>
-                            </ul>
-                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body py-4">
-                            <form class="needs-validation" autocomplete="off" novalidate action="{{ route('Registeration') }}" method="POST">
-                                @csrf
-                                <div class="mb-3">
-                                    <label class="form-label" for="su-name">Full name</label>
-                                    <input class="form-control" type="text" id="userName" name="userName" placeholder="John Doe" required>
-                                    <div class="invalid-feedback">Please fill in your name.</div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="su-email">Email address</label>
-                                    <input class="form-control" type="email" id="email" name="email" placeholder="johndoe@example.com" required>
-                                    <div class="invalid-feedback">Please provide a valid email address.</div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="su-password">Password</label>
-                                    <div class="password-toggle">
-                                        <input class="form-control" type="password" id="password" name="password" required>
-                                        <label class="password-toggle-btn" aria-label="Show/hide password">
-                                            <input class="password-toggle-check" type="checkbox">
-                                            <span class="password-toggle-indicator"></span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="su-password-confirm">Phone Number</label>
-                                    <input class="form-control" type="text" id="phone" name="phone" required>
-                                </div>
-                                <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign up</button>
-                            </form>
+      <section class="tj-hero-section" style="direction: rtl; text-align: right;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <div class="hero-left-content" data-sal="slide-up" data-sal-duration="1000"
+                        data-sal-delay="100">
+                        <div class="tj-sec-heading">
+                            <span class="hero-sub-title"> Creative Thinking</span>
+                            <h1 class="hero-title">
+                              نقدم حلول تسويق إلكتروني شاملة لتحقيق أهداف عملك الرقمية. <span class="title"> طور من عملك !</span>
+                            </h1>
+                            <div class="desc">
+                                <p>
+                                  نساعدك على زيادة ظهورك الرقمي والوصول إلى جمهورك المستهدف من خلال استراتيجيات تسويقية فعّالة.
+                                </p>
+                            </div>
+
+                            <div class="hero-button d-flex">
+                                <a class="tj-primary-btn" href="contact.html"> Explore Now</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6 col-md-8 offset-lg-1 col-sm-10">
-              <!-- Top auctions carousel-->
-              <div class="tns-carousel tns-nav-enabled mb-4 mx-n2">
-                <div class="tns-carousel-inner" data-carousel-options="{&quot;controls&quot;: false}">
-                  <!-- Carousel item-->
-                  @foreach ($HomeAds as $item)
-                  <div class="px-2"><img class="rounded-3" src="{{ asset('storage/' . ($item->image ?? 'default_icon.jpg')) }}" alt="Product">
-                    <div class="position-relative">
-                      <div class="position-absolute start-0 bottom-0 w-100 p-md-5 p-sm-4 p-3">
-                        <div class="pt-sm-0 pt-2 px-sm-4 px-2 bg-white rounded shadow">
-                          <div class="row gx-5">
-                            <div class="col-sm-4 col-6 position-relative py-sm-3 py-2">
-                              <h6 class="mb-1 fs-sm fw-normal text-muted">Description:</h6><span class="h6 mb-0">{{$item->description}}</span>
-                            </div>
-                            <div class="col-sm-4 col-6 position-relative py-sm-3 py-2">
-                              {{-- <hr class="hr-vertical position-absolute start-0 top-0 ml-n4"> --}}
-                              <h6 class="mb-1 fs-sm fw-normal text-muted">Ends in:</h6><span class="h6 mb-0">{{$item->end_date}}</span>
-                            </div>
-                            {{-- <div class="col-sm-4 position-relative py-sm-3 py-2"> --}}
-
-                              {{-- <div class="d-flex align-items-center h-100"><a class="btn btn-sm btn-dark w-100" href="{{$item->button_url}}">Start bid</a></div> --}}
-                            {{-- </div> --}}
-                          </div>
-                        </div>
-                      </div>
+                <div class="col-lg-5">
+                    <div class="hero-image-group">
+                      <div class="group-image1 shake-y">
+                        <img class="image" src="{{ asset('assets/images/hero/hero-1.png') }}" alt="Image" />
                     </div>
-                  </div>
-                  @endforeach
+                    <div class="group-image2 pulse">
+                        <img data-sal="slide-right" data-sal-duration="1000" data-sal-delay="100"
+                            src="{{ asset('assets/images/hero/hero-2.png') }}" alt="Image" />
+                    </div>
+                    <img class="group-image3" src="{{ asset('assets/images/shape/shape-5.svg') }}" alt="Image" />
+                    <img class="group-image4 pulse" src="{{ asset('assets/images/shape/shape-6.svg') }}" alt="Image" />
+                    <img class="group-image5 pulse" src="{{ asset('assets/images/shape/shape-7.svg') }}" alt="Image" />
+                    <img class="group-image6 pulse" src="{{ asset('assets/images/shape/shape-8.svg') }}" alt="Image" />
 
-
+                    </div>
                 </div>
-              </div>
-              <div class="d-lg-none d-flex flex-sm-row flex-column justify-content-lg-start justify-content-center"><a class="btn btn-lg btn-accent me-sm-3 mb-2" href="{{ route('services') }}">Explore marketplace</a>
             </div>
-          </div>
         </div>
-      </section>
-            <!-- Product carousel (Trending in)-->
-      <!-- Product carousel (Recent Drops)-->
-      <section class="container mb-2 py-lg-5 py-4">
-        <div class="d-flex align-items-center justify-content-between mb-sm-3 mb-2"  style="direction: rtl; text-align: right;">
-          <h2 class="h3 mb-0"  style="direction: rtl; text-align: right;">ابرز الأقسام</h2><a class="btn btn-outline-accent ms-3" href="{{ route('services') }}">اكتشف المزيد<i class="ci-arrow-right ms-2"></i></a>
+        <div class="hero-shape">
+            <img src="assets/images/shape/shape-1.svg" alt="Shape" />
         </div>
-        <!-- Product carousel-->
-        <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
-          <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;nav&quot;: false, &quot;gutter&quot;: 30}}}">
-
-            @foreach ($categories as $category)
-              <div class="col py-3">
-                <article class="card h-100 border-0 shadow">
-                  <div class="card-img-top position-relative overflow-hidden">
-                    <a href="{{ route('categories', $category->category_id) }}" class="d-block">
-                      <img src="{{ asset('storage/' . $category->category_img) }}" alt="Category Image">
-                    </a>
-                    <!-- Wishlist button-->
-                    </button>
-                  </div>
-                  <div class="card-body">
-                    <h3 class="product-title mb-2 fs-base">
-                      <a class="d-block text-truncate" href="{{ route('categories', $category->category_id) }}">{{ $category->category_name }}</a>
-                    </h3>
-                    <span class="fs-sm text-muted">Description:</span>
-                    <p class="fs-sm text-muted">{{ $category->category_description }}</p>
-                  </div>
-                  <div class="card-footer mt-n1 py-0 border-0">
-                  </div>
-                </article>
-              </div>
-            @endforeach
-
-          </div>
+        <div class="hero-shape1">
+            <img src="assets/images/shape/shape-2.svg" alt="Shape" />
         </div>
-
-      </section>
-
-      <section class="mb-4 py-5 bg-secondary">
-        <div class="container py-lg-4">
-            <div class="d-flex flex-wrap mb-3" style="direction: rtl; text-align: right;">
-                <h2 class="h3 mb-0" style="direction: rtl; text-align: right;">ابرز الخدمات</h2>
-
+        <div class="hero-shape2 pulse">
+            <img src="assets/images/shape/shape-3.svg" alt="Shape" />
+        </div>
+        <div class="hero-shape3 shake-y">
+            <img src="assets/images/shape/shape-4.svg" alt="Shape" />
+        </div>
+        <div class="hero-scroll">
+            <img src="assets/images/icon/scroll-bg.svg" alt="Bg" />
+            <div class="scroll-icon jump">
+                <a href="#scroll-bottom"><img src="assets/images/icon/scroll.svg" alt="Icon" /></a>
             </div>
-
-            <!-- Product carousel -->
-            <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
-              <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
-                  @foreach($products as $product)
-                  <div class="col py-3">
-                      {{-- <a href="#signinnn-modal" data-bs-toggle="modal"
-                         data-product-name="{{ $product->product_name }}"
-                         data-product-img="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
-                         data-product-salary="{{ $product->product_salary }}"
-                         data-description="{{ $product->description }}"
-                         data-duration="{{ $product->Duration_of_righteousness }}"
-                         data-bs-target="#signinnn-modal"> --}}
-                          <article class="card h-100 border-0 shadow">
-                              <div class="card-img-top position-relative overflow-hidden">
-                                  <img class="avatar" src="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}" alt="Product image">
-                                  <button
-                                      class="btn-wishlist btn-sm position-absolute top-0 end-0"
-                                      type="button"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="left"
-                                      title="Add to Favorites"
-                                      style="margin: 12px;"
-                                      onclick="addToFavorites({{ $product->product_id }})">
-                                      <i class="ci-heart"></i>
-                                  </button>
-                              </div>
-
-                              <div class="card-body">
-                                  <a href="#signinnn-modal" data-bs-toggle="modal"
-                              data-product-name="{{ $product->product_name }}"
-                              data-product-img="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
-                              data-product-salary="{{ $product->product_salary }}"
-                              data-description="{{ $product->description }}"
-                              data-duration="{{ $product->Duration_of_righteousness }}"
-                              data-bs-target="#signinnn-modal">
-                                  <h3 class="product-title mb-2 fs-base">{{ $product->product_name }}</h3>
-                                  <span class="fs-sm text-muted">السعر:</span>
-                                  <div class="d-flex align-items-center flex-wrap">
-                                      <h4 class="mt-1 mb-0 fs-base text-darker">{{ $product->product_salary }} SAR</h4>
-                                  </div>
-                              </div>
-                          </article>
-                      </a>
-                  </div>
-                   @endforeach
-              </div>
-          </div>
         </div>
     </section>
+            <!-- Product carousel (Trending in)-->
+      <!-- Product carousel (Recent Drops)-->
+      <section class="tj-service-section mb-4 py-5 bg-secondary">
+        <div class="container py-lg-4">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="tj-sec-heading text-center" data-sal="slide-up" data-sal-duration="1000"
+                        data-sal-delay="600">
+                        <span class="sub-title">خدماتنا</span>
+                        <h2 class="sec-title">الخدمات التي نقدمها</h2>
+                        <div class="desc">
+                            <p>
+                                لقد صمدت ليس فقط لخمسة قرون، ولكن أيضًا قفزت إلى الطباعة الإلكترونية، وظلت دون تغيير جوهري. أصبحت شائعة في الستينيات مع إصدار...
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service carousel -->
+            <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
+                <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
+                    @foreach ($categories as $category)
+                    <div class="col-lg-3 col-md-6 col-sm-6 mt-5">
+                        <div class="tj-service-item text-center">
+                            <div class="service-inner">
+                                <div class="service-icon">
+                                    <i class="flaticon-design"></i>
+                                    <img class="image-1" src="assets/images/shape/service-image.svg" alt="Shape" />
+                                    <img class="image-2" src="assets/images/shape/service-image1.svg" alt="Shape" />
+                                </div>
+                                <div class="service-content">
+                                    <h4 class="title-link">
+                                      <a class="d-block text-truncate" href="{{ route('categories', $category->category_id) }}">{{ $category->category_name }}</a>
+                                    </h4>
+                                    <p>
+                                      {{ $category->category_description }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+
+            <div class="service-section-shape">
+                <div class="service-bg-shape pulse">
+                    <img src="assets/images/shape/shape-14.svg" alt="Shape" />
+                </div>
+                <div class="service-bg-shape1">
+                    <img src="assets/images/shape/shape-15.svg" alt="Shape" />
+                </div>
+                <div class="service-bg-shape2">
+                    <img src="assets/images/shape/shape-14.svg" alt="Shape" />
+                </div>
+                <div class="service-bg-shape3 pulse">
+                    <img src="assets/images/shape/shape-15.svg" alt="Shape" />
+                </div>
+                <div class="service-bg-shape4 pulse">
+                    <img src="assets/images/shape/shape-16.svg" alt="Shape" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <section class="mb-4 py-5 bg-secondary">
+    <div class="container py-lg-4">
+        <div class="d-flex flex-wrap mb-3" style="direction: rtl; text-align: right;">
+            <h2 class="h3 mb-0" style="direction: rtl; text-align: right;">ابرز الخدمات</h2>
+        </div>
+
+        <!-- Product carousel -->
+        <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
+            <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
+                @foreach($products as $product)
+                <div class="col py-3">
+                    <article class="card h-100 border-0 shadow" style="width: 100%;">
+                        <div class="card-img-top position-relative overflow-hidden">
+                            <img class="avatar" src="{{ $product->Product_img ? asset('public/storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}" alt="Product image">
+                            @auth
+                                <button
+                                    class="btn-wishlist btn-sm position-absolute top-0 end-0"
+                                    type="button"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="left"
+                                    title="Add to Favorites"
+                                    style="margin: 12px;"
+                                    onclick="addToFavorites({{ $product->product_id }})">
+                                    <i class="ci-heart" style="line-height: 1.5rem;"></i>
+                                </button>
+                            @endauth
+                        </div>
+
+<div class="card-body">
+    <a href="#signinnn-modal" data-bs-toggle="modal"
+       data-product-name="{{ $product->product_name }}"
+       data-product-img="{{ $product->Product_img ? asset('public/storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
+       data-product-salary="{{ $product->product_salary }}"
+       data-description="{{ $product->description }}"
+       data-duration="{{ $product->Duration_of_righteousness }}"
+       data-bs-target="#signinnn-modal">
+        <div class="text-end">
+            <h3 class="product-title mb-2 fs-base">{{ $product->product_name }}</h3>
+            <span class="fs-sm text-muted">السعر:</span>
+            <div class="d-flex align-items-center flex-wrap justify-content-end">
+                <h4 class="mt-1 mb-0 fs-base text-darker">{{ $product->product_salary }} SAR</h4>
+            </div>
+        </div>
+    </a>
+</div>
+                    </article>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</section>
 
     <div class="modal fade" id="signinnn-modal" tabindex="-1" role="dialog"  style="direction: rtl; text-align: right;">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-header bg-secondary">
+                <div class="modal-header bg-secondary" >
                     <h5 class="modal-title">Product Details</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -449,7 +518,7 @@
     @include('Includes.footer')
 
     <!-- Toolbar for handheld devices (NFT Marketplace)-->
-    @include('Includes.toolbar')
+    @include('includes.toolbar')
 
     <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
     <!-- Vendor scrits: js libraries and plugins-->
@@ -515,6 +584,22 @@ document.addEventListener('DOMContentLoaded', function () {
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+
+
+
+      <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/js/meanmenu.js') }}"></script>
+<script src="{{ asset('assets/js/swiper.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.appear.min.js') }}"></script>
+<script src="{{ asset('assets/js/sal.js') }}"></script>
+<script src="{{ asset('assets/js/odometer.min.js') }}"></script>
+<script src="{{ asset('assets/js/imagesloaded-pkgd.js') }}"></script>
+<script src="{{ asset('assets/js/magnific-popup.js') }}"></script>
+<script src="{{ asset('assets/js/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('assets/js/validate.min.js') }}"></script>
+
+<script src="{{ asset('assets/js/main.js') }}"></script>
 
   </body>
 

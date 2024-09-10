@@ -74,7 +74,7 @@ class ContactsController extends Controller
         $categories = Category::all();
         $pages = Page::all();
 
-        return view('ourVision',['settings'=>$settings,'categories'=>$categories,'pages'=>$pages]);
+        return view('OurVision',['settings'=>$settings,'categories'=>$categories,'pages'=>$pages]);
     }
 
 

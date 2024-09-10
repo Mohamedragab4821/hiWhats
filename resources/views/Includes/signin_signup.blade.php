@@ -16,27 +16,28 @@
             top: 50%;
             right: 10px;
             transform: translateY(-50%);
-        }
+        },
+
     </style>
 </head>
 <body style="direction: rtl; text-align: right;">
     <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-secondary">
+            <div class="modal-content" style="background-color: #ffffff99;">
+                <div class="modal-header bg-secondary" style="background-color: #ffffff99;">
                     <ul class="nav nav-tabs card-header-tabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true">
+                            <a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true" style="color: white">
                                 <i class="ci-unlocked me-2 mt-n1 ms-4"></i>تسجيل دخول
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fw-medium" href="#signup-tab" data-bs-toggle="tab" role="tab" aria-selected="false">
+                            <a class="nav-link fw-medium" href="#signup-tab" data-bs-toggle="tab" role="tab" aria-selected="false" style="color: white">
                                 <i class="ci-user me-2 mt-n1"></i>تسجيل جديد
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fw-medium" href="#forgot-password-tab" data-bs-toggle="tab" role="tab" aria-selected="false">
+                            <a class="nav-link fw-medium" href="#forgot-password-tab" data-bs-toggle="tab" role="tab" aria-selected="false" style="color: white">
                                 <i class="ci-lock me-2 mt-n1"></i>نسيت كلمة المرور
                             </a>
                         </li>
@@ -49,13 +50,13 @@
                         @csrf
                         <div class="mb-3">
                             <label class="form-label" for="si-email">ايميل</label>
-                            <input class="form-control" type="email" id="si-email" placeholder="johndoe@example.com" required name="email">
+                            <input class="form-control" type="email" id="si-email" placeholder="johndoe@example.com" required name="email" style="padding-left: 10px; padding-right: 10px;">
                             <div class="invalid-feedback">Please provide a valid email address.</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="si-password">كلمة المرور</label>
                             <div class="password-toggle">
-                                <input class="form-control" type="password" id="si-password" required name="password">
+                                <input class="form-control" type="password" id="si-password" required name="password" style="padding-left: 10px; padding-right: 10px;">
                                 <label class="password-toggle-btn" aria-label="Show/hide password">
                                     <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
                                 </label>
@@ -76,7 +77,7 @@
                         @csrf
                         <div class="mb-3">
                             <label class="form-label" for="fp-email">ايميل</label>
-                            <input class="form-control" type="email" id="fp-email" name="email" placeholder="johndoe@example.com" required>
+                            <input class="form-control" type="email" id="fp-email" name="email" placeholder="johndoe@example.com" required style="padding-left: 10px; padding-right: 10px;">
                             <div class="invalid-feedback">Please provide a valid email address.</div>
                         </div>
                         <button class="btn btn-primary btn-shadow d-block w-100" type="submit">ارسال لينك تغيير كلمة المرور</button>
@@ -87,18 +88,18 @@
                         @csrf
                         <div class="mb-3">
                             <label class="form-label" for="su-name">الاسم بالكامل</label>
-                            <input class="form-control" type="text" id="su-name" name="userName" placeholder="John Doe" required>
+                            <input class="form-control" type="text" id="su-name" name="userName" placeholder="John Doe" required style="padding-left: 10px; padding-right: 10px;">
                             <div class="invalid-feedback">Please fill in your name.</div>
                         </div>
                         <div class="mb-3">
                             <label for="su-email">ايميل</label>
-                            <input class="form-control" type="email" id="su-email" name="email" placeholder="johndoe@example.com" required>
+                            <input class="form-control" type="email" id="su-email" name="email" placeholder="johndoe@example.com" required style="padding-left: 10px; padding-right: 10px;">
                             <div class="invalid-feedback">Please provide a valid email address.</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="su-password">كلمة المرور</label>
                             <div class="password-toggle">
-                                <input class="form-control" type="password" id="su-password" name="password" required>
+                                <input class="form-control" type="password" id="su-password" name="password" required style="padding-left: 10px; padding-right: 10px;">
                                 <label class="password-toggle-btn" aria-label="Show/hide password">
                                     <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
                                 </label>
@@ -107,14 +108,14 @@
                         <div class="mb-3">
                             <label class="form-label" for="su-phone">الهاتف</label>
                             <div class="password-toggle">
-                                <input class="form-control" type="text" id="su-phone" name="phone" required>
+                                <input class="form-control" type="text" id="su-phone" name="phone" required style="padding-left: 10px; padding-right: 10px;">
                                 <label class="password-toggle-btn"></label>
                             </div>
                         </div>
                         <!-- Image Selection Input -->
                         <div class="mb-3">
-                            <label class="form-label" for="su-image">صورة شخصيه</label>
-                            <input class="form-control" type="file" id="image" name="image" accept="image/*">
+                            <label class="form-label" for="su-image" >صورة شخصيه</label>
+                            <input class="form-control" type="file" id="image" name="image" accept="image/*" style="border: black solid 1px">
                             <div class="invalid-feedback">Please select an image file.</div>
                         </div>
                         <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign up</button>
