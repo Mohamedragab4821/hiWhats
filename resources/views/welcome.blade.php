@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-  
-<!-- Mirrored from cartzilla.createx.studio/nft-account-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Aug 2022 18:19:25 GMT -->
+
+<!-- Mirrored from cartzilla.createx.studio/home-nft.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Aug 2022 18:10:41 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     <meta charset="utf-8">
-    <title>{{$settings->website_name}} </title>
+    <title>{{$settings->website_name}} | الصفحة الرئيسية</title>
     <!-- SEO Meta Tags-->
-    <meta name="description" content="Cartzilla - Bootstrap E-commerce Template">
-    <meta name="keywords" content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap, html5, css3, js, gallery, slider, touch, creative, clean">
+    <meta name="description" content="{{$settings->home_meta_d}}">
+    <meta name="keywords" content="{{$settings->home_meta_k}}">
     <meta name="author" content="Createx Studio">
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('storage/' . ($settings->icon))}}">
-    <link rel="manifest" href="{{ asset('site.webmanifest') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('public/storage/' . ($settings->icon))}}">
     <link rel="mask-icon" color="#fe6a6a" href="{{ asset('safari-pinned-tab.svg') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
     <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
@@ -23,285 +23,506 @@
     <link rel="stylesheet" media="screen" href="{{ asset('vendor/tiny-slider/dist/tiny-slider.css') }}"/>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="{{ asset('css/theme.min.css') }}">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
+    <style>
+      .card {
+        height: 100%; /* Ensures the card fills the container height */
+      }
 
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+      .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Distributes space between the card title and description */
+      }
+
+      .card-footer {
+        flex-shrink: 0; /* Prevents the footer from shrinking */
+      }
+      .card-img-top {
+    width: 100%; /* Full width of the card */
+    height: 200px; /* Fixed height for the image container */
+    overflow: hidden; /* Hide any overflowed content */
+    display: flex;
+    align-items: center; /* Center the image vertically */
+    justify-content: center; /* Center the image horizontally */
+    position: relative; /* Ensure proper positioning of overlay elements */
+  }
+
+  .card-img-top img {
+    width: 100%;
+    height: 200px; /* Ensure the image fills the container */
+    object-fit: cover; /* Cover the container, maintaining aspect ratio */
+  }
+
+  .small-alert {
+        font-size: 0.875rem; /* Smaller font size */
+        padding: 0.5rem 1rem; /* Smaller padding */
+    }
+
+    /* Optional: Fade-out animation */
+    .fade-out {
+        transition: opacity 0.5s ease-in-out;
+        opacity: 0;
+    }
+    .btn-close {
+        position: absolute;
+        top: 3rem; /* المسافة من الأعلى */
+        left: 2rem; /* المسافة من اليسار */
+        z-index: 1050; /* التأكد من بقاء الزر فوق المحتوى */
+    }
+   .responsive-img {
+  width: 100%;
+    max-height: 80vh; /* Ensure the maximum height is also 85% of the viewport height */
+  object-fit: cover; /* Maintain aspect ratio and cover the area */
+}
+.bg-opacity {
+            background-color: rgba(0, 0, 0, 0.5); /* Default background color with opacity */
+            transition: background-color 0.3s ease; /* Smooth transition effect */
+        }
+
+        .bg-opacity:hover {
+            background-color: rgba(0, 0, 0, 0.8); /* Background color with higher opacity on hover */
+        }
+        .text-end {
+    text-align: right;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.justify-content-end {
+    justify-content: flex-end;
+}
+
+.product-title, .fs-base {
+    /* Ensures the font size is consistent */
+    font-size: 1.25rem; /* Example size; adjust as needed */
+}
+
+.fs-sm {
+    font-size: 0.875rem; /* Example size; adjust as needed */
+}
+
+.text-muted {
+    color: #6c757d; /* Example muted color; adjust as needed */
+}
+
+.text-darker {
+    color: #343a40; /* Example darker color; adjust as needed */
+}
+
+.btn-outline-primary{
+    margin-bottom: 30px;
+}
+        
+
+/* Optional: Adjust max-width for different screen sizes */
+@media (max-width: 576px) { /* For extra small devices */
+  .responsive-img {
+    max-width: 100%;
+  }
+  
+  .pt-sm-0{
+      /*height:20vh;*/
+  }
+}
+    @media (max-width: 768px) {
+      .bg-size-cover{
+        margin-top: 100px
+      }
+    }
+    @media (max-width:305px){
+        .img-container{
+      height:45vh;
+  }
+    }
+    
+    
+    </style>
+
     <!-- Google Tag Manager-->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-WKV3GT5');
-    </script>
+
   </head>
   <!-- Body-->
-  <body class="handheld-toolbar-enabled">
+  <body class="handheld-toolbar-enabled" style="background-color: white;">
     <!-- Google Tag Manager (noscript)-->
-    <noscript>
-      <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
-    </noscript>
+
     <!-- Sign in / sign up modal-->
     @include('Includes.signin_signup')
 
     <main class="page-wrapper">
       <!-- Navbar for NFT Marketplace demo-->
       <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
-      @include('Includes.account_header')
 
-      @include('Includes.navBar')
+      @include('Includes.home_header')
 
-      <div class="container mb-5 pb-3">
-        <div class="bg-light shadow-lg rounded-3 overflow-hidden">
-          <div class="row">
-            <!-- Sidebar-->
-            @include('Includes.leftSideMenue')
+      @if (session('success'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+                showConfirmButton: false,
+                timer: 3000 // 3 seconds
+            });
+        });
+    </script>
+@endif
 
-            <!-- Content-->
+<!-- Check if there are any errors -->
+@if ($errors->any())
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let errorMessage = '';
+            @foreach ($errors->all() as $error)
+                errorMessage += '{{ $error }}\n';
+            @endforeach
 
-            <section class="col-lg-9 pt-lg-4 pb-4 mb-3">
-                <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
-                    <h1 class="h3 mb-4 pt-2 text-center text-sm-start">Website Settings</h1>
-            
-                    <!-- Display success or error messages -->
-                    @if (session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-                    @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                     @endif
-            
-                    <div class="modal fade" id="addPage-modal" tabindex="-1" role="dialog">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header bg-secondary">
-                              <ul class="nav nav-tabs card-header-tabs" role="tablist">
-                                <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true">Add Product</a></li>
-                              </ul>
-                              <img src="" alt="">
-                              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body tab-content py-4">
-                                <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="product-form" action="{{ route('pages.store') }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <!-- Product Name -->
-
-                                    <!-- Product Salary -->
-                                    <div class="form-group">
-                                      <label for="title">Page Title:</label>
-                                      <input type="text" class="form-control" id="title" name="title" placeholder="Enter page title" required>
-                                  </div>
-                          
-                                  <div class="form-group">
-                                      <label for="slug">Slug:</label>
-                                      <input type="text" class="form-control" id="slug" name="slug" placeholder="Enter slug (e.g., about-us)" required>
-                                  </div>
-                          
-                                  <div class="form-group">
-                                    <label for="editor2">Content:</label>
-                                    <textarea name="content" id="editor2"></textarea>
-                                  </div>
-                          
-                                  <div class="form-group">
-                                      <label for="meta_description">Meta Description:</label>
-                                      <textarea class="form-control" id="meta_description" name="meta_description" rows="3" placeholder="Enter meta description for SEO"></textarea>
-                                  </div>
-                          
-                                  <div class="form-group">
-                                      <label for="meta_keywords">Meta Keywords:</label>
-                                      <input type="text" class="form-control" id="meta_keywords" name="meta_keywords" placeholder="Enter meta keywords (comma-separated)">
-                                  </div>
-                          
-                                  <div class="form-group">
-                                      <label for="status">Status:</label>
-                                      <select class="form-control" id="status" name="status">
-                                          <option value="published">Published</option>
-                                          <option value="draft">Draft</option>
-                                      </select>
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="add_to">Add To :</label>
-                                    <select class="form-control" id="add_to" name="add_to">
-                                        <option value="header">Header</option>
-                                        <option value="footer">Footer</option>
-                                    </select>
-                                </div>
-      
-                                  <br><br>
-      
-                                    <!-- Submit Button -->
-                                    <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Add</button>
-                                </form>
-      
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="modal fade" id="updatePage-modal" tabindex="-1" role="dialog">
-                      <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header bg-secondary">
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: errorMessage,
+                showConfirmButton: false,
+                timer: 3000 // 3 seconds
+            });
+        });
+    </script>
+@endif
+      <!-- Hero-->
+      <section class="mb-lg-2 bg-faded-accent bg-size-cover" style="padding-top: 80px; background-image: url(img/nft/home/hero-bg.png);margin-top:0">
+        <div class="container py-4">
+          <div class="row align-items-center justify-content-center gy-3 py-3 text-lg-start text-center"style="margin-top: 20px;">
+            <div class="col-lg-5 col-md-8 col-sm-10">
+              <h1 class="mb-4 pb-lg-2" style="direction: rtl; text-align: right;">نقدم حلول تسويق إلكتروني شاملة لتحقيق أهداف عملك الرقمية.</h1>
+              <p class="mb-lg-5 mb-4 fs-lg" style="direction: rtl; text-align: right;">نساعدك على زيادة ظهورك الرقمي والوصول إلى جمهورك المستهدف من خلال استراتيجيات تسويقية فعّالة.</p>
+              <div class="d-lg-flex d-none flex-sm-row flex-column justify-content-lg-start justify-content-center">
+                <a class="btn btn-lg btn-accent me-sm-3 mb-sm-3 mb-2 m-2" href="{{route('services')}}" style="direction: rtl; text-align: right;">تصفح خدماتنا</a>
+                @if (!Auth::user())
+                <a class="btn btn-lg btn-outline-dark mb-sm-3 mb-2 m-2" href="#signup-modal" data-bs-toggle="modal" style="direction: rtl; text-align: right;">انشئ حساب</a>
+                @endif
+            </div>
+            </div>
+            <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-secondary" style="direction: rtl; text-align: right;">
                             <ul class="nav nav-tabs card-header-tabs" role="tablist">
-                              <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true">Update Page</a></li>
+                                <li class="nav-item">
+                                    <a class="nav-link fw-medium" href="#signup-tab" role="tab" aria-selected="true">
+                                        <i class="ci-user me-2 mt-n1"></i>تسجيل جديد
+                                    </a>
+                                </li>
                             </ul>
-                            <img src="" alt="">
                             <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body tab-content py-4">
-                              <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="update-form" enctype="multipart/form-data">
-                                  @csrf
-                                  @method('PUT')
-
-                                  <!-- Product Name -->
-                                  @if (session('success'))
-                                  <p>{{ session('success') }}</p>
-                                  @if (session('image'))
-                                      <img src="{{ asset('storage/' . session('image')) }}" alt="Uploaded Image">
-                                  @endif
-                                  @endif
-                                  
-                                  @if (session('error'))
-                                      <p>{{ session('error') }}</p>
-                                  @endif
-                                  <!-- Product Salary -->
-                                  <div class="form-group">
-                                    <label for="title">Page Title:</label>
-                                    <input type="text" class="form-control" id="title" name="title" placeholder="Enter page title" required>
-                                </div>
-                        
-                                <div class="form-group">
-                                    <label for="slug">Slug:</label>
-                                    <input type="text" class="form-control" id="slug" name="slug" placeholder="Enter slug (e.g., about-us)" required>
-                                </div>
-                        
-                                <div class="form-group">
-                                  <label for="editor1">Content:</label>
-                                  <textarea name="content" id="editor1"></textarea>
-                                </div>
-                        
-                                <div class="form-group">
-                                    <label for="meta_description">Meta Description:</label>
-                                    <textarea class="form-control" id="meta_description" name="meta_description" rows="3" placeholder="Enter meta description for SEO"></textarea>
-                                </div>
-                        
-                                <div class="form-group">
-                                    <label for="meta_keywords">Meta Keywords:</label>
-                                    <input type="text" class="form-control" id="meta_keywords" name="meta_keywords" placeholder="Enter meta keywords (comma-separated)">
-                                </div>
-                        
-                                <div class="form-group">
-                                    <label for="status">Status:</label>
-                                    <select class="form-control" id="status" name="status">
-                                        <option value="published">Published</option>
-                                        <option value="draft">Draft</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                  <label for="add_to">Add To :</label>
-                                  <select class="form-control" id="add_to" name="add_to">
-                                      <option value="header">Header</option>
-                                      <option value="footer">Footer</option>
-                                  </select>
-                              </div>
-    
-                                <br><br>
-    
-                                  <!-- Submit Button -->
-                                  <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Update</button>
-                              </form>
-    
-                          </div>
                         </div>
-                      </div>
-                  </div>
-                    
-
-                    <br>
-                    <a class="btn btn-primary btn-sm" href="#addPage-modal" data-bs-toggle="modal">اضف صفحه</a></div>
-                    <br><br><br>
-
-                    
-                    <table class="table table-bordered">
-                        <thead>
-                                
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Page Name</th>
-                            <th scope="col">Slug</th>
-                            <th scope="col">Meta Description</th>
-                            <th scope="col">Meta Keywords</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Where</th>
-                            <th scope="col">Edit</th>
-                            <th scope="col">Delete</th>
-
-
-                          </tr>
-                        </thead>
-                        <tbody>
-                          @php
-                          $i=0; 
-                          @endphp
-                          @foreach ($pages as $item)
-                          <tr> 
-                            @php
-                               $i++; 
-                            @endphp
-                            <th scope="row">{{$i}}</th>
-                            <td>{{$item->title}}</td>
-                            <td>{{$item->slug}}</td>
-                            <td>{{$item->meta_description}}</td>
-                            <td>{{$item->meta_keywords	}}</td>
-                            <td>{{$item->status}}</td>
-                            <td>{{$item->add_to}}</td>
-
-                            <td>
-                              <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#updatePage-modal" 
-                                  data-id="{{ $item->id}}"
-                                  data-title="{{ $item->title }}"
-                                  data-slug="{{ $item->slug }}"
-                                  data-meta_description="{{ $item->meta_description }}"
-                                  data-meta_keywords="{{ $item->meta_keywords }}"
-                                  data-status="{{ $item->status }}"
-                                  data-add_to="{{ $item->add_to }}"
-                                  data-content="{{ $item->content }}"                                  
-                                  >
-                                  Edit
-                              </button>
-                          </td>
-                            <td><form action="{{ route('pages.destroy', $item->id) }}" method="POST">
+                        <div class="modal-body py-4">
+                            <form class="needs-validation" autocomplete="off" novalidate action="{{ route('Registeration') }}" method="POST" style="direction: rtl; text-align: right;">
                                 @csrf
-                                @method('DELETE')
-                                <button class="btn btn-outline-danger btn-sm" type="submit"><i class="ci-trash me-2"></i>delete</button>
-                            </form></td>
-                          </tr>
-                          @endforeach
-                        </tbody>
-                    </table>
+                                <div class="mb-3">
+                                    <label class="form-label" for="su-name">الاسم كامل</label>
+                                    <input class="form-control" type="text" id="userName" name="userName" placeholder="الاسم بالكامل" required>
+                                    <div class="invalid-feedback">Please fill in your name.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="su-email">البريد الالكتروني</label>
+                                    <input class="form-control" type="email" id="email" name="email" placeholder="johndoe@example.com" required>
+                                    <div class="invalid-feedback">Please provide a valid email address.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="su-password">كلمه المرور</label>
+                                    <div class="password-toggle">
+                                        <input class="form-control" type="password" id="password" name="password" required>
+                                        <label class="password-toggle-btn" aria-label="Show/hide password">
+                                            <input class="password-toggle-check" type="checkbox">
+                                            <span class="password-toggle-indicator"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="su-password-confirm">الهاتف</label>
+                                    <input class="form-control" type="text" id="phone" name="phone" required>
+                                </div>
+                                <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign up</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            </section>
-            
-            
+            </div>
+            <div class="col-lg-6 col-md-8 offset-lg-1 col-sm-10">
+              <!-- Top auctions carousel-->
+              <div class="tns-carousel tns-nav-enabled mb-4 mx-n2">
+                <div class="tns-carousel-inner" data-carousel-options="{&quot;controls&quot;: false}">
+                  <!-- Carousel item-->
+                  @foreach ($HomeAds as $item)
+<div class="px-2 img-container">
+  <img 
+    class="rounded-3 responsive-img" 
+    src="{{ asset('public/storage/' . ($item->image ?? 'default_icon.jpg')) }}" 
+    alt="Product"
+  >
+  <div class="position-relative">
+    <div class="position-absolute start-0 bottom-0 w-100 p-md-5 p-sm-4 p-3">
+      <div class="pt-sm-0 pt-2 px-sm-4 px-2 mt-5 bg-white rounded shadow">
+        <div class="row gx-5">
+          <div class="col-sm-4 col-12 position-relative py-sm-3 py-2>
+            <h6 class="mb-1 fs-sm fw-normal text-muted">Description:</h6>
+            <span class="h6 mb-0">{{$item->description}}</span>
+          </div>
+          <div class="col-sm-4 col-12 position-relative py-sm-3 py-2">
+            <h6 class="mb-1 fs-sm fw-normal text-muted">Ends in:</h6>
+            <span class="h6 mb-0">{{$item->end_date}}</span>
+          </div>
+          <div class="col-sm-4 col-12 position-relative py-sm-3 py-2">
+            <div class="d-flex align-items-center h-100">
+              <a class="btn btn-sm btn-dark w-100" href="{{$item->button_url}}">Start</a>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+                  @endforeach
+
+
+                </div>
+              </div>
+              <div class="d-lg-none d-flex flex-sm-row flex-column justify-content-lg-start justify-content-center"><a class="btn btn-lg btn-accent me-sm-3 mb-2" href="{{ route('services') }}">تصفح خدماتنا</a>
+            </div>
+          </div>
+        </div>
+      </section>
+            <!-- Product carousel (Trending in)-->
+      <!-- Product carousel (Recent Drops)-->
+<section class="container mb-2 py-lg-5 py-4">
+  <div class="d-flex flex-row flex-row align-items-center justify-content-between mb-3">
+    <!-- Button aligned to the right on all screen sizes -->
+    <a class="btn btn-outline-accent mt-2 mt-0 order-1" href="{{ route('services') }}">
+      اكتشف المزيد<i class="ci-arrow-right ms-2"></i>
+    </a>
+
+    <!-- Title aligned to the left on all screen sizes -->
+    <h2 class="h3 mb-0 text-center text-start order-2">ابرز الأقسام</h2>
+  </div>
+
+  <!-- Product carousel-->
+  <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
+    <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;nav&quot;: false, &quot;gutter&quot;: 30}}}">
+      @foreach ($categories as $category)
+        <div class="col py-3">
+          <article class="card h-100 border-0 shadow" style="width: 100%;">
+            <div class="card-img-top position-relative overflow-hidden">
+              <a href="{{ route('categories', $category->category_id) }}" class="d-block">
+                <img src="{{ asset('public/storage/' . $category->category_img) }}" alt="Category Image">
+              </a>
+            </div>
+            <div class="card-body" style="text-align: right;">
+              <h3 class="product-title mb-2 fs-base">
+                <a class="d-block text-truncate" href="{{ route('categories', $category->category_id) }}">{{ $category->category_name }}</a>
+              </h3>
+              <span class="fs-sm text-muted">Description:</span>
+              <p class="fs-sm text-muted">{{ $category->category_description }}</p>
+            </div>
+            <div class="card-footer mt-n1 py-0 border-0"></div>
+          </article>
+        </div>
+      @endforeach
+    </div>
+  </div>
+</section>
+
+      <section class="mb-4 py-5 bg-secondary">
+    <div class="container py-lg-4">
+        <div class="d-flex flex-wrap mb-3" style="direction: rtl; text-align: right;">
+            <h2 class="h3 mb-0" style="direction: rtl; text-align: right;">ابرز الخدمات</h2>
+        </div>
+
+        <!-- Product carousel -->
+        <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
+            <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
+                @foreach($products as $product)
+                <div class="col py-3">
+                    <article class="card h-100 border-0 shadow" style="width: 100%;">
+                        <div class="card-img-top position-relative overflow-hidden">
+                            <img class="avatar" src="{{ $product->Product_img ? asset('public/storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}" alt="Product image">
+                            @auth
+                                <button
+                                    class="btn-wishlist btn-sm position-absolute top-0 end-0"
+                                    type="button"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="left"
+                                    title="Add to Favorites"
+                                    style="margin: 12px;"
+                                    onclick="addToFavorites({{ $product->product_id }})">
+                                    <i class="ci-heart" style="line-height: 1.5rem;"></i>
+                                </button>
+                            @endauth
+                        </div>
+
+<div class="card-body">
+    <a href="#signinnn-modal" data-bs-toggle="modal"
+       data-product-name="{{ $product->product_name }}"
+       data-product-img="{{ $product->Product_img ? asset('public/storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
+       data-product-salary="{{ $product->product_salary }}"
+       data-description="{{ $product->description }}"
+       data-duration="{{ $product->Duration_of_righteousness }}"
+       data-bs-target="#signinnn-modal">
+        <div class="text-end">
+            <h3 class="product-title mb-2 fs-base">{{ $product->product_name }}</h3>
+            <span class="fs-sm text-muted">السعر:</span>
+            <div class="d-flex align-items-center flex-wrap justify-content-end">
+                <h4 class="mt-1 mb-0 fs-base text-darker">{{ $product->product_salary }} SAR</h4>
+            </div>
+        </div>
+    </a>
+</div>
+                    </article>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</section>
+
+    <div class="modal fade" id="signinnn-modal" tabindex="-1" role="dialog"  style="direction: rtl; text-align: right;">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-secondary" >
+                    <h5 class="modal-title">Product Details</h5>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pb-0">
+                    <div class="d-sm-flex justify-content-between mb-4 pb-3 pb-sm-2 border-bottom">
+                        <div class="d-sm-flex text-center text-sm-start">
+                            <a class="d-inline-block flex-shrink-0 mx-auto" style="width: 15rem;">
+                                <img id="modal-product-img" src="" alt="Product" style="width: 100%; height: auto;">
+                            </a>
+                            <div class="ps-sm-4 pt-2">
+                                <h3 id="modal-product-name" class="product-title fs-base mb-2"></h3>
+                                <div class="fs-sm"><span class="text-muted me-2">Description:</span><span id="modal-description"></span></div>
+                                <div class="fs-sm"><span class="text-muted me-2">Duration:</span><span id="modal-duration"></span></div>
+                                <div class="fs-lg text-accent pt-2">Price: <span id="modal-product-salary"></span></div>
+                                <div class="mt-3">
+                                  <a href="{{ route('contacts.index') }}" class="btn btn-outline-primary">طلب الخدمه عبر الايميل</a>
+                                  <a href="https://api.whatsapp.com/send?phone={{$settings->whatsapp}}&text=مرحبا"  class="btn btn-outline-success">طلب الخدمه عبر الواتساب</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Styles -->
+    <style>
+        .card {
+            transition: box-shadow 0.3s ease; /* Smooth transition for the shadow effect */
+            width: 300px; /* Adjust the width as needed */
+            height: 400px; /* Adjust the height as needed */
+        }
+
+        .card-img-top img {
+            width: 100%; /* Make the image cover the card width */
+            height: 200px; /* Adjust the height as needed */
+            object-fit: cover; /* Ensure the image covers the area without distortion */
+        }
+
+        .modal-dialog {
+            max-width: 800px; /* Adjust the width of the modal as needed */
+        }
+
+        .modal-content {
+            padding: 1.5rem; /* Adjust the padding inside the modal as needed */
+        }
+
+        .modal-body {
+            padding: 2rem; /* Adjust the padding inside the modal body as needed */
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Change the values as needed */
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var productModal = document.getElementById('signinnn-modal');
+            productModal.addEventListener('show.bs.modal', function(event) {
+                var button = event.relatedTarget; // Button that triggered the modal
+
+                // Get the product data from the button's data attributes
+                var productName = button.getAttribute('data-product-name');
+                var productImg = button.getAttribute('data-product-img');
+                var productSalary = button.getAttribute('data-product-salary');
+                var description = button.getAttribute('data-description');
+                var duration = button.getAttribute('data-duration');
+
+                // Find the modal elements
+                var modalProductName = productModal.querySelector('#modal-product-name');
+                var modalProductImg = productModal.querySelector('#modal-product-img');
+                var modalProductSalary = productModal.querySelector('#modal-product-salary');
+                var modalDescription = productModal.querySelector('#modal-description');
+                var modalDuration = productModal.querySelector('#modal-duration');
+
+                // Set the modal content
+                modalProductName.textContent = productName;
+                modalProductImg.src = productImg;
+                modalProductSalary.textContent = productSalary;
+                modalDescription.textContent = description;
+                modalDuration.textContent = duration;
+            });
+        });
+    </script>
+
+
+    <!-- Features-->
+    <section class="container py-lg-5 py-4">
+    <h2 class="mb-4 pb-md-3 pb-2" style="direction: rtl; text-align: right;">ابدأ رحلتك في التسويق الإلكتروني معنا!</h2>
+    <!-- Features carousel-->
+    <div class="tns-carousel mb-4">
+      <div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;gutter&quot;: 30, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true}}}">
+        <!-- Carousel item-->
+        <div style="direction: rtl; text-align: right;"><img class="mb-4" src="img/nft/features/wallet.svg" width="60" alt="Icon">
+          <h4 class="mb-2 fs-lg text-body">حدد استراتيجيتك التسويقية</h4>
+          <p class="mb-0 fs-sm text-muted">ابدأ بوضع استراتيجية تسويقية فعّالة لتحقيق أهدافك والوصول إلى جمهورك المستهدف.</p>
+        </div>
+        <!-- Carousel item-->
+        <div style="direction: rtl; text-align: right;"> <img class="mb-4" src="img/nft/features/add.svg" width="60" alt="Icon">
+          <h4 class="mb-2 fs-lg text-body">أنشئ حملاتك الإعلانية</h4>
+          <p class="mb-0 fs-sm text-muted">صمم حملات إعلانية جذابة على مختلف المنصات لتحقيق نتائج متميزة.</p>
+        </div>
+        <!-- Carousel item-->
+        <div style="direction: rtl; text-align: right;"><img class="mb-4" src="img/nft/features/image.svg" width="60" alt="Icon">
+          <h4 class="mb-2 fs-lg text-body">إدارة محتوى وسائل التواصل الاجتماعي</h4>
+          <p class="mb-0 fs-sm text-muted">قم بإدارة حساباتك على وسائل التواصل الاجتماعي وزيادة التفاعل مع جمهورك.</p>
+        </div>
+        <!-- Carousel item-->
+        <div style="direction: rtl; text-align: right;"><img class="mb-4" src="img/nft/features/shopping-cart.svg" width="60" alt="Icon">
+          <h4 class="mb-2 fs-lg text-body">تتبع وتحليل النتائج</h4>
+          <p class="mb-0 fs-sm text-muted">قم بتحليل أداء حملاتك وتحسينها باستمرار لتحقيق أفضل النتائج الممكنة.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
     </main>
+    <!-- Bg shape-->
+    <div class="pt-4 bg-secondary">
+
+
+    </div>
     <!-- Footer-->
     @include('Includes.footer')
 
     <!-- Toolbar for handheld devices (NFT Marketplace)-->
-    <div class="handheld-toolbar">
-      <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="nft-account-settings.html" data-bs-toggle="modal"><span class="handheld-toolbar-icon"><i class="ci-user"></i></span><span class="handheld-toolbar-label">Account</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">Menu</span></a><a class="d-table-cell handheld-toolbar-item" href="nft-create-item.html"><span class="handheld-toolbar-icon"><i class="ci-add"></i></span><span class="handheld-toolbar-label">Create item</span></a>
-      </div>
-    </div>
+    @include('includes.toolbar')
+
     <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
     <!-- Vendor scrits: js libraries and plugins-->
     <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
@@ -311,98 +532,63 @@
     <!-- Main theme script-->
     <script src="{{ asset('js/theme.min.js') }}"></script>
 
-
     <script>
-      $(document).ready(function() {
-          $('#editor2').summernote({
-            height: 300,
-                height: 300,
-                placeholder: 'Type your text here...',
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'italic', 'underline', 'clear', 'fontname', 'fontsize']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']], // Enable table button
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview', 'help']]
-                ],
-                fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Merriweather'], // Custom font options
-                fontSizes: ['8', '9', '10', '11', '12', '14', '18', '24', '36', '48', '64'], // Font sizes
-                styleTags: ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']
-          });
-      });
-  </script>
+      function addToFavorites(productId) {
+    console.log('Adding product to favorites with ID:', productId);
 
-<script>
-  // Initialize Summernote on document ready
-  
+    $.ajax({
+        url: '{{ route('favorites.store') }}',
+        type: 'POST',
+        data: {
+            _token: '{{ csrf_token() }}',
+            product_id: productId
+        },
+        success: function(response) {
+            console.log('Success:', response);
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: response.message,
+                confirmButtonText: 'OK'
+            });
+        },
+        error: function(xhr) {
+            console.error('AJAX Error:', xhr);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Error adding to favorites: ' + xhr.responseText,
+                confirmButtonText: 'OK'
+            });
+        }
+    });
+}
 
-  // Handle modal show event to set the form data
-  document.addEventListener('DOMContentLoaded', function() {
-      var modal = document.getElementById('updatePage-modal');
+document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(function () {
+            let alert = document.querySelectorAll('.alert-dismissible');
+            alert.forEach(function (el) {
+                el.classList.add('fade-out');
+            });
+        }, 3000); // 3 seconds
 
-      modal.addEventListener('show.bs.modal', function (event) {
-          var button = event.relatedTarget;
-          var title = button.getAttribute('data-title');
-          var slug = button.getAttribute('data-slug');
-          var meta_description = button.getAttribute('data-meta_description');
-          var meta_keywords = button.getAttribute('data-meta_keywords');
-          var status = button.getAttribute('data-status');
-          var add_to = button.getAttribute('data-add_to');
-          var page_id = button.getAttribute('data-id');
-          var content = button.getAttribute('data-content');
-
-          // Set the values in the form
-          modal.querySelector('#title').value = title;
-          modal.querySelector('#slug').value = slug;
-          modal.querySelector('#meta_description').value = meta_description;
-          modal.querySelector('#meta_keywords').value = meta_keywords;
-          modal.querySelector('#status').value = status;
-          modal.querySelector('#add_to').value = add_to;
-
-          // Set the content in Summernote
-          $(document).ready(function() {
-    $('#editor1').summernote({
-        height: 300,
-        placeholder: 'Type your text here...',
-        toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'italic', 'underline', 'clear', 'fontname', 'fontsize']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']], // Enable table button
-            ['insert', ['link', 'picture', 'video']],
-            ['view', ['fullscreen', 'codeview', 'help']]
-        ],
-        fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Merriweather'], // Custom font options
-        fontSizes: ['8', '9', '10', '11', '12', '14', '18', '24', '36', '48', '64'], // Font sizes
-        styleTags: ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']
+        // Completely remove the alert after the fade-out animation
+        setTimeout(function () {
+            let alert = document.querySelectorAll('.alert-dismissible');
+            alert.forEach(function (el) {
+                el.style.display = 'none';
+            });
+        }, 3500); // Wait 0.5 seconds more for the fade-out to complete
     });
 
 
-    $('#editor1').summernote('code', content);
-});
-
-          // Update form action if editing
-          var form = modal.querySelector('#update-form');
-          form.setAttribute('action', '{{ route("pages.update", ["id" => ":id"]) }}'.replace(':id', page_id));
-          form.setAttribute('method', 'POST'); // Switch to PUT method for editing
-
-      });
-  });
-</script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<!-- Bootstrap JS -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-
-<!-- Summernote JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
+      </script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
   </body>
 
-<!-- Mirrored from cartzilla.createx.studio/nft-account-settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Aug 2022 18:19:25 GMT -->
+<!-- Mirrored from cartzilla.createx.studio/home-nft.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Aug 2022 18:11:55 GMT -->
 </html>
