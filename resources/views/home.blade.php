@@ -33,8 +33,9 @@
 <link rel="stylesheet" href="{{ asset('assets/css/sal.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/css/swiper.min.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/css/meanmenu.css') }}" />
+{{-- <link rel="stylesheet" href="{{ asset('assets/css/meanmenu.css') }}" /> --}}
 <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
     <style>
       .card {
@@ -132,6 +133,15 @@
     margin-bottom: 30px;
 }
 
+.card {
+  width: 100%;
+  height: 100%;
+}
+.card img {
+  width: 100%;
+  height: 100%;
+}
+
 
 /* Optional: Adjust max-width for different screen sizes */
 @media (max-width: 576px) { /* For extra small devices */
@@ -207,43 +217,43 @@
     </script>
 @endif
       <!-- Hero-->
-      <section class="tj-hero-section" style="direction: rtl; text-align: right;">
-        <div class="container">
+      <section class="tj-hero-section" style="direction: rtl; text-align: right; position: relative;">
+        <!-- Semi-transparent overlay for better contrast -->
+        <div style="background-color: rgba(0, 0, 0, 0.5); position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+        
+        <div class="container" style="position: relative; z-index: 1;">
             <div class="row align-items-center">
                 <div class="col-lg-7">
-                    <div class="hero-left-content" data-sal="slide-up" data-sal-duration="1000"
-                        data-sal-delay="100">
+                    <div class="hero-left-content" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="100">
                         <div class="tj-sec-heading">
-                            <span class="hero-sub-title"> Creative Thinking</span>
-                            <h1 class="hero-title">
-                              نقدم حلول تسويق إلكتروني شاملة لتحقيق أهداف عملك الرقمية. <span class="title"> طور من عملك !</span>
+                            <span style="padding-top:10%" class="hero-sub-title"></span>
+                            <h1 class="hero-title" style="color: white; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);">
+                                نقدم حلول تسويق إلكتروني شاملة لتحقيق أهداف عملك الرقمية. <span class="title"> طور من عملك !</span>
                             </h1>
                             <div class="desc">
-                                <p>
-                                  نساعدك على زيادة ظهورك الرقمي والوصول إلى جمهورك المستهدف من خلال استراتيجيات تسويقية فعّالة.
+                                <p style="color: #f0f0f0; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);">
+                                    نساعدك على زيادة ظهورك الرقمي والوصول إلى جمهورك المستهدف من خلال استراتيجيات تسويقية فعّالة.
                                 </p>
                             </div>
-
+    
                             <div class="hero-button d-flex">
-                                <a class="tj-primary-btn" href="contact.html"> Explore Now</a>
+                                <a class="tj-primary-btn" href="contact.html" style="background-color: #ff8800; color: white;"> تصفح خدماتنا</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-5">
                     <div class="hero-image-group">
-                      <div class="group-image1 shake-y">
-                        <img class="image" src="{{ asset('assets/images/hero/hero-1.png') }}" alt="Image" />
-                    </div>
-                    <div class="group-image2 pulse">
-                        <img data-sal="slide-right" data-sal-duration="1000" data-sal-delay="100"
-                            src="{{ asset('assets/images/hero/hero-2.png') }}" alt="Image" />
-                    </div>
-                    <img class="group-image3" src="{{ asset('assets/images/shape/shape-5.svg') }}" alt="Image" />
-                    <img class="group-image4 pulse" src="{{ asset('assets/images/shape/shape-6.svg') }}" alt="Image" />
-                    <img class="group-image5 pulse" src="{{ asset('assets/images/shape/shape-7.svg') }}" alt="Image" />
-                    <img class="group-image6 pulse" src="{{ asset('assets/images/shape/shape-8.svg') }}" alt="Image" />
-
+                        <div class="group-image1 shake-y ps-3 pb-4">
+                            <img class="image" src="{{ asset('assets/images/hero/ads2.jpg') }}" alt="Image" />
+                        </div>
+                        <div class="group-image2 pulse pt-4">
+                            <img data-sal="slide-right" data-sal-duration="1000" data-sal-delay="100" src="{{ asset('assets/images/hero/ads.jpg') }}" alt="Image" />
+                        </div>
+                        <img class="group-image3" src="{{ asset('assets/images/shape/shape-5.svg') }}" alt="Image" />
+                        <img class="group-image4 pulse" src="{{ asset('assets/images/shape/shape-6.svg') }}" alt="Image" />
+                        <img class="group-image5 pulse" src="{{ asset('assets/images/shape/shape-7.svg') }}" alt="Image" />
+                        <img class="group-image6 pulse" src="{{ asset('assets/images/shape/shape-8.svg') }}" alt="Image" />
                     </div>
                 </div>
             </div>
@@ -267,124 +277,84 @@
             </div>
         </div>
     </section>
+    
             <!-- Product carousel (Trending in)-->
       <!-- Product carousel (Recent Drops)-->
-      <section class="tj-service-section mb-4 py-5 bg-secondary">
-        <div class="container py-lg-4">
+      <section style="background-color: #f8f9fa;" class="py-5">
+        <div class="container text-center py-5 animate__animated animate__fadeInUp">
+            <h4 class="mt-4 mb-5 fw-bold text-end display-5"><strong>أبرز الأقسام</strong></h4>
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="tj-sec-heading text-center" data-sal="slide-up" data-sal-duration="1000"
-                        data-sal-delay="600">
-                        <span class="sub-title">خدماتنا</span>
-                        <h2 class="sec-title">الخدمات التي نقدمها</h2>
-                        <div class="desc">
-                            <p>
-                                لقد صمدت ليس فقط لخمسة قرون، ولكن أيضًا قفزت إلى الطباعة الإلكترونية، وظلت دون تغيير جوهري. أصبحت شائعة في الستينيات مع إصدار...
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Service carousel -->
-            <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
-                <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
-                    @foreach ($categories as $category)
-                    <div class="col-lg-3 col-md-6 col-sm-6 mt-5">
-                        <div class="tj-service-item text-center">
-                            <div class="service-inner">
-                                <div class="service-icon">
-                                    <i class="flaticon-design"></i>
-                                    <img class="image-1" src="assets/images/shape/service-image.svg" alt="Shape" />
-                                    <img class="image-2" src="assets/images/shape/service-image1.svg" alt="Shape" />
+                <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
+                    <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" 
+                        data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
+                        @foreach ($categories as $category)
+                        <div class="col-lg-3 col-md-6 mb-4">
+                            <div class="card shadow-sm h-100 border-0 animate__animated animate__fadeInUp">
+                                <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light" style="border-radius: 10px;">
+                                    <img src="{{ asset('storage/' . $category->category_img) }}" alt="صورة الفئة" class="img-fluid rounded-top">
                                 </div>
-                                <div class="service-content">
-                                    <h4 class="title-link">
-                                      <a class="d-block text-truncate" href="{{ route('categories', $category->category_id) }}">{{ $category->category_name }}</a>
-                                    </h4>
-                                    <p>
-                                      {{ $category->category_description }}
-                                    </p>
+                                <div class="card-body">
+                                    <a href="{{ route('categories', $category->category_id) }}" class="text-reset">
+                                        <h5 class="card-title text-truncate text-primary">{{ $category->category_name }}</h5>
+                                    </a>
+                                    <p class="text-muted small">{{ $category->category_description }}</p>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
-                    @endforeach
-                </div>
-            </div>
-
-            <div class="service-section-shape">
-                <div class="service-bg-shape pulse">
-                    <img src="assets/images/shape/shape-14.svg" alt="Shape" />
-                </div>
-                <div class="service-bg-shape1">
-                    <img src="assets/images/shape/shape-15.svg" alt="Shape" />
-                </div>
-                <div class="service-bg-shape2">
-                    <img src="assets/images/shape/shape-14.svg" alt="Shape" />
-                </div>
-                <div class="service-bg-shape3 pulse">
-                    <img src="assets/images/shape/shape-15.svg" alt="Shape" />
-                </div>
-                <div class="service-bg-shape4 pulse">
-                    <img src="assets/images/shape/shape-16.svg" alt="Shape" />
                 </div>
             </div>
         </div>
     </section>
-
-      <section class="mb-4 py-5 bg-secondary">
-    <div class="container py-lg-4">
-        <div class="d-flex flex-wrap mb-3" style="direction: rtl; text-align: right;">
-            <h2 class="h3 mb-0" style="direction: rtl; text-align: right;">ابرز الخدمات</h2>
-        </div>
-
-        <!-- Product carousel -->
-        <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
-            <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
-                @foreach($products as $product)
-                <div class="col py-3">
-                    <article class="card h-100 border-0 shadow" style="width: 100%;">
-                        <div class="card-img-top position-relative overflow-hidden">
-                            <img class="avatar" src="{{ $product->Product_img ? asset('public/storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}" alt="Product image">
-                            @auth
-                                <button
-                                    class="btn-wishlist btn-sm position-absolute top-0 end-0"
-                                    type="button"
-                                    data-bs-toggle="tooltip"
-                                    data-bs-placement="left"
-                                    title="Add to Favorites"
-                                    style="margin: 12px;"
-                                    onclick="addToFavorites({{ $product->product_id }})">
-                                    <i class="ci-heart" style="line-height: 1.5rem;"></i>
-                                </button>
-                            @endauth
-                        </div>
-
-<div class="card-body">
-    <a href="#signinnn-modal" data-bs-toggle="modal"
-       data-product-name="{{ $product->product_name }}"
-       data-product-img="{{ $product->Product_img ? asset('public/storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
-       data-product-salary="{{ $product->product_salary }}"
-       data-description="{{ $product->description }}"
-       data-duration="{{ $product->Duration_of_righteousness }}"
-       data-bs-target="#signinnn-modal">
-        <div class="text-end">
-            <h3 class="product-title mb-2 fs-base">{{ $product->product_name }}</h3>
-            <span class="fs-sm text-muted">السعر:</span>
-            <div class="d-flex align-items-center flex-wrap justify-content-end">
-                <h4 class="mt-1 mb-0 fs-base text-darker">{{ $product->product_salary }} SAR</h4>
+    
+    <section style="background-color: #f8f9fa;" class="py-5">
+        <div class="container py-lg-4">
+            <div class="d-flex flex-wrap mb-4" style="direction: rtl; text-align: right;">
+                <h2 class="h3 fw-bold display-5">ابرز الخدمات</h2>
             </div>
-        </div>
-    </a>
-</div>
-                    </article>
+    
+            <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
+                <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" 
+                    data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
+                    @foreach($products as $product)
+                    <div class="col py-3">
+                        <article class="card h-100 border-0 shadow-sm" style="width: 100%;">
+                            <div class="card-img-top position-relative overflow-hidden">
+                                <img src="{{ asset('storage/' . $product->Product_img) }}" alt="Product" class="img-fluid rounded-top">
+                                @auth
+                                    <button
+                                        class="btn-wishlist btn-sm position-absolute top-0 end-0 bg-light rounded-circle"
+                                        type="button"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="left"
+                                        title="Add to Favorites"
+                                        style="margin: 12px;">
+                                        <i class="ci-heart text-danger" style="line-height: 1.5rem;"></i>
+                                    </button>
+                                @endauth
+                            </div>
+                            <div class="card-body text-end">
+                                <a href="#signinnn-modal" data-bs-toggle="modal"
+                                   data-product-name="{{ $product->product_name }}"
+                                   data-product-img="{{ $product->Product_img ? asset('public/storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
+                                   data-product-salary="{{ $product->product_salary }}"
+                                   data-description="{{ $product->description }}"
+                                   data-duration="{{ $product->Duration_of_righteousness }}"
+                                   data-bs-target="#signinnn-modal">
+                                    <h3 class="product-title mb-2 fs-base">{{ $product->product_name }}</h3>
+                                    <span class="fs-sm text-muted">السعر:</span>
+                                    <h4 class="mt-1 mb-0 fs-base text-dark">{{ $product->product_salary }} SAR</h4>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
         </div>
-    </div>
-</section>
+    </section>
+    
 
     <div class="modal fade" id="signinnn-modal" tabindex="-1" role="dialog"  style="direction: rtl; text-align: right;">
         <div class="modal-dialog modal-dialog-centered" role="document">
