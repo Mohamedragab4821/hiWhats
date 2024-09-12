@@ -33,8 +33,9 @@
 <link rel="stylesheet" href="{{ asset('assets/css/sal.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/css/swiper.min.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/css/meanmenu.css') }}" />
+{{-- <link rel="stylesheet" href="{{ asset('assets/css/meanmenu.css') }}" /> --}}
 <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
     <style>
       .card {
@@ -131,14 +132,23 @@
 .btn-outline-primary{
     margin-bottom: 30px;
 }
-        
+
+.card {
+  width: 100%;
+  height: 100%;
+}
+.card img {
+  width: 100%;
+  height: 100%;
+}
+
 
 /* Optional: Adjust max-width for different screen sizes */
 @media (max-width: 576px) { /* For extra small devices */
   .responsive-img {
     max-width: 100%;
   }
-  
+
   .pt-sm-0{
       /*height:20vh;*/
   }
@@ -208,25 +218,27 @@
     </script>
 @endif
       <!-- Hero-->
-      <section class="tj-hero-section" style="direction: rtl; text-align: right;">
-        <div class="container">
+      <section class="tj-hero-section" style="direction: rtl; text-align: right; position: relative;">
+        <!-- Semi-transparent overlay for better contrast -->
+        <div style="background-color: rgba(0, 0, 0, 0.5); position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+        
+        <div class="container" style="position: relative; z-index: 1;">
             <div class="row align-items-center">
                 <div class="col-lg-7">
-                    <div class="hero-left-content" data-sal="slide-up" data-sal-duration="1000"
-                        data-sal-delay="100">
+                    <div class="hero-left-content" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="100">
                         <div class="tj-sec-heading">
-                            <span class="hero-sub-title"> Creative Thinking</span>
-                            <h1 class="hero-title">
-                              نقدم حلول تسويق إلكتروني شاملة لتحقيق أهداف عملك الرقمية. <span class="title"> طور من عملك !</span>
+                            <span style="padding-top:10%" class="hero-sub-title"></span>
+                            <h1 class="hero-title" style="color: white; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);">
+                                نقدم حلول تسويق إلكتروني شاملة لتحقيق أهداف عملك الرقمية. <span class="title"> طور من عملك !</span>
                             </h1>
                             <div class="desc">
-                                <p>
-                                  نساعدك على زيادة ظهورك الرقمي والوصول إلى جمهورك المستهدف من خلال استراتيجيات تسويقية فعّالة.
+                                <p style="color: #f0f0f0; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);">
+                                    نساعدك على زيادة ظهورك الرقمي والوصول إلى جمهورك المستهدف من خلال استراتيجيات تسويقية فعّالة.
                                 </p>
                             </div>
-
+    
                             <div class="hero-button d-flex">
-                                <a class="tj-primary-btn" href="contact.html"> Explore Now</a>
+                                <a class="tj-primary-btn" href="contact.html" style="background-color: #ff8800; color: white;"> تصفح خدماتنا</a>
                             </div>
                         </div>
                     </div>
@@ -349,8 +361,9 @@
     </section>
             <!-- Product carousel (Trending in)-->
       <!-- Product carousel (Recent Drops)-->
-      <section class="tj-service-section">
-        <div class="container">
+      <section style="background-color: #f8f9fa;" class="py-5">
+        <div class="container text-center py-5 animate__animated animate__fadeInUp">
+            <h4 class="mt-4 mb-5 fw-bold text-end display-5"><strong>أبرز الأقسام</strong></h4>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="tj-sec-heading text-center" data-sal="slide-up" data-sal-duration="1000"
@@ -385,27 +398,9 @@
                                 </p>
                             </div>
                         </div>
+                        @endforeach
                     </div>
                 </div>
-                @endforeach
-
-            </div>
-        </div>
-        <div class="service-section-shape">
-            <div class="service-bg-shape pulse">
-                <img src="assets/images/shape/shape-14.svg" alt="Shape" />
-            </div>
-            <div class="service-bg-shape1">
-                <img src="assets/images/shape/shape-15.svg" alt="Shape" />
-            </div>
-            <div class="service-bg-shape2">
-                <img src="assets/images/shape/shape-14.svg" alt="Shape" />
-            </div>
-            <div class="service-bg-shape3 pulse">
-                <img src="assets/images/shape/shape-15.svg" alt="Shape" />
-            </div>
-            <div class="service-bg-shape4 pulse">
-                <img src="assets/images/shape/shape-16.svg" alt="Shape" />
             </div>
         </div>
     </section>

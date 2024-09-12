@@ -109,7 +109,7 @@ class ProductController extends Controller
         'Duration_of_righteousness' => 'required|string|max:255',
         'Product_img' => 'required|image|mimes:jpg,jpeg,png|max:10000', // Ensure the image is valid
     ]);
-    // dd('sss');
+    // dd($request);
     // Handle the image upload
     if ($request->hasFile('Product_img')) {
         $imagePath = $request->file('Product_img')->store('product_images', 'public');
@@ -117,6 +117,7 @@ class ProductController extends Controller
 
     // Find the category by ID
     $category = Category::find($validatedData['category_id']);
+    // dd($request)
 
     if (!$category) {
         // Handle the case where the category is not found
@@ -126,7 +127,7 @@ class ProductController extends Controller
     // Create a new product record in the database
     $product = new Product();
     $product->product_name = $validatedData['product_name'];
-    $product->category_id = $category->id; // Store the category ID
+    $product->category_id = $validatedData['category_id']; // Store the category ID
     $product->category_name = $category->category_name; // Optionally, you can store the category name too
     $product->product_salary = $validatedData['product_salary'];
     $product->description = $validatedData['description'];
@@ -292,7 +293,7 @@ public function updateCategory(Request $request, $category_id)
 
     // Find the category by ID
     $category = Category::find($category_id);
-    
+
     if ($category->category_img && Storage::disk('public')->exists('/' . $category->category_img)) {
         // Delete the image from storage
         // dd('here');
