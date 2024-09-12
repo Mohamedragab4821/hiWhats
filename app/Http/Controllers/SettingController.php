@@ -52,6 +52,9 @@ class SettingController extends Controller
                 'youtube_url' => 'nullable|string|max:1000',
                 'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
                 'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'home2_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'home1_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+
             ]);
 
             // Find the settings model or create a new one
@@ -93,6 +96,21 @@ class SettingController extends Controller
                 $path = $request->file('icon')->store('public/icons');
                 $settings->icon = str_replace('public/', '', $path); // إزالة 'public/' من المسار
             }
+            if ($request->hasFile('home1_img')) {
+                if ($settings->home1_img) {
+                    Storage::delete($settings->home1_img);
+                }
+                $path = $request->file('home1_img')->store('public/home1_img');
+                $settings->home1_img = str_replace('public/', '', $path); // إزالة 'public/' من المسار
+            }
+            if ($request->hasFile('home2_img')) {
+                if ($settings->home2_img) {
+                    Storage::delete($settings->home2_img);
+                }
+                $path = $request->file('home2_img')->store('public/home2_img');
+                $settings->home2_img = str_replace('public/', '', $path); // إزالة 'public/' من المسار
+            }
+            
 
             // Save the updated settings
             $settings->save();

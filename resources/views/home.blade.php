@@ -155,6 +155,7 @@
     }
     
     
+    
     </style>
 
     <!-- Google Tag Manager-->
@@ -233,11 +234,11 @@
                 <div class="col-lg-5">
                     <div class="hero-image-group">
                       <div class="group-image1 shake-y">
-                        <img class="image" src="{{ asset('assets/images/hero/hero-1.png') }}" alt="Image" />
+                        <img class="image" src="{{ asset('storage/' . ($settings->home1_img ?? 'assets/images/hero/hero-1.png')) }}" alt="Image" />
                     </div>
                     <div class="group-image2 pulse">
                         <img data-sal="slide-right" data-sal-duration="1000" data-sal-delay="100"
-                            src="{{ asset('assets/images/hero/hero-2.png') }}" alt="Image" />
+                            src="{{ asset('storage/' . ($settings->home2_img ?? 'assets/images/hero/hero-2.png')) }}" alt="Image" />
                     </div>
                     <img class="group-image3" src="{{ asset('assets/images/shape/shape-5.svg') }}" alt="Image" />
                     <img class="group-image4 pulse" src="{{ asset('assets/images/shape/shape-6.svg') }}" alt="Image" />
@@ -267,6 +268,85 @@
             </div>
         </div>
     </section>
+    <section id="scroll-bottom" class="tj-about-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-6 col-lg-12">
+                    <div class="about-image-group">
+                        <div class="about-circle-box">
+                            <img class="circle-one" src="assets/images/shape/ab-shape.svg" alt="Shape" />
+                            <div class="ab-circle">
+                                <svg class="shape-1" viewBox="0 0 100 100" width="100" height="100">
+                                    <defs>
+                                        <path id="circle" d="
+                                              M 50, 50
+                                              m -37, 0
+                                              a 37,37 0 1,1 74,0
+                                              a 37,37 0 1,1 -74,0" />
+                                    </defs>
+                                    <text font-size="15">
+                                        <textPath xlink:href="#circle" class="shape-1">
+                                            Creative Minds_, Creative Minds_
+                                        </textPath>
+                                    </text>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="about-image1 pulse">
+                            <img src="{{ asset('img/about_us1.svg') }}" alt="Image" />
+                        </div>
+                        
+                        <div class="about-image3 pulse">
+                            <img src="{{ asset('img/about-us3.svg') }}" alt="Image" />
+                        </div>
+                        <div class="about-image4 pulse">
+                            <img src="{{ asset('img/about-us3.svg') }}" alt="Image" />
+                        </div>
+                        <div class="about-shape1 shake-y">
+                            <img src="assets/images/shape/shape-9.svg" alt="Shape" />
+                        </div>
+                        <div class="about-shape2 pulse">
+                            <img src="assets/images/shape/shape-10.svg" alt="Shape" />
+                        </div>
+                        <div class="about-shape3 pulse">
+                            <img src="assets/images/shape/shape-13.svg" alt="Shape" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-12">
+                    <div class="about-content-one" data-sal="slide-left" data-sal-duration="1000"
+                        data-sal-delay="600">
+                        <div class="tj-sec-heading">
+                            <span class="sub-title"> About Us</span>
+                            <h2 class="sec-title">Making Your Business More Unique</h2>
+                            <div class="desc">
+                                <p>
+                                    There are many variations of passages of Lorem Ipsum available, but the
+                                    majority have suffered alteration in some form, by injected humour, or
+                                    randomised words which don't look even slightly believable.
+                                </p>
+                                <p>
+                                    There are many variations of passages of Lorem Ipsum available, but the
+                                    majority have suffered alteration in some form,
+                                </p>
+                                <p>
+                                    by injected humour, or randomised words which don't look even slightly
+                                    believable.
+                                </p>
+                            </div>
+                            <div class="about-button d-flex">
+                                <a href="{{ route('whoAreWe') }}" class="tj-secondary-btn btn-border"><span>Read
+                                        More</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="about-section-shape pulse">
+            <img src="assets/images/shape/shape-37.svg" alt="Shape" />
+        </div>
+    </section>
             <!-- Product carousel (Trending in)-->
       <!-- Product carousel (Recent Drops)-->
       <section class="tj-service-section">
@@ -275,8 +355,8 @@
                 <div class="col-lg-12">
                     <div class="tj-sec-heading text-center" data-sal="slide-up" data-sal-duration="1000"
                         data-sal-delay="600">
-                        <span class="sub-title"> Our Services</span>
-                        <h2 class="sec-title">Service We Provide</h2>
+                        <span class="sub-title"> اقسامنا</span>
+                        <h2 class="sec-title">نحن نقدم العديد من الاقسام</h2>
                         <div class="desc">
                             <p>
                                 It has survived not only five centuries, but also the leap into electronic
@@ -294,9 +374,7 @@
                     <div class="tj-service-item text-center">
                         <div class="service-inner">
                             <div class="service-icon">
-                                <i class="flaticon-design"></i>
-                                <img class="image-1" src="assets/images/shape/service-image.svg" alt="Shape" />
-                                <img class="image-2" src="assets/images/shape/service-image1.svg" alt="Shape" />
+                                <img class="image-1" src="{{ asset('storage/' . ($category->category_img )) }}" alt="Shape" />
                             </div>
                             <div class="service-content">
                                 <h4 class="title-link">
@@ -332,7 +410,7 @@
         </div>
     </section>
 
-      <section class="mb-4 py-5 bg-secondary">
+    <section class="mb-4 py-5 bg-secondary">
     <div class="container py-lg-4">
         <div class="d-flex flex-wrap mb-3" style="direction: rtl; text-align: right;">
             <h2 class="h3 mb-0" style="direction: rtl; text-align: right;">ابرز الخدمات</h2>
@@ -384,6 +462,8 @@
         </div>
     </div>
 </section>
+@include('Includes.contact')
+
 
     <div class="modal fade" id="signinnn-modal" tabindex="-1" role="dialog"  style="direction: rtl; text-align: right;">
         <div class="modal-dialog modal-dialog-centered" role="document">
