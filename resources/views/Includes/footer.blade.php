@@ -228,7 +228,7 @@
     </style>
 </head>
 <body>
-    <footer class="footer">
+    <footer class="tj-footer-area"> <!-- Changed to tj-footer-area -->
         <div class="footer-menu-area">
             <div class="container">
                 <div class="row">
@@ -250,14 +250,7 @@
                                             <a href="#"><i class="fa-brands fa-instagram"></i></a>
                                         </li>
                                         <li>
-                                            <a href="#">
-                                                <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M8.51962 6.1948L13.8489 0H12.586L7.95861 5.37887L4.26275 0H0L5.58887 8.13379L0 14.63H1.26293L6.14957 8.94974L10.0527 14.63H14.3154L8.51929 6.1948H8.51962ZM1.71797 0.950725H3.65775L12.5866 13.7225H10.6468L1.71797 0.950725Z"
-                                                        fill="#161616" />
-                                                </svg>
-                                            </a>
+                                            <a href="#"></a>
                                         </li>
                                         <li>
                                             <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
@@ -307,59 +300,74 @@
                             <h4 class="footer_title">Contact Info</h4>
                             <div class="widget_contact_menu">
                                 <ul>
-                                    <li><span><i class="fa-solid fa-location-dot"></i></span>
-                                        <a href="#">123, Example Street, City, Country</a>
+                                    <li>
+                                        <span><i class="fas fa-map-marker-alt"></i></span>76 Blue Winter Center, NYC
                                     </li>
-                                    <li><span><i class="fa-solid fa-phone"></i></span>
-                                        <a href="#">123-456-7890</a>
+                                    <li>
+                                        <span><i class="fas fa-envelope"></i></span><a href="mailto:info@gmail.com">info@gmail.com</a>
                                     </li>
-                                    <li><span><i class="fa-solid fa-envelope"></i></span>
-                                        <a href="#">info@example.com</a>
+                                    <li>
+                                        <span><i class="fas fa-phone"></i></span><a href="tel:+1234567890">+123 456 7890</a>
+                                    </li>
+                                    <li>
+                                        <span><i class="fas fa-phone"></i></span><a href="tel:+9876543210">+987 654 3210</a>
                                     </li>
                                 </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="footer-widget footer1-col-5">
+                            <h4 class="footer_title">Subscribe</h4>
+                            <div class="subscription-form">
+                                <form action="#">
+                                    <input type="text" class="form-control" placeholder="Your Email">
+                                    <button type="submit" class="btn-accent">Subscribe</button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="footer-section-shape">
+        {{-- <div class="footer-section-shape">
             <div class="footer-bg-shape">
-                <img src="assets/images/footer/footer-bg-shape.png" alt="Shape" />
+                <img src="assets/images/shape/footer-bg.png" alt="Footer Shape">
             </div>
             <div class="footer-bg-shape1">
-                <img src="assets/images/footer/footer-bg-shape1.png" alt="Shape" />
+                <img src="assets/images/shape/footer-bg1.png" alt="Footer Shape">
             </div>
             <div class="footer-bg-shape2">
-                <img src="assets/images/footer/footer-bg-shape2.png" alt="Shape" />
+                <img src="assets/images/shape/footer-bg2.png" alt="Footer Shape">
             </div>
             <div class="footer-bg-shape3">
-                <img src="assets/images/footer/footer-bg-shape3.png" alt="Shape" />
+                <img src="assets/images/shape/footer-bg3.png" alt="Footer Shape">
             </div>
-        </div>
+        </div> --}}
         <div class="copyright-area">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <p>© 2024 All Rights Reserved.</p>
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <p>&copy; 2022, All Rights Reserved</p>
                     </div>
-                    <div class="col-md-6 text-md-right">
+                    <div class="col-md-6 col-sm-12">
                         <div class="copyright-menu">
                             <ul>
                                 <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Terms & Conditions</a></li>
-                                <li><a href="#">Help</a></li>
+                                <li><a href="#">Terms of Use</a></li>
+                                <li><a href="#">Site Map</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Adding the wave animation -->
+        <div class="air air1"></div>
+        <div class="air air2"></div>
+        <div class="air air3"></div>
+        <div class="air air4"></div>
     </footer>
-    <div class="icon-container">
-        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-    </div>
 </body>
 </html>

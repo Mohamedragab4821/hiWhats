@@ -23,20 +23,19 @@
     <link rel="stylesheet" media="screen" href="{{ asset('vendor/simplebar/dist/simplebar.min.css') }}"/>
     <link rel="stylesheet" media="screen" href="{{ asset('vendor/tiny-slider/dist/tiny-slider.css') }}"/>
     <!-- Main Theme Styles + Bootstrap-->
-    <link rel="stylesheet" media="screen" href="{{ asset('css/theme.min.css') }}">
 
 
 
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/css/font-awesome-pro.min.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/css/flaticon_webency.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/css/odometer.min.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/css/sal.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/css/swiper.min.css') }}" />
-{{-- <link rel="stylesheet" href="{{ asset('assets/css/meanmenu.css') }}" /> --}}
-<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/font-awesome-pro.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/flaticon_webency.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/odometer.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/sal.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/swiper.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/meanmenu.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
     <style>
       .card {
@@ -220,44 +219,43 @@
 @endif
       <!-- Hero-->
       <section class="tj-hero-section" style="direction: rtl; text-align: right; position: relative;">
-        <!-- Semi-transparent overlay for better contrast -->
-        <div style="background-color: rgba(0, 0, 0, 0.5); position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
-
-        <div class="container" style="position: relative; z-index: 1;">
+        <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7">
-                    <div class="hero-left-content" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="100">
+                    <div class="hero-left-content" data-sal="slide-up" data-sal-duration="1000"
+                        data-sal-delay="100">
                         <div class="tj-sec-heading">
-                            <span style="padding-top:10%" class="hero-sub-title"></span>
-                            <h1 class="hero-title" style="color: white; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);">
-                                نقدم حلول تسويق إلكتروني شاملة لتحقيق أهداف عملك الرقمية. <span class="title"> طور من عملك !</span>
+                            <span class="hero-sub-title"> Creative Thinking</span>
+                            <h1 class="hero-title">
+                                Strategic Thinking, Tangible <span class="title"> Results for Business!</span>
                             </h1>
                             <div class="desc">
-                                <p style="color: #f0f0f0; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);">
-                                    نساعدك على زيادة ظهورك الرقمي والوصول إلى جمهورك المستهدف من خلال استراتيجيات تسويقية فعّالة.
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua.
                                 </p>
                             </div>
 
                             <div class="hero-button d-flex">
-                                <a class="tj-primary-btn" href="contact.html" style="background-color: #ff8800; color: white;"> تصفح خدماتنا</a>
+                                <a class="tj-primary-btn" href="contact.html"> Explore Now</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-5">
                     <div class="hero-image-group">
-                      <div class="group-image1 shake-y">
-                        <img class="image" src="{{ asset('storage/' . ($settings->home1_img ?? 'assets/images/hero/hero-1.png')) }}" alt="Image" />
-                    </div>
-                    <div class="group-image2 pulse">
-                        <img data-sal="slide-right" data-sal-duration="1000" data-sal-delay="100"
-                            src="{{ asset('storage/' . ($settings->home2_img ?? 'assets/images/hero/hero-2.png')) }}" alt="Image" />
-                    </div>
-                    <img class="group-image3" src="{{ asset('assets/images/shape/shape-5.svg') }}" alt="Image" />
-                    <img class="group-image4 pulse" src="{{ asset('assets/images/shape/shape-6.svg') }}" alt="Image" />
-                    <img class="group-image5 pulse" src="{{ asset('assets/images/shape/shape-7.svg') }}" alt="Image" />
-                    <img class="group-image6 pulse" src="{{ asset('assets/images/shape/shape-8.svg') }}" alt="Image" />
-
+                        <div class="hero-image-group">
+                            <div class="group-image1 shake-y">
+                              <img class="image" src="{{ asset('storage/' . ($settings->home1_img ?? 'assets/images/hero/hero-1.png')) }}" alt="Image" />
+                          </div>
+                          <div class="group-image2 pulse">
+                              <img data-sal="slide-right" data-sal-duration="1000" data-sal-delay="100"
+                                  src="{{ asset('storage/' . ($settings->home2_img ?? 'assets/images/hero/hero-2.png')) }}" alt="Image" />
+                          </div>
+                        <img class="group-image3" src="assets/images/shape/shape-5.svg" alt="Image" />
+                        <img class="group-image4 pulse" src="assets/images/shape/shape-6.svg" alt="Image" />
+                        <img class="group-image5 pulse" src="assets/images/shape/shape-7.svg" alt="Image" />
+                        <img class="group-image6 pulse" src="assets/images/shape/shape-8.svg" alt="Image" />
                     </div>
                 </div>
             </div>
@@ -672,13 +670,6 @@ document.addEventListener('DOMContentLoaded', function () {
 <script src="{{ asset('assets/js/validate.min.js') }}"></script>
 
 <script src="{{ asset('assets/js/main.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-    AOS.init({
-        duration: 1000,  // Animation duration in ms
-        once: true       // Whether animation should happen only once or every time you scroll
-    });
-</script>
 
   </body>
 

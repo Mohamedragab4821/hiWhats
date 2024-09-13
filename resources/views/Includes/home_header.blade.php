@@ -37,7 +37,8 @@
 <div class="tj-offcanvas-area d-lg-none">
     <div class="tj-offcanvas-header d-flex align-items-center justify-content-between">
         <div class="logo-area text-center">
-            <a href="index.html"><img src="assets/images/logo/white-logo.png" alt="Logo" /></a>
+            <a href="index.html"><img  src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="200" height="70" alt="فكرة">
+            </a>
         </div>
         <div class="offcanvas-icon">
             <a id="canva_close" href="#">
@@ -51,21 +52,24 @@
             <a href="#"> <i class="fal fa-search"></i></a>
         </form>
     </div>
-    <nav class="right_menu_togle mobile-navbar-menu d-lg-none" id="mobile-navbar-menu"></nav>
-    <div class="mobile-contact">
-        <div class="contact-menu">
+    <nav class="right_menu_togle mobile-navbar-menu d-lg-none" id="mobile-navbar-menu" ></nav>
+    <div class="mobile-contact"  style="direction: rtl; text-align: right;">
+        <div class="contact-menu" style="direction: rtl; text-align: right;">
             <ul class="dot-style">
                 <li>
-                    <span><i class="fa-sharp fa-regular fa-envelope"></i></span>
-                    <a href="mailto:Info@gmail.com">Info@gmail.com</a>
+                    <p class="d-block">Mail us 24/7</p>
+                    <li><span class="text-muted me-1"></span><a class="nav-link-style" href="mailto:{{$settings->email}}">{{$settings->email}}</a></li>
                 </li>
                 <li>
                     <span><i class="fa-sharp fa-solid fa-location-dot"></i></span>
                     <a href="#">225 Marion Street, Columbia</a>
                 </li>
                 <li>
-                    <span><i class="fa-solid fa-phone-volume"></i></span>
-                    <a href="tel:+00123456789">+ 00 123 456 789</a>
+                    <ul class="list-unstyled fs-sm mb-0">
+                        <li><span class="text-muted me-1">واتساب:</span><a class="nav-link-style" href="https://api.whatsapp.com/send?phone={{$settings->whatsapp}}&text=مرحبا">{{$settings->whatsapp}}</a></li>
+                        <li><span class="text-muted me-1">مكالمات:</span><a class="nav-link-style" href="tel:{{$settings->phone}}">{{$settings->phone}}</a></li>
+      
+                      </ul>
                 </li>
             </ul>
         </div>
@@ -101,13 +105,13 @@
                     <div class="logo-area">
                         <div class="logo">
                             <a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="{{route('home')}}">
-                                <img  src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="142" height="10" alt="فكرة">
+                                <img  src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="200" height="70" alt="فكرة">
                             </a>                        
                         </div>
                     </div>
                     <div class="tj-menu-area d-lg-block d-none" id="main-menu" >
                         <nav id="mobile-menu">
-                            <ul>
+                            <ul >
                                 <li>
                                     <a href="{{route('home')}}">الصفحه الرئيسه</a</a>
                                 </li>
@@ -158,7 +162,7 @@
                         
                     </div>
                     <div class="header-button d-none d-lg-block">
-                        <a class="tj-secondary-btn btn-border" style="    background: white;
+                        <a class="tj-secondary-btn btn-border" style="    background: #5b43f9;
     border: none;"  href="#signin-modal" data-bs-toggle="modal"><span>تسجيل دخول / تسجيل</span></a>
                     </div>
                     <div class="tj-canva-icon d-lg-none">

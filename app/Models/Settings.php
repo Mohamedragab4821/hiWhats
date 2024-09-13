@@ -23,7 +23,7 @@ class Settings extends Model
         'insta_url',
         'youtube_url',
         'home_description1',
-        'home_description1',
+        'home_description2',
         'whatsapp',
         'phone',
         'email',
