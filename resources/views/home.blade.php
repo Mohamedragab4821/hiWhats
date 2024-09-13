@@ -16,6 +16,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('public/storage/' . ($settings->icon))}}">
     <link rel="mask-icon" color="#fe6a6a" href="{{ asset('safari-pinned-tab.svg') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
     <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
@@ -220,7 +221,7 @@
       <section class="tj-hero-section" style="direction: rtl; text-align: right; position: relative;">
         <!-- Semi-transparent overlay for better contrast -->
         <div style="background-color: rgba(0, 0, 0, 0.5); position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
-        
+
         <div class="container" style="position: relative; z-index: 1;">
             <div class="row align-items-center">
                 <div class="col-lg-7">
@@ -235,7 +236,7 @@
                                     نساعدك على زيادة ظهورك الرقمي والوصول إلى جمهورك المستهدف من خلال استراتيجيات تسويقية فعّالة.
                                 </p>
                             </div>
-    
+
                             <div class="hero-button d-flex">
                                 <a class="tj-primary-btn" href="contact.html" style="background-color: #ff8800; color: white;"> تصفح خدماتنا</a>
                             </div>
@@ -277,19 +278,19 @@
             </div>
         </div>
     </section>
-    
+
             <!-- Product carousel (Trending in)-->
       <!-- Product carousel (Recent Drops)-->
       <section style="background-color: #f8f9fa;" class="py-5">
-        <div class="container text-center py-5 animate__animated animate__fadeInUp">
-            <h4 class="mt-4 mb-5 fw-bold text-end display-5"><strong>أبرز الأقسام</strong></h4>
+        <div class="container text-center py-5">
+            <h4 class="mt-4 mb-5 fw-bold text-end display-5" data-aos="fade-up"><strong>أبرز الأقسام</strong></h4>
             <div class="row">
                 <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
-                    <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" 
+                    <div class="tns-carousel-inner row gx-4 mx-0"
                         data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
                         @foreach ($categories as $category)
-                        <div class="col-lg-3 col-md-6 mb-4">
-                            <div class="card shadow-sm h-100 border-0 animate__animated animate__fadeInUp">
+                        <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up">
+                            <div class="card shadow-sm h-100 border-0">
                                 <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light" style="border-radius: 10px;">
                                     <img src="{{ asset('storage/' . $category->category_img) }}" alt="صورة الفئة" class="img-fluid rounded-top">
                                 </div>
@@ -307,18 +308,21 @@
             </div>
         </div>
     </section>
-    
+
+
+
+
     <section style="background-color: #f8f9fa;" class="py-5">
         <div class="container py-lg-4">
             <div class="d-flex flex-wrap mb-4" style="direction: rtl; text-align: right;">
-                <h2 class="h3 fw-bold display-5">ابرز الخدمات</h2>
+                <h2 class="h3 fw-bold display-5" data-aos="fade-up">ابرز الخدمات</h2>
             </div>
-    
+
             <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
-                <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" 
+                <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0"
                     data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
                     @foreach($products as $product)
-                    <div class="col py-3">
+                    <div class="col py-3" data-aos="fade-up">
                         <article class="card h-100 border-0 shadow-sm" style="width: 100%;">
                             <div class="card-img-top position-relative overflow-hidden">
                                 <img src="{{ asset('storage/' . $product->Product_img) }}" alt="Product" class="img-fluid rounded-top">
@@ -354,7 +358,8 @@
             </div>
         </div>
     </section>
-    
+
+
 
     <div class="modal fade" id="signinnn-modal" tabindex="-1" role="dialog"  style="direction: rtl; text-align: right;">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -570,6 +575,13 @@ document.addEventListener('DOMContentLoaded', function () {
 <script src="{{ asset('assets/js/validate.min.js') }}"></script>
 
 <script src="{{ asset('assets/js/main.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,  // Animation duration in ms
+        once: true       // Whether animation should happen only once or every time you scroll
+    });
+</script>
 
   </body>
 
