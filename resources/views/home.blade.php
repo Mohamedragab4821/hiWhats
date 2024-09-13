@@ -1,388 +1,1255 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en">
 
-<!-- Mirrored from cartzilla.createx.studio/home-nft.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Aug 2022 18:10:41 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-    <meta charset="utf-8">
-    <title>{{$settings->website_name}} | الصفحة الرئيسية</title>
-    <!-- SEO Meta Tags-->
-    <meta name="description" content="{{$settings->home_meta_d}}">
-    <meta name="keywords" content="{{$settings->home_meta_k}}">
-    <meta name="author" content="Createx Studio">
-    <!-- Viewport-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Favicon and Touch Icons-->
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('public/storage/' . ($settings->icon))}}">
-    <link rel="mask-icon" color="#fe6a6a" href="{{ asset('safari-pinned-tab.svg') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="theme-color" content="#ffffff">
-    <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
-    <link rel="stylesheet" media="screen" href="{{ asset('vendor/simplebar/dist/simplebar.min.css') }}"/>
-    <link rel="stylesheet" media="screen" href="{{ asset('vendor/tiny-slider/dist/tiny-slider.css') }}"/>
-    <!-- Main Theme Styles + Bootstrap-->
-    <link rel="stylesheet" media="screen" href="{{ asset('css/theme.min.css') }}">
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
 
+    <!-- Site Title -->
+    <title>Shared on THEMELOCK.COM - Webency - Web Design Agency HTML5 Template</title>
 
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="apple-touch-icon" href="assets/images/fav.svg" />
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/fav.svg" />
 
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/css/font-awesome-pro.min.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/css/flaticon_webency.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/css/odometer.min.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/css/sal.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/css/swiper.min.css') }}" />
-{{-- <link rel="stylesheet" href="{{ asset('assets/css/meanmenu.css') }}" /> --}}
-<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- CSS here -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/font-awesome-pro.min.css" />
+    <link rel="stylesheet" href="assets/css/flaticon_webency.css" />
+    <link rel="stylesheet" href="assets/css/odometer.min.css" />
+    <link rel="stylesheet" href="assets/css/sal.css" />
+    <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+    <link rel="stylesheet" href="assets/css/swiper.min.css" />
+    <link rel="stylesheet" href="assets/css/meanmenu.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+</head>
 
-    <style>
-      .card {
-        height: 100%; /* Ensures the card fills the container height */
-      }
+<body>
+    <!-- start: Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="lines">
+                <span class="line line-1"></span>
+                <span class="line line-2"></span>
+                <span class="line line-3"></span>
+                <span class="line line-4"></span>
+                <span class="line line-5"></span>
+                <span class="line line-6"></span>
+                <span class="line line-7"></span>
+                <span class="line line-8"></span>
+                <span class="line line-9"></span>
+            </div>
+            <div class="text">Loading</div>
+        </div>
+        <button class="tj-cancel-btn">Cancel Preloader</button>
+    </div>
+    <!-- end: Preloader -->
 
-      .card-body {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between; /* Distributes space between the card title and description */
-      }
+    <!-- start: Mobile Menu -->
+    <div id="tj-overlay-bg2" class="tj-overlay-canvas d-lg-none"></div>
+    <div class="tj-offcanvas-area d-lg-none">
+        <div class="tj-offcanvas-header d-flex align-items-center justify-content-between">
+            <div class="logo-area text-center">
+                <a href="index.html"><img src="assets/images/logo/white-logo.png" alt="Logo" /></a>
+            </div>
+            <div class="offcanvas-icon">
+                <a id="canva_close" href="#">
+                    <i class="fa-light fa-xmark"></i>
+                </a>
+            </div>
+        </div>
+        <div class="tj-search-box">
+            <form action="#">
+                <input type="text" name="search" id="search" placeholder="Search" />
+                <a href="#"> <i class="fal fa-search"></i></a>
+            </form>
+        </div>
+        <nav class="right_menu_togle mobile-navbar-menu d-lg-none" id="mobile-navbar-menu"></nav>
+        <div class="mobile-contact">
+            <div class="contact-menu">
+                <ul class="dot-style">
+                    <li>
+                        <span><i class="fa-sharp fa-regular fa-envelope"></i></span>
+                        <a href="mailto:Info@gmail.com">Info@gmail.com</a>
+                    </li>
+                    <li>
+                        <span><i class="fa-sharp fa-solid fa-location-dot"></i></span>
+                        <a href="#">225 Marion Street, Columbia</a>
+                    </li>
+                    <li>
+                        <span><i class="fa-solid fa-phone-volume"></i></span>
+                        <a href="tel:+00123456789">+ 00 123 456 789</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="mobile-share">
+            <ul class="dot-style">
+                <li>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                </li>
+            </ul>
+        </div>
+        <div class="header-button">
+            <a class="btn tj-black-btn" href="contact.html">Contact Us</a>
+        </div>
+    </div>
+    <!-- end: Mobile Menu -->
 
-      .card-footer {
-        flex-shrink: 0; /* Prevents the footer from shrinking */
-      }
-      .card-img-top {
-    width: 100%; /* Full width of the card */
-    height: 200px; /* Fixed height for the image container */
-    overflow: hidden; /* Hide any overflowed content */
-    display: flex;
-    align-items: center; /* Center the image vertically */
-    justify-content: center; /* Center the image horizontally */
-    position: relative; /* Ensure proper positioning of overlay elements */
-  }
-
-  .card-img-top img {
-    width: 100%;
-    height: 200px; /* Ensure the image fills the container */
-    object-fit: cover; /* Cover the container, maintaining aspect ratio */
-  }
-
-  .small-alert {
-        font-size: 0.875rem; /* Smaller font size */
-        padding: 0.5rem 1rem; /* Smaller padding */
-    }
-
-    /* Optional: Fade-out animation */
-    .fade-out {
-        transition: opacity 0.5s ease-in-out;
-        opacity: 0;
-    }
-    .btn-close {
-        position: absolute;
-        top: 3rem; /* المسافة من الأعلى */
-        left: 2rem; /* المسافة من اليسار */
-        z-index: 1050; /* التأكد من بقاء الزر فوق المحتوى */
-    }
-   .responsive-img {
-  width: 100%;
-    max-height: 80vh; /* Ensure the maximum height is also 85% of the viewport height */
-  object-fit: cover; /* Maintain aspect ratio and cover the area */
-}
-.bg-opacity {
-            background-color: rgba(0, 0, 0, 0.5); /* Default background color with opacity */
-            transition: background-color 0.3s ease; /* Smooth transition effect */
-        }
-
-        .bg-opacity:hover {
-            background-color: rgba(0, 0, 0, 0.8); /* Background color with higher opacity on hover */
-        }
-        .text-end {
-    text-align: right;
-}
-
-.d-flex {
-    display: flex;
-}
-
-.align-items-center {
-    align-items: center;
-}
-
-.justify-content-end {
-    justify-content: flex-end;
-}
-
-.product-title, .fs-base {
-    /* Ensures the font size is consistent */
-    font-size: 1.25rem; /* Example size; adjust as needed */
-}
-
-.fs-sm {
-    font-size: 0.875rem; /* Example size; adjust as needed */
-}
-
-.text-muted {
-    color: #6c757d; /* Example muted color; adjust as needed */
-}
-
-.text-darker {
-    color: #343a40; /* Example darker color; adjust as needed */
-}
-
-.btn-outline-primary{
-    margin-bottom: 30px;
-}
-
-.card {
-  width: 100%;
-  height: 100%;
-}
-.card img {
-  width: 100%;
-  height: 100%;
-}
-
-
-/* Optional: Adjust max-width for different screen sizes */
-@media (max-width: 576px) { /* For extra small devices */
-  .responsive-img {
-    max-width: 100%;
-  }
-
-  .pt-sm-0{
-      /*height:20vh;*/
-  }
-}
-    @media (max-width: 768px) {
-      .bg-size-cover{
-        margin-top: 100px
-      }
-    }
-    @media (max-width:305px){
-        .img-container{
-      height:45vh;
-  }
-    }
-
-
-    </style>
-
-    <!-- Google Tag Manager-->
-
-  </head>
-  <!-- Body-->
-  <body class="handheld-toolbar-enabled" style="background-color: white;">
-    <!-- Google Tag Manager (noscript)-->
-
-    <!-- Sign in / sign up modal-->
-    @include('Includes.signin_signup')
-
-    <main class="page-wrapper">
-      <!-- Navbar for NFT Marketplace demo-->
-      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
-
-      @include('Includes.home_header')
-
-      @if (session('success'))
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: '{{ session('success') }}',
-                showConfirmButton: false,
-                timer: 3000 // 3 seconds
-            });
-        });
-    </script>
-@endif
-
-<!-- Check if there are any errors -->
-@if ($errors->any())
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            let errorMessage = '';
-            @foreach ($errors->all() as $error)
-                errorMessage += '{{ $error }}\n';
-            @endforeach
-
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: errorMessage,
-                showConfirmButton: false,
-                timer: 3000 // 3 seconds
-            });
-        });
-    </script>
-@endif
-      <!-- Hero-->
-      <section class="tj-hero-section" style="direction: rtl; text-align: right; position: relative;">
-        <!-- Semi-transparent overlay for better contrast -->
-        <div style="background-color: rgba(0, 0, 0, 0.5); position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
-
-        <div class="container" style="position: relative; z-index: 1;">
+    <!-- start: Header Area -->
+    <header class="tj-header-area header-sticky">
+        <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-7">
-                    <div class="hero-left-content" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="100">
-                        <div class="tj-sec-heading">
-                            <span style="padding-top:10%" class="hero-sub-title"></span>
-                            <h1 class="hero-title" style="color: white; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);">
-                                نقدم حلول تسويق إلكتروني شاملة لتحقيق أهداف عملك الرقمية. <span class="title"> طور من عملك !</span>
-                            </h1>
+                <div class="col-lg-12">
+                    <div class="header-content-area">
+                        <div class="logo-area">
+                            <div class="logo">
+                                <a href="index.html"><img src="assets/images/logo/white-logo.png" alt="Logo" /></a>
+                            </div>
+                        </div>
+                        <div class="tj-menu-area d-lg-block d-none" id="main-menu">
+                            <nav id="mobile-menu">
+                                <ul>
+                                    <li class="has-dropdown">
+                                        <a href="index.html">Home</a>
+                                        <ul class="sub-menu">
+                                            <li class="active">
+                                                <a class="active" href="index.html">Home One</a>
+                                            </li>
+                                            <li><a href="index2.html">Home Two</a></li>
+                                            <li><a href="index3.html">Home Three</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="about-us.html">About Us</a>
+                                    </li>
+                                    <li class="has-dropdown">
+                                        <a href="service.html">Services</a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a href="service.html">Services</a>
+                                            </li>
+                                            <li><a href="service-details.html">Services Details</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-dropdown">
+                                        <a href="#">Pages</a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a href="portfolio.html">Portfolio</a>
+                                            </li>
+                                            <li><a href="portfolio-details.html">Portfolio Details</a></li>
+                                            <li><a href="faq.html">Faq</a></li>
+                                            <li><a href="team.html">Team</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-dropdown">
+                                        <a href="blog-grid.html">Blog</a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a href="blog-grid.html">Blog Grid</a>
+                                            </li>
+                                            <li><a href="blog-standard.html">Blog Standard</a></li>
+                                            <li><a href="blog-details.html">Blog Details</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="header-button d-none d-lg-block">
+                            <a href="contact.html" class="tj-secondary-btn btn-border"><span>Contact Us</span></a>
+                        </div>
+                        <div class="tj-canva-icon d-lg-none">
+                            <a class="canva_expander nav-menu-link menu-button" href="#">
+                                <span class="dot1"></span>
+                                <span class="dot2"></span>
+                                <span class="dot3"></span>
+                                <span class="dot4"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- end: Header Area -->
+
+    <main class="site-content">
+        <!-- start: Hero Area -->
+        <section class="tj-hero-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7">
+                        <div class="hero-left-content" data-sal="slide-up" data-sal-duration="1000"
+                            data-sal-delay="100">
+                            <div class="tj-sec-heading">
+                                <span class="hero-sub-title"> Creative Thinking</span>
+                                <h1 class="hero-title">
+                                    Strategic Thinking, Tangible <span class="title"> Results for Business!</span>
+                                </h1>
+                                <div class="desc">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                        tempor incididunt ut labore et dolore magna aliqua.
+                                    </p>
+                                </div>
+
+                                <div class="hero-button d-flex">
+                                    <a class="tj-primary-btn" href="contact.html"> Explore Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="hero-image-group">
+                            <div class="group-image1 shake-y">
+                                <img class="image" src="assets/images/hero/hero-1.png" alt="Image" />
+                            </div>
+                            <div class="group-image2 pulse">
+                                <img data-sal="slide-right" data-sal-duration="1000" data-sal-delay="100"
+                                    src="assets/images/hero/hero-2.png" alt="Image" />
+                            </div>
+                            <img class="group-image3" src="assets/images/shape/shape-5.svg" alt="Image" />
+                            <img class="group-image4 pulse" src="assets/images/shape/shape-6.svg" alt="Image" />
+                            <img class="group-image5 pulse" src="assets/images/shape/shape-7.svg" alt="Image" />
+                            <img class="group-image6 pulse" src="assets/images/shape/shape-8.svg" alt="Image" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-shape">
+                <img src="assets/images/shape/shape-1.svg" alt="Shape" />
+            </div>
+            <div class="hero-shape1">
+                <img src="assets/images/shape/shape-2.svg" alt="Shape" />
+            </div>
+            <div class="hero-shape2 pulse">
+                <img src="assets/images/shape/shape-3.svg" alt="Shape" />
+            </div>
+            <div class="hero-shape3 shake-y">
+                <img src="assets/images/shape/shape-4.svg" alt="Shape" />
+            </div>
+            <div class="hero-scroll">
+                <img src="assets/images/icon/scroll-bg.svg" alt="Bg" />
+                <div class="scroll-icon jump">
+                    <a href="#scroll-bottom"><img src="assets/images/icon/scroll.svg" alt="Icon" /></a>
+                </div>
+            </div>
+        </section>
+        <!-- end: Hero Area -->
+
+        <!-- start: About Area -->
+        <section id="scroll-bottom" class="tj-about-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-6 col-lg-12">
+                        <div class="about-image-group">
+                            <div class="about-circle-box">
+                                <img class="circle-one" src="assets/images/shape/ab-shape.svg" alt="Shape" />
+                                <div class="ab-circle">
+                                    <svg class="shape-1" viewBox="0 0 100 100" width="100" height="100">
+                                        <defs>
+                                            <path id="circle" d="
+                                                  M 50, 50
+                                                  m -37, 0
+                                                  a 37,37 0 1,1 74,0
+                                                  a 37,37 0 1,1 -74,0" />
+                                        </defs>
+                                        <text font-size="15">
+                                            <textPath xlink:href="#circle" class="shape-1">
+                                                Creative Minds_, Creative Minds_
+                                            </textPath>
+                                        </text>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="about-image1 pulse">
+                                <img src="assets/images/about/about-1.png" alt="Image" />
+                            </div>
+                            <div class="about-image2 pulse">
+                                <img src="assets/images/about/about-2.png" alt="Image" />
+                            </div>
+                            <div class="about-image3 pulse">
+                                <img src="assets/images/about/about-3.png" alt="Image" />
+                            </div>
+                            <div class="about-image4 pulse">
+                                <img src="assets/images/about/about-4.png" alt="Image" />
+                            </div>
+                            <div class="about-shape1 shake-y">
+                                <img src="assets/images/shape/shape-9.svg" alt="Shape" />
+                            </div>
+                            <div class="about-shape2 pulse">
+                                <img src="assets/images/shape/shape-10.svg" alt="Shape" />
+                            </div>
+                            <div class="about-shape3 pulse">
+                                <img src="assets/images/shape/shape-13.svg" alt="Shape" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-12">
+                        <div class="about-content-one" data-sal="slide-left" data-sal-duration="1000"
+                            data-sal-delay="600">
+                            <div class="tj-sec-heading">
+                                <span class="sub-title"> About Us</span>
+                                <h2 class="sec-title">Making Your Business More Unique</h2>
+                                <div class="desc">
+                                    <p>
+                                        There are many variations of passages of Lorem Ipsum available, but the
+                                        majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable.
+                                    </p>
+                                    <p>
+                                        There are many variations of passages of Lorem Ipsum available, but the
+                                        majority have suffered alteration in some form,
+                                    </p>
+                                    <p>
+                                        by injected humour, or randomised words which don't look even slightly
+                                        believable.
+                                    </p>
+                                </div>
+                                <div class="about-button d-flex">
+                                    <a href="about-us.html" class="tj-secondary-btn btn-border"><span>Read
+                                            More</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-section-shape pulse">
+                <img src="assets/images/shape/shape-37.svg" alt="Shape" />
+            </div>
+        </section>
+        <!-- end: About Area -->
+
+        <!-- start: Counter Area -->
+        <section class="tj-counter-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="counter-content-area">
+                            <div class="counter-item" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="100">
+                                <div class="tj-count"><span class="odometer" data-count="254">0</span>+</div>
+                                <span class="sub-title">Project Complete</span>
+                            </div>
+                            <div class="counter-item" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="200">
+                                <div class="tj-count"><span class="odometer" data-count="164">0</span>+</div>
+                                <span class="sub-title">Quality Team Member</span>
+                            </div>
+                            <div class="counter-item" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="300">
+                                <div class="tj-count"><span class="odometer" data-count="433">0</span>+</div>
+                                <span class="sub-title">Awards Winning</span>
+                            </div>
+                            <div class="counter-item" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="400">
+                                <div class="tj-count"><span class="odometer" data-count="30">0</span>+</div>
+                                <span class="sub-title">Years Of Experience</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="counter-section-shape">
+                <div class="counter_shape">
+                    <img src="assets/images/shape/counter-shape.svg" alt="Shape" />
+                </div>
+                <div class="counter_shape1">
+                    <img src="assets/images/shape/counter-shape1.svg" alt="Shape" />
+                </div>
+            </div>
+        </section>
+        <!-- end: Counter Area -->
+
+        <!-- start: Service Area -->
+        <section class="tj-service-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="tj-sec-heading text-center" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="600">
+                            <span class="sub-title">الأقسام</span>
+                            <h2 class="sec-title">العروض المتاحة للتسويق الإلكتروني</h2>
                             <div class="desc">
-                                <p style="color: #f0f0f0; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);">
-                                    نساعدك على زيادة ظهورك الرقمي والوصول إلى جمهورك المستهدف من خلال استراتيجيات تسويقية فعّالة.
+                                <p>
+                                    نقدم لك مجموعة متميزة من العروض التي تشمل خدمات التسويق الإلكتروني، بما في ذلك إدارة الحملات الإعلانية، تطوير استراتيجيات التسويق عبر وسائل التواصل الاجتماعي، وإعداد المحتوى الرقمي لترويج المنتجات. تم تصميم هذه العروض لمساعدتك في تعزيز تواجدك الرقمي وزيادة مبيعاتك بشكل فعال.
                                 </p>
                             </div>
-
-                            <div class="hero-button d-flex">
-                                <a class="tj-primary-btn" href="contact.html" style="background-color: #ff8800; color: white;"> تصفح خدماتنا</a>
-                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="hero-image-group">
-                        <div class="group-image1 shake-y ps-3 pb-4">
-                            <img class="image" src="{{ asset('assets/images/hero/ads2.jpg') }}" alt="Image" />
-                        </div>
-                        <div class="group-image2 pulse pt-4">
-                            <img data-sal="slide-right" data-sal-duration="1000" data-sal-delay="100" src="{{ asset('assets/images/hero/ads.jpg') }}" alt="Image" />
-                        </div>
-                        <img class="group-image3" src="{{ asset('assets/images/shape/shape-5.svg') }}" alt="Image" />
-                        <img class="group-image4 pulse" src="{{ asset('assets/images/shape/shape-6.svg') }}" alt="Image" />
-                        <img class="group-image5 pulse" src="{{ asset('assets/images/shape/shape-7.svg') }}" alt="Image" />
-                        <img class="group-image6 pulse" src="{{ asset('assets/images/shape/shape-8.svg') }}" alt="Image" />
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="hero-shape">
-            <img src="assets/images/shape/shape-1.svg" alt="Shape" />
-        </div>
-        <div class="hero-shape1">
-            <img src="assets/images/shape/shape-2.svg" alt="Shape" />
-        </div>
-        <div class="hero-shape2 pulse">
-            <img src="assets/images/shape/shape-3.svg" alt="Shape" />
-        </div>
-        <div class="hero-shape3 shake-y">
-            <img src="assets/images/shape/shape-4.svg" alt="Shape" />
-        </div>
-        <div class="hero-scroll">
-            <img src="assets/images/icon/scroll-bg.svg" alt="Bg" />
-            <div class="scroll-icon jump">
-                <a href="#scroll-bottom"><img src="assets/images/icon/scroll.svg" alt="Icon" /></a>
-            </div>
-        </div>
-    </section>
 
-            <!-- Product carousel (Trending in)-->
-      <!-- Product carousel (Recent Drops)-->
-      <section style="background-color: #f8f9fa;" class="py-5">
-        <div class="container text-center py-5">
-            <h4 class="mt-4 mb-5 fw-bold text-end display-5" data-aos="fade-up"><strong>أبرز الأقسام</strong></h4>
-            <div class="row">
-                <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
-                    <div class="tns-carousel-inner row gx-4 mx-0"
-                        data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
-                        @foreach ($categories as $category)
-                        <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up">
-                            <div class="card shadow-sm h-100 border-0">
-                                <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light" style="border-radius: 10px;">
-                                    <img src="{{ asset('storage/' . $category->category_img) }}" alt="صورة الفئة" class="img-fluid rounded-top">
+            </div>
+
+                <div class="row" dir="rtl">
+                    @foreach ($categories as $category)
+                    <div class="col-lg-3 col-md-6 col-sm-6" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="100">
+                        <div class="tj-service-item text-center">
+                            <div class="service-inner">
+                                <div class="service-icon">
+                                    <img class="image-1" src="{{ asset('storage/' . ($category->category_img )) }}" alt="Shape" />
                                 </div>
-                                <div class="card-body">
-                                    <a href="{{ route('categories', $category->category_id) }}" class="text-reset">
-                                        <h5 class="card-title text-truncate text-primary">{{ $category->category_name }}</h5>
-                                    </a>
-                                    <p class="text-muted small">{{ $category->category_description }}</p>
+                                <div class="service-content">
+                                    <h4 class="title-link">
+                                        <a href="{{ route('categories',['id'=>$category->category_id]) }}">{{ $category->category_name }}</a>
+                                    </h4>
+                                    <p>
+                                        {{ $category->category_description }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-
-    <section style="background-color: #f8f9fa;" class="py-5">
-        <div class="container py-lg-4">
-            <div class="d-flex flex-wrap mb-4" style="direction: rtl; text-align: right;">
-                <h2 class="h3 fw-bold display-5" data-aos="fade-up">ابرز الخدمات</h2>
-            </div>
-
-            <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
-                <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0"
-                    data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;gutter&quot;: 30}}}">
-                    @foreach($products as $product)
-                    <div class="col py-3" data-aos="fade-up">
-                        <article class="card h-100 border-0 shadow-sm" style="width: 100%;">
-                            <div class="card-img-top position-relative overflow-hidden">
-                                <img src="{{ asset('storage/' . $product->Product_img) }}" alt="Product" class="img-fluid rounded-top">
-                                @auth
-                                    <button
-                                        class="btn-wishlist btn-sm position-absolute top-0 end-0 bg-light rounded-circle"
-                                        type="button"
-                                        data-bs-toggle="tooltip"
-                                        data-bs-placement="left"
-                                        title="Add to Favorites"
-                                        style="margin: 12px;">
-                                        <i class="ci-heart text-danger" style="line-height: 1.5rem;"></i>
-                                    </button>
-                                @endauth
-                            </div>
-                            <div class="card-body text-end">
-                                <a href="#signinnn-modal" data-bs-toggle="modal"
-                                   data-product-name="{{ $product->product_name }}"
-                                   data-product-img="{{ $product->Product_img ? asset('public/storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
-                                   data-product-salary="{{ $product->product_salary }}"
-                                   data-description="{{ $product->description }}"
-                                   data-duration="{{ $product->Duration_of_righteousness }}"
-                                   data-bs-target="#signinnn-modal">
-                                    <h3 class="product-title mb-2 fs-base">{{ $product->product_name }}</h3>
-                                    <span class="fs-sm text-muted">السعر:</span>
-                                    <h4 class="mt-1 mb-0 fs-base text-dark">{{ $product->product_salary }} SAR</h4>
-                                </a>
-                            </div>
-                        </article>
                     </div>
                     @endforeach
                 </div>
+
+
+                <div class="service-button text-center">
+                    <a href="service-details.html" class="tj-secondary-btn btn-border"><span>View Details</span></a>
+                </div>
+
+
+            </div>
+            <div class="service-section-shape">
+                <div class="service-bg-shape pulse">
+                    <img src="assets/images/shape/shape-14.svg" alt="Shape" />
+                </div>
+                <div class="service-bg-shape1">
+                    <img src="assets/images/shape/shape-15.svg" alt="Shape" />
+                </div>
+                <div class="service-bg-shape2">
+                    <img src="assets/images/shape/shape-14.svg" alt="Shape" />
+                </div>
+                <div class="service-bg-shape3 pulse">
+                    <img src="assets/images/shape/shape-15.svg" alt="Shape" />
+                </div>
+                <div class="service-bg-shape4 pulse">
+                    <img src="assets/images/shape/shape-16.svg" alt="Shape" />
+                </div>
+            </div>
+        </section>
+        <!-- end: Service Area -->
+        <section class="tj-service-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="tj-sec-heading text-center" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="600">
+                            <span class="sub-title"> خدماتنا</span>
+                            <h2 class="sec-title">الخدمات التي نقدمها</h2>
+                            <div class="desc">
+                                <p>
+                                    لقد صمدت هذه الخدمات لأكثر من خمسة قرون، كما أنها اجتازت مرحلة الانتقال إلى الطباعة الإلكترونية، وبقيت دون تغيير يذكر. وقد اشتهرت في الستينيات مع إطلاقها.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" dir="rtl">
+                @foreach ($products as $product)
+                <div class="col-lg-3 col-md-6 col-sm-6" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="100">
+                    <div class="tj-service-item text-center">
+                        <div class="service-inner">
+                            <div class="service-icon">
+                                <img class="image-1" src="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}">
+                            </div>
+                            <div class="service-content">
+                                <h4 class="title-link">
+                                    <a>{{ $product->product_name }}</a>
+                                </h4>
+                                <p>
+                                    {{ $product->product_description }}
+                                </p>
+                                <p>
+                                  Price : {{ $product->product_salary }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+
+
+
+                <div class="service-button text-center">
+                    <a href="{{ route('services') }}" class="tj-secondary-btn btn-border"><span>View Details</span></a>
+                </div>
+
+
+            </div>
+            <div class="service-section-shape">
+                <div class="service-bg-shape pulse">
+                    <img src="assets/images/shape/shape-14.svg" alt="Shape" />
+                </div>
+                <div class="service-bg-shape1">
+                    <img src="assets/images/shape/shape-15.svg" alt="Shape" />
+                </div>
+                <div class="service-bg-shape2">
+                    <img src="assets/images/shape/shape-14.svg" alt="Shape" />
+                </div>
+                <div class="service-bg-shape3 pulse">
+                    <img src="assets/images/shape/shape-15.svg" alt="Shape" />
+                </div>
+                <div class="service-bg-shape4 pulse">
+                    <img src="assets/images/shape/shape-16.svg" alt="Shape" />
+                </div>
+            </div>
+        </section>
+        <!-- start: Testimonial Area -->
+
+        <!-- end: Testimonial Area -->
+
+        <!-- start: Team Area -->
+        <section class="tj-team-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="tj-sec-heading text-center" data-sal="slide-up" data-sal-duration="1000"
+                            data-sal-delay="600">
+                            <span class="sub-title">How We Work</span>
+                            <h2 class="sec-title">Meet Our Team</h2>
+                            <div class="desc">
+                                <p>
+                                    It has survived not only five centuries, but also the leap into electronic
+                                    typesetting, remaining essentially unchanged. It was popularised in the 1960s
+                                    with the release
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6" data-sal="slide-up" data-sal-duration="1000"
+                        data-sal-delay="100">
+                        <div class="tj-team-item">
+                            <div class="team-image">
+                                <img src="assets/images/team/team-1.jpg" alt="Team" />
+                            </div>
+                            <div class="tj-team-content">
+                                <div class="team-header">
+                                    <h5 class="title-link"><a href="#">Alex Deitarson</a></h5>
+                                    <span class="sub-title">UI/UX Designer</span>
+                                </div>
+                                <div class="team-share">
+                                    <ul class="dot-style">
+                                        <li>
+                                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6" data-sal="slide-up" data-sal-duration="1000"
+                        data-sal-delay="200">
+                        <div class="tj-team-item">
+                            <div class="team-image">
+                                <img src="assets/images/team/team-2.jpg" alt="Team" />
+                            </div>
+                            <div class="tj-team-content">
+                                <div class="team-header">
+                                    <h5 class="title-link"><a href="#">Alex Deitarson</a></h5>
+                                    <span class="sub-title">UI/UX Designer</span>
+                                </div>
+                                <div class="team-share">
+                                    <ul class="dot-style">
+                                        <li>
+                                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6" data-sal="slide-up" data-sal-duration="1000"
+                        data-sal-delay="300">
+                        <div class="tj-team-item">
+                            <div class="team-image">
+                                <img src="assets/images/team/team-3.jpg" alt="Team" />
+                            </div>
+                            <div class="tj-team-content">
+                                <div class="team-header">
+                                    <h5 class="title-link"><a href="#">Alex Deitarson</a></h5>
+                                    <span class="sub-title">UI/UX Designer</span>
+                                </div>
+                                <div class="team-share">
+                                    <ul class="dot-style">
+                                        <li>
+                                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6" data-sal="slide-up" data-sal-duration="1000"
+                        data-sal-delay="400">
+                        <div class="tj-team-item">
+                            <div class="team-image">
+                                <img src="assets/images/team/team-4.jpg" alt="Team" />
+                            </div>
+                            <div class="tj-team-content">
+                                <div class="team-header">
+                                    <h5 class="title-link"><a href="#">Alex Deitarson</a></h5>
+                                    <span class="sub-title">UI/UX Designer</span>
+                                </div>
+                                <div class="team-share">
+                                    <ul class="dot-style">
+                                        <li>
+                                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-button text-center">
+                        <a href="contact.html" class="tj-secondary-btn btn-border"><span>View More</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-section-shape">
+                <div class="team-bg-shape">
+                    <img src="assets/images/shape/team-shape1.svg" alt="Team" />
+                </div>
+                <div class="team-bg-shape1">
+                    <img src="assets/images/shape/team-shape2.svg" alt="Team" />
+                </div>
+                <div class="team-bg-shape2 pulse">
+                    <img src="assets/images/shape/shape-16.svg" alt="Team" />
+                </div>
+            </div>
+        </section>
+        <!-- end: Team Area -->
+
+        <!-- Start: Portfolio Area -->
+        <section class="tj-portfolio-section inc-colum default-padding">
+            <div class="container">
+                <div class="row align-items-end portfolio-header">
+                    <div class="col-lg-6" data-sal="slide-right" data-sal-duration="1000" data-sal-delay="100">
+                        <div class="tj-sec-heading">
+                            <span class="white-sub-title">Portfolio</span>
+                            <h2 class="sec-title">Our Latest Work For Our Best Customer</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="filter-menu">
+                            <button class="filter active" data-filter="*">All</button>
+                            <button class="filter" data-filter=".development">Web Design</button>
+                            <button class="filter" data-filter=".marketing">Digital Marketing</button>
+                            <button class="filter" data-filter=".seo">SEO</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="portfolio-items-area">
+                    <div class="row">
+                        <div class="col-md-12 portfolio-content">
+                            <div class="portfolio-gallery masonary">
+                                <div id="portfolio-grid" class="portfolio-items colums-3"
+                                    style="position: relative; height: 812.468px">
+                                    <div class="portfolio-single-item marketing finance"
+                                        style="position: absolute; left: 0%; top: 352px">
+                                        <div class="portfolio-single">
+                                            <div class="portfolio-image">
+                                                <a href="portfolio-details.html"><img
+                                                        src="assets/images/portfolio/portfolio-1.jpg" alt="Image" /></a>
+                                            </div>
+                                            <div class="portfolio-content">
+                                                <h3 class="title-link">
+                                                    <a href="portfolio-details.html">Digital Marketing</a>
+                                                </h3>
+                                                <span class="sub-title">Marketing/Solution</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="portfolio-single-item development finance"
+                                        style="position: absolute; left: 66.5833%; top: 0px">
+                                        <div class="portfolio-single">
+                                            <div class="portfolio-image">
+                                                <a href="portfolio-details.html"><img
+                                                        src="assets/images/portfolio/portfolio-2.jpg" alt="Image" /></a>
+                                            </div>
+                                            <div class="portfolio-content">
+                                                <h3 class="title-link">
+                                                    <a href="portfolio-details.html">Web Development</a>
+                                                </h3>
+                                                <span class="sub-title">Marketing/Consulting</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="portfolio-single-item capital development"
+                                        style="position: absolute; left: 66.5833%; top: 352px">
+                                        <div class="portfolio-single">
+                                            <div class="portfolio-image">
+                                                <a href="portfolio-details.html"><img
+                                                        src="assets/images/portfolio/portfolio-4.jpg" alt="Image" /></a>
+                                            </div>
+                                            <div class="portfolio-content">
+                                                <h3 class="title-link">
+                                                    <a href="portfolio-details.html">UX/UI Design</a>
+                                                </h3>
+                                                <span class="sub-title">Marketing/Solution</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="portfolio-single-item capital seo"
+                                        style="position: absolute; left: 33.25%; top: 459px">
+                                        <div class="portfolio-single">
+                                            <div class="portfolio-image">
+                                                <a href="portfolio-details.html"><img
+                                                        src="assets/images/portfolio/portfolio-3.jpg" alt="Image" /></a>
+                                            </div>
+                                            <div class="portfolio-content">
+                                                <h3 class="title-link">
+                                                    <a href="portfolio-details.html"> Branding & SEO </a>
+                                                </h3>
+                                                <span class="sub-title">Marketing/ Desing Solution</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-section-shape">
+                <div class="portfolio-bg-shape">
+                    <img src="assets/images/shape/portfolio-shape.svg" alt="Shape" />
+                </div>
+                <div class="portfolio-bg-shape1">
+                    <img src="assets/images/shape/portfolio-shape1.svg" alt="Shape" />
+                </div>
+                <div class="portfolio-bg-shape2 shake-y">
+                    <img src="assets/images/shape/shape-19.svg" alt="Shape" />
+                </div>
+                <div class="portfolio-bg-shape3 pulse">
+                    <img src="assets/images/shape/shape-20.svg" alt="Shape" />
+                </div>
+                <div class="portfolio-bg-shape4 shake-y">
+                    <img src="assets/images/shape/shape-19.svg" alt="Shape" />
+                </div>
+                <div class="portfolio-bg-shape5 pulse">
+                    <img src="assets/images/shape/shape-23.svg" alt="Shape" />
+                </div>
+                <div class="portfolio-bg-shape6 pulse">
+                    <img src="assets/images/shape/shape-38.svg" alt="Shape" />
+                </div>
+            </div>
+        </section>
+        <!-- end: Portfolio Area -->
+
+        <!-- start: FAQ Area -->
+        <section class="tj-faq-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="tj-sec-heading" data-sal="slide-right" data-sal-duration="1000"
+                            data-sal-delay="100">
+                            <span class="sub-title">F,A,Q</span>
+                            <h2 class="sec-title">Our Expert Answers</h2>
+                            <div class="desc">
+                                <p>
+                                    All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks
+                                    as necessary, making this the first true generator on the Internet. It uses a
+                                    dictionary of over 200 Latin words,
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="faq-image-group">
+                            <div class="faq-image1">
+                                <div class="group-image pulse">
+                                    <img src="assets/images/about/about-1.png" alt="Image" />
+                                </div>
+                                <img class="group-shape pulse" src="assets/images/shape/shape-21.svg" alt="Shape" />
+                                <img class="group-shape1 shake-y" src="assets/images/shape/shape-22.svg" alt="Shape" />
+                                <img class="group-shape2 pulse" src="assets/images/about/about-4.png" alt="Image" />
+                            </div>
+                            <div class="faq-image3 pulse">
+                                <img src="assets/images/about/about-3.png" alt="Image" />
+                            </div>
+                            <div class="faq-image2 pulse">
+                                <div class="group-image">
+                                    <img src="assets/images/about/about-2.png" alt="Image" />
+                                </div>
+                                <img class="group-shape pulse" src="assets/images/shape/shape-24.svg" alt="Shape" />
+                                <img class="group-shape1 shake-y" src="assets/images/shape/shape-50.svg" alt="Shape" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" data-sal="slide-left" data-sal-duration="1000" data-sal-delay="100">
+                        <div class="tj-faq-area">
+                            <div class="accordion tj-faq-style" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseOne" aria-expanded="true"
+                                            aria-controls="collapseOne">
+                                            What is a Meet With some form digital platform
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse show"
+                                        aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <strong>There are many variations of passages of Lorem Ipsum available, but
+                                                the majority have suffered alteration in some form, by injected
+                                                humour.</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                            aria-expanded="false" aria-controls="collapseTwo">
+                                            How Can A Digital Platform Helps Your Business Grow?
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse"
+                                        aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <strong>There are many variations of passages of Lorem Ipsum available, but
+                                                the majority have suffered alteration in some form, by injected
+                                                humour.</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                            aria-expanded="false" aria-controls="collapseThree">
+                                            How Do I Book My Slot To Meet With Your Technical Team?
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse"
+                                        aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <strong>There are many variations of passages of Lorem Ipsum available, but
+                                                the majority have suffered alteration in some form, by injected
+                                                humour.</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingFour">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                                            aria-expanded="false" aria-controls="collapseFour">
+                                            How Many Projects Hove Your Completed So far?
+                                        </button>
+                                    </h2>
+                                    <div id="collapseFour" class="accordion-collapse collapse"
+                                        aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <strong>There are many variations of passages of Lorem Ipsum available, but
+                                                the majority have suffered alteration in some form, by injected
+                                                humour.</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-shape">
+                                <img src="assets/images/shape/shape-26.svg" alt="Shape" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-section-shape">
+                <div class="faq-bg-shape pulse">
+                    <img src="assets/images/shape/faq-shape.svg" alt="Shape" />
+                </div>
+            </div>
+        </section>
+        <!-- end: FAQ Area -->
+
+        <!-- start: Blog Area -->
+        <section class="tj-blog-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="100">
+                        <div class="tj-sec-heading text-center">
+                            <span class="sub-title">Latest Blog</span>
+                            <h2 class="sec-title">Latest Blog Posts</h2>
+                            <div class="desc">
+                                <p>
+                                    All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks
+                                    as necessary, making this the first true generator on the Internet. It uses a
+                                    dictionary of over 200 Latin words,
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="100">
+                        <div class="tj-blog-item">
+                            <div class="blog-image">
+                                <a href="blog-details.html"><img src="assets/images/blog/blog-1.jpg" alt="Image" /></a>
+                            </div>
+                            <div class="blog-content-area">
+                                <div class="blog-meta">
+                                    <span><i class="flaticon-calendar"></i>23 Oct, 2023</span>
+                                    <span><i class="flaticon-group"></i>By
+                                        <a href="blog-details.html"> Admin</a></span>
+                                </div>
+                                <h4 class="title-link">
+                                    <a href="blog-details.html">Simple Proctives that will help you better every day</a>
+                                </h4>
+                                <div class="desc">
+                                    <p>
+                                        Many desktop publishing packages and web page editors now use Lorem Ipsum as
+                                        their default model text, and a search for.
+                                    </p>
+                                </div>
+                                <div class="tj-blog-button">
+                                    <a href="blog-details.html" class="tj-secondary-btn btn-border"><span>Read
+                                            More</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="200">
+                        <div class="tj-blog-item">
+                            <div class="blog-image">
+                                <a href="blog-details.html"><img src="assets/images/blog/blog-2.jpg" alt="Image" /></a>
+                            </div>
+                            <div class="blog-content-area">
+                                <div class="blog-meta">
+                                    <span><i class="flaticon-calendar"></i>23 Oct, 2023</span>
+                                    <span><i class="flaticon-group"></i>By
+                                        <a href="blog-details.html"> Admin</a></span>
+                                </div>
+                                <h4 class="title-link">
+                                    <a href="blog-details.html">Frigilla lectus honcus anteom mode vehicul</a>
+                                </h4>
+                                <div class="desc">
+                                    <p>
+                                        Many desktop publishing packages and web page editors now use Lorem Ipsum as
+                                        their default model text, and a search for.
+                                    </p>
+                                </div>
+                                <div class="tj-blog-button">
+                                    <a href="blog-details.html" class="tj-secondary-btn btn-border"><span>Read
+                                            More</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="300">
+                        <div class="tj-blog-item">
+                            <div class="blog-image">
+                                <a href="blog-details.html"><img src="assets/images/blog/blog-3.jpg" alt="Image" /></a>
+                            </div>
+                            <div class="blog-content-area">
+                                <div class="blog-meta">
+                                    <span><i class="flaticon-calendar"></i>23 Oct, 2023</span>
+                                    <span><i class="flaticon-group"></i>By
+                                        <a href="blog-details.html">Admin</a></span>
+                                </div>
+                                <h4 class="title-link">
+                                    <a href="blog-details.html">Proin mauris risus turpis or nare felis aptent nisl</a>
+                                </h4>
+                                <div class="desc">
+                                    <p>
+                                        Many desktop publishing packages and web page editors now use Lorem Ipsum as
+                                        their default model text, and a search for.
+                                    </p>
+                                </div>
+                                <div class="tj-blog-button">
+                                    <a href="blog-details.html" class="tj-secondary-btn btn-border"><span>Read
+                                            More</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-section-shape">
+                <div class="blog-bg-shape">
+                    <img src="assets/images/shape/blog-bg-shape.svg" alt="Shape" />
+                </div>
+                <div class="blog-bg-shape1">
+                    <img src="assets/images/shape/blog-bg-shape1.svg" alt="Shape" />
+                </div>
+            </div>
+        </section>
+        <!-- end: Blog Area -->
+
+        <!-- start: Contact Area -->
+        {{-- <section class="tj-contact-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="contact-form-area">
+                            <div class="contact-left-content" data-sal="slide-right" data-sal-duration="1000"
+                                data-sal-delay="300">
+                                <div class="tj-sec-heading">
+                                    <span class="sub-title">Get In touch</span>
+                                    <h2 class="sec-title">Have any Project Plan In your Mind?</h2>
+                                    <div class="desc">
+                                        <p>
+                                            All the Lorem Ipsum generators on the Internet tend to repeat predefined
+                                            chunks as necessary, making this the first true generator on the
+                                            Internet. It uses a dictionary of over 200 Latin words,
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="comntact-list">
+                                    <div class="contact-icon">
+                                        <img src="assets/images/icon/phone.svg" alt="Icon" />
+                                    </div>
+                                    <div class="contact-header">
+                                        <span class="d-block">For urgent help</span>
+                                        <a href="tel:+0000123456789">+ 0000 123-456-789</a>
+                                    </div>
+                                </div>
+                                <div class="comntact-list">
+                                    <div class="contact-icon">
+                                        <img src="assets/images/icon/mail.svg" alt="Icon" />
+                                    </div>
+                                    <div class="contact-header">
+                                        <span class="d-block">Mail us 24/7</span>
+                                        <a href="mailto:hello@gmail.com">hello@gmail.com</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <form id="contact-form" class="contact-form-box" data-sal="slide-left"
+                                data-sal-duration="1000" data-sal-delay="300">
+                                <div class="form-input">
+                                    <label>Your Name</label>
+                                    <input type="text" class="form__input" name="conName" />
+                                </div>
+                                <div class="form-input">
+                                    <label>Email Address</label>
+                                    <input type="email" class="form__input" name="conEmail" />
+                                </div>
+                                <div class="form-textarea">
+                                    <label>How can help you?</label>
+                                    <textarea id="message" name="conMessage"></textarea>
+                                </div>
+                                <div class="tj-contact-button">
+                                    <button class="btn tj-primary-btn" type="submit">Submit Now</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-section-shape">
+                <div class="contact-bg-shape shake-y">
+                    <img src="assets/images/shape/shape-31.svg" alt="Shape" />
+                </div>
+                <div class="contact-bg-shape1 pulse">
+                    <img src="assets/images/shape/shape-32.svg" alt="Shape" />
+                </div>
+                <div class="contact-bg-shape2 pulse">
+                    <img src="assets/images/shape/shape-33.svg" alt="Shape" />
+                </div>
+                <div class="contact-bg-shape3 shake-y">
+                    <img src="assets/images/shape/shape-34.svg" alt="Shape" />
+                </div>
+            </div>
+        </section> --}}
+        @include('Includes.contact')
+        <!-- end: Contact Area -->
+
+        <!-- BEGIN: Contact Form Success Modal Message -->
+        <div class="modal" id="message_sent" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header alert alert-success">
+                        <h5 class="modal-title">Message Sent Successfully</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Thank you for contacting us. We will get back to you shortly.<br>Have a great day!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+        <!-- END: Contact Form Success Modal Message -->
 
-
-
-    <div class="modal fade" id="signinnn-modal" tabindex="-1" role="dialog"  style="direction: rtl; text-align: right;">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-secondary" >
-                    <h5 class="modal-title">Product Details</h5>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+        <!-- BEGIN: Contact Form Fail Modal Message -->
+        <div class="modal" id="message_fail" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header alert alert-danger">
+                        <h5 class="modal-title">Error</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Oops! Something went wrong, please try again.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                    </div>
                 </div>
-                <div class="modal-body pb-0">
-                    <div class="d-sm-flex justify-content-between mb-4 pb-3 pb-sm-2 border-bottom">
-                        <div class="d-sm-flex text-center text-sm-start">
-                            <a class="d-inline-block flex-shrink-0 mx-auto" style="width: 15rem;">
-                                <img id="modal-product-img" src="" alt="Product" style="width: 100%; height: auto;">
-                            </a>
-                            <div class="ps-sm-4 pt-2">
-                                <h3 id="modal-product-name" class="product-title fs-base mb-2"></h3>
-                                <div class="fs-sm"><span class="text-muted me-2">Description:</span><span id="modal-description"></span></div>
-                                <div class="fs-sm"><span class="text-muted me-2">Duration:</span><span id="modal-duration"></span></div>
-                                <div class="fs-lg text-accent pt-2">Price: <span id="modal-product-salary"></span></div>
-                                <div class="mt-3">
-                                  <a href="{{ route('contacts.index') }}" class="btn btn-outline-primary">طلب الخدمه عبر الايميل</a>
-                                  <a href="https://api.whatsapp.com/send?phone={{$settings->whatsapp}}&text=مرحبا"  class="btn btn-outline-success">طلب الخدمه عبر الواتساب</a>
+            </div>
+        </div>
+        <!-- END: Contact Form Fail Modal Message End -->
 
+    </main>
+
+    <!-- start: Footer Area -->
+    {{-- <footer class="tj-footer-area">
+        <div class="footer-menu-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="footer-widget footer1-col-1">
+                            <div class="footer-content-info">
+                                <div class="footer-logo">
+                                    <a href="index.html">
+                                        <img src="assets/images/logo/footer-logo.png" alt="Logo" />
+                                    </a>
+                                </div>
+                                <p>
+                                    The point of using Lorem Ipsum is that it has a more-or-less normal distribution
+                                    of letters, as opposed to using 'Content here.
+                                </p>
+                                <div class="footer-share">
+                                    <ul class="dot-style">
+                                        <li>
+                                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M8.51962 6.1948L13.8489 0H12.586L7.95861 5.37887L4.26275 0H0L5.58887 8.13379L0 14.63H1.26293L6.14957 8.94974L10.0527 14.63H14.3154L8.51929 6.1948H8.51962ZM1.71797 0.950725H3.65775L12.5866 13.7225H10.6468L1.71797 0.950725Z"
+                                                        fill="#161616" />
+                                                </svg>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="footer-widget footer1-col-2">
+                            <h4 class="footer_title">Departments</h4>
+                            <div class="widget_nav_menu">
+                                <div class="footer-menu">
+                                    <ul>
+                                        <li><a href="#">Family Medicine</a></li>
+                                        <li><a href="#">Radiology</a></li>
+                                        <li><a href="#">Women’s Health</a></li>
+                                        <li><a href="#">Optician</a></li>
+                                        <li><a href="#">Pediatrics</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="footer-widget footer1-col-3">
+                            <h4 class="footer_title">Useful Link</h4>
+                            <div class="widget_nav_menu">
+                                <div class="footer-menu">
+                                    <ul>
+                                        <li><a href="#">Blog Grid</a></li>
+                                        <li><a href="#">Blog Standard</a></li>
+                                        <li><a href="#">Blog Details</a></li>
+                                        <li><a href="#">Our Services</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="footer-widget footer1-col-4">
+                            <h4 class="footer_title">Company</h4>
+                            <div class="widget_nav_menu">
+                                <div class="footer-menu">
+                                    <ul>
+                                        <li><a href="#">About us</a></li>
+                                        <li><a href="#">Services</a></li>
+                                        <li><a href="#">Contact Us</a></li>
+                                        <li><a href="#">Out Team</a></li>
+                                        <li><a href="#">Pricing</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="footer-widget footer1-col-5">
+                            <h4 class="footer_title">Contact Us</h4>
+                            <div class="widget_contact_menu">
+                                <div class="footer-menu">
+                                    <ul>
+                                        <li>
+                                            <span><i class="fa-sharp fa-regular fa-envelope"></i></span>
+                                            <a href="mailto:Info@gmail.com">Info@gmail.com</a>
+                                        </li>
+                                        <li>
+                                            <span><i class="fa-solid fa-globe"></i></span><a
+                                                href="#">www.website.com</a>
+                                        </li>
+                                        <li>
+                                            <span><i class="fa-sharp fa-solid fa-location-dot"></i></span>
+                                            <a href="#">225 Marion Street, Columbia</a>
+                                        </li>
+                                        <li>
+                                            <span><i class="fa-solid fa-phone-volume"></i></span>
+                                            <a href="tel:+00123456789">+ 00 123 456 789</a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -390,200 +1257,80 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Styles -->
-    <style>
-        .card {
-            transition: box-shadow 0.3s ease; /* Smooth transition for the shadow effect */
-            width: 300px; /* Adjust the width as needed */
-            height: 400px; /* Adjust the height as needed */
-        }
-
-        .card-img-top img {
-            width: 100%; /* Make the image cover the card width */
-            height: 200px; /* Adjust the height as needed */
-            object-fit: cover; /* Ensure the image covers the area without distortion */
-        }
-
-        .modal-dialog {
-            max-width: 800px; /* Adjust the width of the modal as needed */
-        }
-
-        .modal-content {
-            padding: 1.5rem; /* Adjust the padding inside the modal as needed */
-        }
-
-        .modal-body {
-            padding: 2rem; /* Adjust the padding inside the modal body as needed */
-        }
-
-        .card:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Change the values as needed */
-        }
-    </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var productModal = document.getElementById('signinnn-modal');
-            productModal.addEventListener('show.bs.modal', function(event) {
-                var button = event.relatedTarget; // Button that triggered the modal
-
-                // Get the product data from the button's data attributes
-                var productName = button.getAttribute('data-product-name');
-                var productImg = button.getAttribute('data-product-img');
-                var productSalary = button.getAttribute('data-product-salary');
-                var description = button.getAttribute('data-description');
-                var duration = button.getAttribute('data-duration');
-
-                // Find the modal elements
-                var modalProductName = productModal.querySelector('#modal-product-name');
-                var modalProductImg = productModal.querySelector('#modal-product-img');
-                var modalProductSalary = productModal.querySelector('#modal-product-salary');
-                var modalDescription = productModal.querySelector('#modal-description');
-                var modalDuration = productModal.querySelector('#modal-duration');
-
-                // Set the modal content
-                modalProductName.textContent = productName;
-                modalProductImg.src = productImg;
-                modalProductSalary.textContent = productSalary;
-                modalDescription.textContent = description;
-                modalDuration.textContent = duration;
-            });
-        });
-    </script>
-
-
-    <!-- Features-->
-    <section class="container py-lg-5 py-4">
-    <h2 class="mb-4 pb-md-3 pb-2" style="direction: rtl; text-align: right;">ابدأ رحلتك في التسويق الإلكتروني معنا!</h2>
-    <!-- Features carousel-->
-    <div class="tns-carousel mb-4">
-      <div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;gutter&quot;: 30, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true}}}">
-        <!-- Carousel item-->
-        <div style="direction: rtl; text-align: right;"><img class="mb-4" src="img/nft/features/wallet.svg" width="60" alt="Icon">
-          <h4 class="mb-2 fs-lg text-body">حدد استراتيجيتك التسويقية</h4>
-          <p class="mb-0 fs-sm text-muted">ابدأ بوضع استراتيجية تسويقية فعّالة لتحقيق أهدافك والوصول إلى جمهورك المستهدف.</p>
+        <div class="copyright-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="copyright-content-area">
+                            <div class="copyright-left-content">
+                                <p>
+                                    Copyright © 2023 <a href="#" target="_blank"> ThemeJunction. </a> All Rights
+                                    Reserved.
+                                </p>
+                            </div>
+                            <div class="copyright-menu">
+                                <ul>
+                                    <li><a href="#">Setting & Privacy</a></li>
+                                    <li><a href="#">FAQ</a></li>
+                                    <li><a href="#">Support</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- Carousel item-->
-        <div style="direction: rtl; text-align: right;"> <img class="mb-4" src="img/nft/features/add.svg" width="60" alt="Icon">
-          <h4 class="mb-2 fs-lg text-body">أنشئ حملاتك الإعلانية</h4>
-          <p class="mb-0 fs-sm text-muted">صمم حملات إعلانية جذابة على مختلف المنصات لتحقيق نتائج متميزة.</p>
+        <div class="footer-section-shape">
+            <div class="footer-bg-shape">
+                <img src="assets/images/banner-bg/footer-bg-shape.svg" alt="Shape" />
+            </div>
+            <div class="footer-bg-shape1">
+                <img src="assets/images/banner-bg/footer-bg-shape1.svg" alt="Shape" />
+            </div>
+            <div class="footer-bg-shape2 shake-y">
+                <img src="assets/images/shape/shape-35.svg" alt="Shape" />
+            </div>
+            <div class="footer-bg-shape3 pulse">
+                <img src="assets/images/shape/shape-36.svg" alt="Shape" />
+            </div>
         </div>
-        <!-- Carousel item-->
-        <div style="direction: rtl; text-align: right;"><img class="mb-4" src="img/nft/features/image.svg" width="60" alt="Icon">
-          <h4 class="mb-2 fs-lg text-body">إدارة محتوى وسائل التواصل الاجتماعي</h4>
-          <p class="mb-0 fs-sm text-muted">قم بإدارة حساباتك على وسائل التواصل الاجتماعي وزيادة التفاعل مع جمهورك.</p>
-        </div>
-        <!-- Carousel item-->
-        <div style="direction: rtl; text-align: right;"><img class="mb-4" src="img/nft/features/shopping-cart.svg" width="60" alt="Icon">
-          <h4 class="mb-2 fs-lg text-body">تتبع وتحليل النتائج</h4>
-          <p class="mb-0 fs-sm text-muted">قم بتحليل أداء حملاتك وتحسينها باستمرار لتحقيق أفضل النتائج الممكنة.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-    </main>
-    <!-- Bg shape-->
-    <div class="pt-4 bg-secondary">
-
-
-    </div>
-    <!-- Footer-->
+    </footer> --}}
     @include('Includes.footer')
+    <!-- end: Footer Area -->
 
-    <!-- Toolbar for handheld devices (NFT Marketplace)-->
-    @include('includes.toolbar')
+    <!-- start: Scroll Area -->
+    <div class="webency-scroll-top">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="
+                        transition: stroke-dashoffset 10ms linear 0s;
+                        stroke-dasharray: 307.919px, 307.919px;
+                        stroke-dashoffset: 71.1186px;
+                    "></path>
+        </svg>
+        <div class="webency-scroll-top-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+                viewBox="0 0 24 24" data-icon="mdi:arrow-up" class="iconify iconify--mdi">
+                <path fill="currentColor" d="M13 20h-2V8l-5.5 5.5l-1.42-1.42L12 4.16l7.92 7.92l-1.42 1.42L13 8v12Z">
+                </path>
+            </svg>
+        </div>
+    </div>
+    <!-- end: Scroll Area -->
 
-    <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
-    <!-- Vendor scrits: js libraries and plugins-->
-    <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('vendor/simplebar/dist/simplebar.min.js') }}"></script>
-    <script src="{{ asset('vendor/tiny-slider/dist/min/tiny-slider.js') }}"></script>
-    <script src="{{ asset('vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js') }}"></script>
-    <!-- Main theme script-->
-    <script src="{{ asset('js/theme.min.js') }}"></script>
+    <!-- JS here -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/meanmenu.js"></script>
+    <script src="assets/js/swiper.min.js"></script>
+    <script src="assets/js/jquery.appear.min.js"></script>
+    <script src="assets/js/sal.js"></script>
+    <script src="assets/js/odometer.min.js"></script>
+    <script src="assets/js/imagesloaded-pkgd.js"></script>
+    <script src="assets/js/magnific-popup.js"></script>
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="assets/js/validate.min.js"></script>
 
-    <script>
-      function addToFavorites(productId) {
-    console.log('Adding product to favorites with ID:', productId);
+    <script src="assets/js/main.js"></script>
+</body>
 
-    $.ajax({
-        url: '{{ route('favorites.store') }}',
-        type: 'POST',
-        data: {
-            _token: '{{ csrf_token() }}',
-            product_id: productId
-        },
-        success: function(response) {
-            console.log('Success:', response);
-            Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: response.message,
-                confirmButtonText: 'OK'
-            });
-        },
-        error: function(xhr) {
-            console.error('AJAX Error:', xhr);
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Error adding to favorites: ' + xhr.responseText,
-                confirmButtonText: 'OK'
-            });
-        }
-    });
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-        setTimeout(function () {
-            let alert = document.querySelectorAll('.alert-dismissible');
-            alert.forEach(function (el) {
-                el.classList.add('fade-out');
-            });
-        }, 3000); // 3 seconds
-
-        // Completely remove the alert after the fade-out animation
-        setTimeout(function () {
-            let alert = document.querySelectorAll('.alert-dismissible');
-            alert.forEach(function (el) {
-                el.style.display = 'none';
-            });
-        }, 3500); // Wait 0.5 seconds more for the fade-out to complete
-    });
-
-
-      </script>
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
-
-
-      <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('assets/js/meanmenu.js') }}"></script>
-<script src="{{ asset('assets/js/swiper.min.js') }}"></script>
-<script src="{{ asset('assets/js/jquery.appear.min.js') }}"></script>
-<script src="{{ asset('assets/js/sal.js') }}"></script>
-<script src="{{ asset('assets/js/odometer.min.js') }}"></script>
-<script src="{{ asset('assets/js/imagesloaded-pkgd.js') }}"></script>
-<script src="{{ asset('assets/js/magnific-popup.js') }}"></script>
-<script src="{{ asset('assets/js/isotope.pkgd.min.js') }}"></script>
-<script src="{{ asset('assets/js/validate.min.js') }}"></script>
-
-<script src="{{ asset('assets/js/main.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-    AOS.init({
-        duration: 1000,  // Animation duration in ms
-        once: true       // Whether animation should happen only once or every time you scroll
-    });
-</script>
-
-  </body>
-
-<!-- Mirrored from cartzilla.createx.studio/home-nft.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Aug 2022 18:11:55 GMT -->
 </html>

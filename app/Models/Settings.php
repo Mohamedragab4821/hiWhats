@@ -26,7 +26,9 @@ class Settings extends Model
         'home_description1',
         'whatsapp',
         'phone',
-        'email'
+        'email',
+        'home1_img',
+        'home2_img'
     ];
 
     // Optionally, define other properties or methods
