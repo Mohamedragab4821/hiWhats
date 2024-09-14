@@ -108,13 +108,12 @@
         }
     </style>
 </head>
-<body style="direction: rtl; text-align: right;">
-    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
+<body >
+    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog" style="direction: rtl; text-align: right;">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <ul class="nav nav-tabs" role="tablist">
+            <div class="modal-content" style="background-color: #ffffff;">
+                <div class="modal-header bg-secondary" style="background-color: rgb(0 35 83) !important;">
+                    <ul class="nav nav-tabs card-header-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true">
                                 <i class="ci-unlocked me-2 mt-n1"></i>تسجيل دخول

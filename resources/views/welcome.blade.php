@@ -16,13 +16,27 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('public/storage/' . ($settings->icon))}}">
     <link rel="mask-icon" color="#fe6a6a" href="{{ asset('safari-pinned-tab.svg') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
     <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
     <link rel="stylesheet" media="screen" href="{{ asset('vendor/simplebar/dist/simplebar.min.css') }}"/>
     <link rel="stylesheet" media="screen" href="{{ asset('vendor/tiny-slider/dist/tiny-slider.css') }}"/>
     <!-- Main Theme Styles + Bootstrap-->
-    <link rel="stylesheet" media="screen" href="{{ asset('css/theme.min.css') }}">
+
+
+
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/font-awesome-pro.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/flaticon_webency.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/odometer.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/sal.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/swiper.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/meanmenu.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
     <style>
       .card {
         height: 100%; /* Ensures the card fills the container height */
@@ -118,14 +132,23 @@
 .btn-outline-primary{
     margin-bottom: 30px;
 }
-        
+
+.card {
+  width: 100%;
+  height: 100%;
+}
+.card img {
+  width: 100%;
+  height: 100%;
+}
+
 
 /* Optional: Adjust max-width for different screen sizes */
 @media (max-width: 576px) { /* For extra small devices */
   .responsive-img {
     max-width: 100%;
   }
-  
+
   .pt-sm-0{
       /*height:20vh;*/
   }
@@ -140,8 +163,9 @@
       height:45vh;
   }
     }
-    
-    
+
+
+
     </style>
 
     <!-- Google Tag Manager-->
@@ -194,149 +218,193 @@
     </script>
 @endif
       <!-- Hero-->
-      <section class="mb-lg-2 bg-faded-accent bg-size-cover" style="padding-top: 80px; background-image: url(img/nft/home/hero-bg.png);margin-top:0">
-        <div class="container py-4">
-          <div class="row align-items-center justify-content-center gy-3 py-3 text-lg-start text-center"style="margin-top: 20px;">
-            <div class="col-lg-5 col-md-8 col-sm-10">
-              <h1 class="mb-4 pb-lg-2" style="direction: rtl; text-align: right;">نقدم حلول تسويق إلكتروني شاملة لتحقيق أهداف عملك الرقمية.</h1>
-              <p class="mb-lg-5 mb-4 fs-lg" style="direction: rtl; text-align: right;">نساعدك على زيادة ظهورك الرقمي والوصول إلى جمهورك المستهدف من خلال استراتيجيات تسويقية فعّالة.</p>
-              <div class="d-lg-flex d-none flex-sm-row flex-column justify-content-lg-start justify-content-center">
-                <a class="btn btn-lg btn-accent me-sm-3 mb-sm-3 mb-2 m-2" href="{{route('services')}}" style="direction: rtl; text-align: right;">تصفح خدماتنا</a>
-                @if (!Auth::user())
-                <a class="btn btn-lg btn-outline-dark mb-sm-3 mb-2 m-2" href="#signup-modal" data-bs-toggle="modal" style="direction: rtl; text-align: right;">انشئ حساب</a>
-                @endif
-            </div>
-            </div>
-            <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header bg-secondary" style="direction: rtl; text-align: right;">
-                            <ul class="nav nav-tabs card-header-tabs" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link fw-medium" href="#signup-tab" role="tab" aria-selected="true">
-                                        <i class="ci-user me-2 mt-n1"></i>تسجيل جديد
-                                    </a>
-                                </li>
-                            </ul>
-                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+      <section class="tj-hero-section" style="direction: rtl; text-align: right; position: relative;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <div class="hero-left-content" data-sal="slide-up" data-sal-duration="1000"
+                        data-sal-delay="100">
+                        <div class="tj-sec-heading">
+                            <span class="hero-sub-title"> Creative Thinking</span>
+                            <h1 class="hero-title">
+                                Strategic Thinking, Tangible <span class="title"> Results for Business!</span>
+                            </h1>
+                            <div class="desc">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+                            </div>
+
+                            <div class="hero-button d-flex">
+                                <a class="tj-primary-btn" href="contact.html"> Explore Now</a>
+                            </div>
                         </div>
-                        <div class="modal-body py-4">
-                            <form class="needs-validation" autocomplete="off" novalidate action="{{ route('Registeration') }}" method="POST" style="direction: rtl; text-align: right;">
-                                @csrf
-                                <div class="mb-3">
-                                    <label class="form-label" for="su-name">الاسم كامل</label>
-                                    <input class="form-control" type="text" id="userName" name="userName" placeholder="الاسم بالكامل" required>
-                                    <div class="invalid-feedback">Please fill in your name.</div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="su-email">البريد الالكتروني</label>
-                                    <input class="form-control" type="email" id="email" name="email" placeholder="johndoe@example.com" required>
-                                    <div class="invalid-feedback">Please provide a valid email address.</div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="su-password">كلمه المرور</label>
-                                    <div class="password-toggle">
-                                        <input class="form-control" type="password" id="password" name="password" required>
-                                        <label class="password-toggle-btn" aria-label="Show/hide password">
-                                            <input class="password-toggle-check" type="checkbox">
-                                            <span class="password-toggle-indicator"></span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="su-password-confirm">الهاتف</label>
-                                    <input class="form-control" type="text" id="phone" name="phone" required>
-                                </div>
-                                <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign up</button>
-                            </form>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="hero-image-group">
+                        <div class="hero-image-group">
+                            <div class="group-image1 shake-y">
+                              <img class="image" src="{{ asset('storage/' . ($settings->home1_img ?? 'assets/images/hero/hero-1.png')) }}" alt="Image" />
+                          </div>
+                          <div class="group-image2 pulse">
+                              <img data-sal="slide-right" data-sal-duration="1000" data-sal-delay="100"
+                                  src="{{ asset('storage/' . ($settings->home2_img ?? 'assets/images/hero/hero-2.png')) }}" alt="Image" />
+                          </div>
+                        <img class="group-image3" src="assets/images/shape/shape-5.svg" alt="Image" />
+                        <img class="group-image4 pulse" src="assets/images/shape/shape-6.svg" alt="Image" />
+                        <img class="group-image5 pulse" src="assets/images/shape/shape-7.svg" alt="Image" />
+                        <img class="group-image6 pulse" src="assets/images/shape/shape-8.svg" alt="Image" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-shape">
+            <img src="assets/images/shape/shape-1.svg" alt="Shape" />
+        </div>
+        <div class="hero-shape1">
+            <img src="assets/images/shape/shape-2.svg" alt="Shape" />
+        </div>
+        <div class="hero-shape2 pulse">
+            <img src="assets/images/shape/shape-3.svg" alt="Shape" />
+        </div>
+        <div class="hero-shape3 shake-y">
+            <img src="assets/images/shape/shape-4.svg" alt="Shape" />
+        </div>
+        <div class="hero-scroll">
+            <img src="assets/images/icon/scroll-bg.svg" alt="Bg" />
+            <div class="scroll-icon jump">
+                <a href="#scroll-bottom"><img src="assets/images/icon/scroll.svg" alt="Icon" /></a>
+            </div>
+        </div>
+    </section>
+    <section id="scroll-bottom" class="tj-about-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-6 col-lg-12">
+                    <div class="about-image-group">
+                        <div class="about-circle-box">
+                            <img class="circle-one" src="assets/images/shape/ab-shape.svg" alt="Shape" />
+                            <div class="ab-circle">
+                                <svg class="shape-1" viewBox="0 0 100 100" width="100" height="100">
+                                    <defs>
+                                        <path id="circle" d="
+                                              M 50, 50
+                                              m -37, 0
+                                              a 37,37 0 1,1 74,0
+                                              a 37,37 0 1,1 -74,0" />
+                                    </defs>
+                                    <text font-size="15">
+                                        <textPath xlink:href="#circle" class="shape-1">
+                                            Creative Minds_, Creative Minds_
+                                        </textPath>
+                                    </text>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="about-image1 pulse">
+                            <img src="{{ asset('img/about_us1.svg') }}" alt="Image" />
+                        </div>
+
+                        <div class="about-image3 pulse">
+                            <img src="{{ asset('img/about-us3.svg') }}" alt="Image" />
+                        </div>
+                        <div class="about-image4 pulse">
+                            <img src="{{ asset('img/about-us3.svg') }}" alt="Image" />
+                        </div>
+                        <div class="about-shape1 shake-y">
+                            <img src="assets/images/shape/shape-9.svg" alt="Shape" />
+                        </div>
+                        <div class="about-shape2 pulse">
+                            <img src="assets/images/shape/shape-10.svg" alt="Shape" />
+                        </div>
+                        <div class="about-shape3 pulse">
+                            <img src="assets/images/shape/shape-13.svg" alt="Shape" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-12">
+                    <div class="about-content-one" data-sal="slide-left" data-sal-duration="1000"
+                        data-sal-delay="600">
+                        <div class="tj-sec-heading">
+                            <span class="sub-title"> About Us</span>
+                            <h2 class="sec-title">Making Your Business More Unique</h2>
+                            <div class="desc">
+                                <p>
+                                    There are many variations of passages of Lorem Ipsum available, but the
+                                    majority have suffered alteration in some form, by injected humour, or
+                                    randomised words which don't look even slightly believable.
+                                </p>
+                                <p>
+                                    There are many variations of passages of Lorem Ipsum available, but the
+                                    majority have suffered alteration in some form,
+                                </p>
+                                <p>
+                                    by injected humour, or randomised words which don't look even slightly
+                                    believable.
+                                </p>
+                            </div>
+                            <div class="about-button d-flex">
+                                <a href="{{ route('whoAreWe') }}" class="tj-secondary-btn btn-border"><span>Read
+                                        More</span></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-8 offset-lg-1 col-sm-10">
-              <!-- Top auctions carousel-->
-              <div class="tns-carousel tns-nav-enabled mb-4 mx-n2">
-                <div class="tns-carousel-inner" data-carousel-options="{&quot;controls&quot;: false}">
-                  <!-- Carousel item-->
-                  @foreach ($HomeAds as $item)
-<div class="px-2 img-container">
-  <img 
-    class="rounded-3 responsive-img" 
-    src="{{ asset('public/storage/' . ($item->image ?? 'default_icon.jpg')) }}" 
-    alt="Product"
-  >
-  <div class="position-relative">
-    <div class="position-absolute start-0 bottom-0 w-100 p-md-5 p-sm-4 p-3">
-      <div class="pt-sm-0 pt-2 px-sm-4 px-2 mt-5 bg-white rounded shadow">
-        <div class="row gx-5">
-          <div class="col-sm-4 col-12 position-relative py-sm-3 py-2>
-            <h6 class="mb-1 fs-sm fw-normal text-muted">Description:</h6>
-            <span class="h6 mb-0">{{$item->description}}</span>
-          </div>
-          <div class="col-sm-4 col-12 position-relative py-sm-3 py-2">
-            <h6 class="mb-1 fs-sm fw-normal text-muted">Ends in:</h6>
-            <span class="h6 mb-0">{{$item->end_date}}</span>
-          </div>
-          <div class="col-sm-4 col-12 position-relative py-sm-3 py-2">
-            <div class="d-flex align-items-center h-100">
-              <a class="btn btn-sm btn-dark w-100" href="{{$item->button_url}}">Start</a>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-                  @endforeach
-
-
-                </div>
-              </div>
-              <div class="d-lg-none d-flex flex-sm-row flex-column justify-content-lg-start justify-content-center"><a class="btn btn-lg btn-accent me-sm-3 mb-2" href="{{ route('services') }}">تصفح خدماتنا</a>
-            </div>
-          </div>
+        <div class="about-section-shape pulse">
+            <img src="assets/images/shape/shape-37.svg" alt="Shape" />
         </div>
-      </section>
+    </section>
             <!-- Product carousel (Trending in)-->
       <!-- Product carousel (Recent Drops)-->
-<section class="container mb-2 py-lg-5 py-4">
-  <div class="d-flex flex-row flex-row align-items-center justify-content-between mb-3">
-    <!-- Button aligned to the right on all screen sizes -->
-    <a class="btn btn-outline-accent mt-2 mt-0 order-1" href="{{ route('services') }}">
-      اكتشف المزيد<i class="ci-arrow-right ms-2"></i>
-    </a>
-
-    <!-- Title aligned to the left on all screen sizes -->
-    <h2 class="h3 mb-0 text-center text-start order-2">ابرز الأقسام</h2>
-  </div>
-
-  <!-- Product carousel-->
-  <div class="tns-carousel tns-controls-static tns-controls-outside mx-xl-n4 mx-n2 px-xl-4 px-0">
-    <div class="tns-carousel-inner row gx-xl-0 gx-3 mx-0" data-carousel-options="{&quot;items&quot;: 2, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1,&quot;controls&quot;: false, &quot;gutter&quot;: 0},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;1100&quot;:{&quot;items&quot;:4}, &quot;1278&quot;:{&quot;controls&quot;: true, &quot;nav&quot;: false, &quot;gutter&quot;: 30}}}">
-      @foreach ($categories as $category)
-        <div class="col py-3">
-          <article class="card h-100 border-0 shadow" style="width: 100%;">
-            <div class="card-img-top position-relative overflow-hidden">
-              <a href="{{ route('categories', $category->category_id) }}" class="d-block">
-                <img src="{{ asset('public/storage/' . $category->category_img) }}" alt="Category Image">
-              </a>
+      <section style="background-color: #f8f9fa;" class="py-5">
+        <div class="container text-center py-5 animate__animated animate__fadeInUp">
+            <h4 class="mt-4 mb-5 fw-bold text-end display-5"><strong>أبرز الأقسام</strong></h4>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="tj-sec-heading text-center" data-sal="slide-up" data-sal-duration="1000"
+                        data-sal-delay="600">
+                        <span class="sub-title"> اقسامنا</span>
+                        <h2 class="sec-title">نحن نقدم العديد من الاقسام</h2>
+                        <div class="desc">
+                            <p>
+                                It has survived not only five centuries, but also the leap into electronic
+                                typesetting, remaining essentially unchanged. It was popularised in the 1960s
+                                with the release
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="card-body" style="text-align: right;">
-              <h3 class="product-title mb-2 fs-base">
-                <a class="d-block text-truncate" href="{{ route('categories', $category->category_id) }}">{{ $category->category_name }}</a>
-              </h3>
-              <span class="fs-sm text-muted">Description:</span>
-              <p class="fs-sm text-muted">{{ $category->category_description }}</p>
+            <div class="row">
+              @foreach ($categories as $category)
+                <div class="col-lg-3 col-md-6 col-sm-6" data-sal="slide-up" data-sal-duration="1000"
+                    data-sal-delay="100">
+                    <div class="tj-service-item text-center">
+                        <div class="service-inner">
+                            <div class="service-icon">
+                                <img class="image-1" src="{{ asset('storage/' . ($category->category_img )) }}" alt="Shape" />
+                            </div>
+                            <div class="service-content">
+                                <h4 class="title-link">
+                                  <a class="d-block text-truncate" href="{{ route('categories', $category->category_id) }}">{{ $category->category_name }}</a>
+                                </h4>
+                                <p>
+                                  {{ $category->category_description }}
+                                </p>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
-            <div class="card-footer mt-n1 py-0 border-0"></div>
-          </article>
         </div>
-      @endforeach
-    </div>
-  </div>
-</section>
+    </section>
 
-      <section class="mb-4 py-5 bg-secondary">
+    <section class="mb-4 py-5 bg-secondary">
     <div class="container py-lg-4">
         <div class="d-flex flex-wrap mb-3" style="direction: rtl; text-align: right;">
             <h2 class="h3 mb-0" style="direction: rtl; text-align: right;">ابرز الخدمات</h2>
@@ -388,6 +456,8 @@
         </div>
     </div>
 </section>
+@include('Includes.contact')
+
 
     <div class="modal fade" id="signinnn-modal" tabindex="-1" role="dialog"  style="direction: rtl; text-align: right;">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -513,10 +583,7 @@
 
     </main>
     <!-- Bg shape-->
-    <div class="pt-4 bg-secondary">
 
-
-    </div>
     <!-- Footer-->
     @include('Includes.footer')
 
@@ -587,6 +654,22 @@ document.addEventListener('DOMContentLoaded', function () {
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+
+
+
+      <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/js/meanmenu.js') }}"></script>
+<script src="{{ asset('assets/js/swiper.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.appear.min.js') }}"></script>
+<script src="{{ asset('assets/js/sal.js') }}"></script>
+<script src="{{ asset('assets/js/odometer.min.js') }}"></script>
+<script src="{{ asset('assets/js/imagesloaded-pkgd.js') }}"></script>
+<script src="{{ asset('assets/js/magnific-popup.js') }}"></script>
+<script src="{{ asset('assets/js/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('assets/js/validate.min.js') }}"></script>
+
+<script src="{{ asset('assets/js/main.js') }}"></script>
 
   </body>
 

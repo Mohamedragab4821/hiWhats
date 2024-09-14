@@ -7,85 +7,96 @@
       };
 </script>
 <style>
-    /* Header Area */
-    .tj-header-area {
-        background-color: #ffffff; /* White background for the header */
-        color: #000000; /* Default text color */
-        padding: 10px 0; /* Add padding for spacing */
-        border-bottom: 1px solid #e0e0e0; /* Optional: Light border to distinguish the header */
-    }
-    .tj-header-area.header-sticky.sticky {
-        background-color: #ffffff; /* Ensure sticky header has white background */
-        color: #000000; /* Default text color */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for sticky effect */
-        position: fixed; /* Fix position at the top */
-        width: 100%; /* Full width */
-        top: 0; /* Stick to the top */
-        z-index: 9999; /* Ensure it stays above other content */
-    }
-    /* Main Menu Links */
-    #mobile-menu a {
-        color: #000000; /* Default text color */
-        text-decoration: none; /* Remove underline from links */
-        transition: color 0.3s, background-color 0.3s;
-    }
-
-    #mobile-menu a:hover,
-    #mobile-menu a:active {
-        color: #3078CD; /* White text color on hover and active states */
-        background-color: #3078CD; /* Blue background on hover and active states */
-        border-radius: 4px; /* Rounded corners for hover effect */
-        padding: 10px; /* Add padding for a better look */
-    }
-
-    /* Dropdown Menu */
-    .has-dropdown:hover .sub-menu {
-        display: block; /* Show sub-menu on hover */
-        background-color: #ffffff; /* White background for sub-menu */
-        border: 1px solid #e0e0e0; /* Optional: Light border for sub-menu */
-    }
-
-    .sub-menu li a {
-        color: #000000; /* Default text color */
-        padding: 10px; /* Add padding to sub-menu items */
-        transition: background-color 0.3s, color 0.3s;
-    }
-
-    .sub-menu li a:hover,
-    .sub-menu li a:active {
-        background-color: #3078CD; /* Blue background on hover and active states */
-        color: #3078CD; /* White text color on hover and active states */
-    }
-
-    /* Logo Area */
-    .logo img {
-        height: 14vh; /* Ensure logo scales properly */
-        transition: transform 0.3s;
-    }
-
-    .logo img:hover {
-        transform: scale(1.05); /* Slight zoom effect on hover */
-    }
-
-    /* Header Button */
-    .header-button a {
-        background-color: #3078CD; /* Button background color */
-        color: #ffffff; /* Button text color */
-        border: 1px solid #3078CD; /* Border color */
-        padding: 10px 20px; /* Add padding for the button */
-        border-radius: 4px; /* Rounded corners for the button */
-        text-decoration: none; /* Remove underline from button text */
-        transition: background-color 0.3s, color 0.3s;
-    }
-
-    .header-button a:hover,
-    .header-button a:active {
-        background-color: #ffffff; /* White background on hover and active states */
-        color: #3078CD; /* Blue text color on hover and active states */
-        border: 1px solid #3078CD; /* Border color on hover and active states */
-    }
+    .tj-menu-area li:last-child {
+    margin-right: 55px !important;
+}
+.tj-header-area.sticky{
+    background: #001e64;
+}
 </style>
+<div class="preloader" id="preloader">
+    <div class="preloader-inner">
+        <div class="lines">
+            <span class="line line-1"></span>
+            <span class="line line-2"></span>
+            <span class="line line-3"></span>
+            <span class="line line-4"></span>
+            <span class="line line-5"></span>
+            <span class="line line-6"></span>
+            <span class="line line-7"></span>
+            <span class="line line-8"></span>
+            <span class="line line-9"></span>
+        </div>
+        <div class="text">Loading</div>
+    </div>
+</div>
+<!-- end: Preloader -->
 
+<!-- start: Mobile Menu -->
+<div id="tj-overlay-bg2" class="tj-overlay-canvas d-lg-none"></div>
+<div class="tj-offcanvas-area d-lg-none">
+    <div class="tj-offcanvas-header d-flex align-items-center justify-content-between">
+        <div class="logo-area text-center">
+            <a href="index.html"><img  src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="200" height="70" alt="فكرة">
+            </a>
+        </div>
+        <div class="offcanvas-icon">
+            <a id="canva_close" href="#">
+                <i class="fa-light fa-xmark"></i>
+            </a>
+        </div>
+    </div>
+    <div class="tj-search-box">
+        <form action="#">
+            <input type="text" name="search" id="search" placeholder="Search" />
+            <a href="#"> <i class="fal fa-search"></i></a>
+        </form>
+    </div>
+    <nav class="right_menu_togle mobile-navbar-menu d-lg-none" id="mobile-navbar-menu" ></nav>
+    <div class="mobile-contact"  style="direction: rtl; text-align: right;">
+        <div class="contact-menu" style="direction: rtl; text-align: right;">
+            <ul class="dot-style">
+                <li>
+                    <p class="d-block">Mail us 24/7</p>
+                    <li><span class="text-muted me-1"></span><a class="nav-link-style" href="mailto:{{$settings->email}}">{{$settings->email}}</a></li>
+                </li>
+                <li>
+                    <span><i class="fa-sharp fa-solid fa-location-dot"></i></span>
+                    <a href="#">225 Marion Street, Columbia</a>
+                </li>
+                <li>
+                    <ul class="list-unstyled fs-sm mb-0">
+                        <li><span class="text-muted me-1">واتساب:</span><a class="nav-link-style" href="https://api.whatsapp.com/send?phone={{$settings->whatsapp}}&text=مرحبا">{{$settings->whatsapp}}</a></li>
+                        <li><span class="text-muted me-1">مكالمات:</span><a class="nav-link-style" href="tel:{{$settings->phone}}">{{$settings->phone}}</a></li>
+      
+                      </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="mobile-share">
+        <ul class="dot-style">
+            <li>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            </li>
+        </ul>
+    </div>
+    <div class="header-button">
+        <a class="btn tj-black-btn" href="contact.html">Contact Us</a>
+    </div>
+    
+</div>
 <header class="tj-header-area header-sticky" style="direction: rtl; text-align: right;">
     <div class="container">
         <div class="row align-items-center">
@@ -94,13 +105,13 @@
                     <div class="logo-area">
                         <div class="logo">
                             <a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="{{route('home')}}">
-                                <img  src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="142" height="10" alt="فكرة">
+                                <img  src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="200" height="70" alt="فكرة">
                             </a>                        
                         </div>
                     </div>
-                    <div class="tj-menu-area d-lg-block d-none" id="main-menu" style="width: 70%">
+                    <div class="tj-menu-area d-lg-block d-none" id="main-menu" >
                         <nav id="mobile-menu">
-                            <ul>
+                            <ul >
                                 <li>
                                     <a href="{{route('home')}}">الصفحه الرئيسه</a</a>
                                 </li>
@@ -151,10 +162,17 @@
                         
                     </div>
                     <div class="header-button d-none d-lg-block">
-                        <a class="tj-secondary-btn btn-border" style="    background: white;
+                        <a class="tj-secondary-btn btn-border" style="    background: #5b43f9;
     border: none;"  href="#signin-modal" data-bs-toggle="modal"><span>تسجيل دخول / تسجيل</span></a>
                     </div>
-                    
+                    <div class="tj-canva-icon d-lg-none">
+                        <a class="canva_expander nav-menu-link menu-button" href="#">
+                            <span class="dot1"></span>
+                            <span class="dot2"></span>
+                            <span class="dot3"></span>
+                            <span class="dot4"></span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
