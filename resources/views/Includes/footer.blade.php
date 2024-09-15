@@ -22,6 +22,7 @@
         width: 100%;
         background-color: #001e64 !important;
         overflow: hidden;
+        text-align: right; /* Ensure text aligns to the right */
       }
 
       .footer-menu-area {
@@ -54,6 +55,7 @@
       .footer-widget .footer-share ul {
         display: flex;
         gap: 10px;
+        direction: ltr; /* Ensure icons align from left to right */
       }
 
       .footer-widget .footer-share ul li a {
@@ -67,7 +69,7 @@
       }
 
       .footer-widget .widget_contact_menu ul li span {
-        margin-right: 10px;
+        margin-left: 10px; /* Adjust for RTL */
       }
 
       .footer-widget .widget_contact_menu ul li a {
@@ -80,6 +82,7 @@
         background-color: #0a1a4a;
         padding: 20px 0;
         color: #fff;
+        text-align: right; /* Ensure text aligns to the right */
       }
 
       .copyright-area p {
@@ -91,6 +94,7 @@
         gap: 15px;
         list-style: none;
         padding: 0;
+        direction: ltr; /* Ensure links align from left to right */
       }
 
       .copyright-menu ul li a {
@@ -144,14 +148,14 @@
       .icon-container {
         position: absolute;
         top: 10px; /* Adjust as needed */
-        left: 10px; /* Adjust as needed */
+        right: 10px; /* Adjust for RTL */
         z-index: 1001; /* Ensure icons are above the wave effect */
       }
 
       .icon-container a {
         color: rgb(255, 255, 255);
         font-size: 20px; /* Adjust size as needed */
-        margin-right: 10px; /* Adjust spacing as needed */
+        margin-left: 10px; /* Adjust spacing for RTL */
       }
 
       .btn-accent {
@@ -177,7 +181,7 @@
 
       .subscription-form i {
         position: absolute;
-        left: 10px;
+        right: 10px; /* Adjust for RTL */
         top: 50%;
         transform: translateY(-50%);
       }
@@ -224,84 +228,107 @@
         animation-delay: -5s;
         bottom: 20px;
       }
+      .footer-widget.footer1-col-1 {
+    display: flex;
+justify-content: space-between;
+margin-left: 35%}
+
+.footer-logo {
+    margin-bottom: 20px; /* Space between the logo and the social icons */
+}
+
+.footer-share ul {
+    display: flex;
+    gap: 15px; /* Space between social icons */
+}
+
+.footer-share ul li a {
+    color: #fff; /* Ensure icon color matches your design */
+    font-size: 20px; /* Adjust size as needed */
+    display: flex;
+    align-items: center; /* Center the icon vertically */
+}
+.footer_title {
+    color: #f1c40f; /* Example color: a warm, friendly yellow */
+    font-size: 18px; /* Adjust font size if needed */
+    margin-bottom: 15px; /* Space below the title */
+    font-weight: bold; /* Make the title stand out */
+}
 
     </style>
 </head>
 <body>
-    <footer class="tj-footer-area"> <!-- Changed to tj-footer-area -->
+    <footer class="footer">
         <div class="footer-menu-area">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3">
-                        <div class="footer-widget footer1-col-1">
-                            <div class="footer-content-info">
-                                <div class="footer-logo">
-                                    <a href="index.html">
-                                        <img src="assets/images/logo/footer-logo.png" alt="Logo" />
-                                    </a>
-                                </div>
-                                <p>
-                                    The point of using Lorem Ipsum is that it has a more-or-less normal distribution
-                                    of letters, as opposed to using 'Content here.
-                                </p>
-                                <div class="footer-share">
-                                    <ul class="dot-style">
-                                        <li>
-                                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
+                      <div class="footer-widget footer1-col-1 d-flex">
+                        <div class="footer-content-info">
+                            <div class="footer-logo">
+                                <a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="{{ route('home') }}">
+                                    <img src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="200" height="70" alt="فكرة">
+                                </a>
+                            </div>
+                            <div class="footer-share">
+                                <ul class="dot-style">
+                                    <li>
+                                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-6 col-sm-6">
-                        <div class="footer-widget footer1-col-2">
-                            <h4 class="footer_title">Departments</h4>
-                            <div class="widget_nav_menu">
-                                <div class="footer-menu">
-                                    <ul>
-                                        <li><a href="#">Family Medicine</a></li>
-                                        <li><a href="#">Radiology</a></li>
-                                        <li><a href="#">Women’s Health</a></li>
-                                        <li><a href="#">Optician</a></li>
-                                        <li><a href="#">Pediatrics</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-6 col-sm-6">
-                        <div class="footer-widget footer1-col-3">
-                            <h4 class="footer_title">Information</h4>
-                            <div class="widget_nav_menu">
-                                <div class="footer-menu">
-                                    <ul>
-                                        <li><a href="#">About us</a></li>
-                                        <li><a href="#">Delivery Information</a></li>
-                                        <li><a href="#">Privacy Policy</a></li>
-                                        <li><a href="#">Terms & Conditions</a></li>
-                                        <li><a href="#">Site Map</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                    
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-6">
+                      <div class="footer-widget footer1-col-2">
+                          <h4 class="footer_title">الأقسام</h4>
+                          <div class="widget_nav_menu">
+                              <div class="footer-menu">
+                                  <ul>
+                                      @foreach ($categories as $category)
+                                          <li><a href="{{ route('categories', ['id' => $category->category_id]) }}">{{ $category->category_name }}</a></li>
+                                      @endforeach
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="footer-widget footer1-col-3">
+                        <h4 class="footer_title">معلومات</h4>
+                        <div class="widget_nav_menu">
+                            <div class="footer-menu">
+                                <ul>
+                                    <li><a href="{{ route('services') }}">كل الخدمات</a></li>
+                                    <li><a href="{{ route('contacts.index') }}">طلب خدمة</a></li>
+                                    <li><a href="{{ route('whoAreWe') }}">من نحن</a></li>
+                                    <li><a href="{{ route('ourVision') }}">رؤيتنا</a></li>
+                                    @foreach($pages as $page)
+                                        @if($page->add_to == 'header' && $page->status == 'published')
+                                            <li><a href="{{ route('page.show', ['slug' => $page->slug]) }}">{{ $page->title }}</a></li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                    <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="footer-widget footer1-col-4">
-                            <h4 class="footer_title">Contact Info</h4>
+                            <h4 class="footer_title">معلومات الاتصال</h4>
                             <div class="widget_contact_menu">
                                 <ul>
                                     <li>
-                                        <span><i class="fas fa-map-marker-alt"></i></span>76 Blue Winter Center, NYC
+                                        <span><i class="fas fa-map-marker-alt"></i></span>76 بلو وينتر سنتر، نيويورك
                                     </li>
                                     <li>
                                         <span><i class="fas fa-envelope"></i></span><a href="mailto:info@gmail.com">info@gmail.com</a>
@@ -316,58 +343,30 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-6 col-sm-6">
+                    {{-- <div class="col-lg-2 col-md-6 col-sm-6">
                         <div class="footer-widget footer1-col-5">
-                            <h4 class="footer_title">Subscribe</h4>
+                            <h4 class="footer_title">اشترك</h4>
                             <div class="subscription-form">
                                 <form action="#">
-                                    <input type="text" class="form-control" placeholder="Your Email">
-                                    <button type="submit" class="btn-accent">Subscribe</button>
+                                    <input type="text" class="form-control" placeholder="بريدك الإلكتروني">
+                                    <button type="submit" class="btn-accent">اشترك</button>
                                 </form>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{-- <div class="footer-section-shape">
-            <div class="footer-bg-shape">
-                <img src="assets/images/shape/footer-bg.png" alt="Footer Shape">
-            </div>
-            <div class="footer-bg-shape1">
-                <img src="assets/images/shape/footer-bg1.png" alt="Footer Shape">
-            </div>
-            <div class="footer-bg-shape2">
-                <img src="assets/images/shape/footer-bg2.png" alt="Footer Shape">
-            </div>
-            <div class="footer-bg-shape3">
-                <img src="assets/images/shape/footer-bg3.png" alt="Footer Shape">
-            </div>
-        </div> --}}
-        <div class="copyright-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-sm-12">
-                        <p>&copy; 2022, All Rights Reserved</p>
-                    </div>
-                    <div class="col-md-6 col-sm-12">
-                        <div class="copyright-menu">
-                            <ul>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Terms of Use</a></li>
-                                <li><a href="#">Site Map</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
 
-        <!-- Adding the wave animation -->
-        <div class="air air1"></div>
-        <div class="air air2"></div>
-        <div class="air air3"></div>
-        <div class="air air4"></div>
+        <div class="copyright-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <p style="float: left">&copy; 2024 جميع الحقوق محفوظة</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
 </body>
 </html>

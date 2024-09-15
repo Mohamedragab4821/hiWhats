@@ -85,6 +85,31 @@
                                 </div>
                             </div>
                         </div>
+
+
+                        <div class="bg-secondary rounded-3 p-4 mb-4 text-center text-sm-start">
+                            <div class="d-flex flex-sm-row flex-column align-items-sm-start align-items-center">
+                                <img class="rounded mb-sm-0 mb-3" src="{{ asset('storage/' . ($settings->home1_img ?? 'default_logo.jpg')) }}" width="90" alt="الشعار">
+                                <div class="ms-n2 ps-sm-4">
+                                    <label class="form-label" for="home1_img">home 1</label>
+                                    <input class="form-control" type="file" id="home1_img" name="home1_img">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-secondary rounded-3 p-4 mb-4 text-center text-sm-start">
+                            <div class="d-flex flex-sm-row flex-column align-items-sm-start align-items-center">
+                                <img class="rounded mb-sm-0 mb-3" src="{{ asset('storage/' . ($settings->home2_img ?? 'default_icon.jpg')) }}" width="90" alt="الرمز">
+                                <div class="ms-n2 ps-sm-4">
+                                    <label class="form-label" for="home2_img">home 2</label>
+                                    <input class="form-control" type="file" id="home2_img" name="home2_img">
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
                         <div class="row gy-3 mb-4 pb-md-3 mb-2">
                             <div class="col-sm-6">
                                 <label class="form-label" for="website_name">اسم الموقع</label>

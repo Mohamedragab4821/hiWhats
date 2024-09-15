@@ -13,6 +13,9 @@
 .tj-header-area.sticky{
     background: #001e64;
 }
+.sub-menu{
+    margin-left: 10%
+}
 </style>
 <div class="preloader" id="preloader">
     <div class="preloader-inner">
@@ -119,7 +122,7 @@
                                     <a href="{{route('services')}}">كل الخدمات</a>
                                 </li>
                                 <li class="has-dropdown">
-                                    <a href="service.html">الاقسام</a>
+                                    <a href="">الاقسام</a>
                                     <ul class="sub-menu">
                                         @foreach($categories as $category)
                                         <li>
@@ -141,19 +144,20 @@
                                 @if(Auth::user())
                                 
                                 <li class="has-dropdown" style="margin-right: 55px;">
-                                    <a href="service.html" >حسابي</a>
+                                    <a href="" >حسابي</a>
                                     <ul class="sub-menu">
-                                        <li><a href="{{route('profileSetting')}}">Profile Settings</a></li>
-                                        <li><a href="{{route('favorites.index')}}">Favorites</a></li>
-                                        @if(Auth::user()->access=='admin')
-                                        <li><a href="{{route('messages.index')}}">Messages</a></li>
-                                        <li><a href="{{route('settings.index')}}">Website Settings</a></li>
-                                        <li><a href="{{route('ads.index')}}">Ads Settings</a></li>
-                                        <li><a href="{{route('pages.index')}}">Pages Settings</a></li>
-                                        <li><a href="{{route('productMangement')}}">Product Mangement</a></li>
-                                        <li><a href="{{route('categoryMangement')}}">Category Mangement</a></li>
+                                        <li><a href="{{ route('profileSetting') }}">إعدادات الحساب</a></li>
+                                        <li><a href="{{ route('favorites.index') }}">المفضلات</a></li>
+                                        @if(Auth::user()->access == 'admin')
+                                            <li><a href="{{ route('messages.index') }}">الرسائل</a></li>
+                                            <li><a href="{{ route('settings.index') }}">إعدادات الموقع</a></li>
+                                            <li><a href="{{ route('ads.index') }}">إعدادات الإعلانات</a></li>
+                                            <li><a href="{{ route('pages.index') }}">إعدادات الصفحات</a></li>
+                                            <li><a href="{{ route('productMangement') }}">إدارة المنتجات</a></li>
+                                            <li><a href="{{ route('categoryMangement') }}">إدارة الفئات</a></li>
                                         @endif
-                                        <li><a href="{{route('logout')}}">Logout</a></li>
+                                        <li><a href="{{ route('logout') }}">تسجيل الخروج</a></li>
+                                        
                                     </ul>
                                 </li>
                                 @endif
@@ -161,10 +165,10 @@
                         </nav>
                         
                     </div>
-                    <div class="header-button d-none d-lg-block">
-                        <a class="tj-secondary-btn btn-border" style="    background: #5b43f9;
-    border: none;"  href="#signin-modal" data-bs-toggle="modal"><span>تسجيل دخول / تسجيل</span></a>
-                    </div>
+                        <div class="header-button d-none d-lg-block">
+                            <a class="tj-secondary-btn btn-border" style="    background: #5b43f9;
+                            border: none;"  href="#signin-modal" data-bs-toggle="modal"><span>تسجيل دخول / تسجيل</span></a>
+                        </div>                    
                     <div class="tj-canva-icon d-lg-none">
                         <a class="canva_expander nav-menu-link menu-button" href="#">
                             <span class="dot1"></span>

@@ -27,7 +27,23 @@
     <link rel="stylesheet" href="{{ asset('assets/css/meanmenu.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+    .favorite-icon {
+        position: absolute;
+        top: -55px; /* Adjust based on desired position */
+        right: 10px; /* Adjust based on desired position */
+        background: transparent;
+        border: none;
+        color: #e74c3c; /* Heart icon color */
+        font-size: 18px; /* Adjust size if needed */
+        cursor: pointer;
+        z-index: 10;
+    }
 
+    .favorite-icon:hover {
+        color: #c0392b; /* Darken color on hover */
+    }
+</style>
 </head>
 
 <body>
@@ -230,7 +246,7 @@
 
 
                 <div class="service-button text-center">
-                    <a href="service-details.html" class="tj-secondary-btn btn-border"><span>View Details</span></a>
+                    <a href="service-details.html" class="tj-secondary-btn btn-border"><span>أظهر المزيد</span></a>
                 </div>
 
 
@@ -274,8 +290,12 @@
             <div class="row" dir="rtl">
                 @foreach ($products as $product)
                 <div class="col-lg-3 col-md-6 col-sm-6" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="100">
-                    <div class="tj-service-item text-center">
+                    <div class="tj-service-item text-center" style=""> <!-- Add relative positioning -->
+                        
                         <div class="service-inner">
+                            <button class="favorite-icon" onclick="addToFavorites({{ $product->product_id }})" title="Add to Favorites">
+                                <i class="fa fa-heart"></i>
+                            </button>
                             <div class="service-icon">
                                 <img class="image-1" src="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}">
                             </div>
@@ -287,27 +307,25 @@
                                 data-duration="{{ $product->Duration_of_righteousness }}"
                                 data-bs-target="#signinnn-modal">
                                 <div class="service-content">
-                                <h4 class="title-link">
-                                    {{ $product->product_name }}
-                                </h4>
-                                <p>
-                                    {{ $product->product_description }}
-                                </p>
-                                <p>
-                                  Price : {{ $product->product_salary }}
-                                </p>
-                            </div>
-                        </a>
+                                    <h4 class="title-link">{{ $product->product_name }}</h4>
+                                    <p>{{ $product->product_description }}</p>
+                                    <p>Price : {{ $product->product_salary }}</p>
+                                </div>
+                            </a>
+            
+                            <!-- Heart icon button for adding to favorites -->
+                            
                         </div>
                     </div>
                 </div>
                 @endforeach
             </div>
-
+            
+            
 
 
                 <div class="service-button text-center">
-                    <a href="{{ route('services') }}" class="tj-secondary-btn btn-border"><span>View Details</span></a>
+                    <a href="{{ route('services') }}" class="tj-secondary-btn btn-border"><span>أظهر المزيد</span></a>
                 </div>
 
                 <div class="modal fade" id="signinnn-modal" tabindex="-1" role="dialog" style="direction: rtl; text-align: right;">
@@ -329,8 +347,8 @@
                                             <div class="fs-sm"><span class="text-muted me-2">Duration:</span><span id="modal-duration"></span></div>
                                             <div class="fs-lg text-accent pt-2">Price: <span id="modal-product-salary"></span></div>
                                             <div class="mt-3">
-                                                <a href="{{ route('contacts.index') }}" class="btn btn-outline-primary">طلب الخدمة عبر الايميل</a>
-                                                <a href="https://api.whatsapp.com/send?phone={{$settings->whatsapp}}&text=مرحبا" class="btn btn-outline-success">طلب الخدمة عبر الواتساب</a>
+                                                <a href="{{ route('contacts.index') }}" class="btn btn-outline-primary" style="color: white">طلب الخدمة عبر الايميل</a>
+                                                <a href="https://api.whatsapp.com/send?phone={{$settings->whatsapp}}&text=مرحبا" class="btn btn-outline-success" style="color: white; background-color: #28a745">طلب الخدمة عبر الواتساب</a>
                                             </div>
                                         </div>
                                     </div>
@@ -449,11 +467,12 @@
                     }
                     .btn-close {
                     background-color: transparent;
-                    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path stroke="white" fill="none" d="M2 2l12 12M14 2L2 14" /></svg>');
                     border: none;
                     opacity: 1;
                             }
-
+                    .modal .btn-close {
+                        color: white !important;
+                    }
                     .btn-close:hover {
                         opacity: 0.7;
                     }
@@ -749,35 +768,36 @@
         </script>
     <script>
         function addToFavorites(productId) {
-      console.log('Adding product to favorites with ID:', productId);
+    console.log('Adding product to favorites with ID:', productId);
 
-      $.ajax({
-          url: '{{ route('favorites.store') }}',
-          type: 'POST',
-          data: {
-              _token: '{{ csrf_token() }}',
-              product_id: productId
-          },
-          success: function(response) {
-              console.log('Success:', response);
-              Swal.fire({
-                  icon: 'success',
-                  title: 'Success',
-                  text: response.message,
-                  confirmButtonText: 'OK'
-              });
-          },
-          error: function(xhr) {
-              console.error('AJAX Error:', xhr);
-              Swal.fire({
-                  icon: 'error',
-                  title: 'Error',
-                  text: 'Error adding to favorites: ' + xhr.responseText,
-                  confirmButtonText: 'OK'
-              });
-          }
-      });
-  }
+    $.ajax({
+        url: '{{ route('favorites.store') }}',
+        type: 'POST',
+        data: {
+            _token: '{{ csrf_token() }}',
+            product_id: productId // Ensure correct product_id is passed here
+        },
+        success: function(response) {
+            console.log('Success:', response);
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: response.message,
+                confirmButtonText: 'OK'
+            });
+        },
+        error: function(xhr) {
+            console.error('AJAX Error:', xhr);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Error adding to favorites: ' + xhr.responseText,
+                confirmButtonText: 'OK'
+            });
+        }
+    });
+}
+
 
   document.addEventListener('DOMContentLoaded', function () {
           setTimeout(function () {
