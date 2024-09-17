@@ -27,6 +27,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/meanmenu.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+
     <style>
     .favorite-icon {
         position: absolute;
@@ -34,15 +36,12 @@
         right: 10px; /* Adjust based on desired position */
         background: transparent;
         border: none;
-        color: #e74c3c; /* Heart icon color */
         font-size: 18px; /* Adjust size if needed */
         cursor: pointer;
         z-index: 10;
     }
 
-    .favorite-icon:hover {
-        color: #c0392b; /* Darken color on hover */
-    }
+    
 </style>
 </head>
 
@@ -249,6 +248,15 @@
                     <a href="service-details.html" class="tj-secondary-btn btn-border"><span>أظهر المزيد</span></a>
                 </div>
 
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+
+                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                    ...
+                    </div>
+                </div>
+                </div>
 
             </div>
             <div class="service-section-shape">
@@ -294,7 +302,13 @@
                         
                         <div class="service-inner">
                             <button class="favorite-icon" onclick="addToFavorites({{ $product->product_id }})" title="Add to Favorites">
-                                <i class="fa fa-heart"></i>
+                                @if(Auth::check() && $product->is_fav)
+                                    <!-- إذا كان المنتج مضافًا إلى المفضلة، أظهر القلب باللون الأحمر -->
+                                    <i id="favorite-icon-{{ $product->product_id }}" class="fa-solid fa-heart" style="color: red;"></i>
+                                @else
+                                    <!-- إذا لم يكن مضافًا، اترك القلب فارغًا -->
+                                    <i id="favorite-icon-{{ $product->product_id }}" class="fa-regular fa-heart"></i>
+                                @endif
                             </button>
                             <div class="service-icon">
                                 <img class="image-1" src="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}">
@@ -328,8 +342,10 @@
                     <a href="{{ route('services') }}" class="tj-secondary-btn btn-border"><span>أظهر المزيد</span></a>
                 </div>
 
+
                 <div class="modal fade" id="signinnn-modal" tabindex="-1" role="dialog" style="direction: rtl; text-align: right;">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title">تفاصيل المنتج</h5>
@@ -337,16 +353,16 @@
                             </div>
                             <div class="modal-body pb-0">
                                 <div class="d-sm-flex justify-content-between mb-4 pb-3 pb-sm-2 border-bottom">
-                                    <div class="d-sm-flex text-center text-sm-start">
-                                        <a class="d-inline-block flex-shrink-0 mx-auto" style="width: 15rem;">
-                                            <img id="modal-product-img" src="" alt="Product" style="width: 100%; height: auto;">
+                                    <div class="d-sm-flex text-center text-sm-start" style="width: 100%;"> 
+                                        <a class="d-inline-block flex-shrink-0 mx-auto" style="width: 50%;margin: 5px !important;padding: 30px !important;align-content: center;">
+                                            <img id="modal-product-img" src="" alt="Product" style="width: 100%;">
                                         </a>
-                                        <div class="ps-sm-4 pt-2">
+                                        <div class="ps-sm-4 pt-2" style="width: 50%; padding: 10px">
                                             <h3 id="modal-product-name" class="product-title fs-base mb-2"></h3>
-                                            <div class="fs-sm"><span class="text-muted me-2">Description:</span><span id="modal-description"></span></div>
-                                            <div class="fs-sm"><span class="text-muted me-2">Duration:</span><span id="modal-duration"></span></div>
-                                            <div class="fs-lg text-accent pt-2">Price: <span id="modal-product-salary"></span></div>
-                                            <div class="mt-3">
+                                            <div class="fs-sm mt-2"><span class="text-muted me-2">Description:</span><span id="modal-description"></span></div>
+                                            <div class="fs-sm mt-2"><span class="text-muted me-2">Duration:</span><span id="modal-duration"></span></div>
+                                            <div class="fs-lg text-accent pt-2 mt-2">Price: <span id="modal-product-salary"></span></div>
+                                            <div class="mt-5">
                                                 <a href="{{ route('contacts.index') }}" class="btn btn-outline-primary" style="color: white">طلب الخدمة عبر الايميل</a>
                                                 <a href="https://api.whatsapp.com/send?phone={{$settings->whatsapp}}&text=مرحبا" class="btn btn-outline-success" style="color: white; background-color: #28a745">طلب الخدمة عبر الواتساب</a>
                                             </div>
@@ -779,6 +795,10 @@
         },
         success: function(response) {
             console.log('Success:', response);
+            
+            // تغيير لون الأيقونة بعد نجاح الإضافة
+            $('#favorite-icon-' + productId).removeClass('fa-regular').addClass('fa-solid').css('color', 'red');
+
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
@@ -797,6 +817,7 @@
         }
     });
 }
+
 
 
   document.addEventListener('DOMContentLoaded', function () {

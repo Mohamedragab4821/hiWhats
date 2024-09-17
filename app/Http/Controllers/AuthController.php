@@ -12,6 +12,8 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\HomeAds;
 use App\Models\Page;
+use App\Models\Favorite;
+
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +26,18 @@ class AuthController extends Controller
     $categories=Category::all();
     $HomeAds=HomeAds::all();
     $pages = Page::all();
+    $user = Auth::user();
+    if(Auth::user()){
+    foreach ($products as $product) {
+        // Check if the product is in the favorites table for the current user
+        $isFavorite = Favorite::where('user_id', $user->id)
+                            ->where('product_id', $product->product_id)
+                            ->exists();
+
+        // Add the `is_fav` property to each product
+        $product->is_fav = $isFavorite;
+    }
+}
 
 
     return view('home', [

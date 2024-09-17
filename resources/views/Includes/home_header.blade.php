@@ -165,10 +165,18 @@
                         </nav>
                         
                     </div>
+                    @if((Auth::user()))
+                        <div class="header-button d-none d-lg-block">
+                            <a class="tj-secondary-btn btn-border" style="    background: #5b43f9;
+                            border: none; visibility: hidden;"  href="#signin-modal" data-bs-toggle="modal"><span>تسجيل دخول / تسجيل</span></a>
+                        </div>  
+                        @endif 
+                        @if(!(Auth::user()))
                         <div class="header-button d-none d-lg-block">
                             <a class="tj-secondary-btn btn-border" style="    background: #5b43f9;
                             border: none;"  href="#signin-modal" data-bs-toggle="modal"><span>تسجيل دخول / تسجيل</span></a>
-                        </div>                    
+                        </div>  
+                        @endif                  
                     <div class="tj-canva-icon d-lg-none">
                         <a class="canva_expander nav-menu-link menu-button" href="#">
                             <span class="dot1"></span>

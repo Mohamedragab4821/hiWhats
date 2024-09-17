@@ -138,13 +138,12 @@
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label" for="si-email">ايميل</label>
-                                <input class="form-control" type="email" id="si-email" placeholder="johndoe@example.com" required name="email">
-                                <div class="invalid-feedback">يرجى إدخال عنوان بريد إلكتروني صحيح.</div>
+                                <input class="form-control" name="email" type="email" id="si-email" placeholder="johndoe@example.com" required name="email">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="si-password">كلمة المرور</label>
                                 <div class="password-toggle">
-                                    <input class="form-control" type="password" id="si-password" required name="password">
+                                    <input class="form-control" type="password" name="password" id="si-password" required name="password">
                                     <label class="password-toggle-btn" aria-label="Show/hide password">
                                         <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
                                     </label>

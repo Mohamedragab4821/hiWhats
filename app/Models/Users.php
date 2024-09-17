@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Favorite;
 
 class Users extends Authenticatable
 {
@@ -27,6 +28,7 @@ class Users extends Authenticatable
      */
     public function favorites()
     {
-        return $this->hasMany(Favorite::class, 'user_id');
+        // `favorites_table` هو جدول المفضلات الذي يربط بين المستخدمين والمنتجات
+        return $this->belongsToMany(Favorite::class, 'favorites', 'user_id', 'product_id');
     }
 }
