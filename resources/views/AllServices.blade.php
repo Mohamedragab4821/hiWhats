@@ -27,7 +27,7 @@
     <link rel="stylesheet" media="screen" href="{{ asset('css/theme.min.css') }}">
 
     <!-- Google Tag Manager-->
-   
+
 </head>
 <body class="handheld-toolbar-enabled">
     <!-- Google Tag Manager (noscript)-->
@@ -71,73 +71,236 @@
           </div>
         </div>
         <!-- Products grid-->
-        <div class="row pt-3 mx-n2">
-          <!-- Product-->
-          @foreach($products as $product)
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-grid-gutter">
-            <div class="card product-card-alt">
-              <div class="product-thumb" style="height: 280px;width: 280px;" >
-                <button
-                    class="btn-wishlist btn-sm position-absolute top-0 end-0"
-                    type="button"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="left"
-                    title="Add to Favorites"
-                    style="margin: 12px;"
-                    onclick="addToFavorites({{ $product->product_id }})"
-                >
-                    <i class="ci-heart"></i>
-                </button>
-                <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow fs-base mx-2" href="#signinnn-modal" data-bs-toggle="modal"
-                    data-product-name="{{ $product->product_name }}"
-                       data-product-img="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
-                       data-product-salary="{{ $product->product_salary }}"
-                       data-description="{{ $product->description }}"
-                       data-duration="{{ $product->Duration_of_righteousness }}"
-                       data-bs-target="#signinnn-modal"><i class="ci-eye"></i></a>
-                </div><a class="product-thumb-overlay"></a><img src="{{ asset('storage/'.$product->Product_img) }}" alt="Product">
-              </div>
-              <div class="card-body">
-                <h3 class="product-title fs-sm mb-2"><a href="marketplace-single.html">{{ $product->product_name }}</a></h3>
-                <div class="d-flex flex-wrap justify-content-between align-items-center">
-                  <div class="fs-sm me-2">{{ $product->category_name }}</div>
-                  <div class="bg-faded-accent text-accent rounded-1 py-1 px-2">{{ $product->product_name }}</div>
+        <section class="tj-service-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="tj-sec-heading text-center" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="600">
+                            <span class="sub-title">خدماتنا</span>
+                            <h2 class="sec-title">الخدمات التي نقدمها</h2>
+                            <div class="desc">
+                                <p>
+                                    لقد صمدت هذه الخدمات لأكثر من خمسة قرون، كما أنها اجتازت مرحلة الانتقال إلى الطباعة الإلكترونية، وبقيت دون تغيير يذكر. وقد اشتهرت في الستينيات مع إطلاقها.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+
+                <div class="row" dir="rtl">
+                    @foreach ($products as $product)
+                    <div class="col-lg-3 col-md-6 col-sm-6" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="100">
+                        <button class="favorite-icon" onclick="addToFavorites({{ $product->product_id }})" title="Add to Favorites">
+                            @if(Auth::check() && $product->is_fav)
+                                <!-- إذا كان المنتج مضافًا إلى المفضلة، أظهر القلب باللون الأحمر -->
+                                <i id="favorite-icon-{{ $product->product_id }}" class="fa-solid fa-heart" style="color: red;"></i>
+                            @else
+                                <!-- إذا لم يكن مضافًا، اترك القلب فارغًا -->
+                                <i id="favorite-icon-{{ $product->product_id }}" class="fa-regular fa-heart"></i>
+                            @endif
+                        </button>
+                        <div class="tj-service-item text-center" style="position: relative;"> <!-- Add relative positioning -->
+                            <div class="service-inner">
+
+                                <div class="service-icon">
+                                    <img class="image-1" src="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}" style="border-radius: 15px;margin-right:10px">
+                                </div>
+                                <a href="#signinnn-modal" data-bs-toggle="modal"
+                                    data-product-name="{{ $product->product_name }}"
+                                    data-product-img="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
+                                    data-product-salary="{{ $product->product_salary }}"
+                                    data-description="{{ $product->description }}"
+                                    data-duration="{{ $product->Duration_of_righteousness }}"
+                                    data-bs-target="#signinnn-modal">
+                                    <div class="service-content">
+                                        <h4 class="title-link">{{ $product->product_name }}</h4>
+                                        <p>{{ $product->product_description }}</p>
+                                        <p>Price : {{ $product->product_salary }}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+
+                <!-- Button to show more products -->
+                {{-- <div class="service-button text-center">
+                    <a href="{{ route('services') }}" class="tj-secondary-btn btn-border"><span>أظهر المزيد</span></a>
+                </div>
+            </div> --}}
+
+            <!-- Background shapes -->
+            <div class="service-section-shape">
+                <div class="service-bg-shape pulse">
+                    <img src="assets/images/shape/shape-14.svg" alt="Shape" />
+                </div>
+                <div class="service-bg-shape1">
+                    <img src="assets/images/shape/shape-15.svg" alt="Shape" />
+                </div>
+                <div class="service-bg-shape2">
+                    <img src="assets/images/shape/shape-14.svg" alt="Shape" />
+                </div>
+                <div class="service-bg-shape3 pulse">
+                    <img src="assets/images/shape/shape-15.svg" alt="Shape" />
+                </div>
+                <div class="service-bg-shape4 pulse">
+                    <img src="assets/images/shape/shape-16.svg" alt="Shape" />
+                </div>
             </div>
-          </div>
-          @endforeach
-        </div>
-        <div class="modal fade" id="signinnn-modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+        </section>
+
+        <div class="modal fade" id="signinnn-modal" tabindex="-1" role="dialog" style="direction: rtl; text-align: right;">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+
                 <div class="modal-content">
-                    <div class="modal-header bg-secondary">
-                        <h5 class="modal-title">Product Details</h5>
-                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-header">
+                        <h5 class="modal-title">تفاصيل المنتج</h5>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close" style="margin-left:0 !important;margin: -1.7rem -0.625rem -0.5rem auto !important;"></button>
                     </div>
                     <div class="modal-body pb-0">
-                      <div class="d-sm-flex justify-content-between mb-4 pb-3 pb-sm-2 border-bottom">
-                          <div class="d-sm-flex text-center text-sm-start">
-                              <a class="d-inline-block flex-shrink-0 mx-auto" style="width: 15rem;">
-                                  <img id="modal-product-img" src="" alt="Product" style="width: 100%; height: auto;">
-                              </a>
-                              <div class="ps-sm-4 pt-2">
-                                  <h3 id="modal-product-name" class="product-title fs-base mb-2"></h3>
-                                  <div class="fs-sm"><span class="text-muted me-2">Description:</span><span id="modal-description"></span></div>
-                                  <div class="fs-sm"><span class="text-muted me-2">Duration:</span><span id="modal-duration"></span></div>
-                                  <div class="fs-lg text-accent pt-2">Price: <span id="modal-product-salary"></span></div>
-                                  <div class="mt-3">
-                                    <a href="{{ route('contacts.index') }}" class="btn btn-outline-primary">طلب الخدمه عبر الايميل</a>
-                                    <a href="https://api.whatsapp.com/send?phone={{$settings->whatsapp}}&text=مرحبا"  class="btn btn-outline-success">طلب الخدمه عبر الواتساب</a>
-
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+                        <div class="d-sm-flex justify-content-between mb-4 pb-3 pb-sm-2 border-bottom">
+                            <div class="d-sm-flex text-center text-sm-start" style="width: 100%;">
+                                <a class="d-inline-block flex-shrink-0 mx-auto" style="width: 50%;margin: 5px !important;padding: 30px !important;align-content: center;">
+                                    <img id="modal-product-img" src="" alt="Product" style="width: 100%;">
+                                </a>
+                                <div class="ps-sm-4 pt-2" style="width: 50%; padding: 10px">
+                                    <h3 id="modal-product-name" class="product-title fs-base mb-2"></h3>
+                                    <div class="fs-sm mt-2"><span class="text-muted me-2">Description:</span><span id="modal-description"></span></div>
+                                    <div class="fs-sm mt-2"><span class="text-muted me-2">Duration:</span><span id="modal-duration"></span></div>
+                                    <div class="fs-lg text-accent pt-2 mt-2">Price: <span id="modal-product-salary"></span></div>
+                                    <div class="mt-5">
+                                        <a href="{{ route('contacts.index') }}" class="btn btn-outline-primary" style="color: white">طلب الخدمة عبر الايميل</a>
+                                        <a href="https://api.whatsapp.com/send?phone={{$settings->whatsapp}}&text=مرحبا" class="btn btn-outline-success" style="color: white; background-color: #28a745">طلب الخدمة عبر الواتساب</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <style>/* Style for the modal content */
+            #signinnn-modal .modal-header {
+                background-color: #001e64; /* Secondary background color */
+                color: #fff; /* White text for the title */
+                border-bottom: 1px solid #dee2e6;
+            }
+
+            #signinnn-modal .modal-title {
+                font-size: 1.25rem;
+                font-weight: bold;
+                color: white
+            }
+
+            #signinnn-modal .modal-body {
+                padding: 1.5rem;
+            }
+
+            /* Style for the image container */
+            #signinnn-modal .modal-body img {
+                border-radius: 0.5rem;
+                max-width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+
+            /* Product Title */
+            #modal-product-name {
+                font-size: 1.5rem;
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+            }
+
+            /* Product details (description, duration, price) */
+            #signinnn-modal .fs-sm {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+
+            #signinnn-modal .text-muted {
+                color: #6c757d;
+                font-weight: 500;
+            }
+
+            #signinnn-modal .fs-lg {
+                font-size: 1.25rem;
+                font-weight: bold;
+                color: #dc3545; /* Accent color for the price */
+            }
+
+            #signinnn-modal .btn {
+                width: 100%;
+                margin-top: 0.75rem;
+            }
+
+            /* Style for the buttons */
+            #signinnn-modal .btn-outline-primary {
+                color: #007bff;
+                border-color: #007bff;
+            }
+
+            #signinnn-modal .btn-outline-primary:hover {
+                background-color: #007bff;
+                color: #fff;
+            }
+
+            #signinnn-modal .btn-outline-success {
+                color: #28a745;
+                border-color: #28a745;
+            }
+
+            #signinnn-modal .btn-outline-success:hover {
+                background-color: #28a745;
+                color: #fff;
+            }
+
+            /* Responsive adjustments */
+            @media (max-width: 576px) {
+                #signinnn-modal .modal-dialog {
+                    max-width: 90%;
+                    margin: 1.75rem auto;
+                }
+
+                #signinnn-modal .modal-body img {
+                    width: 100%;
+                }
+
+                #signinnn-modal .ps-sm-4 {
+                    padding-left: 0 !important;
+                }
+
+                #signinnn-modal .text-center {
+                    text-align: center !important;
+                }
+
+                #signinnn-modal .d-sm-flex {
+                    flex-direction: column;
+                }
+            }
+
+            /* Adjustments for RTL layout */
+            [dir="rtl"] #signinnn-modal .ps-sm-4 {
+                padding-left: 0 !important;
+                padding-right: 1rem !important;
+            }
+
+            [dir="rtl"] #signinnn-modal .modal-header {
+                text-align: right;
+            }
+            .btn-close {
+            background-color: transparent;
+            border: none;
+            opacity: 1;
+            margin-bottom: 1rem;
+                    }
+            .modal .btn-close {
+                color: white !important;
+            }
+            .btn-close:hover {
+                opacity: 0.7;
+            }
+        </style>
 
         <script>
             document.addEventListener('DOMContentLoaded', function() {
@@ -257,5 +420,23 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+
+
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/js/meanmenu.js') }}"></script>
+<script src="{{ asset('assets/js/swiper.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.appear.min.js') }}"></script>
+<script src="{{ asset('assets/js/sal.js') }}"></script>
+<script src="{{ asset('assets/js/odometer.min.js') }}"></script>
+<script src="{{ asset('assets/js/imagesloaded-pkgd.js') }}"></script>
+<script src="{{ asset('assets/js/magnific-popup.js') }}"></script>
+<script src="{{ asset('assets/js/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('assets/js/validate.min.js') }}"></script>
+
+<script src="{{ asset('assets/js/main.js') }}"></script>
 </body>
 </html>
