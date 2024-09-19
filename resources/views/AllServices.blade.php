@@ -62,18 +62,17 @@
       <div class="container pb-5 mb-2 mb-md-4">
         <!-- Toolbar-->
         <div class="shadow-lg rounded-3 mt-n5 mb-4">
-          <div class="d-flex align-items-center ps-2">
-              <!-- Search-->
-              <form action="{{ route('services.search') }}" method="GET" class="d-flex align-items-center">
-                  <input type="text" name="search" placeholder="Search..." class="form-control me-2">
-                  <button type="submit" class="btn btn-primary">Search</button>
-              </form>
-          </div>
+            <div class="d-flex align-items-center ps-2">
+                <!-- Search-->
+                <input style="width: 22%;" type="text" id="searchInput" placeholder="Search..." class="form-control me-2">
+                <i class="ci-search" style="font-size: 1.5rem; color: #007bff;"></i>
+            </div>
         </div>
+        
         <!-- Products grid-->
         <section class="tj-service-section">
             <div class="container">
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-lg-12">
                         <div class="tj-sec-heading text-center" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="600">
                             <span class="sub-title">خدماتنا</span>
@@ -85,7 +84,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="row" dir="rtl">
                     @foreach ($products as $product)
@@ -190,7 +189,7 @@
             #signinnn-modal .modal-title {
                 font-size: 1.25rem;
                 font-weight: bold;
-                color: white
+                color: whiteheight: 13vh;
             }
 
             #signinnn-modal .modal-body {
@@ -415,8 +414,29 @@
             });
         }, 3500); // Wait 0.5 seconds more for the fade-out to complete
     });
+    document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const productsContainer = document.querySelector('.row'); // Adjust selector if needed
+
+    searchInput.addEventListener('input', function() {
+        const filter = searchInput.value.toLowerCase();
+        const products = productsContainer.querySelectorAll('.tj-service-item'); // Adjust selector if needed
+
+        products.forEach(product => {
+            const title = product.querySelector('.title-link').textContent.toLowerCase();
+            const description = product.querySelector('p').textContent.toLowerCase(); // Adjust if needed
+
+            if (title.includes(filter) || description.includes(filter)) {
+                product.parentElement.style.display = ''; // Show product
+            } else {
+                product.parentElement.style.display = 'none'; // Hide product
+            }
+        });
+    });
+});
 
     </script>
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

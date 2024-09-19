@@ -86,8 +86,7 @@
         };
     </script>
 
-    <header class="navbar navbar-sticky navbar-expand-lg navbar-light" style="padding-right: 10%;padding-left: 10%;background: #001e64 !important;
-">
+    <header class="navbar navbar-sticky navbar-expand-lg navbar-light" style="padding-right: 10%;padding-left: 10%;background: #001e64 !important;height:13%;">
         <div class="container-fluid">
             <a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="{{route('home')}}">
                 <img src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="142" alt="فكرة">

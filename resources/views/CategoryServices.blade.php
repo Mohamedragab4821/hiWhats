@@ -64,9 +64,9 @@
                     <div class="d-flex align-items-center ps-2">
                         <!-- Search -->
                         <form action="{{ route('category.search') }}" method="GET" class="d-flex align-items-center">
-                            <input type="text" name="search" placeholder="Search..." class="form-control me-2">
+                            <input type="text" id="search-input" name="search" placeholder="Search..." class="form-control me-2">
                             <input type="hidden" name="category_id" value="{{ isset($id) ? $id : '' }}">
-                            <button type="submit" class="btn btn-primary">Search</button>
+                            <i class="ci-search" style="font-size: 1.5rem; color: #007bff;"></i>
                         </form>
                     </div>
                 </div>
@@ -232,6 +232,26 @@
             }
         }
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('search-input');
+            const productCards = document.querySelectorAll('.product-card-alt');
+    
+            searchInput.addEventListener('input', function() {
+                const searchTerm = searchInput.value.toLowerCase();
+    
+                productCards.forEach(card => {
+                    const productName = card.querySelector('.product-title a').textContent.toLowerCase();
+                    if (productName.includes(searchTerm)) {
+                        card.style.display = 'block'; // Show matching products
+                    } else {
+                        card.style.display = 'none'; // Hide non-matching products
+                    }
+                });
+            });
+        });
+    </script>
+    
 </body>
 
 </html>

@@ -40,7 +40,7 @@
 <div class="tj-offcanvas-area d-lg-none">
     <div class="tj-offcanvas-header d-flex align-items-center justify-content-between">
         <div class="logo-area text-center">
-            <a href="index.html"><img  src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="200" height="70" alt="فكرة">
+            <a href=""><img  src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="200" height="70" alt="فكرة">
             </a>
         </div>
         <div class="offcanvas-icon">
@@ -108,7 +108,7 @@
                     <div class="logo-area">
                         <div class="logo">
                             <a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="{{route('home')}}">
-                                <img  src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="200" height="70" alt="فكرة">
+                                <img  src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="200" height="70" style="height: 13vh;" alt="فكرة">
                             </a>                        
                         </div>
                     </div>
