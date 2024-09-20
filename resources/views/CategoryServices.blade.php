@@ -73,61 +73,93 @@
             </div>
 
             <!-- Products grid-->
-            <div class="row pt-3 mx-n2">
-                <!-- Product-->
-                @foreach($products as $product)
-                <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-grid-gutter">
-                    <div class="card product-card-alt">
-                        <div class="product-thumb" style="height: 280px;width: 280px;">
-                            <div class="product-card-actions">
-                                <a class="btn btn-light btn-icon btn-shadow fs-base mx-2"
-                                    href="#signinn-modal"
-                                    data-bs-toggle="modal"
-                                    data-product-name="{{ $product->product_name }}"
-                                    data-product-img="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
-                                    data-product-salary="{{ $product->product_salary }}"
-                                    data-description="{{ $product->description }}"
-                                    data-duration="{{ $product->Duration_of_righteousness }}"
-                                    data-bs-target="#signinn-modal"><i class="ci-eye"></i>
+            <section class="tj-service-section">
+                <div class="container">
+                    <div class="row" dir="rtl">
+                        @foreach ($products as $product)
+                        <div class="col-lg-3 col-md-6 col-sm-6" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="100">
+                            <!-- Favorite button -->
+                            <button class="favorite-icon" onclick="addToFavorites({{ $product->product_id }})" title="Add to Favorites">
+                                @if(Auth::check() && $product->is_fav)
+                                    <i id="favorite-icon-{{ $product->product_id }}" class="fa-solid fa-heart" style="color: red;"></i>
+                                @else
+                                    <i id="favorite-icon-{{ $product->product_id }}" class="fa-regular fa-heart"></i>
+                                @endif
+                            </button>
+            
+                            <!-- Service item card -->
+                            <div class="tj-service-item text-center" style="position: relative;">
+                                <div class="service-inner">
+                                    <!-- Product image -->
+                                    <div class="service-icon">
+                                        <img class="image-1" src="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}" style="border-radius: 15px;margin-right:10px">
+                                    </div>
+            
+                                    <!-- Modal trigger for product details -->
+                                    <a href="#signinnn-modal" data-bs-toggle="modal"
+                                        data-product-name="{{ $product->product_name }}"
+                                        data-product-img="{{ $product->Product_img ? asset('storage/' . $product->Product_img) : asset('img/default-product-image.jpg') }}"
+                                        data-product-salary="{{ $product->product_salary }}"
+                                        data-description="{{ $product->description }}"
+                                        data-duration="{{ $product->Duration_of_righteousness }}"
+                                        data-bs-target="#signinnn-modal">
+                                        <div class="service-content">
+                                            <h4 class="title-link">{{ $product->product_name }}</h4>
+                                            <p>{{ $product->description }}</p>
+                                            <p>Price : {{ $product->product_salary }}</p>
+                                        </div>
                                     </a>
-
+                                </div>
                             </div>
-                            <a class="product-thumb-overlay"></a>
-                            <img src="{{ asset('storage/'.$product->Product_img) }}" alt="Product">
                         </div>
-                        <div class="card-body">
-                            <h3 class="product-title fs-sm mb-2"><a>{{ $product->product_name }}</a></h3>
-                            <div class="d-flex flex-wrap justify-content-between align-items-center">
-                                <div class="fs-sm me-2">{{$product->product_salary}}</div>
-                                <div class="bg-faded-accent text-accent rounded-1 py-1 px-2">{{ $product->category_name }}</div>
-                            </div>
+                        @endforeach
+                    </div>
+            
+                    <!-- Background shapes -->
+                    <div class="service-section-shape">
+                        <div class="service-bg-shape pulse">
+                            <img src="/assets/images/shape/shape-14.svg" alt="Shape" />
+                        </div>
+                        <div class="service-bg-shape1">
+                            <img src="/assets/images/shape/shape-15.svg" alt="Shape" />
+                        </div>
+                        <div class="service-bg-shape2">
+                            <img src="/assets/images/shape/shape-14.svg" alt="Shape" />
+                        </div>
+                        <div class="service-bg-shape3 pulse">
+                            <img src="/assets/images/shape/shape-15.svg" alt="Shape" />
+                        </div>
+                        <div class="service-bg-shape4 pulse">
+                            <img src="/assets/images/shape/shape-16.svg" alt="Shape" />
                         </div>
                     </div>
                 </div>
-                @endforeach
-            </div>
-            <div class="modal fade" id="signinn-modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header bg-secondary">
-                        <h5 class="modal-title">Product Details</h5>
-                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body pb-0">
-                        <div class="d-sm-flex justify-content-between mb-4 pb-3 pb-sm-2 border-bottom">
-                            <div class="d-sm-flex text-center text-sm-start">
-                                <a class="d-inline-block flex-shrink-0 mx-auto" style="width: 15rem;">
-                                    <img id="modal-product-img" src="" alt="Product" style="width: 100%; height: auto;">
-                                </a>
-                                <div class="ps-sm-4 pt-2">
-                                    <h3 id="modal-product-name" class="product-title fs-base mb-2"></h3>
-                                    <div class="fs-sm"><span class="text-muted me-2">Description:</span><span id="modal-description"></span></div>
-                                    <div class="fs-sm"><span class="text-muted me-2">Duration:</span><span id="modal-duration"></span></div>
-                                    <div class="fs-lg text-accent pt-2">Price: <span id="modal-product-salary"></span></div>
-                                    <div class="mt-3">
-                                      <a href="{{ route('contacts.index') }}" class="btn btn-outline-primary">طلب الخدمه عبر الايميل</a>
-                                      <a href="https://api.whatsapp.com/send?phone={{$settings->whatsapp}}&text=مرحبا"  class="btn btn-outline-success">طلب الخدمه عبر الواتساب</a>
-
+            </section>
+            
+            <!-- Modal for product details -->
+            <div class="modal fade" id="signinnn-modal" tabindex="-1" role="dialog" style="direction: rtl; text-align: right;">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">تفاصيل المنتج</h5>
+                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body pb-0">
+                            <div class="d-sm-flex justify-content-between mb-4 pb-3 pb-sm-2 border-bottom">
+                                <div class="d-sm-flex text-center text-sm-start" style="width: 100%;">
+                                    <!-- Product image in modal -->
+                                    <a class="d-inline-block flex-shrink-0 mx-auto" style="width: 50%; margin: 5px !important; padding: 30px !important; align-content: center;">
+                                        <img id="modal-product-img" src="" alt="Product" style="width: 100%;">
+                                    </a>
+                                    <div class="ps-sm-4 pt-2" style="width: 50%; padding: 10px;">
+                                        <h3 id="modal-product-name" class="product-title fs-base mb-2"></h3>
+                                        <div class="fs-sm mt-2"><span class="text-muted me-2">Description:</span><span id="modal-description"></span></div>
+                                        <div class="fs-sm mt-2"><span class="text-muted me-2">Duration:</span><span id="modal-duration"></span></div>
+                                        <div class="fs-lg text-accent pt-2 mt-2">Price: <span id="modal-product-salary"></span></div>
+                                        <div class="mt-5">
+                                            <a href="{{ route('contacts.index') }}" class="btn btn-outline-primary">طلب الخدمة عبر الايميل</a>
+                                            <a href="https://api.whatsapp.com/send?phone={{ $settings->whatsapp }}&text=مرحبا" class="btn btn-outline-success">طلب الخدمة عبر الواتساب</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -135,40 +167,38 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                var productModal = document.getElementById('signinn-modal');
-                productModal.addEventListener('show.bs.modal', function(event) {
-                    var button = event.relatedTarget; // Button that triggered the modal
-
-                    // Get the product data from the button's data attributes
-                    var productName = button.getAttribute('data-product-name');
-                    var productImg = button.getAttribute('data-product-img');
-                    var productSalary = button.getAttribute('data-product-salary');
-                    var description = button.getAttribute('data-description');
-                    var duration = button.getAttribute('data-duration');
-
-                    // Find the modal elements
-                    var modalProductName = productModal.querySelector('#modal-product-name');
-                    var modalProductImg = productModal.querySelector('#modal-product-img');
-                    var modalProductSalary = productModal.querySelector('#modal-product-salary');
-                    var modalDescription = productModal.querySelector('#modal-description');
-                    var modalDuration = productModal.querySelector('#modal-duration');
-
-                    // Set the modal content
-                    modalProductName.textContent = productName;
-                    modalProductImg.src = productImg;
-                    modalProductSalary.textContent = productSalary;
-                    modalDescription.textContent = description;
-                    modalDuration.textContent = duration;
+            
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var productModal = document.getElementById('signinnn-modal');
+                    productModal.addEventListener('show.bs.modal', function(event) {
+                        var button = event.relatedTarget;
+                        
+                        var productName = button.getAttribute('data-product-name');
+                        var productImg = button.getAttribute('data-product-img');
+                        var productSalary = button.getAttribute('data-product-salary');
+                        var description = button.getAttribute('data-description');
+                        var duration = button.getAttribute('data-duration');
+            
+                        var modalProductName = productModal.querySelector('#modal-product-name');
+                        var modalProductImg = productModal.querySelector('#modal-product-img');
+                        var modalProductSalary = productModal.querySelector('#modal-product-salary');
+                        var modalDescription = productModal.querySelector('#modal-description');
+                        var modalDuration = productModal.querySelector('#modal-duration');
+            
+                        modalProductName.textContent = productName;
+                        modalProductImg.src = productImg;
+                        modalProductSalary.textContent = productSalary;
+                        modalDescription.textContent = description;
+                        modalDuration.textContent = duration;
+                    });
                 });
-            });
-        </script>
+            </script>
+            
             <hr class="my-3">
 
             <!-- Pagination-->
-            <nav class="d-flex justify-content-between pt-2 mb-4" aria-label="Page navigation">
+            {{-- <nav class="d-flex justify-content-between pt-2 mb-4" aria-label="Page navigation">
                 <ul class="pagination">
                     <li class="page-item {{ $categories->onFirstPage() ? 'disabled' : '' }}">
                         <a class="page-link" href="{{ $categories->previousPageUrl() }}"><i class="ci-arrow-left me-2"></i>السابق</a>
@@ -186,7 +216,35 @@
                         <a class="page-link" href="{{ $categories->nextPageUrl() }}">التالي<i class="ci-arrow-right ms-2"></i></a>
                     </li>
                 </ul>
+            </nav> --}}
+
+
+
+
+
+            <nav class="d-flex justify-content-between pt-2 mb-4" aria-label="Page navigation">
+                <ul class="pagination">
+                    <li class="page-item {{ $products->onFirstPage() ? 'disabled' : '' }}">
+                        <a class="page-link" href="{{ $products->previousPageUrl() }}"><i class="ci-arrow-left me-2"></i>السابق</a>
+                    </li>
+                </ul>
+                <ul class="pagination">
+                    @for ($i = 1; $i <= $products->lastPage(); $i++)
+                        <li class="page-item {{ $products->currentPage() == $i ? 'active' : '' }}">
+                            <a class="page-link" href="{{ $products->url($i) }}">{{ $i }}</a>
+                        </li>
+                    @endfor
+                </ul>
+                <ul class="pagination">
+                    <li class="page-item {{ $products->hasMorePages() ? '' : 'disabled' }}">
+                        <a class="page-link" href="{{ $products->nextPageUrl() }}">التالي<i class="ci-arrow-right ms-2"></i></a>
+                    </li>
+                </ul>
             </nav>
+
+
+
+
         </div>
     </main>
 
@@ -251,7 +309,27 @@
             });
         });
     </script>
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+
+
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/js/meanmenu.js') }}"></script>
+<script src="{{ asset('assets/js/swiper.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.appear.min.js') }}"></script>
+<script src="{{ asset('assets/js/sal.js') }}"></script>
+<script src="{{ asset('assets/js/odometer.min.js') }}"></script>
+<script src="{{ asset('assets/js/imagesloaded-pkgd.js') }}"></script>
+<script src="{{ asset('assets/js/magnific-popup.js') }}"></script>
+<script src="{{ asset('assets/js/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('assets/js/validate.min.js') }}"></script>
+
+<script src="{{ asset('assets/js/main.js') }}"></script>
 </body>
 
 </html>

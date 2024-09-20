@@ -27,6 +27,7 @@ START: Theme Header CSS
     }
     .header-button {
         margin-right: -40px;
+    
         .tj-secondary-btn {
             &.btn-border {
                 span {
@@ -34,6 +35,7 @@ START: Theme Header CSS
                     color: var(--tj-color-common-white);
                 }
             }
+    
             &:hover {
                 span {
                     background: transparent;
@@ -41,10 +43,11 @@ START: Theme Header CSS
                 }
             }
         }
-        @media #{$xxl, $xl, $lg} {
-            margin-right: 0;
-        }
+    
+        // Remove media queries for visibility
+        margin-right: 0; // Make it visible at all widths
     }
+    
     .logo-area {
         max-width: 195px;
         width: 100%;

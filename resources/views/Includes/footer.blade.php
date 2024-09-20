@@ -270,7 +270,7 @@ margin-left: 35%}
                                     <img src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="200" height="70" alt="فكرة">
                                 </a>
                             </div>
-                            <div class="footer-share">
+                            <div class="footer-share" style="padding-left: 12%;">
                                 <ul class="dot-style">
                                     <li>
                                         <a href="#"><i class="fa-brands fa-instagram"></i></a>
@@ -325,22 +325,25 @@ margin-left: 35%}
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="footer-widget footer1-col-4">
                             <h4 class="footer_title">معلومات الاتصال</h4>
-                            <div class="widget_contact_menu">
-                                <ul>
-                                    <li>
-                                        <span><i class="fas fa-map-marker-alt"></i></span>76 بلو وينتر سنتر، نيويورك
-                                    </li>
-                                    <li>
-                                        <span><i class="fas fa-envelope"></i></span><a href="mailto:info@gmail.com">info@gmail.com</a>
-                                    </li>
-                                    <li>
-                                        <span><i class="fas fa-phone"></i></span><a href="tel:+1234567890">+123 456 7890</a>
-                                    </li>
-                                    <li>
-                                        <span><i class="fas fa-phone"></i></span><a href="tel:+9876543210">+987 654 3210</a>
-                                    </li>
-                                </ul>
-                            </div>
+<div class="widget_contact_menu">
+    <ul>
+        <!--<li>-->
+        <!--    <span><i class="fas fa-map-marker-alt"></i></span>76 بلو وينتر سنتر، نيويورك-->
+        <!--</li>-->
+        <li>
+            <span><i class="fas fa-envelope"></i></span>
+            <a href="mailto:{{ $settings->email }}">{{ $settings->email }}</a>
+        </li>
+        <li>
+            <span><i class="fas fa-phone"></i></span>
+            <a href="tel:{{ $settings->phone }}">{{ $settings->phone }}</a>
+        </li>
+        <li>
+            <span><i class="fas fa-phone"></i></span>
+            <a href="tel:{{ $settings->whatsapp }}">{{ $settings->whatsapp }}</a>
+        </li>
+    </ul>
+</div>
                         </div>
                     </div>
                     {{-- <div class="col-lg-2 col-md-6 col-sm-6">

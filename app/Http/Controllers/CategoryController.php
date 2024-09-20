@@ -16,21 +16,20 @@ class CategoryController extends Controller
     public function index($id)
 {
     $settings = Settings::first();
-    // $categories = Category::all();
-    $categories = Category::paginate(5);
+    $categories = Category::all(); // No pagination on categories
     $pages = Page::all();
 
     // If an ID is provided, fetch products belonging to that category
     if ($id) {
         $category = Category::findOrFail($id);
-        $products = Product::where('category_id', $id)->get();
-        $pages = Page::all();
+        // Paginate the products instead of getting all at once
+        $products = Product::where('category_id', $id)->paginate(5); // Paginate products with 5 per page
 
-        return view('CategoryServices', compact('settings', 'category', 'products', 'categories', 'id','pages'));
+        return view('CategoryServices', compact('settings', 'category', 'products', 'categories', 'id', 'pages'));
     }
-
-    // Handle the case where no ID is provided (optional)
-    return view('CategoryServices', compact('settings', 'categories','id','pages'));
+    
+    // If no category is selected, you can handle it here as well (optional).
+    return view('CategoryServices', compact('settings', 'categories', 'pages'));
 }
 
 
