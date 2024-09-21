@@ -21,9 +21,9 @@ class AuthController extends Controller
 {
     public function home()
 {
-    $products = Product::all(); // Fetch all products from the database
+    $products = Product::orderBy('created_at', 'desc')->paginate(4);
     $settings = Settings::first(); // Fetch the settings
-    $categories=Category::all();
+    $categories = Category::orderBy('created_at', 'desc')->paginate(4);
     $HomeAds=HomeAds::all();
     $pages = Page::all();
     $user = Auth::user();

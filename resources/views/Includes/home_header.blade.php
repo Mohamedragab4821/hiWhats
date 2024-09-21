@@ -1,7 +1,7 @@
 <script async src='https://d2mpatx37cqexb.cloudfront.net/delightchat-whatsapp-widget/embeds/embed.min.js'></script>
     <script>
       var wa_btnSetting = {"btnColor":"#16BE45","ctaText":"WhatsApp Us","cornerRadius":40,"marginBottom":100,"marginLeft":20,"marginRight":20,"btnPosition":"right","whatsAppNumber":"+201283370658","welcomeMessage":"Hello","zIndex":999999,"btnColorScheme":"light"};
-      var wa_widgetSetting = {"title":"فكره","subTitle":"Typically replies in a day","headerBackgroundColor":"#FBFFC8","headerColorScheme":"dark","greetingText":"Hi there! \nHow can I help you?","ctaText":"Start Chat","btnColor":"#1A1A1A","cornerRadius":40,"welcomeMessage":"Hello","btnColorScheme":"light","brandImage":"https://uploads-ssl.webflow.com/5f68a65cd5188c058e27c898/6204c4267b92625c9770f687_whatsapp-chat-widget-dummy-logo.png","darkHeaderColorScheme":{"title":"#333333","subTitle":"#4F4F4F"}};  
+      var wa_widgetSetting = {"title":"فكره","subTitle":"Typically replies in a day","headerBackgroundColor":"#FBFFC8","headerColorScheme":"dark","greetingText":"Hi there! \nHow can I help you?","ctaText":"Start Chat","btnColor":"#1A1A1A","cornerRadius":40,"welcomeMessage":"Hello","btnColorScheme":"light","brandImage":"https://uploads-ssl.webflow.com/5f68a65cd5188c058e27c898/6204c4267b92625c9770f687_whatsapp-chat-widget-dummy-logo.png","darkHeaderColorScheme":{"title":"#333333","subTitle":"#4F4F4F"}};
       window.onload = () => {
         _waEmbed(wa_btnSetting, wa_widgetSetting);
       };
@@ -49,15 +49,18 @@
             </a>
         </div>
     </div>
+    @if(!(Auth::user()))
     <!-- Move the button here -->
     <div class="header-button">
         <a class="tj-secondary-btn btn-border" id="canva_close" style="background: #5b43f9; border: none;" href="#signin-modal" data-bs-toggle="modal">
             <span>تسجيل دخول / تسجيل</span>
         </a>
     </div>
-    
+    @endif
+
+
     <nav class="right_menu_togle mobile-navbar-menu d-lg-none" id="mobile-navbar-menu"></nav>
-    
+
     <div class="mobile-contact" style="direction: rtl; text-align: right;">
         <div class="contact-menu" style="direction: rtl; text-align: right;">
             <ul class="dot-style">
@@ -78,7 +81,7 @@
             </ul>
         </div>
     </div>
-    
+
     <div class="mobile-share">
         <ul class="dot-style">
             <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
@@ -88,7 +91,7 @@
         </ul>
     </div>
 
-    
+
 
 </div>
 
@@ -101,7 +104,7 @@
                         <div class="logo">
                             <a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="{{route('home')}}">
                                 <img  src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="200" height="70" style="height: 13vh;" alt="فكرة">
-                            </a>                        
+                            </a>
                         </div>
                     </div>
                     <div class="tj-menu-area d-lg-block d-none" id="main-menu" >
@@ -114,7 +117,7 @@
                                     <a href="{{route('services')}}">كل الخدمات</a>
                                 </li>
                                 <li class="has-dropdown">
-                                    <a href="">الاقسام</a>
+                                    <a href="#">الاقسام</a>
                                     <ul class="sub-menu">
                                         @foreach($categories as $category)
                                         <li>
@@ -134,7 +137,7 @@
                                 @endif
                                 @endforeach
                                 @if(Auth::user())
-                                
+
                                 <li class="has-dropdown" style="margin-right: 55px;">
                                     <a href="" >حسابي</a>
                                     <ul class="sub-menu">
@@ -149,20 +152,20 @@
                                             <li><a href="{{ route('categoryMangement') }}">إدارة الفئات</a></li>
                                         @endif
                                         <li><a href="{{ route('logout') }}">تسجيل الخروج</a></li>
-                                        
+
                                     </ul>
                                 </li>
                                 @endif
                             </ul>
                         </nav>
-                        
+
                     </div>
                         @if(!(Auth::user()))
                         <div class="header-button d-none d-lg-block">
                             <a class="tj-secondary-btn btn-border" style="    background: #5b43f9;
                             border: none;"  href="#signin-modal" data-bs-toggle="modal"><span>تسجيل دخول / تسجيل</span></a>
-                        </div>  
-                        @endif                  
+                        </div>
+                        @endif
                     <div class="tj-canva-icon d-lg-none">
                         <a class="canva_expander nav-menu-link menu-button" href="#">
                             <span class="dot1"></span>

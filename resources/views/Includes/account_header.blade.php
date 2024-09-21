@@ -19,12 +19,12 @@
     <script async src='https://d2mpatx37cqexb.cloudfront.net/delightchat-whatsapp-widget/embeds/embed.min.js'></script>
     <script>
       var wa_btnSetting = {"btnColor":"#16BE45","ctaText":"WhatsApp Us","cornerRadius":40,"marginBottom":100,"marginLeft":20,"marginRight":20,"btnPosition":"right","whatsAppNumber":"+201283370658","welcomeMessage":"Hello","zIndex":999999,"btnColorScheme":"light"};
-      var wa_widgetSetting = {"title":"فكره","subTitle":"Typically replies in a day","headerBackgroundColor":"#FBFFC8","headerColorScheme":"dark","greetingText":"Hi there! \nHow can I help you?","ctaText":"Start Chat","btnColor":"#1A1A1A","cornerRadius":40,"welcomeMessage":"Hello","btnColorScheme":"light","brandImage":"https://uploads-ssl.webflow.com/5f68a65cd5188c058e27c898/6204c4267b92625c9770f687_whatsapp-chat-widget-dummy-logo.png","darkHeaderColorScheme":{"title":"#333333","subTitle":"#4F4F4F"}};  
+      var wa_widgetSetting = {"title":"فكره","subTitle":"Typically replies in a day","headerBackgroundColor":"#FBFFC8","headerColorScheme":"dark","greetingText":"Hi there! \nHow can I help you?","ctaText":"Start Chat","btnColor":"#1A1A1A","cornerRadius":40,"welcomeMessage":"Hello","btnColorScheme":"light","brandImage":"https://uploads-ssl.webflow.com/5f68a65cd5188c058e27c898/6204c4267b92625c9770f687_whatsapp-chat-widget-dummy-logo.png","darkHeaderColorScheme":{"title":"#333333","subTitle":"#4F4F4F"}};
       window.onload = () => {
         _waEmbed(wa_btnSetting, wa_widgetSetting);
       };
 </script>
-    
+
     <style>
         /* إزالة أي هوامش وتباعد غير مرغوب فيه */
         body, html {
@@ -57,7 +57,7 @@
             width: 100%;
             /* background: #001e64 !important; */
 
-        } 
+        }
         .navbar-expand-lg .navbar-light{
             background: #001e64 !important;
         }
@@ -80,13 +80,70 @@
   </script>
   <script>
     var wa_btnSetting = {"btnColor":"#16BE45","ctaText":"تواصل معنا عبر واتساب","cornerRadius":40,"marginBottom":100,"marginLeft":20,"marginRight":20,"btnPosition":"right","whatsAppNumber":whatsappNumber,"welcomeMessage":"مرحبًا","zIndex":999999,"btnColorScheme":"light"};
-        var wa_widgetSetting = {"title":"فكره","subTitle":"عادةً ما يرد في غضون يوم","headerBackgroundColor":"#FBFFC8","headerColorScheme":"dark","greetingText":"مرحبًا! \nكيف يمكنني مساعدتك؟","ctaText":"ابدأ الدردشة","btnColor":"#1A1A1A","cornerRadius":40,"welcomeMessage":"مرحبًا","btnColorScheme":"light","brandImage":"https://uploads-ssl.webflow.com/5f68a65cd5188c058e27c898/6204c4267b92625c9770f687_whatsapp-chat-widget-dummy-logo.png","darkHeaderColorScheme":{"title":"#333333","subTitle":"#4F4F4F"}};  
+        var wa_widgetSetting = {"title":"فكره","subTitle":"عادةً ما يرد في غضون يوم","headerBackgroundColor":"#FBFFC8","headerColorScheme":"dark","greetingText":"مرحبًا! \nكيف يمكنني مساعدتك؟","ctaText":"ابدأ الدردشة","btnColor":"#1A1A1A","cornerRadius":40,"welcomeMessage":"مرحبًا","btnColorScheme":"light","brandImage":"https://uploads-ssl.webflow.com/5f68a65cd5188c058e27c898/6204c4267b92625c9770f687_whatsapp-chat-widget-dummy-logo.png","darkHeaderColorScheme":{"title":"#333333","subTitle":"#4F4F4F"}};
         window.onload = () => {
             _waEmbed(wa_btnSetting, wa_widgetSetting);
         };
     </script>
+    <div id="tj-overlay-bg2" class="tj-overlay-canvas d-lg-none"></div>
+    <div class="tj-offcanvas-area d-lg-none">
+        <div class="tj-offcanvas-header d-flex align-items-center justify-content-between">
+            <div class="logo-area text-center">
+                <a href=""><img src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="200" height="70" alt="فكره"></a>
+            </div>
+            <div class="offcanvas-icon">
+                <a id="canva_close" href="#">
+                    <i class="fa-light fa-xmark"></i>
+                </a>
+            </div>
+        </div>
+        <!-- Move the button here -->
+        @if(!(Auth::user()))
 
-    <header class="navbar navbar-sticky navbar-expand-lg navbar-light" style="padding-right: 10%;padding-left: 10%;background: #001e64 !important;height:13%;">
+        <div class="header-button">
+            <a class="tj-secondary-btn btn-border" id="canva_close" style="background: #5b43f9; border: none;" href="#signin-modal" data-bs-toggle="modal">
+                <span>تسجيل دخول / تسجيل</span>
+            </a>
+        </div>
+        @endif
+
+
+        <nav class="right_menu_togle mobile-navbar-menu d-lg-none" id="mobile-navbar-menu"></nav>
+
+        <div class="mobile-contact" style="direction: rtl; text-align: right;">
+            <div class="contact-menu" style="direction: rtl; text-align: right;">
+                <ul class="dot-style">
+                    <li>
+                        <p class="d-block">Mail us 24/7</p>
+                        <li><span class="text-muted me-1"></span><a class="nav-link-style" href="mailto:{{$settings->email}}">{{$settings->email}}</a></li>
+                    </li>
+                    {{-- <li>
+                        <span><i class="fa-sharp fa-solid fa-location-dot"></i></span>
+                        <a href="#">225 Marion Street, Columbia</a>
+                    </li> --}}
+                    <li>
+                        <ul class="list-unstyled fs-sm mb-0">
+                            <li><span class="text-muted me-1">واتساب:</span><a class="nav-link-style" href="https://api.whatsapp.com/send?phone={{$settings->whatsapp}}&text=مرحبا">{{$settings->whatsapp}}</a></li>
+                            <li><span class="text-muted me-1">مكالمات:</span><a class="nav-link-style" href="tel:{{$settings->phone}}">{{$settings->phone}}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mobile-share">
+            <ul class="dot-style">
+                <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-whatsapp"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+            </ul>
+        </div>
+
+
+
+    </div>
+    <header class="navbar navbar-sticky navbar-expand-lg navbar-light" style="padding-right: 10%;padding-left: 10%;background: #001e64 !important;height:8%;">
         <div class="container-fluid">
             <a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="{{route('home')}}">
                 <img src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="142" alt="فكرة">
@@ -95,7 +152,14 @@
                 <img src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="74" alt="فكرة">
             </a>
             <div class="navbar-toolbar d-flex align-items-center order-lg-3">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button>
+                <div class="tj-canva-icon d-lg-none">
+                        <a class="canva_expander nav-menu-link menu-button" href="#">
+                            <span class="dot1"></span>
+                            <span class="dot2"></span>
+                            <span class="dot3"></span>
+                            <span class="dot4"></span>
+                        </a>
+                    </div>
 
                 {{-- <div class="dropdown-menu dropdown-menu-end">
                     <div style="min-width: 14rem;">
@@ -120,7 +184,7 @@
                                 <a href="{{route('services')}}">كل الخدمات</a>
                             </li>
                             <li class="has-dropdown">
-                                <a href="">الاقسام</a>
+                                <a>الاقسام</a>
                                 <ul class="sub-menu">
                                     @foreach($categories as $category)
                                     <li>
@@ -140,7 +204,7 @@
                             @endif
                             @endforeach
                             @if(Auth::user())
-                            
+
                             <li class="has-dropdown" style="margin-right: 55px;">
                                 <a href="" >حسابي</a>
                                 <ul class="sub-menu">
@@ -155,13 +219,13 @@
                                         <li><a href="{{ route('categoryMangement') }}">إدارة الفئات</a></li>
                                     @endif
                                     <li><a href="{{ route('logout') }}">تسجيل الخروج</a></li>
-                                    
+
                                 </ul>
                             </li>
                             @endif
                         </ul>
                     </nav>
-                    
+
                 </div>
             </div>
         </div>
