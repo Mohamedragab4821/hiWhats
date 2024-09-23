@@ -126,7 +126,7 @@
                             </div>
                             <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
                                 <!-- Delete Button -->
-                                <form action="{{ route('destroyCategory', $cat->category_id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this category?');">
+                                <form action="{{ route('destroyCategory', $cat->category_id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this category?');" style="margin-bottom: 15px">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-outline-danger btn-sm w-100" type="submit"><i class="ci-trash me-2"></i>ازالة</button>
@@ -153,7 +153,7 @@
                                         <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form class="needs-validation" method="POST" enctype="multipart/form-data" novalidate>
+                                        <form class="needs-validation" method="POST" enctype="multipart/form-data" novalidate style="margin-bottom: 15px">
                                             @csrf
                                             @method('POST')
 

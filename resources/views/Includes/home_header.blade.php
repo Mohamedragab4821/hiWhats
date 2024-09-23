@@ -7,14 +7,18 @@
       };
 </script>
 <style>
-    .tj-menu-area li:last-child {
-    margin-right: 55px !important;
-}
+
 .tj-header-area.sticky{
     background: #001e64;
 }
 .sub-menu{
     margin-left: 10%
+}
+.header-content-area {
+    display: flex !important; // أو inline حسب الحاجة
+    flex-wrap: nowrap !important; // لإلغاء التفاف العناصر
+    align-items: stretch !important; // لجعل العناصر تأخذ المساحة الكاملة
+     // يعيد العناصر إلى البداية
 }
 </style>
 <div class="preloader" id="preloader">
@@ -99,11 +103,11 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-12">
-                <div class="header-content-area">
-                    <div class="logo-area">
+                <div class="header-content-area" style="justify-content: flex-start !important;">
+                    <div class="logo-area" style="margin-left: 20px">
                         <div class="logo">
-                            <a class="navbar-brand d-none d-sm-block me-4 order-lg-1" href="{{route('home')}}">
-                                <img  src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="200" height="70" style="height: 13vh;" alt="فكرة">
+                            <a class="navbar-brand  d-sm-block me-4 order-lg-1" href="{{route('home')}}">
+                                <img  src="{{ asset('storage/' . ($settings->logo ?? 'default_logo.jpg')) }}" width="200" height="70" style="height: 50px;" alt="فكرة">
                             </a>
                         </div>
                     </div>
@@ -138,8 +142,8 @@
                                 @endforeach
                                 @if(Auth::user())
 
-                                <li class="has-dropdown" style="margin-right: 55px;">
-                                    <a href="" >حسابي</a>
+                                <li class="has-dropdown" style="margin-right: 30px !important;">
+                                    <a href="#" >حسابي</a>
                                     <ul class="sub-menu">
                                         <li><a href="{{ route('profileSetting') }}">إعدادات الحساب</a></li>
                                         <li><a href="{{ route('favorites.index') }}">المفضلات</a></li>

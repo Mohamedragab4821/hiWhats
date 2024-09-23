@@ -50,7 +50,7 @@
 
             <!-- Content-->
 
-            <section class="col-lg-9 pt-lg-4 pb-4 mb-3">
+            <section class="col-lg-9 pt-lg-4 pb-4 mb-3" style="padding-left: 50px;">
                 <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
                     <h1 class="h3 mb-4 pt-2 text-center text-sm-end">إعدادات الموقع</h1>
 

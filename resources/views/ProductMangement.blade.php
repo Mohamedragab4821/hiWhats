@@ -178,7 +178,7 @@
                       <form action="{{ route('deleteProduct', ['product_id' => $product->product_id]) }}" method="POST" style="display: inline;">
                           @csrf
                           @method('DELETE')
-                          <button class="btn btn-outline-danger btn-sm" type="submit"><i class="ci-trash me-2"></i>إزالة</button>
+                          <button class="btn btn-outline-danger btn-sm" type="submit" style="margin-bottom: 10px"><i class="ci-trash me-2"></i>إزالة</button>
                       </form>
                           <!-- Edit Button -->
                           <button

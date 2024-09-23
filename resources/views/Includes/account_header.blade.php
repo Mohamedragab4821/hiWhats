@@ -184,7 +184,7 @@
                                 <a href="{{route('services')}}">كل الخدمات</a>
                             </li>
                             <li class="has-dropdown">
-                                <a>الاقسام</a>
+                                <a href="#">الاقسام</a>
                                 <ul class="sub-menu">
                                     @foreach($categories as $category)
                                     <li>
@@ -206,7 +206,7 @@
                             @if(Auth::user())
 
                             <li class="has-dropdown" style="margin-right: 55px;">
-                                <a href="" >حسابي</a>
+                                <a href="#" >حسابي</a>
                                 <ul class="sub-menu">
                                     <li><a href="{{ route('profileSetting') }}">إعدادات الحساب</a></li>
                                     <li><a href="{{ route('favorites.index') }}">المفضلات</a></li>

@@ -170,7 +170,7 @@
                                         <td>{{ $user->phone }}</td>
                                         <td>{{ $user->access }}</td>
                                         <td>{{ $user->created_at->format('d/m/Y') }}</td>
-                                        <td class="action-buttons icon-container">
+                                        <td class="action-buttons">
                                             <!-- Settings Button -->
                                             <a href="{{ route('editUser', ['id' => $user->id]) }}" class="icon-button" title="الإعدادات" data-toggle="tooltip">
                                                 <i class="material-icons">settings</i>

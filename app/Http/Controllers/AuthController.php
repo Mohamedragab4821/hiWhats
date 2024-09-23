@@ -34,7 +34,7 @@ class AuthController extends Controller
                             ->where('product_id', $product->product_id)
                             ->exists();
 
-        // Add the `is_fav` property to each product
+        // Add the is_fav property to each product
         $product->is_fav = $isFavorite;
     }
 }
@@ -89,10 +89,10 @@ public function Registeration(Request $request)
 
     // Validate the input, including the image
     $validatedData = $request->validate([
-        'userName' => 'required|string|max:255',
-        'email' => 'required|string|email|max:255|unique:users',
-        'password' => 'required|string|min:8',
-        'phone' => 'required|string|max:255',
+        'userName' => 'nullable|string|max:255',
+        'email' => 'nullable|string|email|max:255|unique:users',
+        'password' => 'nullable|string|min:8',
+        'phone' => 'nullable|string|max:255',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10000', // Image validation
         // 'access' => 'nullable|string|max:255', // Remove this if you don't need user to provide 'access'
     ]);
